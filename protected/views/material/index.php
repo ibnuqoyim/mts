@@ -67,14 +67,17 @@ $('.search-form form').submit(function(){
                     </div>
                 </div> 
                 
-                <?php echo CHtml::link('<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Stok Material', array('/material/create'),array('class'=>'btn btn-lg btn-default btn-block')); ?>
+                
 
-                <?php if(Yii::app()->user->role != "Proyek"){
-                echo CHtml::link('<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Materil on Progres', array('/material/create'),array('class'=>'btn btn-lg btn-default btn-block')); } ?>
-
+                
+                <button type="button" class='btn btn-lg btn-default btn-block' onclick='ab()'>Stok Material</button>
+                <?php if(Yii::app()->user->role != "Proyek"){ ?>
+                
+                <button type="button" class='btn btn-lg btn-default btn-block' onclick='a()'>Materil on Progres</button>
+                <?php } ?>
                 <?php if(Yii::app()->user->role == "Engineering" || Yii::app()->user->role =="Admin" ){ echo CHtml::link('<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Ajukan Material Baru', array('/material/create'),array('class'=>'btn btn-lg btn-default btn-block')); }?>
             </div>
-            <div id="test" class="col-lg-9">
+            <div id="progres" style-display="none" class="col-lg-9">
 
                 <?php $this->widget('zii.widgets.grid.CGridView', array(
                         'id'=>'user-grid',
@@ -91,36 +94,72 @@ $('.search-form form').submit(function(){
                         'template'=>'{items} {pager}',
                         'cssFile' => Yii::app()->theme->baseUrl.'/assets/css/main.css',
                         'columns'=>array(
+                                array(
+                                'header' => 'No',
+                                'value' => '$row+1',
+                                ),
                                 'nama',
-								'id_dok_eng',
+								
                                 array('name'=>'status',
                                          'header'=>'Status',
                                          'value'=>'$data->statusa->namaStatus',
 
                                          ),
-								'status',
+								array('name'=>'status',
+                                         'header'=>'Status',
+                                         'value'=>'$data->statusa->keterangan',
+
+                                         ),
                                 array(
                                         'class'=>'CButtonColumn',
                                 ),
                         ),
                     )); ?>
             </div>
-            <div id="test2" class="col-lg-9">
-                <?php $this->renderPartial('_form', array('model'=>$model)); ?>
-            </div>
-            <p id="demo">JavaScript can change HTML content.</p>
+            
+            <div id="complete" class="col-lg-9">
+                <?php $this->widget('zii.widgets.grid.CGridView', array(
+                        'id'=>'user-grid',
+                        'dataProvider'=>$model->complete(),
+                        //'filter'=>$model,
+                        'pager'=>array(
+                            'header'         => '',
+                            'firstPageLabel' => '&lt;&lt;',
+                            'prevPageLabel'  => 'Prev',
+                            'nextPageLabel'  => 'Next',
+                            'lastPageLabel'  => '&gt;&gt;',
+                            'cssFile'=>Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        ),
+                        'template'=>'{items} {pager}',
+                        'cssFile' => Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        'columns'=>array(
+                                array(
+                                'header' => 'No',
+                                'value' => '$row+1',
+                                ),
+                                'nama',
+                                array('name'=>'client',
+                                         'header'=>'Client',
+                                         'value'=>'$data->clienta->nama',
 
-<button type="button" onclick='a()'>Click Me!</button>
-<button type="button" onclick='ab()'>Click Me!</button>
+                                         ),
+                                'stok',
+                                array(
+                                        'class'=>'CButtonColumn',
+                                ),
+                        ),
+                    )); ?>
+            </div>
+           
 
         </section>
 <script type="text/javascript">
     function a(){
-                document.getElementById('test').style.display='none'
-                document.getElementById('test2').style.display='block'
+                document.getElementById('progres').style.display='none'
+                document.getElementById('complete').style.display='block'
             }
         function ab(){
-                document.getElementById('test').style.display='block'
-                document.getElementById('test2').style.display='none'
+                document.getElementById('progres').style.display='block'
+                document.getElementById('complete').style.display='none'
             }
         </script>

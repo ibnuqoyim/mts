@@ -41,12 +41,11 @@
 
 			<div class="form-group">
 		            <?php echo $form->labelEx($model,'status'); ?>
-					<?php echo $model->status->nama ?>
+					<?php echo $model->statusa->namaStatus ?>
 					<?php echo $form->error($model,'status'); ?>
 		    </div>
 		    <div class="form-group">
-	            <?php $path = Yii::getPathOfAlias("webroot"). '/attachment/'.$model->id_dok_eng;
-	            echo $path ?>
+	            
 		</div>
 		<div class="form-group col-lg-12">
             <?php echo CHtml::submitButton($model->isNewRecord ? 'Ajukan' : 'Save', array('class'=>'btn btn-lg btn-primary left ')); ?>
@@ -61,26 +60,26 @@
 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Approve">Approve</button>
 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Reject">Reject</button>
 <?php } ?>
-<?php if((Yii::app()->user->role ==  "Pengadaan" || Yii::app()->user->role ==  "Admin") && $model->status == 4){ ?>
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#Create_DPP">Upload PPn</button>
+<?php if((Yii::app()->user->role ==  "Pengadaan" || Yii::app()->user->role ==  "Admin") && $model->status == 2){ ?>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#Create_DPP">Upload DPP</button>
 <?php } ?>
-<?php if((Yii::app()->user->role ==  "Vendor" || Yii::app()->user->role ==  "Admin") && $model->status == 5){ ?>
+<?php if((Yii::app()->user->role ==  "Vendor" || Yii::app()->user->role ==  "Admin") && $model->status == 4){ ?>
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Create_DP">Upload DP</button>
 <?php } ?>
-<?php if((Yii::app()->user->role ==  "Pengadaan" || Yii::app()->user->role ==  "Admin") && $model->status == 6){ ?>
+<?php if((Yii::app()->user->role ==  "Pengadaan" || Yii::app()->user->role ==  "Admin") && $model->status == 5){ ?>
 <button type="button" class="btn" data-toggle="modal" data-target="#Lihat_PP">Lihat Penawaran</button>
 <?php } ?>
-<?php if((Yii::app()->user->role ==  "Pengadaan" || Yii::app()->user->role ==  "Admin") && $model->status == 7){ ?>
+<?php if((Yii::app()->user->role ==  "Pengadaan" || Yii::app()->user->role ==  "Admin") && $model->status == 6){ ?>
 <button type="button" class="btn " data-toggle="modal" data-target="#kontrak">Upload Kontrak</button>
 <?php } ?>
-<?php if((Yii::app()->user->role ==  "Expedeting" || Yii::app()->user->role ==  "Admin") && $model->status == 8){ ?>
+<?php if((Yii::app()->user->role ==  "Expedeting" || Yii::app()->user->role ==  "Admin") && $model->status == 7){ ?>
 <button type="button" class="btn " data-toggle="modal" data-target="#kom">Kick of Meeting</button>
 <?php } ?>
-<?php if((Yii::app()->user->role ==  "Pengadaan" || Yii::app()->user->role ==  "Admin") && $model->status == 9){ ?>
-<button type="button" class="btn " data-toggle="modal" data-target="#pi">Jadwal Production & Inspenction</button>
+<?php if((Yii::app()->user->role ==  "Pengadaan" || Yii::app()->user->role ==  "Admin") && $model->status == 8){ ?>
+<button type="button" class="btn " data-toggle="modal" data-target="#jpi">Jadwal Production & Inspenction</button>
 <?php } ?>
 <?php if((Yii::app()->user->role ==  "QC" || Yii::app()->user->role ==  "Admin") && $model->status == 9){ ?>
-<button type="button" class="btn " data-toggle="modal" data-target="#pi">BA Production & Inspenction</button>
+<button type="button" class="btn " data-toggle="modal" data-target="#bapi">BA Production & Inspenction</button>
 <?php } ?>
 <?php if((Yii::app()->user->role ==  "Vendor" || Yii::app()->user->role ==  "Admin") && $model->status == 10){ ?>
 <button type="button" class="btn " data-toggle="modal" data-target="#rpl">Upload Repair PL</button>
@@ -95,10 +94,10 @@
 <button type="button" class="btn " data-toggle="modal" data-target="#diterima">Material diterima</button>
 <?php } ?>
 <?php if((Yii::app()->user->role ==  "Warehouse" || Yii::app()->user->role ==  "Admin") && $model->status == 14){ ?>
-<button type="button" class="btn " data-toggle="modal" data-target="#kontrak">Material Inspeksi</button>
+<button type="button" class="btn " data-toggle="modal" data-target="#material-inpeksi">Material Inspeksi</button>
 <?php } ?>
 <?php if((Yii::app()->user->role ==  "Warehouse" || Yii::app()->user->role ==  "Admin") && $model->status == 15){ ?>
-<button type="button" class="btn " data-toggle="modal" data-target="#kontrak">Complete Proses</button>
+<button type="button" class="btn " data-toggle="modal" data-target="#complete">Complete Proses</button>
 <?php } ?>
 <!-- Modal -->
 <div id="Approve" class="modal fade" role="dialog">
@@ -153,8 +152,8 @@
       <div class="modal-body">
         <p>Anda akan melakukan upload dokumen Permintaan penawaran untuk material ....</p>
         <div class="form-group">
-            <?php echo $form->labelEx($model,'id_dok_eng'); ?>
-			<?php echo $form->fileField($model,'id_dok_eng'); ?>
+            <?php echo $form->labelEx($model,'dok_eng'); ?>
+			<?php echo $form->fileField($model,'dok_eng'); ?>
 			
     </div>
     <div class="form-group col-lg-12">
@@ -181,8 +180,8 @@
       <div class="modal-body">
         <p>Anda akan melakukan upload dokumen penawaran untuk material ....</p>
          <div class="form-group">
-            <?php echo $form->labelEx($model,'id_dok_eng'); ?>
-			<?php echo $form->fileField($model,'id_dok_eng'); ?>
+            <?php echo $form->labelEx($model,'dok_eng'); ?>
+			<?php echo $form->fileField($model,'dok_eng'); ?>
 			
     </div>
     <div class="form-group col-lg-12">

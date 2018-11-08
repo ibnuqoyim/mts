@@ -55,13 +55,13 @@ class MaterialController extends Controller
 		if(isset($_POST['Material']))
 		{
 			$model->attributes=$_POST['Material'];
-			$model->id_dok_eng = CUploadedFile::getInstance($model, 'id_dok_eng');
-			                        if (empty($model->id_dok_eng)) {
-			                           $model->id_dok_eng = 0;
+			$model->dok_eng = CUploadedFile::getInstance($model, 'dok_eng');
+			                        if (empty($model->dok_eng)) {
+			                           $model->dok_eng = 0;
 			                        } else {
 			                            $val = TRUE;
 			                        }
-			$model->id_dok_eng=$dokeng->id;
+			$model->dok_eng=$dokeng->id;
 			$dokeng->material=$model->id;
 			if($dokeng->save())
 				$this->redirect(array('view','id'=>$model->id));
@@ -87,24 +87,25 @@ class MaterialController extends Controller
 		if(isset($_POST['Material']))
 		{
 			$model->attributes=$_POST['Material'];
-			$model->id_dok_eng = CUploadedFile::getInstance($model, 'id_dok_eng');
-			                        if (empty($model->id_dok_eng)) {
-			                           $model->id_dok_eng = 0;
+			$model->dok_eng = CUploadedFile::getInstance($model, 'dok_eng');
+			                        if (empty($model->dok_eng)) {
+			                           $model->dok_eng = 0;
 			                        } else {
 			                            $val = TRUE;
 			                        }
 			                        if ($model->validate()) {
 			                            if ($val) {
-			                                $path = Yii::getPathOfAlias("webroot"). '/attachment/'.$model->id_dok_eng;
+			                                $path = Yii::getPathOfAlias("webroot"). '/attachment/'.$model->dok_eng;
 			                                $del = Yii::getPathOfAlias("webroot"). '/attachment/'.$old;
 			                                if (is_file($del)) {
 			                                    unlink($del);
 			                                }
-			                                $model->id_dok_eng->saveAs($path);
+			                                $model->dok_eng->saveAs($path);
 			                            }
 			                        }
 			$model->create_date= date("Y-m-d",time());
 			$model->last_update= date("Y-m-d",time());
+			$model->status = 1 ;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

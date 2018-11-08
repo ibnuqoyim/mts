@@ -43,7 +43,7 @@ class Material extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('client, nama, create_date, last_update', 'required'),
-			array('client, istatus, irn, stok', 'numerical', 'integerOnly'=>true),
+			array('client, status, irn, stok', 'numerical', 'integerOnly'=>true),
 			array('client_respon', 'length', 'max'=>200),
 			array('nama', 'length', 'max'=>100),
 			array('dok_eng, pemenang, kontrak, ba_inspection', 'length', 'max'=>110),
@@ -66,6 +66,7 @@ class Material extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'statusa' => array(self::BELONGS_TO, 'Status', 'status'),
+			'clienta' => array(self::BELONGS_TO, 'Client', 'client'),
 		);
 	}
 
@@ -79,19 +80,19 @@ class Material extends CActiveRecord
 			'client' => 'Client',
 			'client_respon' => 'Client Respon',
 			'nama' => 'Nama',
-			'dok_eng' => 'Dok Eng',
+			'dok_eng' => 'Dokumen Engineering',
 			'status' => 'Status',
-			'permintaan_penawaran' => 'Permintaan Penawaran',
-			'pemenang' => 'Pemenang',
-			'kontrak' => 'Kontrak',
-			'jadwal_kom' => 'Jadwal Kom',
-			'jadwal_pi' => 'Jadwal Pi',
-			'ba_inspection' => 'Ba Inspection',
-			'irn' => 'Irn',
-			'jadwal_pengambillan' => 'Jadwal Pengambillan',
+			'permintaan_penawaran' => 'Dokumen Permintaan Penawaran',
+			'pemenang' => 'Vendor Pemenang',
+			'kontrak' => 'Dokumen Kontrak',
+			'jadwal_kom' => 'Jadwal Kick of Meeting',
+			'jadwal_pi' => 'Jadwal Inspection',
+			'ba_inspection' => 'Bertia Acara Inspection',
+			'irn' => 'Nomoe IRN',
+			'jadwal_pengambillan' => 'Jadwal Pengambilan Material',
 			'status_pengambilan' => 'Status Pengambilan',
-			'hasil_inspeksi_barang' => 'Hasil Inspeksi Barang',
-			'stok' => 'Stok',
+			'hasil_inspeksi_barang' => 'Hasil Inspeksi Material',
+			'stok' => 'Stok Material',
 			'create_date' => 'Create Date',
 			'last_update' => 'Last Update',
 		);
@@ -134,6 +135,19 @@ class Material extends CActiveRecord
 		$criteria->compare('stok',$this->stok);
 		$criteria->compare('create_date',$this->create_date,true);
 		$criteria->compare('last_update',$this->last_update,true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+
+	public function complete()
+	{
+		$criteria =  new CDbCriteria;
+
+		$criteria->compare('nama',$this->id);
+		$criteria->compare('client',$this->client);
+		$criteria->addCondition('status= 15' );
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
