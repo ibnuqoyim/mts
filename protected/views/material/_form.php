@@ -29,9 +29,9 @@
             <?php echo $form->error($model,'client'); ?>
         </div>
 	<div class="form-group">
-            <?php echo $form->labelEx($model,'id_dok_eng'); ?>
-			<?php echo $form->fileField($model,'id_dok_eng',array('class'=>'form-control')); ?>
-			<?php echo $form->error($model,'id_dok_eng'); ?>
+            <?php echo $form->labelEx($model,'dok_eng'); ?>
+			<?php echo $form->fileField($model,'dok_eng',array('class'=>'form-control')); ?>
+			<?php echo $form->error($model,'dok_eng'); ?>
     </div>
     </div>
     <div class="form-group col-lg-12">

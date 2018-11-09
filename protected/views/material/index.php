@@ -77,7 +77,7 @@ $('.search-form form').submit(function(){
                 <?php } ?>
                 <?php if(Yii::app()->user->role == "Engineering" || Yii::app()->user->role =="Admin" ){ echo CHtml::link('<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Ajukan Material Baru', array('/material/create'),array('class'=>'btn btn-lg btn-default btn-block')); }?>
             </div>
-            <div id="progres" style-display="none" class="col-lg-9">
+            <div id="progres" style = "display: none" class="col-lg-9">
 
                 <?php $this->widget('zii.widgets.grid.CGridView', array(
                         'id'=>'user-grid',
@@ -154,11 +154,11 @@ $('.search-form form').submit(function(){
 
         </section>
 <script type="text/javascript">
-    function a(){
+    function ab(){
                 document.getElementById('progres').style.display='none'
                 document.getElementById('complete').style.display='block'
             }
-        function ab(){
+        function a(){
                 document.getElementById('progres').style.display='block'
                 document.getElementById('complete').style.display='none'
             }

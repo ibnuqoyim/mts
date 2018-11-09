@@ -30,7 +30,10 @@ $(document).ready(function() {
 	$(".table").tableExport();
 });
 </script>
+<style type="text/css">
 
+}
+</style>
 
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -83,7 +86,7 @@ $(document).ready(function() {
 
         <?php echo $content; ?>
 
-        <footer>
+        <footer >
             <p>Copyright © MIQ</p>
             <p>2018</p>
         </footer>

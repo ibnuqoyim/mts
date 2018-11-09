@@ -95,14 +95,16 @@ class MaterialController extends Controller
 			                        }
 			                        if ($model->validate()) {
 			                            if ($val) {
-			                                $path = Yii::getPathOfAlias("webroot"). '/attachment/'.$model->dok_eng;
-			                                $del = Yii::getPathOfAlias("webroot"). '/attachment/'.$old;
+			                                
+			                                $del = Yii::getPathOfAlias("webroot"). '/Dokumen Engineering/'.$old;
 			                                if (is_file($del)) {
 			                                    unlink($del);
 			                                }
-			                                $model->dok_eng->saveAs($path);
+			                                
 			                            }
 			                        }
+			$path = Yii::getPathOfAlias("webroot"). '/Dokumen Engineering/'.$model->dok_eng;
+			$model->dok_eng->saveAs($path);
 			$model->create_date= date("Y-m-d",time());
 			$model->last_update= date("Y-m-d",time());
 			$model->status = 1 ;

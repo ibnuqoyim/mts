@@ -19,6 +19,17 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
+    <style type="text/css">
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+}
+</style>
 </head>
 
 <body>
