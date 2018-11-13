@@ -25,5 +25,9 @@
 	<?php echo CHtml::encode($data->deskripsi); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('tgl_create')); ?>:</b>
+	<?php echo CHtml::encode($data->tgl_create); ?>
+	<br />
+
 
 </div>

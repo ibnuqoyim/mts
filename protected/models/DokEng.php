@@ -8,6 +8,7 @@
  * @property integer $material
  * @property string $file
  * @property string $deskripsi
+ * @property string $tgl_create
  */
 class DokEng extends CActiveRecord
 {
@@ -30,10 +31,10 @@ class DokEng extends CActiveRecord
 			array('material, file', 'required'),
 			array('material', 'numerical', 'integerOnly'=>true),
 			array('file', 'length', 'max'=>100),
-			array('deskripsi', 'safe'),
+			array('deskripsi, tgl_create', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, material, file, deskripsi', 'safe', 'on'=>'search'),
+			array('id, material, file, deskripsi, tgl_create', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,6 +59,7 @@ class DokEng extends CActiveRecord
 			'material' => 'Material',
 			'file' => 'File',
 			'deskripsi' => 'Deskripsi',
+			'tgl_create' => 'Tgl Create',
 		);
 	}
 
@@ -83,6 +85,7 @@ class DokEng extends CActiveRecord
 		$criteria->compare('material',$this->material);
 		$criteria->compare('file',$this->file,true);
 		$criteria->compare('deskripsi',$this->deskripsi,true);
+		$criteria->compare('tgl_create',$this->tgl_create,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

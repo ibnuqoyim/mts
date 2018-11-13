@@ -20,12 +20,6 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'client_id'); ?>
-		<?php echo $form->textField($model,'client_id'); ?>
-		<?php echo $form->error($model,'client_id'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'material_id'); ?>
 		<?php echo $form->textField($model,'material_id'); ?>
 		<?php echo $form->error($model,'material_id'); ?>
@@ -41,6 +35,12 @@
 		<?php echo $form->labelEx($model,'file_respon'); ?>
 		<?php echo $form->textField($model,'file_respon',array('size'=>60,'maxlength'=>110)); ?>
 		<?php echo $form->error($model,'file_respon'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'tgl_create'); ?>
+		<?php echo $form->textField($model,'tgl_create'); ?>
+		<?php echo $form->error($model,'tgl_create'); ?>
 	</div>
 
 	<div class="row buttons">

@@ -1,14 +1,14 @@
 <?php
 
 /**
- * This is the model class for table "Client_respon".
+ * This is the model class for table "client_respon".
  *
- * The followings are the available columns in table 'Client_respon':
+ * The followings are the available columns in table 'client_respon':
  * @property integer $id
- * @property integer $client_id
  * @property integer $material_id
  * @property string $isi
  * @property string $file_respon
+ * @property string $tgl_create
  */
 class ClientRespon extends CActiveRecord
 {
@@ -17,7 +17,7 @@ class ClientRespon extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'Client_respon';
+		return 'client_respon';
 	}
 
 	/**
@@ -28,13 +28,13 @@ class ClientRespon extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('client_id, material_id, isi', 'required'),
-			array('client_id, material_id', 'numerical', 'integerOnly'=>true),
+			array('material_id, isi, tgl_create', 'required'),
+			array('material_id', 'numerical', 'integerOnly'=>true),
 			array('isi', 'length', 'max'=>250),
 			array('file_respon', 'length', 'max'=>110),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, client_id, material_id, isi, file_respon', 'safe', 'on'=>'search'),
+			array('id, material_id, isi, file_respon, tgl_create', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,10 +56,10 @@ class ClientRespon extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'client_id' => 'Client',
 			'material_id' => 'Material',
 			'isi' => 'Isi',
 			'file_respon' => 'File Respon',
+			'tgl_create' => 'Tgl Create',
 		);
 	}
 
@@ -82,10 +82,10 @@ class ClientRespon extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('client_id',$this->client_id);
 		$criteria->compare('material_id',$this->material_id);
 		$criteria->compare('isi',$this->isi,true);
 		$criteria->compare('file_respon',$this->file_respon,true);
+		$criteria->compare('tgl_create',$this->tgl_create,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

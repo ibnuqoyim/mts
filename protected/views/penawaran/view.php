@@ -26,5 +26,6 @@ $this->menu=array(
 		'id_material',
 		'file',
 		'deskripsi',
+		'tgl_create',
 	),
 )); ?>

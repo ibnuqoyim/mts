@@ -9,6 +9,7 @@
  * @property integer $id_material
  * @property string $file
  * @property string $deskripsi
+ * @property string $tgl_create
  */
 class Penawaran extends CActiveRecord
 {
@@ -28,12 +29,12 @@ class Penawaran extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, id_user, id_material, file, deskripsi', 'required'),
-			array('id, id_user, id_material', 'numerical', 'integerOnly'=>true),
+			array('id_user, id_material, file, deskripsi, tgl_create', 'required'),
+			array('id_user, id_material', 'numerical', 'integerOnly'=>true),
 			array('file, deskripsi', 'length', 'max'=>250),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_user, id_material, file, deskripsi', 'safe', 'on'=>'search'),
+			array('id, id_user, id_material, file, deskripsi, tgl_create', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,6 +60,7 @@ class Penawaran extends CActiveRecord
 			'id_material' => 'Id Material',
 			'file' => 'File',
 			'deskripsi' => 'Deskripsi',
+			'tgl_create' => 'Tgl Create',
 		);
 	}
 
@@ -85,6 +87,7 @@ class Penawaran extends CActiveRecord
 		$criteria->compare('id_material',$this->id_material);
 		$criteria->compare('file',$this->file,true);
 		$criteria->compare('deskripsi',$this->deskripsi,true);
+		$criteria->compare('tgl_create',$this->tgl_create,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

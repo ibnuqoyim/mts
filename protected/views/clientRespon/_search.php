@@ -17,11 +17,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'client_id'); ?>
-		<?php echo $form->textField($model,'client_id'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'material_id'); ?>
 		<?php echo $form->textField($model,'material_id'); ?>
 	</div>
@@ -34,6 +29,11 @@
 	<div class="row">
 		<?php echo $form->label($model,'file_respon'); ?>
 		<?php echo $form->textField($model,'file_respon',array('size'=>60,'maxlength'=>110)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'tgl_create'); ?>
+		<?php echo $form->textField($model,'tgl_create'); ?>
 	</div>
 
 	<div class="row buttons">

@@ -43,6 +43,12 @@
 		<?php echo $form->error($model,'deskripsi'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'tgl_create'); ?>
+		<?php echo $form->textField($model,'tgl_create'); ?>
+		<?php echo $form->error($model,'tgl_create'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

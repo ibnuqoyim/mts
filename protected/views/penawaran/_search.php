@@ -36,6 +36,11 @@
 		<?php echo $form->textField($model,'deskripsi',array('size'=>60,'maxlength'=>250)); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->label($model,'tgl_create'); ?>
+		<?php echo $form->textField($model,'tgl_create'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 08, 2018 at 11:49 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.0.31
+-- Host: 127.0.0.1
+-- Generation Time: Nov 13, 2018 at 09:55 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 5.6.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -48,15 +48,15 @@ INSERT INTO `client` (`id`, `nama`, `alamat`, `telepon`, `pic`, `kontak_pic`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Client_respon`
+-- Table structure for table `client_respon`
 --
 
-CREATE TABLE `Client_respon` (
+CREATE TABLE `client_respon` (
   `id` int(11) NOT NULL,
-  `client_id` int(11) NOT NULL,
   `material_id` int(11) NOT NULL,
   `isi` varchar(250) NOT NULL,
-  `file_respon` varchar(110) DEFAULT NULL
+  `file_respon` varchar(110) DEFAULT NULL,
+  `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -69,7 +69,78 @@ CREATE TABLE `dok_eng` (
   `id` int(11) NOT NULL,
   `material` int(11) NOT NULL,
   `file` varchar(100) NOT NULL,
-  `deskripsi` text
+  `deskripsi` text,
+  `tgl_create` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hasilinspeksiwh`
+--
+
+CREATE TABLE `hasilinspeksiwh` (
+  `id` int(11) NOT NULL,
+  `id_material` int(11) NOT NULL,
+  `file` varchar(100) NOT NULL,
+  `desk` text NOT NULL,
+  `tgl_create` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hasilpni`
+--
+
+CREATE TABLE `hasilpni` (
+  `id` int(11) NOT NULL,
+  `id_material` int(11) NOT NULL,
+  `file` varchar(100) NOT NULL,
+  `desk` text NOT NULL,
+  `tgl_create` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hasilrepair`
+--
+
+CREATE TABLE `hasilrepair` (
+  `id` int(11) NOT NULL,
+  `id_material` int(11) NOT NULL,
+  `file` varchar(100) NOT NULL,
+  `desk` text NOT NULL,
+  `tgl_create` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `irn`
+--
+
+CREATE TABLE `irn` (
+  `id` int(11) NOT NULL,
+  `id_material` int(11) NOT NULL,
+  `irn` varchar(100) NOT NULL,
+  `tgl_create` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kom`
+--
+
+CREATE TABLE `kom` (
+  `id` int(11) NOT NULL,
+  `id_material` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `tempat` varchar(100) NOT NULL,
+  `tgl_create` date NOT NULL,
+  `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -82,7 +153,8 @@ CREATE TABLE `kontrak` (
   `id` int(11) NOT NULL,
   `id_material` int(11) NOT NULL,
   `file` varchar(250) NOT NULL,
-  `deskripsi` varchar(250) NOT NULL
+  `deskripsi` varchar(250) NOT NULL,
+  `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -94,20 +166,9 @@ CREATE TABLE `kontrak` (
 CREATE TABLE `material` (
   `id` int(11) NOT NULL,
   `client` int(11) NOT NULL,
-  `client_respon` varchar(200) DEFAULT NULL,
   `nama` varchar(100) NOT NULL,
-  `dok_eng` varchar(110) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
-  `permintaan_penawaran` varchar(250) DEFAULT NULL,
   `pemenang` varchar(110) DEFAULT NULL,
-  `kontrak` varchar(110) DEFAULT NULL,
-  `jadwal_kom` date DEFAULT NULL,
-  `jadwal_pi` date DEFAULT NULL,
-  `ba_inspection` varchar(110) DEFAULT NULL,
-  `irn` int(11) DEFAULT NULL,
-  `jadwal_pengambillan` date DEFAULT NULL,
-  `status_pengambilan` varchar(50) DEFAULT NULL,
-  `hasil_inspeksi_barang` varchar(500) DEFAULT NULL,
   `stok` int(11) DEFAULT NULL,
   `create_date` date NOT NULL,
   `last_update` date NOT NULL
@@ -117,23 +178,26 @@ CREATE TABLE `material` (
 -- Dumping data for table `material`
 --
 
-INSERT INTO `material` (`id`, `client`, `client_respon`, `nama`, `dok_eng`, `status`, `permintaan_penawaran`, `pemenang`, `kontrak`, `jadwal_kom`, `jadwal_pi`, `ba_inspection`, `irn`, `jadwal_pengambillan`, `status_pengambilan`, `hasil_inspeksi_barang`, `stok`, `create_date`, `last_update`) VALUES
-(1, 1, NULL, 'Material A', '1', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-04', '2018-11-04'),
-(2, 1, NULL, 'Material B', 'Level4.sql', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-07', '2018-11-07'),
-(8, 2, NULL, 'Material C', 'Mechanical Equipment Datasheet.pdf', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-07', '2018-11-07'),
-(9, 1, NULL, 'Material D', '0', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
-(10, 1, '', 'Material E', 'a', 5, '', '', '', '0000-00-00', '0000-00-00', '', 0, '0000-00-00', '', '', 0, '2018-11-08', '2018-11-08'),
-(11, 1, NULL, 'Material F', 'a', 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
-(12, 2, NULL, 'Material G', 'a', 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
-(13, 1, NULL, 'Material H', 'a', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
-(14, 2, NULL, 'Material I', 'a', 9, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
-(15, 1, NULL, 'Material J', 'a', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
-(16, 2, NULL, 'Material K', 'a', 11, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
-(17, 1, NULL, 'Material L', 'a', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
-(18, 2, NULL, 'Material M', 'a', 13, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
-(19, 1, NULL, 'Material  N', 'N', 14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
-(20, 2, NULL, 'Material  O', 'N', 15, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
-(21, 1, NULL, 'Material  P', 'N', 15, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08');
+INSERT INTO `material` (`id`, `client`, `nama`, `status`, `pemenang`, `stok`, `create_date`, `last_update`) VALUES
+(1, 1, 'Material A', 1, NULL, NULL, '2018-11-04', '2018-11-04'),
+(2, 1, 'Material B', 2, NULL, NULL, '2018-11-07', '2018-11-07'),
+(8, 2, 'Material C', 3, NULL, NULL, '2018-11-07', '2018-11-07'),
+(9, 1, 'Material D', 4, NULL, NULL, '2018-11-08', '2018-11-08'),
+(10, 1, 'Material E', 5, '', 0, '2018-11-08', '2018-11-08'),
+(11, 1, 'Material F', 6, NULL, NULL, '2018-11-08', '2018-11-08'),
+(12, 2, 'Material G', 7, NULL, NULL, '2018-11-08', '2018-11-08'),
+(13, 1, 'Material H', 8, NULL, NULL, '2018-11-08', '2018-11-08'),
+(14, 2, 'Material I', 9, NULL, NULL, '2018-11-08', '2018-11-08'),
+(15, 1, 'Material J', 10, NULL, NULL, '2018-11-08', '2018-11-08'),
+(16, 2, 'Material K', 11, NULL, NULL, '2018-11-08', '2018-11-08'),
+(17, 1, 'Material L', 12, NULL, NULL, '2018-11-08', '2018-11-08'),
+(18, 2, 'Material M', 13, NULL, NULL, '2018-11-08', '2018-11-08'),
+(19, 1, 'Material  N', 14, NULL, NULL, '2018-11-08', '2018-11-08'),
+(20, 2, 'Material  O', 15, NULL, NULL, '2018-11-08', '2018-11-08'),
+(21, 1, 'Material  P', 15, NULL, NULL, '2018-11-08', '2018-11-08'),
+(22, 2, 'material  Z', 1, NULL, NULL, '2018-11-09', '2018-11-09'),
+(23, 2, 'Materia Z1', 1, NULL, NULL, '2018-11-09', '2018-11-09'),
+(24, 2, 'Materia Z1', 1, NULL, NULL, '2018-11-09', '2018-11-09');
 
 -- --------------------------------------------------------
 
@@ -146,7 +210,53 @@ CREATE TABLE `penawaran` (
   `id_user` int(11) NOT NULL,
   `id_material` int(11) NOT NULL,
   `file` varchar(250) NOT NULL,
-  `deskripsi` varchar(250) NOT NULL
+  `deskripsi` varchar(250) NOT NULL,
+  `tgl_create` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengiriman`
+--
+
+CREATE TABLE `pengiriman` (
+  `id` int(11) NOT NULL,
+  `id_material` int(11) NOT NULL,
+  `tanggal_pengiriman` date NOT NULL,
+  `tujuan` varchar(100) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `pic` varchar(100) NOT NULL,
+  `kontak` int(20) NOT NULL,
+  `tgl_create` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permintaan`
+--
+
+CREATE TABLE `permintaan` (
+  `id` int(11) NOT NULL,
+  `id_material` int(11) NOT NULL,
+  `file` varchar(100) NOT NULL,
+  `deskripsi` varchar(300) DEFAULT NULL,
+  `tgl_create` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pni`
+--
+
+CREATE TABLE `pni` (
+  `id` int(11) NOT NULL,
+  `id_material` int(11) NOT NULL,
+  `file` int(11) NOT NULL,
+  `desk` int(11) NOT NULL,
+  `tgl_create` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -216,7 +326,7 @@ INSERT INTO `user` (`id`, `nama`, `alamat`, `email`, `telp`, `username`, `passwo
 (10, 'QC', '-', '-', '085711112236', 'QC', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'QC', ''),
 (11, 'Warehouse', '-', '-', '085711112240', 'Warehouse', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Warehouse', ''),
 (51, 'Muhamad Ibnu Qoyim', 'Bandung', 'muhamadibnu9@gmail.com', '089673569437', 'ibnuqoyim', 'f08dcb43bb4fc72e778d838ea47aadb5', '5a25118b0c3a85.82618145', 'Admin', ''),
-(52, 'Proyek', 'a', 'muhamadibnu9@gmail.com', '089673569437', 'Proyek', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Proyek', 'KP'),
+(52, 'Proyek', 'a', 'muhamadibnu9@gmail.com', '089673569437', 'Proyek', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Proyek', ''),
 (53, 'Kepala', 'bdg', 'muhamadibnu9@gmail.com', '089673569437', 'kepalaupt', '7b5243076625e1e0559092e5ae4e66c0', '5a2f9e85c99b71.51626435', 'Kepala UPT Asrama', ''),
 (54, 'Agung Mr.', '0852 72345 1111', '0852 72345 1111', '0852 72345 1111', 'Agung', '7ee8de7fdda016a44d0081ada2e0662a', '5a8ad923c0c659.21245113', 'Operator Lapangan', ''),
 (55, 'Miko Mr.', '0851 7686 2222', '0852 72345 1111', '0851 7686 2222', 'Miko', '54c7a62bdda3b0f339d2b89394d43fb0', '5a8ad956b357b6.51739712', 'Operator Lapangan', ''),
@@ -234,15 +344,51 @@ ALTER TABLE `client`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Client_respon`
+-- Indexes for table `client_respon`
 --
-ALTER TABLE `Client_respon`
+ALTER TABLE `client_respon`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `dok_eng`
 --
 ALTER TABLE `dok_eng`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hasilinspeksiwh`
+--
+ALTER TABLE `hasilinspeksiwh`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hasilpni`
+--
+ALTER TABLE `hasilpni`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hasilrepair`
+--
+ALTER TABLE `hasilrepair`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `irn`
+--
+ALTER TABLE `irn`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kom`
+--
+ALTER TABLE `kom`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kontrak`
+--
+ALTER TABLE `kontrak`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -255,6 +401,24 @@ ALTER TABLE `material`
 -- Indexes for table `penawaran`
 --
 ALTER TABLE `penawaran`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pengiriman`
+--
+ALTER TABLE `pengiriman`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `permintaan`
+--
+ALTER TABLE `permintaan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pni`
+--
+ALTER TABLE `pni`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -280,9 +444,9 @@ ALTER TABLE `client`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `Client_respon`
+-- AUTO_INCREMENT for table `client_respon`
 --
-ALTER TABLE `Client_respon`
+ALTER TABLE `client_respon`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -292,15 +456,69 @@ ALTER TABLE `dok_eng`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `hasilinspeksiwh`
+--
+ALTER TABLE `hasilinspeksiwh`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `hasilpni`
+--
+ALTER TABLE `hasilpni`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `hasilrepair`
+--
+ALTER TABLE `hasilrepair`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `irn`
+--
+ALTER TABLE `irn`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `kom`
+--
+ALTER TABLE `kom`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `kontrak`
+--
+ALTER TABLE `kontrak`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `material`
 --
 ALTER TABLE `material`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `penawaran`
 --
 ALTER TABLE `penawaran`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pengiriman`
+--
+ALTER TABLE `pengiriman`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `permintaan`
+--
+ALTER TABLE `permintaan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pni`
+--
+ALTER TABLE `pni`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

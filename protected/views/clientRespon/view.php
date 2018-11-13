@@ -22,9 +22,9 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
-		'client_id',
 		'material_id',
 		'isi',
 		'file_respon',
+		'tgl_create',
 	),
 )); ?>
