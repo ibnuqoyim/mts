@@ -49,6 +49,8 @@ class Material extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'statusa' => array(self::BELONGS_TO, 'Status', 'status'),
+			'clienta' => array(self::BELONGS_TO, 'Client', 'client'),
 		);
 	}
 
@@ -100,6 +102,176 @@ class Material extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+	public function engineering()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('client',$this->client);
+		$criteria->compare('nama',$this->nama,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('pemenang',$this->pemenang,true);
+		$criteria->compare('stok',$this->stok);
+		$criteria->addCondition('status=2 || status = 3' );
+
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+
+	public function client()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('client',$this->client);
+		$criteria->compare('nama',$this->nama,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('pemenang',$this->pemenang,true);
+		$criteria->compare('stok',$this->stok);
+		$criteria->addCondition('status=1' );
+
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+	public function pengadaan()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('client',$this->client);
+		$criteria->compare('nama',$this->nama,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('pemenang',$this->pemenang,true);
+		$criteria->compare('stok',$this->stok);
+		$criteria->addCondition('status=2 || status=5' );
+
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+
+	public function vendor()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('client',$this->client);
+		$criteria->compare('nama',$this->nama,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('pemenang',$this->pemenang,true);
+		$criteria->compare('stok',$this->stok);
+		$criteria->addCondition('(status>=5 && status<15)' );
+
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+
+	public function expedeting()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('client',$this->client);
+		$criteria->compare('nama',$this->nama,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('pemenang',$this->pemenang,true);
+		$criteria->compare('stok',$this->stok);
+		$criteria->addCondition('status>=6 && status<=8' );
+
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+
+	public function qc()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('client',$this->client);
+		$criteria->compare('nama',$this->nama,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('pemenang',$this->pemenang,true);
+		$criteria->compare('stok',$this->stok);
+		$criteria->addCondition('status>=9 && status<=12' );
+
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+	public function traffic()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('client',$this->client);
+		$criteria->compare('nama',$this->nama,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('pemenang',$this->pemenang,true);
+		$criteria->compare('stok',$this->stok);
+		$criteria->addCondition('status>=12 && status<14' );
+
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+
+	public function warehouse()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('client',$this->client);
+		$criteria->compare('nama',$this->nama,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('pemenang',$this->pemenang,true);
+		$criteria->compare('stok',$this->stok);
+		$criteria->addCondition('status>=12 && status<=15' );
+
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+
+	public function proyek()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('client',$this->client);
+		$criteria->compare('nama',$this->nama,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('pemenang',$this->pemenang,true);
+		$criteria->compare('stok',$this->stok);
+		$criteria->addCondition('status=15' );
+
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+	
 
 	/**
 	 * Returns the static model of the specified AR class.

@@ -54,11 +54,11 @@
     </div>
 		    </div>
 		    <div class="col-lg-12">
-		    <b> Dokumen Engineering </b>: <?php echo $model->dok_eng ?>
+		    <b> Dokumen Engineering </b>: <?php echo $model->dokeng ?>
         <a href="#demo" class="glyphicon glyphicon-eye-open" data-toggle="collapse"></a>
 
       <div id="demo" class="collapse">
-      <embed width="100%" height="600px" src="/mts/Dokumen Engineering/<?php echo $model->dok_eng ?>">
+      <embed width="100%" height="600px" src="/mts/Dokumen Engineering/<?php echo $model->dokeng ?>">
       </div>
        <div>
         <br> <br>

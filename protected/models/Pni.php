@@ -28,8 +28,8 @@ class Pni extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, id_material, file, desk, tgl_create', 'required'),
-			array('id, id_material, file, desk, tgl_create', 'numerical', 'integerOnly'=>true),
+			array(' id_material, file, desk, tgl_create', 'required'),
+			array('id, id_material', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, id_material, file, desk, tgl_create', 'safe', 'on'=>'search'),
@@ -44,6 +44,7 @@ class Pni extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'materiala' => array(self::BELONGS_TO, 'Material', 'id_material'),
 		);
 	}
 

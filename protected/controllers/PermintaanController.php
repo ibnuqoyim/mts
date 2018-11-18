@@ -60,24 +60,34 @@ class PermintaanController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($idm)
 	{
 		$model=new Permintaan;
-
+		$modal=Material::model()->findByPk($idm);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Permintaan']))
 		{
 			$model->attributes=$_POST['Permintaan'];
+			$model->id_material=$idm;
+			
+			$modal->status=5;
+			$modal->save();
+			$model->file = CUploadedFile::getInstance($model, 'file');       
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/permintaan/'.$model->file;
+			$model->file->saveAs($path);
+			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('material/index'));
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$model, 'modal'=>$modal,
 		));
 	}
+
+
 
 	/**
 	 * Updates a particular model.

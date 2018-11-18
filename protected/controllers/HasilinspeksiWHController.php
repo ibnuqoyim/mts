@@ -60,22 +60,29 @@ class HasilinspeksiWHController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($idm)
 	{
 		$model=new HasilinspeksiWH;
-
+		$modal=Material::model()->findByPk($idm);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['HasilinspeksiWH']))
 		{
 			$model->attributes=$_POST['HasilinspeksiWH'];
+			$model->id_material=$idm;
+			
+			$modal->status=15;
+			$model->attributes=$_POST['Material'];
+			$modal->save();
+			
+			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$model, 'modal'=>$modal,
 		));
 	}
 

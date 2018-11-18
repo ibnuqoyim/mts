@@ -60,9 +60,10 @@ class KomController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($idm)
 	{
 		$model=new Kom;
+		$modal=Material::model()->findByPk($idm);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -70,12 +71,18 @@ class KomController extends Controller
 		if(isset($_POST['Kom']))
 		{
 			$model->attributes=$_POST['Kom'];
+			$model->id_material=$idm;
+			
+			$modal->status=8;
+			$modal->save();
+			
+			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('material/index',false,true));
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$model, 'modal'=>$modal,
 		));
 	}
 

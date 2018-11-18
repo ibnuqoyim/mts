@@ -80,40 +80,32 @@ class MaterialController extends Controller
 	public function actionCreate()
 	{
 		$model=new Material;
-
+		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 		$old = 0;
 		if(isset($_POST['Material']))
 		{
 			$model->attributes=$_POST['Material'];
-			$model->dok_eng = CUploadedFile::getInstance($model, 'dok_eng');
-			                        if (empty($model->dok_eng)) {
-			                           $model->dok_eng = 0;
-			                        } else {
-			                            $val = TRUE;
-			                        }
-			                        if ($model->validate()) {
-			                            if ($val) {
-			                                
-			                                $del = Yii::getPathOfAlias("webroot"). '/Dokumen Engineering/'.$old;
-			                                if (is_file($del)) {
-			                                    unlink($del);
-			                                }
-			                                
-			                            }
-			                        }
-			$path = Yii::getPathOfAlias("webroot"). '/Dokumen Engineering/'.$model->dok_eng;
-			$model->dok_eng->saveAs($path);
+			
+			$model->dokeng = CUploadedFile::getInstance($model, 'dokeng');
+			                        
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/'.$model->dokeng;
+			$model->dokeng->saveAs($path);
+
+			
 			$model->create_date= date("Y-m-d",time());
 			$model->last_update= date("Y-m-d",time());
 			$model->status = 1 ;
+
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				Yii::app()->user->setFlash('success', 'Material '.$model->nama.' telah diajukan!!');
+				$this->redirect(array('material/index')); 
+		
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$model, 
 		));
 	}
 
@@ -125,19 +117,32 @@ class MaterialController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+		$respon = ClientRespon::Model()->findAll('material_id='.$id);
+		$old = $model->dokeng;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Material']))
 		{
 			$model->attributes=$_POST['Material'];
+			$model->dokeng = CUploadedFile::getInstance($model, 'dokeng');
+			                        
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/'.$model->dokeng;
+			$model->dokeng->saveAs($path);
+			//$pathold = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/old-'.$model->dokeng;
+			//$old->saveAs($pathold);
+			
+			$model->create_date= date("Y-m-d",time());
+			$model->last_update= date("Y-m-d",time());
+			$model->status = 1 ;
+
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				Yii::app()->user->setFlash('success', 'Dokumen Engineering Material '.$model->nama.' berhasil di update!!');
+				$this->redirect(array('material/index')); 
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model,'respon'=>$respon
 		));
 	}
 

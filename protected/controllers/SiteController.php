@@ -198,6 +198,7 @@ class SiteController extends Controller
 				if(Yii::app()->user->role == 'Manager'){
 					$this->redirect(array('task/indem'));
 				} else {
+                Yii::app()->user->setFlash('success', 'Welcome back '.Yii::app()->user->nama);
                 $this->redirect(array('material/index'));}
             }
         }

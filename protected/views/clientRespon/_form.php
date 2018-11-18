@@ -13,40 +13,37 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<div class="col-lg-6">
+	
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'material_id'); ?>
-		<?php echo $form->textField($model,'material_id'); ?>
-		<?php echo $form->error($model,'material_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'isi'); ?>
-		<?php echo $form->textField($model,'isi',array('size'=>60,'maxlength'=>250)); ?>
+	
+	<div class="form-group">
+		<?php echo $a." : "; ?>
+		<?php echo $form->textArea($model,'isi',array('class'=>'form-control'),array('size'=>60,'maxlength'=>250)); ?>
 		<?php echo $form->error($model,'isi'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'file_respon'); ?>
-		<?php echo $form->textField($model,'file_respon',array('size'=>60,'maxlength'=>110)); ?>
+	<br>
+	<div class="form-group">
+		<?php echo "Dokumen Pendamping (Opsional):"; ?>
+		<?php echo $form->fileField($model,'file_respon'); ?>
 		<?php echo $form->error($model,'file_respon'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'tgl_create'); ?>
-		<?php echo $form->textField($model,'tgl_create'); ?>
-		<?php echo $form->error($model,'tgl_create'); ?>
-	</div>
+	<br>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php if($a=="Alasan"){
+			echo CHtml::submitButton($model->isNewRecord ? 'Reject' : 'Save', array('class'=>'btn btn-lg btn-danger left '));
+		}
+		else{
+		echo CHtml::submitButton($model->isNewRecord ? 'Approve' : 'Save', array('class'=>'btn btn-lg btn-success left ')); 
+		} ?>
+		<?php echo CHtml::link(' <button class="btn btn-lg btn-warning ">Back</button>', array('/material/index')); ?>
 	</div>
-
+</div>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

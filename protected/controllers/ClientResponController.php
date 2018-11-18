@@ -32,7 +32,7 @@ class ClientResponController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','creater','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -60,21 +60,56 @@ class ClientResponController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($idm)
 	{
 		$model=new ClientRespon;
-
+		$modal=Material::model()->findByPk($idm);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['ClientRespon']))
 		{
 			$model->attributes=$_POST['ClientRespon'];
+			$model->material_id = $modal->id;
+			$model->file_respon = CUploadedFile::getInstance($model, 'file_respon');                       
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/responclient/terima-'.$model->file_respon;
+			if($model->file_respon != null){
+			$model->file_respon->saveAs($path);
+		}
+			$model->tgl_create= date("Y-m-d",time());
+			$modal->status=2;
+			$modal->save();
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('material/index'));
 		}
 
 		$this->render('create',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionCreateR($idm)
+	{
+		$model=new ClientRespon;
+		$modal=Material::model()->findByPk($idm);
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['ClientRespon']))
+		{
+			$model->attributes=$_POST['ClientRespon'];
+			$model->material_id = $modal->id;
+			$model->file_respon = CUploadedFile::getInstance($model, 'file_respon');                       
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/responclient/tolak-'.$model->file_respon;
+			$model->file_respon->saveAs($path);
+			$model->tgl_create= date("Y-m-d",time());
+			$modal->status=3;
+			$modal->save();
+			if($model->save())
+				$this->redirect(array('material/index'));
+		}
+
+		$this->render('creater',array(
 			'model'=>$model,
 		));
 	}

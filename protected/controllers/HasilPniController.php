@@ -60,22 +60,30 @@ class HasilPniController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($idm)
 	{
 		$model=new HasilPni;
-
+		$modal=Material::model()->findByPk($idm);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['HasilPni']))
 		{
 			$model->attributes=$_POST['HasilPni'];
+			$model->id_material=$idm;
+			
+			$modal->status=9;
+			$modal->save();
+			$model->file = CUploadedFile::getInstance($model, 'file');       
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/pni/hasil-'.$model->file;
+			$model->file->saveAs($path);
+			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$model, 'modal'=>$modal,
 		));
 	}
 

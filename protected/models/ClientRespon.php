@@ -28,7 +28,7 @@ class ClientRespon extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('material_id, isi, tgl_create', 'required'),
+			array('material_id, tgl_create', 'required'),
 			array('material_id', 'numerical', 'integerOnly'=>true),
 			array('isi', 'length', 'max'=>250),
 			array('file_respon', 'length', 'max'=>110),
@@ -46,6 +46,7 @@ class ClientRespon extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'materiala' => array(self::BELONGS_TO, 'Material', 'material_id'),
 		);
 	}
 

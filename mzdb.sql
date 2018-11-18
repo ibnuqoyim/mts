@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 13, 2018 at 09:55 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 5.6.34
+-- Host: localhost
+-- Generation Time: Nov 18, 2018 at 06:10 PM
+-- Server version: 10.1.34-MariaDB
+-- PHP Version: 7.0.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -59,6 +59,17 @@ CREATE TABLE `client_respon` (
   `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `client_respon`
+--
+
+INSERT INTO `client_respon` (`id`, `material_id`, `isi`, `file_respon`, `tgl_create`) VALUES
+(1, 1, 'hahahahahah', 'am.sql', '2018-11-15'),
+(2, 22, 'hhehehehe', 'MTS.graphml', '2018-11-15'),
+(3, 35, '', NULL, '2018-11-18'),
+(4, 34, 'dokumen belum detail, masih banyak salahnya.', 'cv-library-general-cv-template.docx', '2018-11-18'),
+(5, 34, 'bagus', NULL, '2018-11-18');
+
 -- --------------------------------------------------------
 
 --
@@ -72,6 +83,13 @@ CREATE TABLE `dok_eng` (
   `deskripsi` text,
   `tgl_create` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dok_eng`
+--
+
+INSERT INTO `dok_eng` (`id`, `material`, `file`, `deskripsi`, `tgl_create`) VALUES
+(1, 2, 'ksjdafklasdjfklj', 'sdalkjfklasdjfklas', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -143,6 +161,13 @@ CREATE TABLE `kom` (
   `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `kom`
+--
+
+INSERT INTO `kom` (`id`, `id_material`, `tanggal`, `tempat`, `tgl_create`, `keterangan`) VALUES
+(1, 11, '2018-11-02', 'PT WIKA (Persero)', '2018-11-17', 'Harus hadir');
+
 -- --------------------------------------------------------
 
 --
@@ -157,6 +182,13 @@ CREATE TABLE `kontrak` (
   `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `kontrak`
+--
+
+INSERT INTO `kontrak` (`id`, `id_material`, `file`, `deskripsi`, `tgl_create`) VALUES
+(1, 11, 'MTS.graphml', 'sadadasdas', '2018-11-16');
+
 -- --------------------------------------------------------
 
 --
@@ -167,6 +199,7 @@ CREATE TABLE `material` (
   `id` int(11) NOT NULL,
   `client` int(11) NOT NULL,
   `nama` varchar(100) NOT NULL,
+  `dokeng` varchar(100) NOT NULL,
   `status` int(11) DEFAULT NULL,
   `pemenang` varchar(110) DEFAULT NULL,
   `stok` int(11) DEFAULT NULL,
@@ -178,26 +211,29 @@ CREATE TABLE `material` (
 -- Dumping data for table `material`
 --
 
-INSERT INTO `material` (`id`, `client`, `nama`, `status`, `pemenang`, `stok`, `create_date`, `last_update`) VALUES
-(1, 1, 'Material A', 1, NULL, NULL, '2018-11-04', '2018-11-04'),
-(2, 1, 'Material B', 2, NULL, NULL, '2018-11-07', '2018-11-07'),
-(8, 2, 'Material C', 3, NULL, NULL, '2018-11-07', '2018-11-07'),
-(9, 1, 'Material D', 4, NULL, NULL, '2018-11-08', '2018-11-08'),
-(10, 1, 'Material E', 5, '', 0, '2018-11-08', '2018-11-08'),
-(11, 1, 'Material F', 6, NULL, NULL, '2018-11-08', '2018-11-08'),
-(12, 2, 'Material G', 7, NULL, NULL, '2018-11-08', '2018-11-08'),
-(13, 1, 'Material H', 8, NULL, NULL, '2018-11-08', '2018-11-08'),
-(14, 2, 'Material I', 9, NULL, NULL, '2018-11-08', '2018-11-08'),
-(15, 1, 'Material J', 10, NULL, NULL, '2018-11-08', '2018-11-08'),
-(16, 2, 'Material K', 11, NULL, NULL, '2018-11-08', '2018-11-08'),
-(17, 1, 'Material L', 12, NULL, NULL, '2018-11-08', '2018-11-08'),
-(18, 2, 'Material M', 13, NULL, NULL, '2018-11-08', '2018-11-08'),
-(19, 1, 'Material  N', 14, NULL, NULL, '2018-11-08', '2018-11-08'),
-(20, 2, 'Material  O', 15, NULL, NULL, '2018-11-08', '2018-11-08'),
-(21, 1, 'Material  P', 15, NULL, NULL, '2018-11-08', '2018-11-08'),
-(22, 2, 'material  Z', 1, NULL, NULL, '2018-11-09', '2018-11-09'),
-(23, 2, 'Materia Z1', 1, NULL, NULL, '2018-11-09', '2018-11-09'),
-(24, 2, 'Materia Z1', 1, NULL, NULL, '2018-11-09', '2018-11-09');
+INSERT INTO `material` (`id`, `client`, `nama`, `dokeng`, `status`, `pemenang`, `stok`, `create_date`, `last_update`) VALUES
+(1, 1, 'Material A', 'Understanding the IoT.pdf', 3, NULL, NULL, '2018-11-04', '2018-11-04'),
+(2, 1, 'Material B', '', 5, NULL, NULL, '2018-11-07', '2018-11-07'),
+(8, 2, 'Material C', '', 3, NULL, NULL, '2018-11-07', '2018-11-07'),
+(9, 1, 'Material D', '', 4, NULL, NULL, '2018-11-08', '2018-11-08'),
+(10, 1, 'Material E', '', 5, '', 0, '2018-11-08', '2018-11-08'),
+(11, 1, 'Material F', '', 9, NULL, NULL, '2018-11-08', '2018-11-08'),
+(12, 2, 'Material G', '', 7, NULL, NULL, '2018-11-08', '2018-11-08'),
+(13, 1, 'Material H', '', 8, NULL, NULL, '2018-11-08', '2018-11-08'),
+(14, 2, 'Material I', '', 9, NULL, NULL, '2018-11-08', '2018-11-08'),
+(15, 1, 'Material J', '', 10, NULL, NULL, '2018-11-08', '2018-11-08'),
+(16, 2, 'Material K', '', 11, NULL, NULL, '2018-11-08', '2018-11-08'),
+(17, 1, 'Material L', '', 12, NULL, NULL, '2018-11-08', '2018-11-08'),
+(18, 2, 'Material M', '', 13, NULL, NULL, '2018-11-08', '2018-11-08'),
+(19, 1, 'Material  N', '', 14, NULL, NULL, '2018-11-08', '2018-11-08'),
+(20, 2, 'Material  O', '', 15, NULL, NULL, '2018-11-08', '2018-11-08'),
+(21, 1, 'Material  P', '', 15, NULL, NULL, '2018-11-08', '2018-11-08'),
+(22, 2, 'material  Z', 'Understanding the IoT.pdf', 2, NULL, NULL, '2018-11-09', '2018-11-09'),
+(31, 2, 'SDFASDF', '', 1, NULL, NULL, '2018-11-14', '2018-11-14'),
+(32, 3, 'sfwerwerwe', 'MTS.graphml', 1, NULL, NULL, '2018-11-14', '2018-11-14'),
+(33, 2, 'material XX', 'Understanding the IoT.pdf 	', 1, NULL, NULL, '2018-11-18', '2018-11-18'),
+(34, 1, 'Material Z3', 'resume.docx', 5, NULL, NULL, '2018-11-18', '2018-11-18'),
+(35, 2, 'Material Z5', 'resume.docx', 2, NULL, NULL, '2018-11-18', '2018-11-18');
 
 -- --------------------------------------------------------
 
@@ -213,6 +249,13 @@ CREATE TABLE `penawaran` (
   `deskripsi` varchar(250) NOT NULL,
   `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `penawaran`
+--
+
+INSERT INTO `penawaran` (`id`, `id_user`, `id_material`, `file`, `deskripsi`, `tgl_create`) VALUES
+(1, 4, 2, 'MTS.graphml', 'asdfsadfasdfasd', '2018-11-16');
 
 -- --------------------------------------------------------
 
@@ -245,6 +288,15 @@ CREATE TABLE `permintaan` (
   `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `permintaan`
+--
+
+INSERT INTO `permintaan` (`id`, `id_material`, `file`, `deskripsi`, `tgl_create`) VALUES
+(1, 2, 'MTS.graphml', 'dsafasfsadfsadf', '2018-11-14'),
+(2, 2, 'db.graphml', 'asdasdasdasdas', '2018-11-16'),
+(3, 34, 'UTF-8\'\'Flow Proses Bisnis - Improvement (R.1)31.08.2018.xlsx', 'harus menjelaskan detail banget', '2018-11-18');
+
 -- --------------------------------------------------------
 
 --
@@ -254,10 +306,17 @@ CREATE TABLE `permintaan` (
 CREATE TABLE `pni` (
   `id` int(11) NOT NULL,
   `id_material` int(11) NOT NULL,
-  `file` int(11) NOT NULL,
-  `desk` int(11) NOT NULL,
-  `tgl_create` int(11) NOT NULL
+  `file` varchar(110) NOT NULL,
+  `desk` varchar(110) NOT NULL,
+  `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pni`
+--
+
+INSERT INTO `pni` (`id`, `id_material`, `file`, `desk`, `tgl_create`) VALUES
+(1, 11, 'MTS.graphml', 'vxvxcvxcvxcv', '2018-11-18');
 
 -- --------------------------------------------------------
 
@@ -447,13 +506,13 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT for table `client_respon`
 --
 ALTER TABLE `client_respon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `dok_eng`
 --
 ALTER TABLE `dok_eng`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `hasilinspeksiwh`
@@ -483,25 +542,25 @@ ALTER TABLE `irn`
 -- AUTO_INCREMENT for table `kom`
 --
 ALTER TABLE `kom`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `kontrak`
 --
 ALTER TABLE `kontrak`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `material`
 --
 ALTER TABLE `material`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `penawaran`
 --
 ALTER TABLE `penawaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pengiriman`
@@ -513,13 +572,13 @@ ALTER TABLE `pengiriman`
 -- AUTO_INCREMENT for table `permintaan`
 --
 ALTER TABLE `permintaan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pni`
 --
 ALTER TABLE `pni`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`

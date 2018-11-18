@@ -13,25 +13,32 @@
     'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
     <div class="col-lg-12">
-        <p class="note">Fields with <span class="required">*</span> are requireds.</p>
+        
         <?php echo $form->errorSummary($model); ?>
     </div>
 
     <div class="col-lg-6">
         <div class="form-group">
-            <?php echo $form->labelEx($model,'nama'); ?>
+            <?php echo "Nama Material"; ?>
 			<?php echo $form->textField($model,'nama',array('class'=>'form-control'),array('size'=>60,'maxlength'=>100)); ?>
 			<?php echo $form->error($model,'nama'); ?>
         </div>
         <div class="form-group">
             <?php echo $form->labelEx($model,'client'); ?>
-            <?php echo $form->textField($model,'client',array('class'=>'form-control'),array('size'=>60,'maxlength'=>100)); ?>
+            <?php echo $form->dropDownList(
+                    $model,'client',
+                    array(
+                            '1' => 'PLN',
+                            '2' => 'Telkom',
+                            
+                        ),
+                    array('prompt'=>'Pilih Client','class'=>'form-control'),array('size'=>60,'maxlength'=>100)); ?>
             <?php echo $form->error($model,'client'); ?>
         </div>
 	<div class="form-group">
-            <?php echo $form->labelEx($model,'dok_eng'); ?>
-			<?php echo $form->fileField($model,'dok_eng',array('class'=>'form-control')); ?>
-			<?php echo $form->error($model,'dok_eng'); ?>
+            <?php echo "Upload Dokumen Engineering : " ?>
+			<?php echo $form->fileField($model,'dokeng'); ?>
+			<?php echo $form->error($model,'dokeng'); ?>
     </div>
     </div>
     <div class="form-group col-lg-12">

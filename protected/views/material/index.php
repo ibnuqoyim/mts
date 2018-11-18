@@ -25,7 +25,21 @@ $('.search-form form').submit(function(){
 	return false;
 });
 ");
+CHtml::ajaxLink('View Popup', 'material/index', 
+    array('update' => '#simple-div'), 
+    array('id' => 'simple-link-'.uniqid())
+);
+
+
 ?>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<?php if(Yii::app()->user->hasFlash('success')):?>
+<div class="flash-notice">
+    <script type="text/javascript">alert("<?php echo Yii::app()->user->getFlash('success')?>")</script>
+
+</div>
+<?php endif?>
+<div id="simple-div"></div>
 <header>
 		 <div class="info">
 				 <div class="container">
@@ -44,6 +58,9 @@ $('.search-form form').submit(function(){
 		 </div>
  </header>
  <section class="container">
+
+
+
             <div class="col-lg-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -77,11 +94,12 @@ $('.search-form form').submit(function(){
                 <?php } ?>
                 <?php if(Yii::app()->user->role == "Engineering" || Yii::app()->user->role =="Admin" ){ echo CHtml::link('<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Ajukan Material Baru', array('/material/create'),array('class'=>'btn btn-lg btn-default btn-block')); }?>
             </div>
-            <div id="progres" style = "display: none" class="col-lg-9">
-
+            <?php if(Yii::app()->user->role == "Engineering" || Yii::app()->user->role =="Admin" ){ ?>
+            <div id="Engineering" style = "display: block;" class="col-lg-9">
+                <b>Dashboard Engineering</b>
                 <?php $this->widget('zii.widgets.grid.CGridView', array(
                         'id'=>'user-grid',
-                        'dataProvider'=>$model->search(),
+                        'dataProvider'=>$model->engineering(),
                         //'filter'=>$model,
                         'pager'=>array(
                             'header'         => '',
@@ -99,13 +117,376 @@ $('.search-form form').submit(function(){
                                 'value' => '$row+1',
                                 ),
                                 'nama',
-								
                                 array('name'=>'status',
                                          'header'=>'Status',
                                          'value'=>'$data->statusa->namaStatus',
 
                                          ),
-								array('name'=>'status',
+                                array('name'=>'status',
+                                         'header'=>'Status',
+                                         'value'=>'$data->statusa->keterangan',
+
+                                         ),
+                                array(
+                                    'class'=>'CButtonColumn',
+                                    'header'=>'Action',
+                                    'template'=>'{edit}',
+                                    'buttons'=>array
+                                            (
+                                                'edit' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 3',
+                                                        'url'=>'$this->grid->controller->createUrl("/material/update",array("id"=>$data->id))',
+                                                             ),
+
+                                                          ),
+                                                     ),
+                        ),
+                    )); ?>
+            </div>
+            <?php } ?>
+            <?php if(Yii::app()->user->role == "Client" || Yii::app()->user->role =="Admin" ){ ?>
+            <div id="Client" class="col-lg-9">
+                <br>
+                <b>Dashboard Client</b>
+                <?php $this->widget('zii.widgets.grid.CGridView', array(
+                        'id'=>'user-grid',
+                        'dataProvider'=>$model->client(),
+                        //'filter'=>$model,
+                        'pager'=>array(
+                            'header'         => '',
+                            'firstPageLabel' => '&lt;&lt;',
+                            'prevPageLabel'  => 'Prev',
+                            'nextPageLabel'  => 'Next',
+                            'lastPageLabel'  => '&gt;&gt;',
+                            'cssFile'=>Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        ),
+                        'template'=>'{items} {pager}',
+                        'cssFile' => Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        'columns'=>array(
+                                array(
+                                'header' => 'No',
+                                'value' => '$row+1',
+                                ),
+                                'nama',
+                                array('name'=>'status',
+                                         'header'=>'Status',
+                                         'value'=>'$data->statusa->namaStatus',
+
+                                         ),
+                                array('name'=>'status',
+                                         'header'=>'Status',
+                                         'value'=>'$data->statusa->keterangan',
+
+                                         ),
+                                //'stok',
+                                array(
+                                        'class'=>'CButtonColumn',
+                                        'header'=>'Action',
+                                    'template'=>'{edit}{ok}{no}',
+                                    'buttons'=>array
+                                            (
+                                                'edit' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-download" aria-hidden="true"></span>',
+                                                        'imageUrl'=>true,
+                                                        'visible' =>'$data->status == 1 && $data->dokeng != null',
+                                                        'url'=>'"/mts/dokumen/dokeng/".$data->dokeng',
+                                                             ),
+                                                'ok' => array
+                                                        (
+                                                        'label'=>'<span class="glyphicon glyphicon-ok" style="color:green" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' => '$data->status == 1 && $data->dokeng != null',
+                                                        'url'=>'$this->grid->controller->createUrl("/clientRespon/create",array("idm"=>$data->id))',
+                                                        ),
+                                                'no' => array
+                                                          (
+                                                        'label'=>'<span class="glyphicon glyphicon-remove" style="color:red" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' => '$data->status == 1 && $data->dokeng != null',
+                                                        'url'=>'$this->grid->controller->createUrl("/clientRespon/creater",array("idm"=>$data->id))',
+                                                          ),
+
+                                                          ),
+
+                                ),
+                        ),
+                    )); ?>
+            </div>
+           <?php } ?>
+            <?php if(Yii::app()->user->role == "Pengadaan" || Yii::app()->user->role =="Admin" ){ ?>
+           <div id="Pengadaan" class="col-lg-9">
+            <br>
+                <b>Dashboard Pengadaan</b>
+                <?php $this->widget('zii.widgets.grid.CGridView', array(
+                        'id'=>'user-grid',
+                        'dataProvider'=>$model->pengadaan(),
+                        //'filter'=>$model,
+                        'pager'=>array(
+                            'header'         => '',
+                            'firstPageLabel' => '&lt;&lt;',
+                            'prevPageLabel'  => 'Prev',
+                            'nextPageLabel'  => 'Next',
+                            'lastPageLabel'  => '&gt;&gt;',
+                            'cssFile'=>Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        ),
+                        'template'=>'{items} {pager}',
+                        'cssFile' => Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        'columns'=>array(
+                                array(
+                                'header' => 'No',
+                                'value' => '$row+1',
+                                ),
+                                'nama',
+                                array('name'=>'status',
+                                         'header'=>'Status',
+                                         'value'=>'$data->statusa->namaStatus',
+
+                                         ),
+                                array('name'=>'status',
+                                         'header'=>'Status',
+                                         'value'=>'$data->statusa->keterangan',
+
+                                         ),
+                                array(
+                                        'class'=>'CButtonColumn',
+                                        'header'=>'Action',
+                                        'template'=>'{edit}',
+                                        'buttons'=>array
+                                            (
+                                                'edit' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 2',
+                                                        'url'=>'$this->grid->controller->createUrl("/permintaan/create",array("idm"=>$data->id))',
+                                                             ),
+                                                'kontrak' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 6',
+                                                        'url'=>'$this->grid->controller->createUrl("/kontrak/create",array("idm"=>$data->id))',
+                                                             ),
+
+                                                          ),
+                                ),
+                        ),
+                    )); ?>
+            </div>
+            <?php } ?>
+            <?php if(Yii::app()->user->role == "Vendor" || Yii::app()->user->role =="Admin" ){ ?>
+            <div id="Vendor" style = "display: block" class="col-lg-9">
+                <br>
+                <b align="center">Dashboard Vendor</b>
+                <?php $this->widget('zii.widgets.grid.CGridView', array(
+                        'id'=>'user-grid',
+                        'dataProvider'=>$model->vendor(),
+                        //'filter'=>$model,
+                        'pager'=>array(
+                            'header'         => '',
+                            'firstPageLabel' => '&lt;&lt;',
+                            'prevPageLabel'  => 'Prev',
+                            'nextPageLabel'  => 'Next',
+                            'lastPageLabel'  => '&gt;&gt;',
+                            'cssFile'=>Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        ),
+                        'template'=>'{items} {pager}',
+                        'cssFile' => Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        'columns'=>array(
+                                array(
+                                'header' => 'No',
+                                'value' => '$row+1',
+                                ),
+                                'nama',
+
+                                array('name'=>'status',
+                                         'header'=>'Status',
+                                         'value'=>'$data->statusa->namaStatus',
+
+                                         ),
+                                array('name'=>'status',
+                                         'header'=>'Status',
+                                         'value'=>'$data->statusa->keterangan',
+
+                                         ),
+                                array(
+                                        'class'=>'CButtonColumn',
+                                        'header'=>'Action',
+                                        'template'=>'{edit}',
+                                        'buttons'=>array
+                                            (
+                                                'edit' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 5',
+                                                        'url'=>'$this->grid->controller->createUrl("/penawaran/create",array("idm"=>$data->id))',
+                                                             ),
+
+                                                          ),
+                                ),
+                        ),
+                    )); ?>
+            </div>
+            <?php } ?>
+            <?php if(Yii::app()->user->role == "Expedeting" || Yii::app()->user->role =="Admin" ){ ?>
+            <div id="Expedeting" class="col-lg-9">
+                <br>
+                <b align="center">Dashboard Expedeting</b>
+                <?php $this->widget('zii.widgets.grid.CGridView', array(
+                        'id'=>'user-grid',
+                        'dataProvider'=>$model->expedeting(),
+                        //'filter'=>$model,
+                        'pager'=>array(
+                            'header'         => '',
+                            'firstPageLabel' => '&lt;&lt;',
+                            'prevPageLabel'  => 'Prev',
+                            'nextPageLabel'  => 'Next',
+                            'lastPageLabel'  => '&gt;&gt;',
+                            'cssFile'=>Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        ),
+                        'template'=>'{items} {pager}',
+                        'cssFile' => Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        'columns'=>array(
+                                array(
+                                'header' => 'No',
+                                'value' => '$row+1',
+                                ),
+                                'nama',
+                                array('name'=>'status',
+                                         'header'=>'Status',
+                                         'value'=>'$data->statusa->namaStatus',
+
+                                         ),
+                                array('name'=>'status',
+                                         'header'=>'Status',
+                                         'value'=>'$data->statusa->keterangan',
+
+                                         ),
+                                array(
+                                        'class'=>'CButtonColumn',
+                                        'header'=>'Action',
+                                        'template'=>'{kom}{pni}',
+                                        'buttons'=>array
+                                            (
+                                                'kom' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 7',
+                                                        'url'=>'$this->grid->controller->createUrl("/kom/create",array("idm"=>$data->id))',
+                                                             ),
+
+                                                'pni' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 8',
+                                                        'url'=>'$this->grid->controller->createUrl("/pni/create",array("idm"=>$data->id))',
+                                                             ),
+
+                                                          ),
+                                ),
+                        ),
+                    )); ?>
+            </div>
+           <?php } ?>
+            <?php if(Yii::app()->user->role == "QC" || Yii::app()->user->role =="Admin" ){ ?>
+           <div id="QC" class="col-lg-9">
+            <br>
+                <b align="center">Dashboard QC</b>
+                <?php $this->widget('zii.widgets.grid.CGridView', array(
+                        'id'=>'user-grid',
+                        'dataProvider'=>$model->qc(),
+                        //'filter'=>$model,
+                        'pager'=>array(
+                            'header'         => '',
+                            'firstPageLabel' => '&lt;&lt;',
+                            'prevPageLabel'  => 'Prev',
+                            'nextPageLabel'  => 'Next',
+                            'lastPageLabel'  => '&gt;&gt;',
+                            'cssFile'=>Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        ),
+                        'template'=>'{items} {pager}',
+                        'cssFile' => Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        'columns'=>array(
+                                array(
+                                'header' => 'No',
+                                'value' => '$row+1',
+                                ),
+                                'nama',
+                                array('name'=>'status',
+                                         'header'=>'Status',
+                                         'value'=>'$data->statusa->namaStatus',
+
+                                         ),
+                                array('name'=>'status',
+                                         'header'=>'Status',
+                                         'value'=>'$data->statusa->keterangan',
+
+                                         ),
+                                array(
+                                        'class'=>'CButtonColumn',
+                                        'header'=>'Action',
+                                        'template'=>'{kom}{pni}',
+                                        'buttons'=>array
+                                            (
+                                                'kom' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 9',
+                                                        'url'=>'$this->grid->controller->createUrl("/hasilPni/create",array("idm"=>$data->id))',
+                                                             ),
+
+                                                'pni' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 11',
+                                                        'url'=>'$this->grid->controller->createUrl("/irn/create",array("idm"=>$data->id))',
+                                                             ),
+
+                                                          ),
+                                ),
+                        ),
+                    )); ?>
+            </div>
+            <?php } ?>
+            <?php if(Yii::app()->user->role == "Traffic" || Yii::app()->user->role =="Admin" ){ ?>
+            <div id="Traffic" class="col-lg-9">
+                <br>
+                <b align="center">Dashboard Traffic</b>
+                <?php $this->widget('zii.widgets.grid.CGridView', array(
+                        'id'=>'user-grid',
+                        'dataProvider'=>$model->traffic(),
+                        //'filter'=>$model,
+                        'pager'=>array(
+                            'header'         => '',
+                            'firstPageLabel' => '&lt;&lt;',
+                            'prevPageLabel'  => 'Prev',
+                            'nextPageLabel'  => 'Next',
+                            'lastPageLabel'  => '&gt;&gt;',
+                            'cssFile'=>Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        ),
+                        'template'=>'{items} {pager}',
+                        'cssFile' => Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        'columns'=>array(
+                                array(
+                                'header' => 'No',
+                                'value' => '$row+1',
+                                ),
+                                'nama',
+                                array('name'=>'status',
+                                         'header'=>'Status',
+                                         'value'=>'$data->statusa->namaStatus',
+
+                                         ),
+                                array('name'=>'status',
                                          'header'=>'Status',
                                          'value'=>'$data->statusa->keterangan',
 
@@ -116,11 +497,14 @@ $('.search-form form').submit(function(){
                         ),
                     )); ?>
             </div>
-            
-            <div id="complete" class="col-lg-9">
+           <?php } ?>
+            <?php if(Yii::app()->user->role == "Warehouse" || Yii::app()->user->role =="Admin" ){ ?>
+           <div id="Warehouse" class="col-lg-9">
+            <br>
+                <b align="center">Dashboard Warehouse</b>
                 <?php $this->widget('zii.widgets.grid.CGridView', array(
                         'id'=>'user-grid',
-                        'dataProvider'=>$model->complete(),
+                        'dataProvider'=>$model->warehouse(),
                         //'filter'=>$model,
                         'pager'=>array(
                             'header'         => '',
@@ -138,11 +522,54 @@ $('.search-form form').submit(function(){
                                 'value' => '$row+1',
                                 ),
                                 'nama',
+                                array('name'=>'status',
+                                         'header'=>'Status',
+                                         'value'=>'$data->statusa->namaStatus',
+
+                                         ),
+                                array('name'=>'status',
+                                         'header'=>'Status',
+                                         'value'=>'$data->statusa->keterangan',
+
+                                         ),
+                                array(
+                                        'class'=>'CButtonColumn',
+                                ),
+                        ),
+                    )); ?>
+            </div>
+            <?php } ?>
+            <?php if(Yii::app()->user->role == "proyek" || Yii::app()->user->role =="Admin" ){ ?>
+           <div id="Proyek" class="col-lg-9">
+            <br>
+                <b align="center">Dashboard Proyek</b>
+                <?php $this->widget('zii.widgets.grid.CGridView', array(
+                        'id'=>'user-grid',
+                        'dataProvider'=>$model->proyek(),
+                        //'filter'=>$model,
+                        'pager'=>array(
+                            'header'         => '',
+                            'firstPageLabel' => '&lt;&lt;',
+                            'prevPageLabel'  => 'Prev',
+                            'nextPageLabel'  => 'Next',
+                            'lastPageLabel'  => '&gt;&gt;',
+                            'cssFile'=>Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        ),
+                        'template'=>'{items} {pager}',
+                        'cssFile' => Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        'columns'=>array(
+                                array(
+                                'header' => 'No',
+                                'value' => '$row+1',
+                                ),
+                                'nama',
+                                'status',
+                                /*
                                 array('name'=>'client',
                                          'header'=>'Client',
                                          'value'=>'$data->clienta->nama',
 
-                                         ),
+                                         ), */
                                 'stok',
                                 array(
                                         'class'=>'CButtonColumn',
@@ -150,8 +577,7 @@ $('.search-form form').submit(function(){
                         ),
                     )); ?>
             </div>
-           
-
+            <?php } ?>
         </section>
 <script type="text/javascript">
     function ab(){
