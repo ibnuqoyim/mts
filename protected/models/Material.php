@@ -51,6 +51,7 @@ class Material extends CActiveRecord
 		return array(
 			'statusa' => array(self::BELONGS_TO, 'Status', 'status'),
 			'clienta' => array(self::BELONGS_TO, 'Client', 'client'),
+			'usera' => array(self::BELONGS_TO, 'User', 'pemenang'),
 		);
 	}
 
@@ -151,7 +152,7 @@ class Material extends CActiveRecord
 		$criteria->compare('status',$this->status);
 		$criteria->compare('pemenang',$this->pemenang,true);
 		$criteria->compare('stok',$this->stok);
-		$criteria->addCondition('status=2 || status=5' );
+		$criteria->addCondition('status=2 || status=5 || status=6' );
 
 
 		return new CActiveDataProvider($this, array(
@@ -159,7 +160,7 @@ class Material extends CActiveRecord
 		));
 	}
 
-	public function vendor()
+	public function vendor($idv)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -170,7 +171,7 @@ class Material extends CActiveRecord
 		$criteria->compare('status',$this->status);
 		$criteria->compare('pemenang',$this->pemenang,true);
 		$criteria->compare('stok',$this->stok);
-		$criteria->addCondition('(status>=5 && status<15)' );
+		$criteria->addCondition('status = 5 || status = 6 || (pemenang = '.$idv.' && status<15)' );
 
 
 		return new CActiveDataProvider($this, array(

@@ -49,10 +49,22 @@ class PengirimanController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView($id)
+	public function actionView($idm)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+		$modal=Material::model()->findByPk($idm);
+		$pengiriman = Pengiriman::Model()->findAll('id_material='.$idm);
+		if(isset($_POST['Material']))
+		{
+			$modal->attributes=$_POST['Material'];
+			$modal->status=13;
+			$modal->save();
+			
+			if($modal->save())
+				Yii::app()->user->setFlash('success', 'Pengiriman '.$modal->nama.' telah diterima!');
+				$this->redirect(array('material/index'));
+			}
+		$this->render('update',array(
+			'modal'=>$modal, 'pengiriman'=>$pengiriman
 		));
 	}
 
@@ -70,12 +82,16 @@ class PengirimanController extends Controller
 		if(isset($_POST['Pengiriman']))
 		{
 			$model->attributes=$_POST['Pengiriman'];
+			$model->id_material=$idm;
+			$modal->save();
+			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				Yii::app()->user->setFlash('success', 'Detail Pengiriman '.$modal->nama.' telah di simpan!');
+				$this->redirect(array('material/index'));
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$model, 'modal'=>$modal,
 		));
 	}
 

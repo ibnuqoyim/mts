@@ -72,12 +72,13 @@ class IrnController extends Controller
 			$model->attributes=$_POST['Irn'];
 			$model->id_material=$idm;
 			
-			$modal->status=9;
+			$modal->status=12;
 			$modal->save();
 			
 			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				Yii::app()->user->setFlash('success', 'IRN untuk '.$modal->nama.' telah di Release!');
+				$this->redirect(array('material/index'));
 		}
 
 		$this->render('create',array(

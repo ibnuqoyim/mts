@@ -16,30 +16,31 @@
 	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	
 
 	<?php echo $form->errorSummary($model); ?>
 
 
-
+	<div class="col-lg-6 left">
 	<div class="form-group">
-            <?php echo "Silahkan Upload Dokumen Kontrak : " ?>
-			<?php echo $form->fileField($model,'file'); ?>
+            <?php echo 'Silahkan Upload Dokumen Kontrak dengan '.$modal->usera->nama.' : ' ?>
+            <br>
+			<?php echo '<br>'.$form->fileField($model,'file'); ?>
 			<?php echo $form->error($model,'file'); ?>
     </div>
-
-	<div class="row">
+    <br>
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'deskripsi'); ?>
-		<?php echo $form->textField($model,'deskripsi',array('class'=>'form-control'),array('size'=>60,'maxlength'=>300)); ?>
+		<?php echo $form->textArea($model,'deskripsi',array('class'=>'form-control'),array('size'=>60,'maxlength'=>300)); ?>
 		<?php echo $form->error($model,'deskripsi'); ?>
 	</div>
 
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Upload' : 'Save', array('class'=>'btn btn-info left ')); ?>
 	</div>
-
+</div>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

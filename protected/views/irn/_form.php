@@ -16,25 +16,21 @@
 	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<div class="col-lg-6">
+	<p style="font-size: 16px">Input IRN untuk <?php echo "".$modal->nama; ?> : </p>
 
-	<?php echo $form->errorSummary($model); ?>
-
-
-
-
-	<div class="row">
-		<?php echo "Input IRN untuk ".$modal->nama; ?>
+	<div class="form-group">
+		
 		<?php echo $form->textField($model,'irn',array('class'=>'form-control'),array('size'=>60,'maxlength'=>300)); ?>
 		<?php echo $form->error($model,'irn'); ?>
 	</div>
 
 
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	<div class="form-group">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Submit' : 'Save', array('class'=>'btn  btn-info left ')); ?>
 	</div>
-
+</div>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

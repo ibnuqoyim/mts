@@ -47,6 +47,7 @@ class Penawaran extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'materiala' => array(self::BELONGS_TO, 'Material', 'id_material'),
+			'usera' => array(self::BELONGS_TO, 'User', 'id_user'),
 		);
 	}
 

@@ -2,7 +2,7 @@
             <div class="info">
                 <div class="container">
                     <div class="col-lg-4 left">
-                        <a class="page"><span class="glyphicon glyphicon-user gold" aria-hidden="true"></span> Hasil Inspeksi <?php echo $modal->nama?></a>
+                        <a class="page"><span class="glyphicon glyphicon-user gold" aria-hidden="true"></span> Pengiriman <?php echo $modal->nama?></a>
                     </div>
                     <div class="col-lg-5 right alamat">
                         <?php

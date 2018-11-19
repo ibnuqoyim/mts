@@ -1,31 +1,67 @@
-<?php
-/* @var $this PenawaranController */
-/* @var $model Penawaran */
+        <header>
+            <div class="info">
+                <div class="container">
+                    <div class="col-lg-4 left">
+                        <a class="page"><span class="glyphicon glyphicon-file gold" aria-hidden="true"></span> Ajukan Material</a>
+                    </div>
+                    <div class="col-lg-5 right alamat">
+                        <?php
+                            if(Yii::app()->user->kodeAsrama != NULL){
+                        ?>
+                                <p class="head"><?php echo CHtml::link(Yii::app()->user->nama .' ('.Yii::app()->user->role.' '.Yii::app()->user->asrama.')', array('/user/update','id'=>Yii::app()->user->id), array('class'=>'gold')); ?></p>
+                        <?php
+                            }  else {
+                        ?>
+                                <p class="head"><?php echo CHtml::link(Yii::app()->user->nama .' ('.Yii::app()->user->role.')', array('/user/update','id'=>Yii::app()->user->id), array('class'=>'gold')); ?></p>
+                        <?php        
+                            }
+                        ?>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div> 
+        </header>
 
-$this->breadcrumbs=array(
-	'Penawarans'=>array('index'),
-	$model->id,
-);
 
-$this->menu=array(
-	array('label'=>'List Penawaran', 'url'=>array('index')),
-	array('label'=>'Create Penawaran', 'url'=>array('create')),
-	array('label'=>'Update Penawaran', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Penawaran', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Penawaran', 'url'=>array('admin')),
-);
-?>
 
-<h1>View Penawaran #<?php echo $model->id; ?></h1>
+        <section class="container">
+            <div class="col-lg-12 left">
+            	<h1>View Penawaran <?php echo $modal->nama; ?></h1>
+            		<div class="col-lg-6 left">
+					<?php 
+					foreach($penawaran as $pen){
+						echo "<br>";
+						$this->widget('zii.widgets.CDetailView', array(
+						'data'=>$pen,
+						'attributes'=>array(
+							'id',
+							array('name'=>'Vendor',
+                                         'value'=>$pen->usera->nama,
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'id_user',
-		'id_material',
-		'file',
-		'deskripsi',
-		'tgl_create',
-	),
-)); ?>
+                                         ),
+							
+							array('name'=>'Dokumen Penawaran',
+								'type'=>'raw',
+                                         'value'=>'<a href="/mts/dokumen/penawaran/'.$pen->file.'">'.$pen->file.'</a>',
+									),
+							'deskripsi',
+							array('name'=>'Tanggal Submit',
+                                         'value'=>$pen->tgl_create,
+
+                                         ),
+							array('name'=>'',
+								'type'=>'raw',
+                                         'value'=>CHtml::link('<button class="btn btn-success "> Pilih sebagai Pemenang </button>', array('material/win','idp'=>$pen->id_user,'idm'=>$pen->id_material)),
+									),
+						),
+					));
+					}
+						 ?>
+						</div>
+			
+            </div>
+            <div class="col-lg-12 left">
+            <?php echo '<br>'.CHtml::link(' <button class="btn btn-lg btn-warning ">Tutup Tender</button>', array('/penawaran/close',array('id'=>1))); ?>
+            </div>
+        </section>
+

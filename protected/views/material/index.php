@@ -94,8 +94,9 @@ CHtml::ajaxLink('View Popup', 'material/index',
                 <?php } ?>
                 <?php if(Yii::app()->user->role == "Engineering" || Yii::app()->user->role =="Admin" ){ echo CHtml::link('<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Ajukan Material Baru', array('/material/create'),array('class'=>'btn btn-lg btn-default btn-block')); }?>
             </div>
+            <div class="col-lg-9">
             <?php if(Yii::app()->user->role == "Engineering" || Yii::app()->user->role =="Admin" ){ ?>
-            <div id="Engineering" style = "display: block;" class="col-lg-9">
+            <div id="Engineering" style = "display: block;" class="col-lg-12">
                 <b>Dashboard Engineering</b>
                 <?php $this->widget('zii.widgets.grid.CGridView', array(
                         'id'=>'user-grid',
@@ -148,7 +149,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
             </div>
             <?php } ?>
             <?php if(Yii::app()->user->role == "Client" || Yii::app()->user->role =="Admin" ){ ?>
-            <div id="Client" class="col-lg-9">
+            <div id="Client" class="col-lg-12">
                 <br>
                 <b>Dashboard Client</b>
                 <?php $this->widget('zii.widgets.grid.CGridView', array(
@@ -218,7 +219,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
             </div>
            <?php } ?>
             <?php if(Yii::app()->user->role == "Pengadaan" || Yii::app()->user->role =="Admin" ){ ?>
-           <div id="Pengadaan" class="col-lg-9">
+           <div id="Pengadaan" class="col-lg-12">
             <br>
                 <b>Dashboard Pengadaan</b>
                 <?php $this->widget('zii.widgets.grid.CGridView', array(
@@ -254,7 +255,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                 array(
                                         'class'=>'CButtonColumn',
                                         'header'=>'Action',
-                                        'template'=>'{edit}',
+                                        'template'=>'{edit} {view} {kontrak}',
                                         'buttons'=>array
                                             (
                                                 'edit' => array
@@ -264,9 +265,16 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                         'visible' =>'$data->status == 2',
                                                         'url'=>'$this->grid->controller->createUrl("/permintaan/create",array("idm"=>$data->id))',
                                                              ),
+                                                'view' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 5',
+                                                        'url'=>'$this->grid->controller->createUrl("/penawaran/view",array("idm"=>$data->id))',
+                                                             ),
                                                 'kontrak' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
+                                                        'label'=>'<span class="glyphicon glyphicon-file" aria-hidden="true"></span>',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 6',
                                                         'url'=>'$this->grid->controller->createUrl("/kontrak/create",array("idm"=>$data->id))',
@@ -279,12 +287,12 @@ CHtml::ajaxLink('View Popup', 'material/index',
             </div>
             <?php } ?>
             <?php if(Yii::app()->user->role == "Vendor" || Yii::app()->user->role =="Admin" ){ ?>
-            <div id="Vendor" style = "display: block" class="col-lg-9">
+            <div id="Vendor" style = "display: block" class="col-lg-12">
                 <br>
                 <b align="center">Dashboard Vendor</b>
                 <?php $this->widget('zii.widgets.grid.CGridView', array(
                         'id'=>'user-grid',
-                        'dataProvider'=>$model->vendor(),
+                        'dataProvider'=>$model->vendor(Yii::app()->user->id),
                         //'filter'=>$model,
                         'pager'=>array(
                             'header'         => '',
@@ -310,13 +318,13 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                          ),
                                 array('name'=>'status',
                                          'header'=>'Status',
-                                         'value'=>'$data->statusa->keterangan',
+                                         'value'=>'($data->pemenang == Yii::app()->user->id && $data->pemenang != null && $data->status == 6) ? "Selamat anda menang": (($data->pemenang != Yii::app()->user->id && $data->pemenang != null && $data->status == 6) ? "Maaf anda belum beruntung": $data->statusa->keterangan)',
 
                                          ),
                                 array(
                                         'class'=>'CButtonColumn',
                                         'header'=>'Action',
-                                        'template'=>'{edit}',
+                                        'template'=>'{edit} {repair}',
                                         'buttons'=>array
                                             (
                                                 'edit' => array
@@ -327,6 +335,16 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                         'url'=>'$this->grid->controller->createUrl("/penawaran/create",array("idm"=>$data->id))',
                                                              ),
 
+                                                          
+                                            'repair' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>',
+                                                        'type'=>'raw',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 9',
+                                                        'url'=>'$this->grid->controller->createUrl("/hasilrepair/create",array("idm"=>$data->id))',
+                                                             ),
+
                                                           ),
                                 ),
                         ),
@@ -334,7 +352,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
             </div>
             <?php } ?>
             <?php if(Yii::app()->user->role == "Expedeting" || Yii::app()->user->role =="Admin" ){ ?>
-            <div id="Expedeting" class="col-lg-9">
+            <div id="Expedeting" class="col-lg-12">
                 <br>
                 <b align="center">Dashboard Expedeting</b>
                 <?php $this->widget('zii.widgets.grid.CGridView', array(
@@ -396,7 +414,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
             </div>
            <?php } ?>
             <?php if(Yii::app()->user->role == "QC" || Yii::app()->user->role =="Admin" ){ ?>
-           <div id="QC" class="col-lg-9">
+           <div id="QC" class="col-lg-12">
             <br>
                 <b align="center">Dashboard QC</b>
                 <?php $this->widget('zii.widgets.grid.CGridView', array(
@@ -445,9 +463,9 @@ CHtml::ajaxLink('View Popup', 'material/index',
 
                                                 'pni' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
+                                                        'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
                                                         'imageUrl'=>false,
-                                                        'visible' =>'$data->status == 11',
+                                                        'visible' =>'$data->status == 10',
                                                         'url'=>'$this->grid->controller->createUrl("/irn/create",array("idm"=>$data->id))',
                                                              ),
 
@@ -458,7 +476,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
             </div>
             <?php } ?>
             <?php if(Yii::app()->user->role == "Traffic" || Yii::app()->user->role =="Admin" ){ ?>
-            <div id="Traffic" class="col-lg-9">
+            <div id="Traffic" class="col-lg-12">
                 <br>
                 <b align="center">Dashboard Traffic</b>
                 <?php $this->widget('zii.widgets.grid.CGridView', array(
@@ -493,13 +511,34 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                          ),
                                 array(
                                         'class'=>'CButtonColumn',
+                                         'header'=>'Action',
+                                        'template'=>'{send}{received}',
+                                        'buttons'=>array
+                                            (
+                                                'send' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-plane" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 12',
+                                                        'url'=>'$this->grid->controller->createUrl("/pengiriman/create",array("idm"=>$data->id))',
+                                                             ),
+
+                                                'received' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 10',
+                                                        'url'=>'$this->grid->controller->createUrl("/irn/create",array("idm"=>$data->id))',
+                                                             ),
+
+                                                          ),
                                 ),
                         ),
                     )); ?>
             </div>
            <?php } ?>
             <?php if(Yii::app()->user->role == "Warehouse" || Yii::app()->user->role =="Admin" ){ ?>
-           <div id="Warehouse" class="col-lg-9">
+           <div id="Warehouse" class="col-lg-12">
             <br>
                 <b align="center">Dashboard Warehouse</b>
                 <?php $this->widget('zii.widgets.grid.CGridView', array(
@@ -534,13 +573,34 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                          ),
                                 array(
                                         'class'=>'CButtonColumn',
+                                        'header'=>'Action',
+                                        'template'=>'{view}{received}',
+                                        'buttons'=>array
+                                            (
+                                                'view' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 12',
+                                                        'url'=>'$this->grid->controller->createUrl("/pengiriman/view",array("idm"=>$data->id))',
+                                                             ),
+
+                                                'received' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 10',
+                                                        'url'=>'$this->grid->controller->createUrl("/irn/create",array("idm"=>$data->id))',
+                                                             ),
+
+                                                          ),
                                 ),
                         ),
                     )); ?>
             </div>
             <?php } ?>
             <?php if(Yii::app()->user->role == "proyek" || Yii::app()->user->role =="Admin" ){ ?>
-           <div id="Proyek" class="col-lg-9">
+           <div id="Proyek" class="col-lg-12">
             <br>
                 <b align="center">Dashboard Proyek</b>
                 <?php $this->widget('zii.widgets.grid.CGridView', array(
@@ -577,6 +637,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                         ),
                     )); ?>
             </div>
+        </div>
             <?php } ?>
         </section>
 <script type="text/javascript">

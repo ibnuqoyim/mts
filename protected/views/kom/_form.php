@@ -15,33 +15,34 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	
 
 	<?php echo $form->errorSummary($model); ?>
 
-
-	<div class="row">
+	<div class="col-lg-6 left">
+		<b style="font-size: 16px"> Silahkan masukan rencana Kick of Meeting : </b>
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'tanggal'); ?>
 		<?php echo $form->dateField($model,'tanggal',array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'tanggal'); ?>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'tempat'); ?>
 		<?php echo $form->textField($model,'tempat',array('class'=>'form-control'),array('size'=>60,'maxlength'=>100)); ?>
 		<?php echo $form->error($model,'tempat'); ?>
 	</div>
 
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'keterangan'); ?>
 		<?php echo $form->textArea($model,'keterangan',array('class'=>'form-control'),array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'keterangan'); ?>
 	</div>
 
-	<div class="row buttons">
+	<div class="form-group buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+	</div></div>
 
 <?php $this->endWidget(); ?>
 

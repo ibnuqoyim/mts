@@ -32,7 +32,7 @@ class MaterialController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','UpdateDPP'),
+				'actions'=>array('create','update','UpdateDPP','win'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -245,6 +245,16 @@ class MaterialController extends Controller
 		$this->render('index',array(
 			'model'=>$model,
 		));
+	}
+
+	public function actionWin($idp, $idm)
+	{
+		$model=$this->loadModel($idm);
+		$model->pemenang=$idp;
+		$model->status=6;
+		$model->save();
+
+		$this->redirect('index');
 	}
 
 	/**

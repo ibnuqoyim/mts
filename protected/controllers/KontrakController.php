@@ -79,7 +79,8 @@ class KontrakController extends Controller
 			$model->file->saveAs($path);
 			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				Yii::app()->user->setFlash('success', 'Dokumen kontrak berhasil di upload');
+				$this->redirect(array('material/index'));
 		}
 
 		$this->render('create',array(

@@ -78,7 +78,8 @@ class KomController extends Controller
 			
 			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
-				$this->redirect(array('material/index',false,true));
+				Yii::app()->user->setFlash('success', 'Jadwal Kick of Meeting berhasil di buat');
+				$this->redirect(array('material/index'));
 		}
 
 		$this->render('create',array(

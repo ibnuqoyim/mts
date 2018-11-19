@@ -49,10 +49,12 @@ class PenawaranController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView($id)
+	public function actionView($idm)
 	{
+		$penawaran = Penawaran::Model()->findAll('id_material='.$idm);
+		$modal=Material::model()->findByPk($idm);
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'modal'=>$modal, 'penawaran' => $penawaran,
 		));
 	}
 
@@ -80,8 +82,8 @@ class PenawaranController extends Controller
 			$model->file->saveAs($path);
 			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
+				Yii::app()->user->setFlash('success', 'Dokumen penawaran berhasil di upload');
 				$this->redirect(array('material/index'));
-		}
 
 		$this->render('create',array(
 			'model'=>$model, 'modal'=>$modal, 'permintaan'=>$permintaan,

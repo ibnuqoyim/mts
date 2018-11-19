@@ -79,7 +79,8 @@ class HasilPniController extends Controller
 			$model->file->saveAs($path);
 			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				Yii::app()->user->setFlash('success', 'Berita Acara Inspeksi berhasil di upload');
+				$this->redirect(array('material/index'));
 		}
 
 		$this->render('create',array(

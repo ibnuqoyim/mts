@@ -18,7 +18,7 @@ $form=$this->beginWidget('CActiveForm', array(
 	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	
 
 	<?php echo $form->errorSummary($model); ?>
 <!--
@@ -29,7 +29,7 @@ $form=$this->beginWidget('CActiveForm', array(
 		<?php //echo $form->error($model,'id_user'); ?>
 	</div>
 -->
-	<div class="view">
+	<div class="col-lg-6">
 	<?php foreach($permintaan as $per){ ?>
 	<b><?php echo "Material "; ?>:</b>
 	<?php echo CHtml::encode($per->materiala->nama); ?>
@@ -42,11 +42,11 @@ $form=$this->beginWidget('CActiveForm', array(
 	<b><?php echo 'Dokumen Penawaran : <a href="/mts/dokumen/permintaan/'.$per->file.'">download</a>'; ?></b>
 	<br />
 	<?php } ?>
-</div>
-	<br> <br>
-	<div class="col-lg-6">
+	
+	<br>
+	
 	<div class="form-group">
-            <?php echo "Silahkan Upload Dokumen Penawaran : " ?>
+            <?php echo "Silahkan Upload Dokumen Penawaran : <br>" ?>
 			<?php echo $form->fileField($model,'file'); ?>
 			<?php echo $form->error($model,'file'); ?>
     </div>
@@ -60,7 +60,7 @@ $form=$this->beginWidget('CActiveForm', array(
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Upload' : 'Save', array('class'=>'btn btn-success left ')); ?>
 	</div>
 </div>
 <?php $this->endWidget(); ?>
