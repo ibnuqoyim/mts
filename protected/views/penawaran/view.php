@@ -2,7 +2,7 @@
             <div class="info">
                 <div class="container">
                     <div class="col-lg-4 left">
-                        <a class="page"><span class="glyphicon glyphicon-file gold" aria-hidden="true"></span> Ajukan Material</a>
+                        <a class="page"><span class="glyphicon glyphicon-file gold" aria-hidden="true"></span> Penawaran Material <?php echo $modal->nama; ?></a>
                     </div>
                     <div class="col-lg-5 right alamat">
                         <?php
@@ -26,7 +26,7 @@
 
         <section class="container">
             <div class="col-lg-12 left">
-            	<h1>View Penawaran <?php echo $modal->nama; ?></h1>
+            	
             		<div class="col-lg-6 left">
 					<?php 
 					foreach($penawaran as $pen){
@@ -34,7 +34,6 @@
 						$this->widget('zii.widgets.CDetailView', array(
 						'data'=>$pen,
 						'attributes'=>array(
-							'id',
 							array('name'=>'Vendor',
                                          'value'=>$pen->usera->nama,
 

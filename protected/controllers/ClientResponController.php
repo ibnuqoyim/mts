@@ -80,6 +80,7 @@ class ClientResponController extends Controller
 			$modal->status=2;
 			$modal->save();
 			if($model->save())
+				Yii::app()->user->setFlash('success', 'Dokumen Engineering Material '.$modal->nama.' berhasil di Approve!!');
 				$this->redirect(array('material/index'));
 		}
 
@@ -106,6 +107,7 @@ class ClientResponController extends Controller
 			$modal->status=3;
 			$modal->save();
 			if($model->save())
+				Yii::app()->user->setFlash('success', 'Dokumen Engineering Material '.$modal->nama.' berhasil di reject!!');
 				$this->redirect(array('material/index'));
 		}
 

@@ -32,7 +32,7 @@ class KomController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','approve'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -64,6 +64,7 @@ class KomController extends Controller
 	{
 		$model=new Kom;
 		$modal=Material::model()->findByPk($idm);
+		$kontrak=Kontrak::model()->findAll('id_material ='.$idm);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -73,7 +74,7 @@ class KomController extends Controller
 			$model->attributes=$_POST['Kom'];
 			$model->id_material=$idm;
 			
-			$modal->status=8;
+			$modal->status=7.5;
 			$modal->save();
 			
 			$model->tgl_create= date("Y-m-d",time());
@@ -83,7 +84,29 @@ class KomController extends Controller
 		}
 
 		$this->render('create',array(
-			'model'=>$model, 'modal'=>$modal,
+			'model'=>$model, 'modal'=>$modal,'kontrak'=>$kontrak
+		));
+	}
+
+	public function actionApprove($idm)
+	{
+		$model=Kom::model()->findAll('id_material='.$idm);
+		$modal=Material::model()->findByPk($idm);
+		$kontrak=Kontrak::model()->findAll('id_material ='.$idm);
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Material']))
+		{
+			$modal->attributes=$_POST['Material'];
+			$modal->status = 8;
+			if($modal->save())
+				Yii::app()->user->setFlash('success', 'Jadwal Kick of Meeting telah di Konfirmasi');
+				$this->redirect(array('material/index'));
+		}
+
+		$this->render('view',array(
+			'model'=>$model, 'modal'=>$modal,'kontrak'=$kontrak
 		));
 	}
 

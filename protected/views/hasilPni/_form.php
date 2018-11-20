@@ -21,6 +21,28 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="col-lg-6">
+		<?php foreach ($pni as $res)
+            { ?>
+         <table class="table table-hover table-dark" style="width:100%">
+              <tr>
+                <td>Nama Material</td>
+                <td><?php echo $res->materiala->nama ?></td>
+              </tr>
+              <tr>
+                <td>Klien</td>
+                 <td><?php echo $res->materiala->clienta->nama ?></td>
+              </tr>
+              <tr>
+                <td>Vendor</td>
+               <td><?php echo $res->materiala->usera->nama ?></td>
+              </tr>
+              <tr>
+                <td>Rencana Production & Inspection</td>
+                <td><a href="/mts/dokumen/pni/<?php echo $res->file ?>"><?php echo $res->file ?></a></td>
+              </tr>
+            </table> 
+          <?php  }?>
+          <br>
 	<p style="font-size: 16px">Silahkan Upload Berita Acara Inspeksi : </p>
 
 	<div class="form-group">

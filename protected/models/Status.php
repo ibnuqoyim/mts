@@ -27,7 +27,7 @@ class Status extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id, namaStatus, keterangan', 'required'),
-			array('id', 'numerical', 'integerOnly'=>true),
+			
 			array('namaStatus', 'length', 'max'=>50),
 			array('keterangan', 'length', 'max'=>110),
 			// The following rule is used by search().

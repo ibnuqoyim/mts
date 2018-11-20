@@ -64,6 +64,7 @@ class HasilPniController extends Controller
 	{
 		$model=new HasilPni;
 		$modal=Material::model()->findByPk($idm);
+		$pni=Pni::model()->findAll('id_material='.$idm);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -72,7 +73,7 @@ class HasilPniController extends Controller
 			$model->attributes=$_POST['HasilPni'];
 			$model->id_material=$idm;
 			
-			$modal->status=9;
+			$modal->status=10;
 			$modal->save();
 			$model->file = CUploadedFile::getInstance($model, 'file');       
 			$path = Yii::getPathOfAlias("webroot"). '/dokumen/pni/hasil-'.$model->file;
@@ -84,7 +85,7 @@ class HasilPniController extends Controller
 		}
 
 		$this->render('create',array(
-			'model'=>$model, 'modal'=>$modal,
+			'model'=>$model, 'modal'=>$modal,'pni'=>$pni
 		));
 	}
 

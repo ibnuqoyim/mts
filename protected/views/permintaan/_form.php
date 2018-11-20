@@ -22,6 +22,20 @@
 
 
 	<div class="col-lg-6">
+		<table class="table table-hover table-dark" style="width:100%">
+              <tr>
+                <td>Nama Material</td>
+                <td><?php echo $modal->nama ?></td>
+              </tr>
+              <tr>
+                <td>Status</td>
+                 <td><?php echo $modal->statusa->namaStatus ?></td>
+              </tr>
+              <tr>
+                <td>Dokumen Engineering</td>
+                <td><a href="/mts/dokumen/dokeng/<?php echo $modal->dokeng ?>"><?php echo $modal->dokeng ?></a></td>
+              </tr>
+            </table> 
 	<div class="form-group">
             <?php echo "<b> Silahkan Upload Dokumen Permintaan Penawaran : </b>" ?>
 			<?php echo $form->fileField($model,'file'); ?>
@@ -37,8 +51,8 @@
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Upload' : 'Save',array('class'=>'btn btn-lg btn-success left ')); ?>
-		<?php echo CHtml::link(' <button class="btn btn-lg btn-warning ">Back</button>', array('/material/index')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Upload' : 'Save',array('class'=>'btn btn-success left ')); ?>
+		<?php echo '&nbsp &nbsp'.CHtml::link(' <button class="btn  btn-warning ">Back</button>', array('/material/index')); ?>
 	</div>
 </div>
 <?php $this->endWidget(); ?>

@@ -17,7 +17,7 @@ class HasilinspeksiWH extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'hasilinspeksiWH';
+		return 'hasilinspeksiwh';
 	}
 
 	/**

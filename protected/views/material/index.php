@@ -75,10 +75,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                 <label>Nama</label>
                                 <?php  echo $form->textField($model,'nama',array('class'=>'form-control'),array('size'=>60,'maxlength'=>75)); ?>
                             </div>
-                            <div class="form-group">
-                                <label>Role</label>
-                               
-                            </div>
+                           
                             <?php echo CHtml::submitButton('Search',array('class'=>'btn btn-lg btn-primary btn-block')); ?>
                         <?php $this->endWidget(); ?>
                     </div>
@@ -324,7 +321,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                 array(
                                         'class'=>'CButtonColumn',
                                         'header'=>'Action',
-                                        'template'=>'{edit} {repair}',
+                                        'template'=>'{edit} {kom} {repair}',
                                         'buttons'=>array
                                             (
                                                 'edit' => array
@@ -334,6 +331,13 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                         'visible' =>'$data->status == 5',
                                                         'url'=>'$this->grid->controller->createUrl("/penawaran/create",array("idm"=>$data->id))',
                                                              ),
+                                                'kom' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 7.5',
+                                                        'url'=>'$this->grid->controller->createUrl("/kom/approve",array("idm"=>$data->id))',
+                                                             ),
 
                                                           
                                             'repair' => array
@@ -341,7 +345,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                         'label'=>'<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>',
                                                         'type'=>'raw',
                                                         'imageUrl'=>false,
-                                                        'visible' =>'$data->status == 9',
+                                                        'visible' =>'$data->status == 10',
                                                         'url'=>'$this->grid->controller->createUrl("/hasilrepair/create",array("idm"=>$data->id))',
                                                              ),
 
@@ -465,7 +469,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                     (
                                                         'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
                                                         'imageUrl'=>false,
-                                                        'visible' =>'$data->status == 10',
+                                                        'visible' =>'$data->status == 11',
                                                         'url'=>'$this->grid->controller->createUrl("/irn/create",array("idm"=>$data->id))',
                                                              ),
 
@@ -574,7 +578,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                 array(
                                         'class'=>'CButtonColumn',
                                         'header'=>'Action',
-                                        'template'=>'{view}{received}',
+                                        'template'=>'{view}{received}{inspeksi}',
                                         'buttons'=>array
                                             (
                                                 'view' => array
@@ -591,6 +595,13 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 10',
                                                         'url'=>'$this->grid->controller->createUrl("/irn/create",array("idm"=>$data->id))',
+                                                             ),
+                                                'inspeksi' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-check" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 13',
+                                                        'url'=>'$this->grid->controller->createUrl("/hasilinspeksiWH/create",array("idm"=>$data->id))',
                                                              ),
 
                                                           ),
@@ -623,7 +634,11 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                 'value' => '$row+1',
                                 ),
                                 'nama',
-                                'status',
+                                array('name'=>'status',
+                                         'header'=>'Status',
+                                         'value'=>'$data->statusa->namaStatus',
+
+                                         ),
                                 /*
                                 array('name'=>'client',
                                          'header'=>'Client',

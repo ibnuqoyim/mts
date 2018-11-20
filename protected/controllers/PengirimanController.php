@@ -76,6 +76,7 @@ class PengirimanController extends Controller
 	{
 		$model=new Pengiriman;
 		$modal=Material::model()->findByPk($idm);
+		$irn=Irn::model()->findAll('id_material='.$idm);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -91,7 +92,7 @@ class PengirimanController extends Controller
 		}
 
 		$this->render('create',array(
-			'model'=>$model, 'modal'=>$modal,
+			'model'=>$model, 'modal'=>$modal, 'irn'=>$irn
 		));
 	}
 

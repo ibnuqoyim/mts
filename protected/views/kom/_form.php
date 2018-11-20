@@ -20,6 +20,28 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="col-lg-6 left">
+		<?php foreach ($kontrak as $res)
+            { ?>
+         <table class="table table-hover table-dark" style="width:100%">
+              <tr>
+                <td>Nama Material</td>
+                <td><?php echo $res->materiala->nama ?></td>
+              </tr>
+              <tr>
+                <td>Klien</td>
+                 <td><?php echo $res->materiala->clienta->nama ?></td>
+              </tr>
+              <tr>
+                <td>Vendor</td>
+               <td><?php echo $res->materiala->usera->nama ?></td>
+              </tr>
+              <tr>
+                <td>Dokumen kontrak</td>
+                <td><a href="/mts/dokumen/kontrak/<?php echo $res->file ?>"><?php echo $res->file ?></a></td>
+              </tr>
+            </table> 
+          <?php  }?>
+
 		<b style="font-size: 16px"> Silahkan masukan rencana Kick of Meeting : </b>
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'tanggal'); ?>
@@ -41,7 +63,7 @@
 	</div>
 
 	<div class="form-group buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn btn-info left ')); ?>
 	</div></div>
 
 <?php $this->endWidget(); ?>

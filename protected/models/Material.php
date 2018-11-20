@@ -32,7 +32,7 @@ class Material extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('client, nama, create_date, last_update', 'required'),
-			array('client, status, stok', 'numerical', 'integerOnly'=>true),
+			array('client, stok', 'numerical', 'integerOnly'=>true),
 			array('nama', 'length', 'max'=>100),
 			array('pemenang', 'length', 'max'=>110),
 			// The following rule is used by search().

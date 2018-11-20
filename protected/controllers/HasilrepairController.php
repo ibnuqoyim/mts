@@ -64,6 +64,7 @@ class HasilrepairController extends Controller
 	{
 		$model=new Hasilrepair;
 		$modal=Material::model()->findByPk($idm);
+		$bapni=HasilPni::model()->findAll('id_material='.$idm);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -72,7 +73,7 @@ class HasilrepairController extends Controller
 			$model->attributes=$_POST['Hasilrepair'];
 			$model->id_material=$idm;
 			
-			$modal->status=10;
+			$modal->status=11;
 			$modal->save();
 			$model->file = CUploadedFile::getInstance($model, 'file');       
 			$path = Yii::getPathOfAlias("webroot"). '/dokumen/hasilrepair/hasil-'.$model->file;
@@ -84,7 +85,7 @@ class HasilrepairController extends Controller
 		}
 
 		$this->render('create',array(
-			'model'=>$model,'modal'=>$modal,
+			'model'=>$model,'modal'=>$modal,'bapni'=>$bapni
 		));
 	}
 

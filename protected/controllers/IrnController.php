@@ -64,6 +64,7 @@ class IrnController extends Controller
 	{
 		$model=new Irn;
 		$modal=Material::model()->findByPk($idm);
+		$repair=Hasilrepair::model()->findAll('id_material ='.$idm);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -82,7 +83,7 @@ class IrnController extends Controller
 		}
 
 		$this->render('create',array(
-			'model'=>$model, 'modal'=>$modal,
+			'model'=>$model, 'modal'=>$modal, 'repair'=>$repair
 		));
 	}
 

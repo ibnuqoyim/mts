@@ -64,6 +64,7 @@ class HasilinspeksiWHController extends Controller
 	{
 		$model=new HasilinspeksiWH;
 		$modal=Material::model()->findByPk($idm);
+		$irn=Irn::model()->findAll('id_material='.$idm);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -73,16 +74,17 @@ class HasilinspeksiWHController extends Controller
 			$model->id_material=$idm;
 			
 			$modal->status=15;
-			$model->attributes=$_POST['Material'];
+			$modal->attributes=$_POST['Material'];
 			$modal->save();
 			
 			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				Yii::app()->user->setFlash('success', 'Hasil Inspeksi Warehouse berhasil di submit!');
+				$this->redirect(array('material/index'));
 		}
 
 		$this->render('create',array(
-			'model'=>$model, 'modal'=>$modal,
+			'model'=>$model, 'modal'=>$modal, 'irn'=>$irn
 		));
 	}
 

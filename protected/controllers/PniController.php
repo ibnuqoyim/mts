@@ -64,6 +64,7 @@ class PniController extends Controller
 	{
 		$model=new Pni;
 		$modal=Material::model()->findByPk($idm);
+		$kontrak=Kontrak::model()->findAll('id_material ='.$idm);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -84,7 +85,7 @@ class PniController extends Controller
 		}
 
 		$this->render('create',array(
-			'model'=>$model, 'modal'=>$modal,
+			'model'=>$model, 'modal'=>$modal,'kontrak'=>$kontrak
 		));
 	}
 

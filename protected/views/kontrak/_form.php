@@ -22,6 +22,27 @@
 
 
 	<div class="col-lg-6 left">
+		<?php foreach ($penawaran as $res)
+            { ?>
+         <table class="table table-hover table-dark" style="width:100%">
+              <tr>
+                <td>Nama Material</td>
+                <td><?php echo $res->materiala->nama ?></td>
+              </tr>
+              <tr>
+                <td>Klien</td>
+                 <td><?php echo $res->materiala->clienta->nama ?></td>
+              </tr>
+              <tr>
+                <td>Pemenang</td>
+               <td><?php echo $res->materiala->usera->nama ?></td>
+              </tr>
+              <tr>
+                <td>Dokumen Penawaran</td>
+                <td><a href="/mts/dokumen/penawaran/<?php echo $res->file ?>"><?php echo $res->file ?></a></td>
+              </tr>
+            </table> 
+          <?php  }?>
 	<div class="form-group">
             <?php echo 'Silahkan Upload Dokumen Kontrak dengan '.$modal->usera->nama.' : ' ?>
             <br>

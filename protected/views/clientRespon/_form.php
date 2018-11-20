@@ -36,12 +36,12 @@
 
 	<div class="row buttons">
 		<?php if($a=="Alasan"){
-			echo CHtml::submitButton($model->isNewRecord ? 'Reject' : 'Save', array('class'=>'btn btn-danger left '));
+			echo '&nbsp &nbsp'.CHtml::submitButton($model->isNewRecord ? 'Reject' : 'Save', array('class'=>'btn btn-danger left '));
 		}
 		else{
 		echo CHtml::submitButton($model->isNewRecord ? 'Approve' : 'Save', array('class'=>'btn  btn-success left ')); 
 		} ?>
-		<?php echo CHtml::link(' <button class="btn  btn-warning ">Back</button>', array('/material/index')); ?>
+		<?php echo '&nbsp &nbsp'.CHtml::link(' <button class="btn  btn-warning ">Back</button>', array('/material/index')); ?>
 	</div>
 </div>
 <?php $this->endWidget(); ?>

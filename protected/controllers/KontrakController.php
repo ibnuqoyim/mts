@@ -64,6 +64,8 @@ class KontrakController extends Controller
 	{
 		$model=new Kontrak;
 		$modal=Material::model()->findByPk($idm);
+		$penawaran=Penawaran::model()->findAll('id_material='.$idm.' and id_user ='.$modal->pemenang);
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -84,7 +86,7 @@ class KontrakController extends Controller
 		}
 
 		$this->render('create',array(
-			'model'=>$model, 'modal'=>$modal,
+			'model'=>$model, 'modal'=>$modal, 'penawaran'=>$penawaran
 		));
 	}
 

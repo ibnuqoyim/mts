@@ -30,19 +30,25 @@ $form=$this->beginWidget('CActiveForm', array(
 	</div>
 -->
 	<div class="col-lg-6">
-	<?php foreach($permintaan as $per){ ?>
-	<b><?php echo "Material "; ?>:</b>
-	<?php echo CHtml::encode($per->materiala->nama); ?>
-	<br />
-
-	<b><?php echo "Status "; ?>:</b>
-	<?php echo CHtml::encode($per->materiala->statusa->namaStatus); ?>
-	<br />
-
-	<b><?php echo 'Dokumen Penawaran : <a href="/mts/dokumen/permintaan/'.$per->file.'">download</a>'; ?></b>
-	<br />
-	<?php } ?>
 	
+	
+	<?php foreach ($permintaan as $per)
+            { ?>
+         <table class="table table-hover table-dark" style="width:100%">
+              <tr>
+                <td>Nama Material</td>
+                <td><?php echo $per->materiala->nama ?></td>
+              </tr>
+              <tr>
+                <td>Status</td>
+                 <td><?php echo $per->materiala->statusa->namaStatus ?></td>
+              </tr>
+              <tr>
+                <td>File Pendukung</td>
+                <td><a href="/mts/dokumen/permintaan/<?php echo $per->file ?>"><?php echo $per->file ?></a></td>
+              </tr>
+            </table> 
+          <?php  }?>
 	<br>
 	
 	<div class="form-group">

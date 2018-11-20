@@ -18,17 +18,29 @@
     </div>
 
     <div class="col-lg-6">
-        <div class="form-group">
-            <?php echo 'Nama Material : '.$model->nama; ?>
-            <?php echo '<br> Status : '.$model->statusa->namaStatus; ?>
-            <?php 
-            foreach ($respon as $res)
-            {    echo '<br> Alasan Penolakan : '.$res->isi; 
-                 echo '<br> File Pendukung : <a href="/mts/dokumen/responclient/tolak-'.$res->file_respon.'">download</a>';
-            }?>
-			
-        </div>
-
+        
+        <?php foreach ($respon as $res)
+            { ?>
+         <table class="table table-hover table-dark" style="width:100%">
+              <tr>
+                <td>Nama Material</td>
+                <td><?php echo $res->materiala->nama ?></td>
+              </tr>
+              <tr>
+                <td>Status</td>
+                 <td><?php echo $res->materiala->statusa->namaStatus ?></td>
+              </tr>
+              <tr>
+                <td>Alasan Penolakan</td>
+               <td><?php echo $res->isi ?></td>
+              </tr>
+              <tr>
+                <td>Dokumen Permintaan Penawaran</td>
+                <td><a href="/mts/dokumen/responclient/tolak-<?php echo $res->file_respon ?>"><?php echo $res->file_respon ?></a></td>
+              </tr>
+            </table> 
+          <?php  }?>
+          <br>
 	<div class="form-group">
             <?php echo "Update Dokumen Engineering : " ?>
 			<?php echo $form->fileField($model,'dokeng'); ?>
@@ -36,7 +48,7 @@
     </div>
     </div>
     <div class="form-group col-lg-12">
-            <?php echo CHtml::submitButton($model->isNewRecord ? 'Ajukan' : 'Save', array('class'=>'btn btn-lg btn-primary left ')); ?>
+            <?php echo CHtml::submitButton($model->isNewRecord ? 'Ajukan' : 'Update', array('class'=>'btn btn-primary left ')); ?>
     </div>
 
 <?php $this->endWidget(); ?>

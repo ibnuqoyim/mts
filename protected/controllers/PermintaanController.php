@@ -79,6 +79,7 @@ class PermintaanController extends Controller
 			$model->file->saveAs($path);
 			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
+				Yii::app()->user->setFlash('success', 'Dokumen permintaan penawaran berhasil di upload');
 				$this->redirect(array('material/index'));
 		}
 

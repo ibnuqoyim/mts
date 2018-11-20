@@ -84,7 +84,7 @@ class PenawaranController extends Controller
 			if($model->save())
 				Yii::app()->user->setFlash('success', 'Dokumen penawaran berhasil di upload');
 				$this->redirect(array('material/index'));
-
+		}
 		$this->render('create',array(
 			'model'=>$model, 'modal'=>$modal, 'permintaan'=>$permintaan,
 		));
