@@ -32,7 +32,7 @@ class MaterialController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','UpdateDPP','win'),
+				'actions'=>array('create','update','UpdateDPP','win','admin','detail'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -72,6 +72,38 @@ class MaterialController extends Controller
 			'dokeng'=>new DokEng,
 		));
 	}
+
+	public function actionDetail($id)
+	{
+
+		$respon = ClientRespon::Model()->findAll('material_id='.$id);
+		$hasilPni = HasilPni::Model()->findAll('id_material='.$id);
+		$hasilinspeksiWH = HasilinspeksiWH::Model()->findAll('id_material='.$id);
+		$hasilRepair = Hasilrepair::Model()->findAll('id_material='.$id);
+		$irn = Irn::Model()->findAll('id_material='.$id);
+		$kom = Kom::Model()->findAll('id_material='.$id);
+		$kontrak = Kontrak::Model()->findAll('id_material='.$id);
+		$pni =Pni::Model()->findAll('id_material='.$id);
+		$permintaan = Permintaan::Model()->findAll('id_material='.$id);
+		$penawaran = Penawaran::Model()->findAll('id_material='.$id);
+		$pengiriman = Pengiriman::Model()->findAll('id_material='.$id);
+		$model = $this->loadModel($id);
+
+		$this->render('detail',array(
+			'model'=>$model,
+			'respon'=>$respon,
+			'hasilPni'=>$hasilPni,
+			'hasilinspeksiWH'=>$hasilinspeksiWH,
+			'hasilRepair'=>$hasilRepair,
+			'irn'=>$irn,
+			'kom'=>$kom,
+			'kontrak'=>$kontrak,
+			'pni'=>$pni,
+			'permintaan'=>$permintaan,
+			'penawaran'=>$penawaran,
+			'pengiriman'=>$pengiriman, 
+		));
+	}	
 
 	/**
 	 * Creates a new model.

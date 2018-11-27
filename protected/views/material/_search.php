@@ -22,8 +22,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'id_dok_eng'); ?>
-		<?php echo $form->textField($model,'id_dok_eng'); ?>
+		<?php echo $form->label($model,'client'); ?>
+		<?php echo $form->textField($model,'client',array('size'=>60,'maxlength'=>100)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'dokeng'); ?>
+		<?php echo $form->textField($model,'dokeng'); ?>
 	</div>
 
 	<div class="row">
@@ -31,55 +36,13 @@
 		<?php echo $form->textField($model,'status'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'permintaan_penawaran'); ?>
-		<?php echo $form->textField($model,'permintaan_penawaran',array('size'=>60,'maxlength'=>250)); ?>
-	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'id_pemenang'); ?>
-		<?php echo $form->textField($model,'id_pemenang'); ?>
+		<?php echo $form->label($model,'pemenang'); ?>
+		<?php echo $form->textField($model,'pemenang'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'id_kontrak'); ?>
-		<?php echo $form->textField($model,'id_kontrak'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'id_kom'); ?>
-		<?php echo $form->textField($model,'id_kom'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'id_pis'); ?>
-		<?php echo $form->textField($model,'id_pis'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'id_inspection'); ?>
-		<?php echo $form->textField($model,'id_inspection'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'irn'); ?>
-		<?php echo $form->textField($model,'irn'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'jadwal_pengambillan'); ?>
-		<?php echo $form->textField($model,'jadwal_pengambillan'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'status_pengambilan'); ?>
-		<?php echo $form->textField($model,'status_pengambilan',array('size'=>50,'maxlength'=>50)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'hasil_inspeksi_barang'); ?>
-		<?php echo $form->textField($model,'hasil_inspeksi_barang',array('size'=>60,'maxlength'=>500)); ?>
-	</div>
+	
 
 	<div class="row">
 		<?php echo $form->label($model,'stok'); ?>
