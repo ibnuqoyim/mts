@@ -18,66 +18,66 @@ class WebUser extends CWebUser {
   // This is a function that checks the field 'role'
   // in the User model to be equal to 1, that means it's admin
   // access it by Yii::app()->user->isAdmin()
-    function isAdmin(){
+   public function getisAdmin(){
         $user = $this->loadUser(Yii::app()->user->id);
         if ($user)
            return $user->role=='Admin';
         return false;
     }
     
-    function isEngineering(){
+    public function getisEngineering(){
             $user = $this->loadUser(Yii::app()->user->id);
             if ($user)
                return $user->role=='Engineering';
             return false;
         }
 
-        function isClient(){
+        public function getisClient(){
             $user = $this->loadUser(Yii::app()->user->id);
             if ($user)
                return $user->role=='Client';
             return false;
         }
 
-        function isPengadaan(){
+        public function getisPengadaan(){
             $user = $this->loadUser(Yii::app()->user->id);
             if ($user)
                return $user->role=='Pengadaan';
             return false;
         }
 
-        function isVendor(){
+        public function getisVendor(){
             $user = $this->loadUser(Yii::app()->user->id);
             if ($user)
                return $user->role=='Vendor';
             return false;
         }
 
-         function isExpediting(){
+         public function getisExpediting(){
             $user = $this->loadUser(Yii::app()->user->id);
             if ($user)
                return $user->role=='Expedeting';
             return false;
         }
-         function isQC(){
+         public function getisQC(){
             $user = $this->loadUser(Yii::app()->user->id);
             if ($user)
                return $user->role=='QC';
             return false;
         }
-         function isTraffic(){
+         public function getisTraffic(){
             $user = $this->loadUser(Yii::app()->user->id);
             if ($user)
                return $user->role=='Traffic';
             return false;
         }
-         function isWarehouse(){
+         public function getisWarehouse(){
             $user = $this->loadUser(Yii::app()->user->id);
             if ($user)
                return $user->role=='Warehouse';
             return false;
         }
-         function isProyek(){
+         public function getisProyek(){
             $user = $this->loadUser(Yii::app()->user->id);
             if ($user)
                return $user->role=='Proyek';

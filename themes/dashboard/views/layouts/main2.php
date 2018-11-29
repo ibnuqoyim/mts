@@ -53,6 +53,17 @@ $(document).ready(function() {
                         <?php
                             echo CHtml::link("Material Tracking System", array('material/index'), array('class'=>'navbar-brand'));
                         ?>
+                        <?php
+                            $this->widget('zii.widgets.CMenu',array(
+                                'items'=>array(
+                                    array('label'=>'Material', 'url'=>array('/material/admin'), 'visible'=>Yii::app()->user->isAdmin),
+                                    array('label'=>'User', 'url'=>array('/user/admin'), 'visible'=>!Yii::app()->user->isGuest)
+                                ),
+                                    'htmlOptions' => array(
+                                    'class'=>'nav navbar-nav navbar-left',
+                                ),
+                            ));
+                        ?>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->

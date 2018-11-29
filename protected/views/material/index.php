@@ -81,6 +81,17 @@ CHtml::ajaxLink('View Popup', 'material/index',
                     </div>
                 </div> 
                 
+<<<<<<< HEAD
+=======
+                
+
+                
+                
+                <?php if(Yii::app()->user->role != "Proyek"){ ?>
+                
+                
+                <?php } ?>
+>>>>>>> d4e1c8e1d76233bd762705c7800b236c2f3aeeed
                 <?php if(Yii::app()->user->role == "Engineering" || Yii::app()->user->role =="Admin" ){ echo CHtml::link('<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Ajukan Material Baru', array('/material/create'),array('class'=>'btn btn-lg btn-default btn-block')); }?>
             </div>
             <div class="col-lg-9">
@@ -105,7 +116,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                         'columns'=>array(
                                 array(
                                 'header' => 'No',
-                                'value' => '$row+1',
+                                'class'=>'IndexColumn',
                                 ),
                                 'nama',
                                 array('name'=>'status',
@@ -160,7 +171,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                         'columns'=>array(
                                 array(
                                 'header' => 'No',
-                                'value' => '$row+1',
+                                'class'=>'IndexColumn',
                                 ),
                                 'nama',
                                 array('name'=>'status',
@@ -231,7 +242,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                         'columns'=>array(
                                 array(
                                 'header' => 'No',
-                                'value' => '$row+1',
+                                'class'=>'IndexColumn',
                                 ),
                                 'nama',
                                 array('name'=>'status',
@@ -300,7 +311,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                         'columns'=>array(
                                 array(
                                 'header' => 'No',
-                                'value' => '$row+1',
+                                'class'=>'IndexColumn',
                                 ),
                                 'nama',
 
@@ -373,7 +384,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                         'columns'=>array(
                                 array(
                                 'header' => 'No',
-                                'value' => '$row+1',
+                                'class'=>'IndexColumn',
                                 ),
                                 'nama',
                                 array('name'=>'status',
@@ -436,7 +447,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                         'columns'=>array(
                                 array(
                                 'header' => 'No',
-                                'value' => '$row+1',
+                                'class'=>'IndexColumn',
                                 ),
                                 'nama',
                                 array('name'=>'status',
@@ -499,7 +510,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                         'columns'=>array(
                                 array(
                                 'header' => 'No',
-                                'value' => '$row+1',
+                                'class'=>'IndexColumn',
                                 ),
                                 'nama',
                                 array('name'=>'status',
@@ -562,7 +573,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                         'columns'=>array(
                                 array(
                                 'header' => 'No',
-                                'value' => '$row+1',
+                                'class'=>'IndexColumn',
                                 ),
                                 'nama',
                                 array('name'=>'status',
@@ -631,7 +642,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                         'columns'=>array(
                                 array(
                                 'header' => 'No',
-                                'value' => '$row+1',
+                                'class'=>'IndexColumn',
                                 ),
                                 'nama',
                                 array('name'=>'status',

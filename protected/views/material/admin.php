@@ -1,71 +1,117 @@
-<?php
-/* @var $this MaterialController */
-/* @var $model Material */
 
-$this->breadcrumbs=array(
-	'Materials'=>array('index'),
-	'Manage',
-);
+<header>
+		 <div class="info">
+				 <div class="container">
+						 <div class="col-lg-4 left">
+								 <a class="page"><span class="glyphicon glyphicon-briefcase gold" aria-hidden="true"></span> Data Material</a>
+						 </div>
+						 <div class="col-lg-5 right alamat">
 
-$this->menu=array(
-	array('label'=>'List Material', 'url'=>array('index')),
-	array('label'=>'Create Material', 'url'=>array('create')),
-);
 
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$('#material-grid').yiiGridView('update', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
-?>
 
-<h1>Manage Materials</h1>
+												 <p class="head"><?php echo CHtml::link(Yii::app()->user->nama .' (Originator)', array('/user/update','id'=>Yii::app()->user->id), array('class'=>'gold')); ?></p>
 
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
+						 </div>
+						 <div class="clear"></div>
+				 </div>
+		 </div>
+ </header>
+ <section class="container">
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'material-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		'id',
-		'nama',
-		'id_dok_eng',
-		'status',
-		'permintaan_penawaran',
-		'id_pemenang',
-		/*
-		'id_kontrak',
-		'id_kom',
-		'id_pis',
-		'id_inspection',
-		'irn',
-		'jadwal_pengambillan',
-		'status_pengambilan',
-		'hasil_inspeksi_barang',
-		'stok',
-		'create_date',
-		'last_update',
-		*/
-		array(
-			'class'=>'CButtonColumn',
-		),
-	),
-)); ?>
+
+            <div class="col-lg-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Search</h3>
+                    </div>
+                    <div class="panel-body">
+                        <?php $form=$this->beginWidget('CActiveForm', array(
+                                'action'=>Yii::app()->createUrl($this->route),
+                                'method'=>'get',
+                        )); ?>
+                            <div class="form-group">
+                                <label>Nama</label>
+                                <?php  echo $form->textField($model,'nama',array('class'=>'form-control'),array('size'=>60,'maxlength'=>75)); ?>
+                            </div>
+                           
+                            <?php echo CHtml::submitButton('Search',array('class'=>'btn btn-lg btn-primary btn-block')); ?>
+                        <?php $this->endWidget(); ?>
+                    </div>
+                </div> 
+                
+                
+
+                
+                <button type="button" class='btn btn-lg btn-default btn-block' onclick='ab()'>Stok Material</button>
+                <?php if(Yii::app()->user->role != "Proyek"){ ?>
+                
+                <button type="button" class='btn btn-lg btn-default btn-block' onclick='a()'>Materil on Progres</button>
+                <?php } ?>
+                <?php if(Yii::app()->user->role == "Engineering" || Yii::app()->user->role =="Admin" ){ echo CHtml::link('<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Ajukan Material Baru', array('/material/create'),array('class'=>'btn btn-lg btn-default btn-block')); }?>
+            </div>
+            <div class="col-lg-9">
+                
+                <?php $this->widget('zii.widgets.grid.CGridView', array(
+                        'id'=>'user-grid',
+                        'dataProvider'=>$model->search(),
+                        //'filter'=>$model,
+                        'pager'=>array(
+                            'header'         => '',
+                            'firstPageLabel' => '&lt;&lt;',
+                            'prevPageLabel'  => 'Prev',
+                            'nextPageLabel'  => 'Next',
+                            'lastPageLabel'  => '&gt;&gt;',
+                            'cssFile'=>Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        ),
+                        'template'=>'{items} {pager}',
+                        'cssFile' => Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        'columns'=>array(
+                                array(
+
+            							'class'=>'IndexColumn',
+
+        							),
+                            	'nama',
+								array('name'=>'client',
+                                         'header'=>'Client',
+                                         'value'=>'$data->clienta->nama',
+                                         ),
+								array('name'=>'pemenang',
+                                         'header'=>'Pemenang',
+                                         'value'=>'$data->pemenang != null ? $data->usera->nama : "Belum ada Pemenang"',
+                                         ),
+								
+								'stok',
+								'create_date',
+                                array('name'=>'status',
+                                         'header'=>'Status',
+                                         'value'=>'$data->statusa->namaStatus',
+
+                                         ),
+                                array('name'=>'status',
+                                         'header'=>'Status',
+                                         'value'=>'$data->statusa->keterangan',
+
+                                         ),
+                                array(
+                                    'class'=>'CButtonColumn',
+                                    'header'=>'Action',
+                                    'template'=>'{edit}',
+                                    'buttons'=>array
+                                            (
+                                                'edit' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'url'=>'$this->grid->controller->createUrl("/material/detail",array("id"=>$data->id))',
+                                                             ),
+
+                                                          ),
+                                                     ),
+                        ),
+                    )); ?>
+            </div>
+
+       
+    </section>
