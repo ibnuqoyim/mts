@@ -106,7 +106,7 @@ class KomController extends Controller
 		}
 
 		$this->render('view',array(
-			'model'=>$model, 'modal'=>$modal,'kontrak'=$kontrak
+			'model'=>$model, 'modal'=>$modal,'kontrak'=>$kontrak
 		));
 	}
 

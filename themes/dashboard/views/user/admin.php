@@ -72,8 +72,8 @@
                         'pager'=>array(
                             'header'         => '',
                             'firstPageLabel' => '&lt;&lt;',
-                            'prevPageLabel'  => 'Prev',
-                            'nextPageLabel'  => 'Next',
+                            'prevPageLabel'  => '&lt',
+                            'nextPageLabel'  => '&gt',
                             'lastPageLabel'  => '&gt;&gt;',
                             'cssFile'=>Yii::app()->theme->baseUrl.'/assets/css/main.css',
                         ),
