@@ -81,6 +81,8 @@ CHtml::ajaxLink('View Popup', 'material/index',
                     </div>
                 </div> 
                 
+<<<<<<< HEAD
+=======
                 
 
                 
@@ -89,6 +91,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                 
                 
                 <?php } ?>
+>>>>>>> d4e1c8e1d76233bd762705c7800b236c2f3aeeed
                 <?php if(Yii::app()->user->role == "Engineering" || Yii::app()->user->role =="Admin" ){ echo CHtml::link('<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Ajukan Material Baru', array('/material/create'),array('class'=>'btn btn-lg btn-default btn-block')); }?>
             </div>
             <div class="col-lg-9">
@@ -108,6 +111,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                             'cssFile'=>Yii::app()->theme->baseUrl.'/assets/css/main.css',
                         ),
                         'template'=>'{items} {pager}',
+                        'emptyText' => 'Ops, no Material to show!',
                         'cssFile' => Yii::app()->theme->baseUrl.'/assets/css/main.css',
                         'columns'=>array(
                                 array(
@@ -162,6 +166,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                             'cssFile'=>Yii::app()->theme->baseUrl.'/assets/css/main.css',
                         ),
                         'template'=>'{items} {pager}',
+                        'emptyText' => 'Ops, no Material to show!',
                         'cssFile' => Yii::app()->theme->baseUrl.'/assets/css/main.css',
                         'columns'=>array(
                                 array(
@@ -232,6 +237,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                             'cssFile'=>Yii::app()->theme->baseUrl.'/assets/css/main.css',
                         ),
                         'template'=>'{items} {pager}',
+                        'emptyText' => 'Ops, no Material to show!',
                         'cssFile' => Yii::app()->theme->baseUrl.'/assets/css/main.css',
                         'columns'=>array(
                                 array(
@@ -301,6 +307,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                         ),
                         'template'=>'{items} {pager}',
                         'cssFile' => Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        'emptyText' => 'Ops, no Material to show!',
                         'columns'=>array(
                                 array(
                                 'header' => 'No',
@@ -380,6 +387,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                         ),
                         'template'=>'{items} {pager}',
                         'cssFile' => Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        'emptyText' => 'Ops, no Material to show!',
                         'columns'=>array(
                                 array(
                                 'header' => 'No',
@@ -442,6 +450,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                         ),
                         'template'=>'{items} {pager}',
                         'cssFile' => Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        'emptyText' => 'Ops, no Material to show!',
                         'columns'=>array(
                                 array(
                                 'header' => 'No',
@@ -505,6 +514,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                         ),
                         'template'=>'{items} {pager}',
                         'cssFile' => Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        'emptyText' => 'Ops, no Material to show!',
                         'columns'=>array(
                                 array(
                                 'header' => 'No',
@@ -567,6 +577,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                         ),
                         'template'=>'{items} {pager}',
                         'cssFile' => Yii::app()->theme->baseUrl.'/assets/css/main.css',
+                        'emptyText' => 'Ops, no Material to show!',
                         'columns'=>array(
                                 array(
                                 'header' => 'No',
@@ -654,10 +665,13 @@ CHtml::ajaxLink('View Popup', 'material/index',
 
                                          ), */
                                 'stok',
-                                array(
-                                        'class'=>'CButtonColumn',
-                                ),
+                               // array(
+                                        //'class'=>'CButtonColumn',
+                               // ),
                         ),
+                        'emptyText' => 'Ops, no Material to show!',
+
+    
                     )); ?>
             </div>
         </div>

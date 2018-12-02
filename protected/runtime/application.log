@@ -7826,3 +7826,62 @@ REQUEST_URI=/mts/index.php/pengiriman/view?idm=2
 in C:\xampp\htdocs\mts\protected\views\pengiriman\_formu.php (25)
 in C:\xampp\htdocs\mts\protected\views\pengiriman\update.php (28)
 in C:\xampp\htdocs\mts\protected\controllers\PengirimanController.php (68)
+2018/11/27 02:48:54 [error] [exception.CException] exception 'CException' with message 'Either "name" or "value" must be specified for CDataColumn.' in C:\xampp\htdocs\mts\framework\zii\widgets\grid\CDataColumn.php:84
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\zii\widgets\grid\CGridView.php(401): CDataColumn->init()
+#1 C:\xampp\htdocs\mts\framework\zii\widgets\grid\CGridView.php(359): CGridView->initColumns()
+#2 C:\xampp\htdocs\mts\framework\web\CBaseController.php(147): CGridView->init()
+#3 C:\xampp\htdocs\mts\framework\web\CBaseController.php(172): CBaseController->createWidget('zii.widgets.gri...', Array)
+#4 C:\xampp\htdocs\mts\protected\views\material\index.php(645): CBaseController->widget('zii.widgets.gri...', Array)
+#5 C:\xampp\htdocs\mts\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\mts\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\mts\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#8 C:\xampp\htdocs\mts\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#9 C:\xampp\htdocs\mts\protected\controllers\MaterialController.php(247): CController->render('index', Array)
+#10 C:\xampp\htdocs\mts\framework\web\actions\CInlineAction.php(49): MaterialController->actionIndex()
+#11 C:\xampp\htdocs\mts\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\mts\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#13 C:\xampp\htdocs\mts\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#14 C:\xampp\htdocs\mts\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\mts\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#16 C:\xampp\htdocs\mts\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#17 C:\xampp\htdocs\mts\framework\web\CController.php(291): CFilterChain->run()
+#18 C:\xampp\htdocs\mts\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('index')
+#20 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/index')
+#21 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#22 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#23 {main}
+REQUEST_URI=/mts/index.php/material/index
+HTTP_REFERER=http://localhost/mts/
+---
+2018/11/27 06:32:03 [warning] [application] Failed to set unsafe attribute "dokeng" of "Material".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (89)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/11/27 06:33:26 [warning] [application] Failed to set unsafe attribute "dokeng" of "Material".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (127)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/11/27 06:40:48 [warning] [application] Failed to set unsafe attribute "status" of "Material".
+in C:\xampp\htdocs\mts\protected\controllers\KomController.php (101)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/11/27 06:44:13 [warning] [application] Failed to set unsafe attribute "status" of "Material".
+in C:\xampp\htdocs\mts\protected\controllers\PengirimanController.php (58)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/11/27 08:19:37 [error] [exception.CException] CException: CHttpRequest is unable to determine the request URI. in C:\xampp\htdocs\mts\framework\web\CHttpRequest.php:519
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CHttpRequest.php(431): CHttpRequest->getRequestUri()
+#1 C:\xampp\htdocs\mts\framework\web\CUrlManager.php(364): CHttpRequest->getPathInfo()
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(140): CUrlManager->parseUrl(Object(CHttpRequest))
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+---
+2018/11/27 08:28:37 [error] [exception.CException] CException: CHttpRequest is unable to determine the request URI. in C:\xampp\htdocs\mts\framework\web\CHttpRequest.php:519
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CHttpRequest.php(431): CHttpRequest->getRequestUri()
+#1 C:\xampp\htdocs\mts\framework\web\CUrlManager.php(364): CHttpRequest->getPathInfo()
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(140): CUrlManager->parseUrl(Object(CHttpRequest))
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+---
