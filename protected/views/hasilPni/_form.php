@@ -56,7 +56,18 @@
 		<?php echo $form->textArea($model,'desk',array('class'=>'form-control'),array('size'=>60,'maxlength'=>300)); ?>
 		<?php echo $form->error($model,'desk'); ?>
 	</div>
-
+	<div class="form-group">
+            <?php echo $form->labelEx($model,'status'); ?>
+            <?php echo $form->dropDownList(
+                    $model,'status',
+                    array(
+                            'Lulus' => 'Lulus',
+                            'Repair' => 'Repair',
+                            
+                        ),
+                    array('prompt'=>'Pilih status','class'=>'form-control'),array('size'=>60,'maxlength'=>100)); ?>
+            <?php echo $form->error($model,'status'); ?>
+        </div>
 
 
 	<div class="form-group buttons">

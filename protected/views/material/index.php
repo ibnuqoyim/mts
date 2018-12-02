@@ -331,6 +331,13 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                         'visible' =>'$data->status == 5',
                                                         'url'=>'$this->grid->controller->createUrl("/penawaran/create",array("idm"=>$data->id))',
                                                              ),
+                                                'progres' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 8.5',
+                                                        'url'=>'$this->grid->controller->createUrl("/produksi/create",array("idm"=>$data->id))',
+                                                             ),
                                                 'kom' => array
                                                     (
                                                         'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
@@ -340,16 +347,16 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                              ),
 
                                                           
-                                            'repair' => array
-                                                    (
-                                                        'label'=>'<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>',
-                                                        'type'=>'raw',
-                                                        'imageUrl'=>false,
-                                                        'visible' =>'$data->status == 10',
-                                                        'url'=>'$this->grid->controller->createUrl("/hasilrepair/create",array("idm"=>$data->id))',
-                                                             ),
+                                                'repair' => array
+                                                        (
+                                                            'label'=>'<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>',
+                                                            'type'=>'raw',
+                                                            'imageUrl'=>false,
+                                                            'visible' =>'$data->status == 10',
+                                                            'url'=>'$this->grid->controller->createUrl("/hasilrepair/create",array("idm"=>$data->id))',
+                                                                 ),
 
-                                                          ),
+                                                              ),
                                 ),
                         ),
                     )); ?>
@@ -464,6 +471,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                         'visible' =>'$data->status == 9',
                                                         'url'=>'$this->grid->controller->createUrl("/hasilPni/create",array("idm"=>$data->id))',
                                                              ),
+
 
                                                 'pni' => array
                                                     (

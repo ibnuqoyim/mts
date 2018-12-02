@@ -30,7 +30,7 @@ class HasilPni extends CActiveRecord
 		return array(
 			array('id_material, file, desk, tgl_create', 'required'),
 			array('id_material', 'numerical', 'integerOnly'=>true),
-			array('file', 'length', 'max'=>100),
+			array('file, status', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, id_material, file, desk, tgl_create', 'safe', 'on'=>'search'),
