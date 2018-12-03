@@ -57,25 +57,12 @@ CHtml::ajaxLink('View Popup', 'material/index',
 				 </div>
 		 </div>
  </header>
-
- <img class="logo" align="center" src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/img/a.png" alt="Logo">
  <section class="container">
 
 
             <div class="col-lg-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-
-                    <?php  
-                    Yii::import('ext.qrcode.QRCode');
-                    $ax = "prikitiw";
-                    $code=new QRCode($ax);
-                    $path = Yii::getPathOfAlias("webroot"). '/themes/dashboard/assets/img/'.$ax.'.png';
-                    $code->create($path) ;
-                    //imagepng($code);
-                    echo Yii::app()->baseUrl;
-                    ?>
-                    <img class="logo" align="center" src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/img/<?php echo $ax ?>.png" alt="Logo">
                         <h3 class="panel-title">Search</h3>
                     </div>
                     <div class="panel-body">
@@ -340,13 +327,6 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                         'visible' =>'$data->status == 5',
                                                         'url'=>'$this->grid->controller->createUrl("/penawaran/create",array("idm"=>$data->id))',
                                                              ),
-                                                'progres' => array
-                                                    (
-                                                        'label'=>'<span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>',
-                                                        'imageUrl'=>false,
-                                                        'visible' =>'$data->status == 8.5',
-                                                        'url'=>'$this->grid->controller->createUrl("/produksi/create",array("idm"=>$data->id))',
-                                                             ),
                                                 'kom' => array
                                                     (
                                                         'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
@@ -356,16 +336,16 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                              ),
 
                                                           
-                                                'repair' => array
-                                                        (
-                                                            'label'=>'<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>',
-                                                            'type'=>'raw',
-                                                            'imageUrl'=>false,
-                                                            'visible' =>'$data->status == 10',
-                                                            'url'=>'$this->grid->controller->createUrl("/hasilrepair/create",array("idm"=>$data->id))',
-                                                                 ),
+                                            'repair' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>',
+                                                        'type'=>'raw',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 10',
+                                                        'url'=>'$this->grid->controller->createUrl("/hasilrepair/create",array("idm"=>$data->id))',
+                                                             ),
 
-                                                              ),
+                                                          ),
                                 ),
                         ),
                     )); ?>
@@ -482,7 +462,6 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                         'visible' =>'$data->status == 9',
                                                         'url'=>'$this->grid->controller->createUrl("/hasilPni/create",array("idm"=>$data->id))',
                                                              ),
-
 
                                                 'pni' => array
                                                     (
@@ -689,46 +668,3 @@ CHtml::ajaxLink('View Popup', 'material/index',
                 document.getElementById('complete').style.display='none'
             }
         </script>
-
-<?php 
-
-    $cron = new Crontab('my_crontabxx'); // my_crontab file will store all added jobs
-    
-    $jobs_obj = $cron->getJobs(); // previous jobs saved in my_crontab
-    
-    foreach($jobs_obj as $job)
-        echo $job->getCommand();
-    
-    $cron->eraseJobs(); // erase all previous jobs in my_crontab
-    
-    // Application console job
-    $cron->addApplicationJob('yiicmd', 'test1', array(), '*');
-    
-    // to change job values:
-    $jobs_obj = $cron->getJobs();
-    $jobs_obj[0]->setParams(array("'datetime'"));
-    $jobs_obj[0]->setCommandName('test');
-   
-    // <= adds a job with: * * * * * php /home/user/my_project/www/yiicmd.php test 'datetime'
-    
-    // add an other job
-    $job = new CronApplicationJob('yiicmd', 'test', array("'datetime'"), '0', '0'); // run every day
-    $job->setParams(array("'date'"));
-    $cron->add($job);
-     
-    // <= adds a second job with: 0 0 * * * php /home/user/my_project/www/yiicmd.php test 'date'
-    
-    // add a regular cron job
-    $cron->addJob('/material/index', '0', '0', '*', '*', '1'); // run every monday
-    $jobs_obj = $cron->getJobs();
-    echo $jobs_obj[2]->getCommand();
-    
-    // <= adds a third job with: 0 0 * * 1 /home/user/myprogram.bin 
-    
-    $cron->removeJob(2); // removes job with offset 2 (last added here)
-    
-    $cron->saveCronFile(); // save to my_crontab cronfile
-    
-    $cron->saveToCrontab(); // adds all my_crontab jobs to system (replacing previous my_crontab jobs)
-    
-    ?>

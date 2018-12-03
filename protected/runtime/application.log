@@ -8587,3 +8587,355 @@ REQUEST_URI=/mts/index.php/material/index
 in C:\xampp\htdocs\mts\protected\extensions\qrcode\QRCode.php (668)
 in C:\xampp\htdocs\mts\protected\views\material\index.php (74)
 in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (279)
+2018/12/03 03:02:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "vid.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('vid.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('vid.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/vid.pn...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/vid.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:02:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "down.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('down.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('down.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/down.p...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/down.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:02:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "cam.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('cam.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('cam.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/cam.pn...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/cam.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:03:29 [error] [php] Undefined variable: ax (C:\xampp\htdocs\mts\protected\views\material\index.php:115)
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(869): MaterialController->renderFile()
+#1 C:\xampp\htdocs\mts\framework\web\CController.php(782): MaterialController->renderPartial()
+#2 C:\xampp\htdocs\mts\protected\controllers\MaterialController.php(279): MaterialController->render()
+#3 C:\xampp\htdocs\mts\framework\web\actions\CInlineAction.php(49): MaterialController->actionIndex()
+#4 C:\xampp\htdocs\mts\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\htdocs\mts\framework\web\filters\CFilterChain.php(133): MaterialController->runAction()
+#6 C:\xampp\htdocs\mts\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\mts\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\xampp\htdocs\mts\framework\web\filters\CInlineFilter.php(58): MaterialController->filterAccessControl()
+#9 C:\xampp\htdocs\mts\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\xampp\htdocs\mts\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\mts\framework\web\CController.php(265): MaterialController->runActionWithFilters()
+#12 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): MaterialController->run()
+#13 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\mts\index.php(13): CWebApplication->run()
+REQUEST_URI=/mts/index.php/material/index
+in C:\xampp\htdocs\mts\protected\views\material\index.php (115)
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (279)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/03 03:04:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "vid.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('vid.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('vid.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/vid.pn...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/vid.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:04:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "cam.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('cam.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('cam.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/cam.pn...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/cam.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:04:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "down.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('down.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('down.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/down.p...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/down.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:11:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "vid.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('vid.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('vid.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/vid.pn...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/vid.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:11:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "cam.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('cam.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('cam.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/cam.pn...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/cam.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:11:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "down.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('down.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('down.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/down.p...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/down.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:11:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "comodo_secure_seal_100x85_transp.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('comodo_secure_s...')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('comodo_secure_s...')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/comodo...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/comodo_secure_seal_100x85_transp.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:12:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "vid.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('vid.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('vid.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/vid.pn...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/vid.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:12:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "cam.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('cam.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('cam.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/cam.pn...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/cam.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:12:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "down.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('down.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('down.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/down.p...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/down.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:12:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "comodo_secure_seal_100x85_transp.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('comodo_secure_s...')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('comodo_secure_s...')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/comodo...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/comodo_secure_seal_100x85_transp.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:13:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "vid.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('vid.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('vid.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/vid.pn...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/vid.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:13:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "cam.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('cam.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('cam.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/cam.pn...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/cam.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:13:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "down.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('down.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('down.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/down.p...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/down.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:13:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "comodo_secure_seal_100x85_transp.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('comodo_secure_s...')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('comodo_secure_s...')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/comodo...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/comodo_secure_seal_100x85_transp.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:14:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "vid.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('vid.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('vid.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/vid.pn...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/vid.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:14:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "cam.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('cam.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('cam.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/cam.pn...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/cam.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:14:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "down.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('down.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('down.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/down.p...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/down.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:14:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "comodo_secure_seal_100x85_transp.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('comodo_secure_s...')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('comodo_secure_s...')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/comodo...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/comodo_secure_seal_100x85_transp.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:15:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "vid.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('vid.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('vid.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/vid.pn...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/vid.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:15:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "cam.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('cam.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('cam.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/cam.pn...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/cam.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:15:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "down.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('down.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('down.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/down.p...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/down.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:15:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "comodo_secure_seal_100x85_transp.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('comodo_secure_s...')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('comodo_secure_s...')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/comodo...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/comodo_secure_seal_100x85_transp.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:16:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "vid.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('vid.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('vid.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/vid.pn...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/vid.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:16:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "cam.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('cam.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('cam.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/cam.pn...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/cam.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:16:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "down.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('down.png')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('down.png')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/down.p...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/down.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
+2018/12/03 03:16:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "comodo_secure_seal_100x85_transp.png".' in C:\xampp\htdocs\mts\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(270): CController->missingAction('comodo_secure_s...')
+#1 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('comodo_secure_s...')
+#2 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/comodo...')
+#3 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/mts/index.php/material/comodo_secure_seal_100x85_transp.png
+HTTP_REFERER=http://localhost/mts/index.php/material/index
+---
