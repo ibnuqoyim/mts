@@ -1,0 +1,2 @@
+* * * * * php C:/xampp/htdocs/mts/yiicmd.php test 'datetime'
+0 0 * * * php C:/xampp/htdocs/mts/yiicmd.php test dor
