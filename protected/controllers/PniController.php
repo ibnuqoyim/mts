@@ -73,7 +73,7 @@ class PniController extends Controller
 			$model->attributes=$_POST['Pni'];
 			$model->id_material=$idm;
 			
-			$modal->status=9;
+			$modal->status=8.5;
 			$modal->save();
 			$model->file = CUploadedFile::getInstance($model, 'file');       
 			$path = Yii::getPathOfAlias("webroot"). '/dokumen/pni/'.$model->file;

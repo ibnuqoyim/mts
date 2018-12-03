@@ -73,15 +73,21 @@ class HasilPniController extends Controller
 			$model->attributes=$_POST['HasilPni'];
 			$model->id_material=$idm;
 			
-			$modal->status=10;
-			$modal->save();
+			
 			$model->file = CUploadedFile::getInstance($model, 'file');       
 			$path = Yii::getPathOfAlias("webroot"). '/dokumen/pni/hasil-'.$model->file;
 			$model->file->saveAs($path);
 			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
+				if($model->status == "Lulus"){
+					$this->redirect(array('irn/create','idm'=>$modal->id));
+				}
+				else{
+				$modal->status=10;
+				$modal->save();
 				Yii::app()->user->setFlash('success', 'Berita Acara Inspeksi berhasil di upload');
 				$this->redirect(array('material/index'));
+			}
 		}
 
 		$this->render('create',array(

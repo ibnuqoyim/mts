@@ -1,4 +1,4 @@
-<?php
+    <?php
 /* @var $this UserController */
 /* @var $model User */
 /* @var $form CActiveForm */
@@ -18,6 +18,21 @@
     </div>
 
     <div class="col-lg-6">
+        <div class="form-group">
+            <?php echo $form->labelEx($model,'kategori'); ?>
+            <?php echo $form->dropDownList(
+                    $model,'kategori',
+                    array(
+                            '1' => 'Material Civil',
+                            '2' => 'Pipping & Flange',
+                            '3' => 'Instrument & Electrical',
+                            '4' => 'Material Lainnya',
+                            
+                        ),
+                    array('prompt'=>'Pilih kategori','class'=>'form-control'),array('size'=>60,'maxlength'=>100)); ?>
+            <?php echo $form->error($model,'kategori'); ?>
+        </div>
+
         <div class="form-group">
             <?php echo "Nama Material"; ?>
 			<?php echo $form->textField($model,'nama',array('class'=>'form-control'),array('size'=>60,'maxlength'=>100)); ?>

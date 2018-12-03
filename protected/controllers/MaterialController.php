@@ -125,7 +125,7 @@ class MaterialController extends Controller
 			$path = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/'.$model->dokeng;
 			$model->dokeng->saveAs($path);
 
-			
+			//$model->serial = $model->kategoria->singkatan.'-'.$model->id;
 			$model->create_date= date("Y-m-d",time());
 			$model->last_update= date("Y-m-d",time());
 			$model->status = 1 ;

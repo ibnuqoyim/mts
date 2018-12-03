@@ -32,7 +32,7 @@ class Material extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('client, nama, create_date, last_update', 'required'),
-			array('client, stok', 'numerical', 'integerOnly'=>true),
+			array('client, stok, kategori', 'numerical', 'integerOnly'=>true),
 			array('nama', 'length', 'max'=>100),
 			array('pemenang', 'length', 'max'=>110),
 			// The following rule is used by search().
@@ -52,6 +52,7 @@ class Material extends CActiveRecord
 			'statusa' => array(self::BELONGS_TO, 'Status', 'status'),
 			'clienta' => array(self::BELONGS_TO, 'Client', 'client'),
 			'usera' => array(self::BELONGS_TO, 'User', 'pemenang'),
+			'kategoria' => array(self::BELONGS_TO, 'Kategori', 'kategori'),
 		);
 	}
 
