@@ -128,6 +128,9 @@ class MaterialController extends Controller
 			//$model->serial = $model->kategoria->singkatan.'-'.$model->id;
 			$model->create_date= date("Y-m-d",time());
 			$model->last_update= date("Y-m-d",time());
+			$date = strtotime(date("Y-m-d H:i:s"));
+			$a = strtotime("+14 day", $date);
+			$model->deadline_responclient=date("Y-m-d H:i:s",$a);
 			$model->status = 1 ;
 
 			if($model->save())

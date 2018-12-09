@@ -67,7 +67,8 @@ CHtml::ajaxLink('View Popup', 'material/index',
                     </div>
                     <div class="panel-body">
                         
-                        <?php $form=$this->beginWidget('CActiveForm', array(
+                        <?php  //$this->widget('ext.ecountdown.ECountDown', array('seconds' => 4));
+                        $form=$this->beginWidget('CActiveForm', array(
                                 'action'=>Yii::app()->createUrl($this->route),
                                 'method'=>'get',
                         )); ?>
@@ -311,13 +312,13 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                          ),
                                 array('name'=>'status',
                                          'header'=>'Status',
-                                         'value'=>'($data->pemenang == Yii::app()->user->id && $data->pemenang != null && $data->status == 6) ? "Selamat anda menang": (($data->pemenang != Yii::app()->user->id && $data->pemenang != null && $data->status == 6) ? "Maaf anda belum beruntung": $data->statusa->keterangan)',
+                                         'value'=>'($data->pemenang == Yii::app()->user->id && $data->pemenang != null && $data->status == 6) ? "Selamat anda menang": (($data->pemenang != Yii::app()->user->id && $data->pemenang != null && $data->status == 6) ? "Maaf anda belum beruntung":($data->status == 8.5 ) ? "Progres Produksi Material ".$data->progres."%" : $data->statusa->keterangan)',
 
                                          ),
                                 array(
                                         'class'=>'CButtonColumn',
                                         'header'=>'Action',
-                                        'template'=>'{edit} {kom} {repair}',
+                                        'template'=>'{edit} {kom} {progres} {repair}',
                                         'buttons'=>array
                                             (
                                                 'edit' => array
@@ -333,6 +334,13 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 7.5',
                                                         'url'=>'$this->grid->controller->createUrl("/kom/approve",array("idm"=>$data->id))',
+                                                             ),
+                                                    'progres' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 8.5',
+                                                        'url'=>'$this->grid->controller->createUrl("/produksi/create",array("idm"=>$data->id))',
                                                              ),
 
                                                           
@@ -383,7 +391,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                          ),
                                 array('name'=>'status',
                                          'header'=>'Status',
-                                         'value'=>'$data->statusa->keterangan',
+                                         'value'=>'($data->status == 8.5 ) ? "Progres Produksi Material ".$data->progres."%" : $data->statusa->keterangan',
 
                                          ),
                                 array(

@@ -35,8 +35,8 @@ class ECountDown extends CWidget
 
                 $("#"+$(this).attr("rel")).html(_ore+":"+_minuti+":"+_secondi);
                 
-                if(valore<=-1)
-                    document.location.href = "hahahah";
+                if(valore==0)
+                    $("#"+$(this).attr("rel")).html("habis");
             });
             setTimeout("countDown();", 1000);
         }', CClientScript::POS_END)

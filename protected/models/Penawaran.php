@@ -29,12 +29,12 @@ class Penawaran extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_user, id_material, file, deskripsi, tgl_create', 'required'),
+			array('id_user, id_material, file_administrasi, file_teknis, deskripsi, deskripsi, tgl_create', 'required'),
 			array('id_user, id_material', 'numerical', 'integerOnly'=>true),
-			array('file, deskripsi', 'length', 'max'=>250),
+			array('file_administrasi, file_teknis, deskripsi, deskripsi', 'length', 'max'=>250),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_user, id_material, file, deskripsi, tgl_create', 'safe', 'on'=>'search'),
+			array('id, id_user, id_material, file_administrasi, file_teknis, deskripsi, deskripsi, tgl_create', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,7 +60,8 @@ class Penawaran extends CActiveRecord
 			'id' => 'ID',
 			'id_user' => 'Id User',
 			'id_material' => 'Id Material',
-			'file' => 'File',
+			'file_administrasi' => 'Berkas Administrasi',
+			'file_teknis'=>'Berkasi Teknis',
 			'deskripsi' => 'Deskripsi',
 			'tgl_create' => 'Tgl Create',
 		);

@@ -60,23 +60,35 @@ class ProduksiController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($idm)
 	{
 		$model=new Produksi;
-
+ 
+		$modal=Material::model()->findByPk($idm);
+		$pni=Pni::model()->findAll('id_material ='.$idm);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Produksi']))
 		{
 			$model->attributes=$_POST['Produksi'];
+			$model->id_material=$idm;
+			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				if($model->progres == 100){
+					$modal->status = 9;
+					$modal->save();
+				}
+				else {$modal->progres = $model->progres;
+				$modal->save();}
+				Yii::app()->user->setFlash('success', 'Progress produksi telah diupdate');
+				$this->redirect(array('material/index'));
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$model, 'modal'=>$modal,'pni'=>$pni
 		));
+		
 	}
 
 	/**

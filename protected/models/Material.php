@@ -32,12 +32,12 @@ class Material extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('client, nama, create_date, last_update', 'required'),
-			array('client, stok, kategori', 'numerical', 'integerOnly'=>true),
+			array('client, stok, kategori, progres', 'numerical', 'integerOnly'=>true),
 			array('nama', 'length', 'max'=>100),
 			array('pemenang', 'length', 'max'=>110),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, client, nama, status, pemenang, stok, create_date, last_update', 'safe', 'on'=>'search'),
+			array('id, client, nama, deadline_responclient, actual_responclient, status, pemenang, stok, create_date, last_update', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -191,7 +191,7 @@ class Material extends CActiveRecord
 		$criteria->compare('status',$this->status);
 		$criteria->compare('pemenang',$this->pemenang,true);
 		$criteria->compare('stok',$this->stok);
-		$criteria->addCondition('status>=6 && status<=8' );
+		$criteria->addCondition('status>=6 && status<=8.5' );
 
 
 		return new CActiveDataProvider($this, array(

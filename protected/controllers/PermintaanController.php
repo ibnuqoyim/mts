@@ -73,11 +73,16 @@ class PermintaanController extends Controller
 			$model->id_material=$idm;
 			
 			$modal->status=5;
-			$modal->save();
+			
 			$model->file = CUploadedFile::getInstance($model, 'file');       
 			$path = Yii::getPathOfAlias("webroot"). '/dokumen/permintaan/'.$model->file;
 			$model->file->saveAs($path);
 			$model->tgl_create= date("Y-m-d",time());
+			$date = strtotime(date("Y-m-d H:i:s"));
+			$a = strtotime("+17 day", $date);
+			$modal->actual_dokpermintaan=date("Y-m-d H:i:s");
+			$modal->deadline_dokpenawaran=date("Y-m-d H:i:s",$a);
+			$modal->save();
 			if($model->save())
 				Yii::app()->user->setFlash('success', 'Dokumen permintaan penawaran berhasil di upload');
 				$this->redirect(array('material/index'));

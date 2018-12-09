@@ -28,13 +28,13 @@ class Permintaan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array( 'file, tgl_create', 'required'),
+			array( 'file,  deadline, tgl_create', 'required'),
 			array('id_material', 'numerical', 'integerOnly'=>true),
 			array('file', 'length', 'max'=>100),
 			array('deskripsi', 'length', 'max'=>300),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_material, file, deskripsi, tgl_create', 'safe', 'on'=>'search'),
+			array('id, id_material, file, tgl_create', 'safe', 'on'=>'search'),
 		);
 	}
 

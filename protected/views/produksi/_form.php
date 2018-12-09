@@ -16,7 +16,7 @@
 	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 	<div class="col-lg-6">
-	<?php foreach ($kontrak as $res)
+	<?php foreach ($pni as $res)
             { ?>
          <table class="table table-hover table-dark" style="width:100%">
               <tr>
@@ -33,7 +33,7 @@
               </tr>
               <tr>
                 <td>Dokumen Kontrak</td>
-                <td><a href="/mts/dokumen/kontrak/<?php echo $res->file ?>"><?php echo $res->file ?></a></td>
+                <td><a href="/mts/dokumen/pni/<?php echo $res->file ?>"><?php echo $res->file ?></a></td>
               </tr>
             </table> 
           <?php  }?>
@@ -55,7 +55,7 @@
             <?php echo $form->error($model,'progres'); ?>
         </div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'keterangan'); ?>
 		<?php echo $form->textArea($model,'keterangan',array('class'=>'form-control'),array('size'=>60,'maxlength'=>300)); ?>
 		<?php echo $form->error($model,'keterangan'); ?>
@@ -70,54 +70,3 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form --><?php
-/* @var $this ProduksiController */
-/* @var $model Produksi */
-/* @var $form CActiveForm */
-?>
-
-<div class="form">
-
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'produksi-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-)); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'id_material'); ?>
-		<?php echo $form->textField($model,'id_material'); ?>
-		<?php echo $form->error($model,'id_material'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'progres'); ?>
-		<?php echo $form->textField($model,'progres'); ?>
-		<?php echo $form->error($model,'progres'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'keterangan'); ?>
-		<?php echo $form->textArea($model,'keterangan',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'keterangan'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'tgl_create'); ?>
-		<?php echo $form->textField($model,'tgl_create'); ?>
-		<?php echo $form->error($model,'tgl_create'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
-
-<?php $this->endWidget(); ?>
-
-</div><!-- form -->

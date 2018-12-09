@@ -29,7 +29,7 @@
               </tr>
               <tr>
                 <td>Status</td>
-                 <td><?php echo $modal->statusa->namaStatus ?></td>
+                 <td><?php echo $modal->kategoria->nama ?></td>
               </tr>
               <tr>
                 <td>Dokumen Engineering</td>
