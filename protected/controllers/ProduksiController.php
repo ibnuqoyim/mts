@@ -77,6 +77,11 @@ class ProduksiController extends Controller
 			if($model->save())
 				if($model->progres == 100){
 					$modal->status = 9;
+					$modal->actual_produksi = date("Y-m-d H:i:s");
+					$date = strtotime(date("Y-m-d H:i:s"));
+					$a = strtotime("+2 day", $date);
+					
+					$modal->deadline_inspeksiqc=date("Y-m-d H:i:s",$a);
 					$modal->save();
 				}
 				else {$modal->progres = $model->progres;

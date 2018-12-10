@@ -80,10 +80,21 @@ class HasilPniController extends Controller
 			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
 				if($model->status == "Lulus"){
+					$modal->actual_inspeksiqc = date("Y-m-d H:i:s");
+					$date = strtotime(date("Y-m-d H:i:s"));
+					$a = strtotime("+3 day", $date);
+					
+					$modal->deadline_fatnirn=date("Y-m-d H:i:s",$a);
+					$modal->save();
 					$this->redirect(array('irn/create','idm'=>$modal->id));
 				}
 				else{
 				$modal->status=10;
+				$modal->actual_inspeksiqc = date("Y-m-d H:i:s");
+				$date = strtotime(date("Y-m-d H:i:s"));
+				$a = strtotime("+5 day", $date);
+					
+				$modal->deadline_repair=date("Y-m-d H:i:s",$a);
 				$modal->save();
 				Yii::app()->user->setFlash('success', 'Berita Acara Inspeksi berhasil di upload');
 				$this->redirect(array('material/index'));

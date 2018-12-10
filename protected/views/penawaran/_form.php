@@ -52,9 +52,15 @@ $form=$this->beginWidget('CActiveForm', array(
 	<br>
 	
 	<div class="form-group">
-            <?php echo "Silahkan Upload Dokumen Penawaran : <br>" ?>
-			<?php echo $form->fileField($model,'file'); ?>
-			<?php echo $form->error($model,'file'); ?>
+            <?php echo "<h4><b>Silahkan Upload Dokumen Administrasi untuk tender : </b></h4> <br>" ?>
+			<?php echo $form->fileField($model,'file_administrasi'); ?>
+			<?php echo $form->error($model,'file_administrasi'); ?>
+    </div>
+
+    <div class="form-group">
+            <?php echo "<h4><b>Silahkan Upload Dokumen Teknis untuk tender : </b></h4><br>" ?>
+			<?php echo $form->fileField($model,'file_teknis'); ?>
+			<?php echo $form->error($model,'file_teknis'); ?>
     </div>
 
 	<div class="form-group">

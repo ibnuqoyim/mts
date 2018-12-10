@@ -78,7 +78,11 @@ class ClientResponController extends Controller
 		}
 			$model->tgl_create= date("Y-m-d",time());
 			$modal->status=2;
+			
+			$date = strtotime(date("Y-m-d H:i:s"));
+			$a = strtotime("+2 day", $date);
 			$modal->actual_responclient=date("Y-m-d H:i:s");
+			$modal->deadline_dokpemintaan=date("Y-m-d H:i:s",$a);
 			$modal->save();
 			if($model->save())
 				Yii::app()->user->setFlash('success', 'Dokumen Engineering Material '.$modal->nama.' berhasil di Approve!!');
@@ -105,7 +109,7 @@ class ClientResponController extends Controller
 			$path = Yii::getPathOfAlias("webroot"). '/dokumen/responclient/tolak-'.$model->file_respon;
 			$model->file_respon->saveAs($path);
 			$model->tgl_create= date("Y-m-d",time());
-			$modal->actual_responclient=date("Y-m-d H:i:s");
+			
 			$modal->status=3;
 			$modal->save();
 			if($model->save())

@@ -49,7 +49,13 @@
 			<?php echo $form->error($model,'file'); ?>
     </div>
 
-	<div class="row">
+    <div class="form-group">
+		<?php echo $form->labelEx($modal,'deadline_produksi'); ?>
+		<?php echo $form->dateField($modal,'deadline_produksi',array('class'=>'form-control'),array('size'=>60,'maxlength'=>300)); ?>
+		<?php echo $form->error($modal,'deadline_produksi'); ?>
+	</div>
+
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'desk'); ?>
 		<?php echo $form->textArea($model,'desk',array('class'=>'form-control'),array('size'=>60,'maxlength'=>300)); ?>
 		<?php echo $form->error($model,'desk'); ?>
@@ -57,8 +63,8 @@
 
 
 
-	<div class="row buttons">
-		<?php echo '<br>'.CHtml::submitButton($model->isNewRecord ? 'Upload' : 'Save', array('class'=>'btn  btn-info left ')); ?>
+	<div class="form-group buttons">
+		<?php echo '<br>'.CHtml::submitButton(($model->isNewRecord && $modal->isNewRecord) ? 'Upload' : 'Save', array('class'=>'btn  btn-info left ')); ?>
 	</div>
 </div>
 <?php $this->endWidget(); ?>

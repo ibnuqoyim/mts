@@ -37,7 +37,7 @@ class Material extends CActiveRecord
 			array('pemenang', 'length', 'max'=>110),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, client, nama, deadline_responclient, actual_responclient, status, pemenang, stok, create_date, last_update', 'safe', 'on'=>'search'),
+			array('id, client, nama, deadline_responclient, deadline_produksi, actual_responclient, status, pemenang, stok, create_date, last_update', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,6 +55,8 @@ class Material extends CActiveRecord
 			'kategoria' => array(self::BELONGS_TO, 'Kategori', 'kategori'),
 		);
 	}
+
+
 
 	/**
 	 * @return array customized attribute labels (name=>label)
@@ -116,7 +118,7 @@ class Material extends CActiveRecord
 		$criteria->compare('status',$this->status);
 		$criteria->compare('pemenang',$this->pemenang,true);
 		$criteria->compare('stok',$this->stok);
-		$criteria->addCondition('status=2 || status = 3' );
+		$criteria->addCondition('status=2 || status = 3 || status = 5' );
 
 
 		return new CActiveDataProvider($this, array(
@@ -178,6 +180,9 @@ class Material extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+
+		
+
 	}
 
 	public function expedeting()

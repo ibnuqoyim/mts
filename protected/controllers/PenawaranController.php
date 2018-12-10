@@ -77,9 +77,12 @@ class PenawaranController extends Controller
 			$model->id_user = Yii::app()->user->id;
 			$modal->status=5;
 			$modal->save();
-			$model->file = CUploadedFile::getInstance($model, 'file');       
-			$path = Yii::getPathOfAlias("webroot"). '/dokumen/penawaran/'.$model->file;
-			$model->file->saveAs($path);
+			$model->file_teknis = CUploadedFile::getInstance($model, 'file_teknis');       
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/penawaran/TEKNIS-'.$model->file_teknis;
+			$model->file_teknis->saveAs($path);
+			$model->file_administrasi = CUploadedFile::getInstance($model, 'file_administrasi');       
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/penawaran/ADM-'.$model->file_administrasi;
+			$model->file_administrasi->saveAs($path);
 			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
 				Yii::app()->user->setFlash('success', 'Dokumen penawaran berhasil di upload');

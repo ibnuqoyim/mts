@@ -122,7 +122,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                 array(
                                     'class'=>'CButtonColumn',
                                     'header'=>'Action',
-                                    'template'=>'{edit}',
+                                    'template'=>'{edit} {view}',
                                     'buttons'=>array
                                             (
                                                 'edit' => array
@@ -131,6 +131,13 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 3',
                                                         'url'=>'$this->grid->controller->createUrl("/material/update",array("id"=>$data->id))',
+                                                             ),
+                                                'view' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 5',
+                                                        'url'=>'$this->grid->controller->createUrl("/penawaran/view",array("idm"=>$data->id))',
                                                              ),
 
                                                           ),
@@ -283,7 +290,36 @@ CHtml::ajaxLink('View Popup', 'material/index',
             <div id="Vendor" style = "display: block" class="col-lg-12">
                 <br>
                 <b align="center">Dashboard Vendor</b>
-                <?php $this->widget('zii.widgets.grid.CGridView', array(
+                <?php 
+                function dor($id, $a,$b,$c)
+                    {
+                       if($a == Yii::app()->user->id && $b == 6)
+                        {
+                            echo "Selamat Anda Menang !!!";
+                        }
+                        elseif($a != Yii::app()->user->id && $a != NULL && $b == 6)
+                            {
+                                echo "Maaf anda belum beruntung !!!";
+                            }
+                        elseif ($b == 5 && $c == 1) {
+                            echo "Tender dibuka !!";
+                        }
+                        elseif ($b == 5 && $c == 2) {
+                            echo "Tender telah ditutup" ;# code...
+                        }
+                        elseif ($b == 8.5) {
+                            $material = Material::Model()->findbyPk($id);
+                            echo 'Progres Produksi Material '.$material->progres.'%';
+                        }
+                        else
+                        {
+                            $stat = Status::Model()->findbyPk($b);
+                            echo $stat->keterangan;
+                        }
+
+                    }
+                    //($data->pemenang == Yii::app()->user->id && $data->pemenang != null && $data->status == 6) ? "Selamat anda menang": ($data->pemenang != Yii::app()->user->id && $data->pemenang != null && $data->status == 6) ? "Maaf anda belum beruntung" : ($data->status == 5 && $data->status_tender == 1) ? "Tender dibuka" :($data->status == 5 && $data->status_tender == 2) ? "Tender ditutup":($data->status == 8.5) ? "Progres Produksi Material ".$data->progres."%" : $data->statusa->keterangan
+                    $this->widget('zii.widgets.grid.CGridView', array(
                         'id'=>'user-grid',
                         'dataProvider'=>$model->vendor(Yii::app()->user->id),
                         //'filter'=>$model,
@@ -312,7 +348,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                          ),
                                 array('name'=>'status',
                                          'header'=>'Status',
-                                         'value'=>'($data->pemenang == Yii::app()->user->id && $data->pemenang != null && $data->status == 6) ? "Selamat anda menang": (($data->pemenang != Yii::app()->user->id && $data->pemenang != null && $data->status == 6) ? "Maaf anda belum beruntung":($data->status == 8.5 ) ? "Progres Produksi Material ".$data->progres."%" : $data->statusa->keterangan)',
+                                         'value'=>'dor($data->id, $data->pemenang,$data->status,$data->status_tender)',
 
                                          ),
                                 array(
@@ -325,7 +361,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                     (
                                                         'label'=>'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
                                                         'imageUrl'=>false,
-                                                        'visible' =>'$data->status == 5',
+                                                        'visible' =>'$data->status == 5 && $data->status_tender == 1',
                                                         'url'=>'$this->grid->controller->createUrl("/penawaran/create",array("idm"=>$data->id))',
                                                              ),
                                                 'kom' => array

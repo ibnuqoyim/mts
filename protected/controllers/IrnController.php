@@ -72,7 +72,11 @@ class IrnController extends Controller
 		{
 			$model->attributes=$_POST['Irn'];
 			$model->id_material=$idm;
-			
+			$modal->actual_fatnirn=date("Y-m-d H:i:s");
+			$date = strtotime(date("Y-m-d H:i:s"));
+			$a = strtotime("+7 day", $date);
+					
+			$modal->deadline_pengiriman=date("Y-m-d H:i:s",$a);
 			$modal->status=12;
 			$modal->save();
 			

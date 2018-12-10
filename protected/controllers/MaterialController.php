@@ -32,7 +32,7 @@ class MaterialController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','UpdateDPP','win','admin','detail'),
+				'actions'=>array('create','update','UpdateDPP','win','admin','detail','closetender'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -181,23 +181,17 @@ class MaterialController extends Controller
 		));
 	}
 	
-	public function actionUpdateDPP($id)
+	public function actionClosetender($idm)
 	{
-		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Material']))
-		{
-			$model->attributes=$_POST['Material'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
-
-		$this->render('updateDPP',array(
-			'model'=>$model,
-		));
+		$model=$this->loadModel($idm);
+		$model->status_tender = 2;
+		$model->actual_dokpenawaran = date("Y-m-d H:i:s");
+		$date = strtotime(date("Y-m-d H:i:s"));
+		$a = strtotime("+17 day", $date);
+		$model->deadline_pemenang=date("Y-m-d H:i:s",$a);
+		$model->save();
+		Yii::app()->user->setFlash('success', 'Tender telah ditutup');
+		$this->redirect(array('material/index'));
 	}
 	public function actionUpdateDP($id)
 	{
@@ -287,6 +281,10 @@ class MaterialController extends Controller
 		$model=$this->loadModel($idm);
 		$model->pemenang=$idp;
 		$model->status=6;
+		$model->actual_pemenang = date("Y-m-d H:i:s");
+		$date = strtotime(date("Y-m-d H:i:s"));
+		$a = strtotime("+5 day", $date);
+		$model->deadline_kontrak=date("Y-m-d H:i:s",$a);
 		$model->save();
 
 		$this->redirect('index');

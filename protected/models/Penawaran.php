@@ -61,7 +61,7 @@ class Penawaran extends CActiveRecord
 			'id_user' => 'Id User',
 			'id_material' => 'Id Material',
 			'file_administrasi' => 'Berkas Administrasi',
-			'file_teknis'=>'Berkasi Teknis',
+			'file_teknis'=>'Berkas Teknis',
 			'deskripsi' => 'Deskripsi',
 			'tgl_create' => 'Tgl Create',
 		);

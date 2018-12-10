@@ -62,7 +62,7 @@ class PniController extends Controller
 	 */
 	public function actionCreate($idm)
 	{
-		$model=new Pni;
+		$model=new Pni; 
 		$modal=Material::model()->findByPk($idm);
 		$kontrak=Kontrak::model()->findAll('id_material ='.$idm);
 		// Uncomment the following line if AJAX validation is needed
@@ -70,9 +70,12 @@ class PniController extends Controller
 
 		if(isset($_POST['Pni']))
 		{
+			//isset($_POST['Material']);
 			$model->attributes=$_POST['Pni'];
-			$model->id_material=$idm;
 			
+			$model->id_material=$idm;
+			$modal->attributes=$_POST['Material'];
+			$modal->actual_kom = date("Y-m-d H:i:s");
 			$modal->status=8.5;
 			$modal->save();
 			$model->file = CUploadedFile::getInstance($model, 'file');       

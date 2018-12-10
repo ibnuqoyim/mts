@@ -38,8 +38,8 @@
                <td><?php echo $res->materiala->usera->nama ?></td>
               </tr>
               <tr>
-                <td>Dokumen Penawaran</td>
-                <td><a href="/mts/dokumen/penawaran/<?php echo $res->file ?>"><?php echo $res->file ?></a></td>
+                <td>Dokumen Teknis Tender</td>
+                <td><a href="/mts/dokumen/penawaran/TEKNIS-<?php echo $res->file_teknis ?>"><?php echo $res->file_teknis ?></a></td>
               </tr>
             </table> 
           <?php  }?>

@@ -71,7 +71,7 @@ class PermintaanController extends Controller
 		{
 			$model->attributes=$_POST['Permintaan'];
 			$model->id_material=$idm;
-			
+			$modal->status_tender=1;
 			$modal->status=5;
 			
 			$model->file = CUploadedFile::getInstance($model, 'file');       
@@ -79,7 +79,7 @@ class PermintaanController extends Controller
 			$model->file->saveAs($path);
 			$model->tgl_create= date("Y-m-d",time());
 			$date = strtotime(date("Y-m-d H:i:s"));
-			$a = strtotime("+17 day", $date);
+			$a = strtotime("+10 day", $date);
 			$modal->actual_dokpermintaan=date("Y-m-d H:i:s");
 			$modal->deadline_dokpenawaran=date("Y-m-d H:i:s",$a);
 			$modal->save();

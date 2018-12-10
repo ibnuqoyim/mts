@@ -72,7 +72,11 @@ class HasilrepairController extends Controller
 		{
 			$model->attributes=$_POST['Hasilrepair'];
 			$model->id_material=$idm;
-			
+			$modal->actual_repair = date("Y-m-d H:i:s");
+			$date = strtotime(date("Y-m-d H:i:s"));
+			$a = strtotime("+3 day", $date);
+					
+			$modal->deadline_fatnirn=date("Y-m-d H:i:s",$a);
 			$modal->status=11;
 			$modal->save();
 			$model->file = CUploadedFile::getInstance($model, 'file');       
