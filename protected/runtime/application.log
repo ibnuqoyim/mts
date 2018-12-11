@@ -9098,3 +9098,42 @@ REQUEST_URI=/mts/index.php/user/51
 in C:\xampp\htdocs\mts\themes\dashboard\views\user\view.php (33)
 in C:\xampp\htdocs\mts\protected\controllers\UserController.php (57)
 in C:\xampp\htdocs\mts\index.php (13)
+2018/12/11 10:24:59 [warning] [application] Failed to set unsafe attribute "dokeng" of "Material".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (121)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/11 10:27:59 [warning] [application] Failed to set unsafe attribute "status" of "Material".
+in C:\xampp\htdocs\mts\protected\controllers\KomController.php (101)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/11 10:29:44 [warning] [application] Failed to set unsafe attribute "deadline_produksi" of "Material".
+in C:\xampp\htdocs\mts\protected\controllers\PniController.php (77)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/11 10:29:58 [warning] [application] Failed to set unsafe attribute "deadline_produksi" of "Material".
+in C:\xampp\htdocs\mts\protected\controllers\PniController.php (77)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/11 10:32:10 [warning] [application] Failed to set unsafe attribute "deadline_produksi" of "Material".
+in C:\xampp\htdocs\mts\protected\controllers\PniController.php (77)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/11 10:35:14 [warning] [application] Failed to set unsafe attribute "deadline_produksi" of "Pni".
+in C:\xampp\htdocs\mts\protected\controllers\PniController.php (74)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/11 10:40:10 [warning] [application] Failed to set unsafe attribute "deadline_produksi" of "Pni".
+in C:\xampp\htdocs\mts\protected\controllers\PniController.php (74)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/11 10:41:59 [warning] [application] Failed to set unsafe attribute "deadline_produksi" of "Pni".
+in C:\xampp\htdocs\mts\protected\controllers\PniController.php (74)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/11 10:42:07 [warning] [application] Failed to set unsafe attribute "deadline_produksi" of "Pni".
+in C:\xampp\htdocs\mts\protected\controllers\PniController.php (74)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/11 10:42:36 [warning] [application] Failed to set unsafe attribute "deadline_produksi" of "Pni".
+in C:\xampp\htdocs\mts\protected\controllers\PniController.php (74)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/11 10:43:13 [warning] [application] Failed to set unsafe attribute "deadline_produksi" of "Pni".
+in C:\xampp\htdocs\mts\protected\controllers\PniController.php (74)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/11 10:44:52 [warning] [application] Failed to set unsafe attribute "deadline_produksi" of "Pni".
+in C:\xampp\htdocs\mts\protected\controllers\PniController.php (74)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/11 10:48:29 [warning] [application] Failed to set unsafe attribute "deadline_produksi" of "Pni".
+in C:\xampp\htdocs\mts\protected\controllers\PniController.php (74)
+in C:\xampp\htdocs\mts\index.php (13)

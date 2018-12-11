@@ -6,9 +6,11 @@
  * The followings are the available columns in table 'pni':
  * @property integer $id
  * @property integer $id_material
- * @property integer $file
- * @property integer $desk
- * @property integer $tgl_create
+ * @property string $file
+ * @property string $desk
+ * @property string $deadline_produksi
+ * @property string $actual_produksi
+ * @property string $tgl_create
  */
 class Pni extends CActiveRecord
 {
@@ -28,11 +30,12 @@ class Pni extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array(' id_material, file, desk, tgl_create', 'required'),
-			array('id, id_material', 'numerical', 'integerOnly'=>true),
+			array('id_material, file, desk, tgl_create', 'required'),
+			array('id_material', 'numerical', 'integerOnly'=>true),
+			array('file, desk', 'length', 'max'=>110),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_material, file, desk, tgl_create', 'safe', 'on'=>'search'),
+			array('id, id_material, file, desk, deadline_produksi, actual_produksi, tgl_create', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -44,7 +47,6 @@ class Pni extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'materiala' => array(self::BELONGS_TO, 'Material', 'id_material'),
 		);
 	}
 
@@ -58,6 +60,8 @@ class Pni extends CActiveRecord
 			'id_material' => 'Id Material',
 			'file' => 'File',
 			'desk' => 'Desk',
+			'deadline_produksi' => 'Deadline Produksi',
+			'actual_produksi' => 'Actual Produksi',
 			'tgl_create' => 'Tgl Create',
 		);
 	}
@@ -82,9 +86,11 @@ class Pni extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('id_material',$this->id_material);
-		$criteria->compare('file',$this->file);
-		$criteria->compare('desk',$this->desk);
-		$criteria->compare('tgl_create',$this->tgl_create);
+		$criteria->compare('file',$this->file,true);
+		$criteria->compare('desk',$this->desk,true);
+		$criteria->compare('deadline_produksi',$this->deadline_produksi,true);
+		$criteria->compare('actual_produksi',$this->actual_produksi,true);
+		$criteria->compare('tgl_create',$this->tgl_create,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

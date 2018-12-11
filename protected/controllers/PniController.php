@@ -68,13 +68,12 @@ class PniController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Pni'], $_POST['Material']))
+		if(isset($_POST['Pni']))
 		{
-			//isset($_POST['Material']);
 			$model->attributes=$_POST['Pni'];
 			
 			$model->id_material=$idm;
-			$modal->attributes=$_POST['Material'];
+			
 			$modal->actual_kom = date("Y-m-d H:i:s");
 			$modal->status=8.5;
 			$modal->save();

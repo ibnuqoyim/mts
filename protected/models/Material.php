@@ -100,6 +100,7 @@ class Material extends CActiveRecord
 		$criteria->compare('status',$this->status);
 		$criteria->compare('pemenang',$this->pemenang,true);
 		$criteria->compare('stok',$this->stok);
+		$criteria->compare('deadline_produksi',$this->deadline_produksi);
 		$criteria->compare('create_date',$this->create_date,true);
 		$criteria->compare('last_update',$this->last_update,true);
 

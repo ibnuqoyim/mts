@@ -50,9 +50,9 @@
     </div>
 
     <div class="form-group">
-		<?php echo $form->labelEx($modal,'deadline_produksi'); ?>
-		<?php echo $form->textArea($modal,'stok',array('class'=>'form-control')); ?>
-		<?php echo $form->error($modal,'deadline_produksi'); ?>
+		<?php echo $form->labelEx($model,'deadline_produksi'); ?>
+		<?php echo $form->dateField($model,'deadline_produksi'); ?>
+		<?php echo $form->error($model,'deadline_produksi'); ?>
 	</div>
 
 	<div class="form-group">
@@ -64,7 +64,7 @@
 
 
 	<div class="form-group buttons">
-		<?php echo '<br>'.CHtml::submitButton('Upload', array('class'=>'btn  btn-info left ')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Upload' : 'Save', array('class'=>'btn btn-info left ')); ?>
 	</div>
 </div>
 <?php $this->endWidget(); ?>
