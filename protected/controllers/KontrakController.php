@@ -75,10 +75,10 @@ class KontrakController extends Controller
 			$model->id_material=$idm;
 			
 			$modal->status=7;
-			$model->actual_kontrak = date("Y-m-d H:i:s");
+			$modal->actual_kontrak = date("Y-m-d H:i:s");
 			$date = strtotime(date("Y-m-d H:i:s"));
 			$a = strtotime("+2 day", $date);
-			$model->deadline_kom=date("Y-m-d H:i:s",$a);
+			$modal->deadline_kom=date("Y-m-d H:i:s",$a);
 			$modal->save();
 			$model->file = CUploadedFile::getInstance($model, 'file');       
 			$path = Yii::getPathOfAlias("webroot"). '/dokumen/kontrak/'.$model->file;

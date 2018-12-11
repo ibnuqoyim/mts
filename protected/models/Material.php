@@ -72,6 +72,7 @@ class Material extends CActiveRecord
 			'stok' => 'Stok',
 			'create_date' => 'Create Date',
 			'last_update' => 'Last Update',
+			'deadline_produksi' => 'Test',
 		);
 	}
 

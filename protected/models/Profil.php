@@ -1,23 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "permintaan".
+ * This is the model class for table "profil".
  *
- * The followings are the available columns in table 'permintaan':
- * @property integer $id
- * @property integer $id_material
- * @property string $file
- * @property string $deskripsi
- * @property string $tgl_create
+ * The followings are the available columns in table 'profil':
+ * @property integer $user_id
+ * @property string $julukan
+ * @property string $prestasi
+ * @property string $pasangan
  */
-class Permintaan extends CActiveRecord
+class Profil extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'permintaan';
+		return 'profil';
 	}
 
 	/**
@@ -28,13 +27,13 @@ class Permintaan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array( 'file,  tgl_create', 'required'),
-			array('id_material', 'numerical', 'integerOnly'=>true),
-			array('file', 'length', 'max'=>100),
-			array('deskripsi', 'length', 'max'=>300),
+			array('user_id', 'required'),
+			array('user_id', 'numerical', 'integerOnly'=>true),
+			array('julukan, pasangan', 'length', 'max'=>100),
+			array('prestasi', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_material, file, tgl_create', 'safe', 'on'=>'search'),
+			array('user_id, julukan, prestasi, pasangan', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -46,7 +45,6 @@ class Permintaan extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'materiala' => array(self::BELONGS_TO, 'Material', 'id_material'),
 		);
 	}
 
@@ -56,11 +54,10 @@ class Permintaan extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'id_material' => 'Id Material',
-			'file' => 'File',
-			'deskripsi' => 'Deskripsi',
-			'tgl_create' => 'Tgl Create',
+			'user_id' => 'User',
+			'julukan' => 'Julukan',
+			'prestasi' => 'Prestasi',
+			'pasangan' => 'Pasangan',
 		);
 	}
 
@@ -82,11 +79,10 @@ class Permintaan extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('id_material',$this->id_material);
-		$criteria->compare('file',$this->file,true);
-		$criteria->compare('deskripsi',$this->deskripsi,true);
-		$criteria->compare('tgl_create',$this->tgl_create,true);
+		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('julukan',$this->julukan,true);
+		$criteria->compare('prestasi',$this->prestasi,true);
+		$criteria->compare('pasangan',$this->pasangan,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -97,7 +93,7 @@ class Permintaan extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Permintaan the static model class
+	 * @return Profil the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
