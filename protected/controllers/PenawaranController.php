@@ -32,7 +32,7 @@ class PenawaranController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','review_eng'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -66,7 +66,7 @@ class PenawaranController extends Controller
 	{
 		$model=new Penawaran;
 		$modal=Material::model()->findByPk($idm);
-		$permintaan = Permintaan::Model()->findAll('id_material='.$idm);
+		$permintaan = Permintaan::Model()->findByPk($idm);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -110,6 +110,26 @@ class PenawaranController extends Controller
 			$model->attributes=$_POST['Penawaran'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
+		}
+
+		$this->render('update',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionReview_eng($id)
+	{
+		$model=$this->loadModel($id);
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Penawaran']))
+		{
+			$model->attributes=$_POST['Penawaran'];
+			if($model->save())
+				Yii::app()->user->setFlash('success', 'Dokumen penawaran berhasil di upload');
+				$this->redirect(array('permintaan/view','idm'=>$model->material));
 		}
 
 		$this->render('update',array(

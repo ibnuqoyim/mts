@@ -28,9 +28,8 @@ class DokEng extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('material, file', 'required'),
-			array('material', 'numerical', 'integerOnly'=>true),
-			array('file', 'length', 'max'=>100),
+			
+			
 			array('deskripsi, tgl_create', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -46,7 +45,8 @@ class DokEng extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'materiala' => array(self::BELONGS_TO, 'Material', 'material'),
+			'material'=>array(self::HAS_ONE, 'Material', 'id'),
+			 
 		);
 	}
 
@@ -56,11 +56,11 @@ class DokEng extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'material' => 'Material',
-			'file' => 'File',
-			'deskripsi' => 'Deskripsi',
-			'tgl_create' => 'Tgl Create',
+			'id_material' => 'ID',
+			'file_mto' => 'Material Take Off',
+			'file_dwg' => 'Drawing',
+			'file_spec' => 'Spesifikasi',
+			'file_datasheet' => 'Datasheet',
 		);
 	}
 

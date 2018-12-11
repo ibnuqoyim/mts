@@ -53,6 +53,7 @@ class DokEngController extends Controller
 	{
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'modal'=>Material::Model()->findByPk($id),
 		));
 	}
 

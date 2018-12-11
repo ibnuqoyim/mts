@@ -63,6 +63,11 @@
                                          'value'=>CHtml::link('<button class="btn btn-success "> Pilih sebagai Pemenang </button>', array('material/win','idp'=>$pen->id_user,'idm'=>$pen->id_material)),
                                          'visible' =>$modal->status_tender == 2,
 									),
+                            array('name'=>'Reviw',
+                                'type'=>'raw',
+                                         'value'=>CHtml::link('<button class="btn btn-success "> Upload review Engineering </button>', array('penawaran/review_eng','id'=>$pen->id)),
+                                         'visible' =>$modal->status_tender == 1 && (Yii::app()->user->role == "Admin" || Yii::app()->user->role == "Engineering"),
+                                    ),
 						),
 					));
 					}

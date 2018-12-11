@@ -53,6 +53,8 @@ class Material extends CActiveRecord
 			'clienta' => array(self::BELONGS_TO, 'Client', 'client'),
 			'usera' => array(self::BELONGS_TO, 'User', 'pemenang'),
 			'kategoria' => array(self::BELONGS_TO, 'Kategori', 'kategori'),
+			'dokenga'=>array(self::HAS_ONE, 'DokEng', 'id_material'),
+			'tender'=>array(self::HAS_ONE, 'Permintaan', 'id_material'),
 		);
 	}
 

@@ -112,35 +112,54 @@ class MaterialController extends Controller
 	public function actionCreate()
 	{
 		$model=new Material;
+		$dokeng=new DokEng;
 		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 		$old = 0;
-		if(isset($_POST['Material']))
+		if(isset($_POST['Material'], $_POST['DokEng']))
 		{
 			$model->attributes=$_POST['Material'];
+			$dokeng->attributes=$_POST['DokEng'];
+			$dokeng->file_mto = CUploadedFile::getInstance($dokeng, 'file_mto');
+			if($dokeng->file_mto != null){
+				$path1 = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/MTO-'.$dokeng->file_mto;
+				$dokeng->file_mto->saveAs($path1);
+			}
+			$dokeng->file_dwg = CUploadedFile::getInstance($dokeng, 'file_dwg');
+			if($dokeng->file_dwg != null){
+				$path2 = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/DWG-'.$dokeng->file_dwg;
+				$dokeng->file_dwg->saveAs($path2);
+			}
+			$dokeng->file_spec = CUploadedFile::getInstance($dokeng, 'file_spec');
+			if($dokeng->file_spec != null){
+				$path3 = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/SPEC-'.$dokeng->file_spec;
+				$dokeng->file_spec->saveAs($path3);
+			}
+			$dokeng->file_datasheet = CUploadedFile::getInstance($dokeng, 'file_datasheet');                        
+			if($dokeng->file_datasheet != null){
+				$path4 = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/DS-'.$dokeng->file_datasheet;
+				$dokeng->file_datasheet->saveAs($path4);
+			}
 			
-			$model->dokeng = CUploadedFile::getInstance($model, 'dokeng');
-			                        
-			$path = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/'.$model->dokeng;
-			$model->dokeng->saveAs($path);
-
 			//$model->serial = $model->kategoria->singkatan.'-'.$model->id;
 			$model->create_date= date("Y-m-d",time());
 			$model->last_update= date("Y-m-d",time());
 			$date = strtotime(date("Y-m-d H:i:s"));
 			$a = strtotime("+14 day", $date);
-			$model->deadline_responclient=date("Y-m-d H:i:s",$a);
+			$dokeng->plan_approve=date("Y-m-d H:i:s",$a);
 			$model->status = 1 ;
 
 			if($model->save())
+				$dokeng->id_material = $model->id;
+				$dokeng->save();
 				Yii::app()->user->setFlash('success', 'Material '.$model->nama.' telah diajukan!!');
 				$this->redirect(array('material/index')); 
 		
 		}
 
 		$this->render('create',array(
-			'model'=>$model, 
+			'model'=>$model, 'dokeng'=>$dokeng,
 		));
 	}
 

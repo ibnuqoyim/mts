@@ -185,15 +185,15 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                 array(
                                         'class'=>'CButtonColumn',
                                         'header'=>'Action',
-                                    'template'=>'{edit}{ok}{no}',
+                                    'template'=>'{view}{ok}{no}',
                                     'buttons'=>array
                                             (
-                                                'edit' => array
+                                                'view' => array
                                                     (
                                                         'label'=>'<span class="glyphicon glyphicon-download" aria-hidden="true"></span>',
                                                         'imageUrl'=>true,
-                                                        'visible' =>'$data->status == 1 && $data->dokeng != null',
-                                                        'url'=>'"/mts/dokumen/dokeng/".$data->dokeng',
+                                                        'visible' =>'$data->status == 1',
+                                                        'url'=>'$this->grid->controller->createUrl("/dokEng/view",array("id"=>$data->id))',
                                                              ),
                                                 'ok' => array
                                                         (

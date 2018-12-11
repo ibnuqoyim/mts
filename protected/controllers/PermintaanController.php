@@ -80,8 +80,8 @@ class PermintaanController extends Controller
 			$model->tgl_create= date("Y-m-d",time());
 			$date = strtotime(date("Y-m-d H:i:s"));
 			$a = strtotime("+10 day", $date);
-			$modal->actual_dokpermintaan=date("Y-m-d H:i:s");
-			$modal->deadline_dokpenawaran=date("Y-m-d H:i:s",$a);
+			
+			$model->deadline_tutup=date("Y-m-d H:i:s",$a);
 			$modal->save();
 			if($model->save())
 				Yii::app()->user->setFlash('success', 'Dokumen permintaan penawaran berhasil di upload');

@@ -22,22 +22,43 @@
 
 
 	<div class="col-lg-6">
-		<table class="table table-hover table-dark" style="width:100%">
-              <tr>
-                <td>Nama Material</td>
-                <td><?php echo $modal->nama ?></td>
-              </tr>
-              <tr>
-                <td>Status</td>
-                 <td><?php echo $modal->kategoria->nama ?></td>
-              </tr>
-              <tr>
-                <td>Dokumen Engineering</td>
-                <td><a href="/mts/dokumen/dokeng/<?php echo $modal->dokeng ?>"><?php echo $modal->dokeng ?></a></td>
-              </tr>
-            </table> 
+			<?php echo "<br> <b> Dokumen Engineering : </b>" ?>
+			<?php $this->widget('zii.widgets.CDetailView', array(
+				'data'=>$modal,
+				'attributes'=>array(
+					array('name'=>'Material',
+                          'type'=>'raw',
+                          'value'=>$modal->nama,
+                          ),
+					array('name'=>'Material Take Off',
+                          'type'=>'raw',
+                          'value'=>$modal->kategoria->nama,
+                          ),
+					array('name'=>'Material Take Off',
+                          'type'=>'raw',
+                          'value'=>'<a href="/mts/dokumen/dokeng/MTO-'.$modal->dokenga->file_mto.'">'.$modal->dokenga->file_mto.'</a>',
+                          'visible' =>$modal->dokenga->file_mto != null,
+                          ),
+					array('name'=>'Drawing',
+                          'type'=>'raw',
+                          'value'=>'<a href="/mts/dokumen/dokeng/DWG-'.$modal->dokenga->file_dwg.'">'.$modal->dokenga->file_dwg.'</a>',
+                          'visible' =>$modal->dokenga->file_dwg != null,
+                          ),
+					array('name'=>'Spesifikasi',
+                          'type'=>'raw',
+                          'value'=>'<a href="/mts/dokumen/dokeng/SPEC-'.$modal->dokenga->file_spec.'">'.$modal->dokenga->file_spec.'</a>',
+                          'visible' =>$modal->dokenga->file_spec != null,
+                          ),
+					array('name'=>'Datasheet',
+                          'type'=>'raw',
+                          'value'=>'<a href="/mts/dokumen/dokeng/DS-'.$modal->dokenga->file_datasheet.'">'.$modal->dokenga->file_datasheet.'</a>',
+                          'visible' =>$modal->dokenga->file_datasheet != null,
+                          ),
+					
+				),
+			)); ?>
 	<div class="form-group">
-            <?php echo "<b> Silahkan Upload Dokumen Permintaan Penawaran : </b>" ?>
+            <?php echo "<br> <b> Silahkan Upload Dokumen Permintaan Penawaran : </b>" ?>
 			<?php echo $form->fileField($model,'file'); ?>
 			<?php echo $form->error($model,'file'); ?>
     </div>
@@ -52,9 +73,12 @@
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Upload' : 'Save',array('class'=>'btn btn-success left ')); ?>
-		<?php echo '&nbsp &nbsp'.CHtml::link(' <button class="btn  btn-warning ">Back</button>', array('/material/index')); ?>
+		<?php $this->endWidget(); ?>
+	
 	</div>
-</div>
-<?php $this->endWidget(); ?>
 
+</div>
+<div class="col-lg-6">
+	<?php echo '&nbsp &nbsp'.CHtml::link(' <button class="btn  btn-warning ">Back</button>', array('/material/index')); ?>
+</div>
 </div><!-- form -->

@@ -46,7 +46,7 @@ class Permintaan extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'materiala' => array(self::BELONGS_TO, 'Material', 'id_material'),
+			'material'=>array(self::HAS_ONE, 'Material', 'id'),
 		);
 	}
 

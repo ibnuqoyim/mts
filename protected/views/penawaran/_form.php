@@ -30,25 +30,26 @@ $form=$this->beginWidget('CActiveForm', array(
 	</div>
 -->
 	<div class="col-lg-6">
-	
-	
-	<?php foreach ($permintaan as $per)
-            { ?>
-         <table class="table table-hover table-dark" style="width:100%">
-              <tr>
-                <td>Nama Material</td>
-                <td><?php echo $per->materiala->nama ?></td>
-              </tr>
-              <tr>
-                <td>Status</td>
-                 <td><?php echo $per->materiala->statusa->namaStatus ?></td>
-              </tr>
-              <tr>
-                <td>File Pendukung</td>
-                <td><a href="/mts/dokumen/permintaan/<?php echo $per->file ?>"><?php echo $per->file ?></a></td>
-              </tr>
-            </table> 
-          <?php  }?>
+			<?php echo "<br> <b> Dokumen Engineering : </b>" ?>
+			<?php $this->widget('zii.widgets.CDetailView', array(
+				'data'=>$modal,
+				'attributes'=>array(
+					array('name'=>'Material',
+                          'type'=>'raw',
+                          'value'=>$modal->nama,
+                          ),
+					array('name'=>'Material Take Off',
+                          'type'=>'raw',
+                          'value'=>$modal->kategoria->nama,
+                          ),
+					array('name'=>'Dokumen Penawaran',
+                          'type'=>'raw',
+                          'value'=>'<a href="/mts/dokumen/penawaran/'.$modal->tender->file.'">'.$modal->tender->file.'</a>',
+                          
+                          ),
+					
+				),
+			)); ?>
 	<br>
 	
 	<div class="form-group">

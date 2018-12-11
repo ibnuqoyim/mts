@@ -51,9 +51,24 @@
             <?php echo $form->error($model,'client'); ?>
         </div>
 	<div class="form-group">
-            <?php echo "Upload Dokumen Engineering : " ?>
-			<?php echo $form->fileField($model,'dokeng'); ?>
-			<?php echo $form->error($model,'dokeng'); ?>
+            <?php echo "Upload Dokumen MTO : " ?>
+			<?php echo $form->fileField($dokeng,'file_mto'); ?>
+			<?php echo $form->error($dokeng,'file_mto'); ?>
+    </div>
+    <div class="form-group">
+            <?php echo "Upload Dokumen Drawing : " ?>
+            <?php echo $form->fileField($dokeng,'file_dwg'); ?>
+            <?php echo $form->error($dokeng,'file_dwg'); ?>
+    </div>
+    <div class="form-group">
+            <?php echo "Upload Dokumen Spesifikasi : " ?>
+            <?php echo $form->fileField($dokeng,'file_spec'); ?>
+            <?php echo $form->error($dokeng,'file_spec'); ?>
+    </div>
+    <div class="form-group">
+            <?php echo "Upload Dokumen Datasheet : " ?>
+            <?php echo $form->fileField($dokeng,'file_datasheet'); ?>
+            <?php echo $form->error($dokeng,'file_datasheet'); ?>
     </div>
     </div>
     <div class="form-group col-lg-12">
