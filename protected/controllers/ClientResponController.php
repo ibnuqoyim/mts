@@ -64,6 +64,7 @@ class ClientResponController extends Controller
 	{
 		$model=new ClientRespon;
 		$modal=Material::model()->findByPk($idm);
+		$dokeng=DokEng::model()->findByPk($idm);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -81,9 +82,10 @@ class ClientResponController extends Controller
 			
 			$date = strtotime(date("Y-m-d H:i:s"));
 			$a = strtotime("+2 day", $date);
-			$modal->actual_responclient=date("Y-m-d H:i:s");
-			$modal->deadline_dokpemintaan=date("Y-m-d H:i:s",$a);
+			$dokeng->actual_approve=date("Y-m-d H:i:s");
+			$modal->plan_tender=date("Y-m-d H:i:s",$a);
 			$modal->save();
+			$dokeng->save();
 			if($model->save())
 				Yii::app()->user->setFlash('success', 'Dokumen Engineering Material '.$modal->nama.' berhasil di Approve!!');
 				$this->redirect(array('material/index'));
@@ -109,7 +111,8 @@ class ClientResponController extends Controller
 			$path = Yii::getPathOfAlias("webroot"). '/dokumen/responclient/tolak-'.$model->file_respon;
 			$model->file_respon->saveAs($path);
 			$model->tgl_create= date("Y-m-d",time());
-			
+			$dokeng->tgl_rejected=date("Y-m-d H:i:s");
+			$dokeng->save();
 			$modal->status=3;
 			$modal->save();
 			if($model->save())

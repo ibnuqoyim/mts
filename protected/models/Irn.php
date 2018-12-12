@@ -27,7 +27,7 @@ class Irn extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_material, irn, tgl_create', 'required'),
+			array('id_material, irn', 'required'),
 			array('id_material', 'numerical', 'integerOnly'=>true),
 			array('irn', 'length', 'max'=>100),
 			// The following rule is used by search().

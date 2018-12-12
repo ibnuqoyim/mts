@@ -75,15 +75,16 @@ class KontrakController extends Controller
 			$model->id_material=$idm;
 			
 			$modal->status=7;
-			$modal->actual_kontrak = date("Y-m-d H:i:s");
-			$date = strtotime(date("Y-m-d H:i:s"));
-			$a = strtotime("+2 day", $date);
-			$modal->deadline_kom=date("Y-m-d H:i:s",$a);
+			
+			//$date = strtotime(date("Y-m-d H:i:s"));
+			//$a = strtotime("+2 day", $date);
+			//$modal->plan_kom=date("Y-m-d H:i:s",$a);
 			$modal->save();
-			$model->file = CUploadedFile::getInstance($model, 'file');       
-			$path = Yii::getPathOfAlias("webroot"). '/dokumen/kontrak/'.$model->file;
-			$model->file->saveAs($path);
-			$model->tgl_create= date("Y-m-d",time());
+			$model->file_kontrak = CUploadedFile::getInstance($model, 'file_kontrak');       
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/kontrak/'.$model->file_kontrak;
+			$model->file_kontrak->saveAs($path);
+			$model->tgl_submit= date("Y-m-d",time());
+			$model->pic=Yii::app()->user->id;
 			if($model->save())
 				Yii::app()->user->setFlash('success', 'Dokumen kontrak berhasil di upload');
 				$this->redirect(array('material/index'));

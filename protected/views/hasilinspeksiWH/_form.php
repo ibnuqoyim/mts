@@ -48,14 +48,14 @@
 
 	<div class="form-group">
             <?php echo " " ?>
-			<?php echo $form->fileField($model,'file'); ?>
-			<?php echo $form->error($model,'file'); ?>
+			<?php echo $form->fileField($model,'file_hasil_inspeksi'); ?>
+			<?php echo $form->error($model,'file_hasil_inspeksi'); ?>
     </div>
 
 	<div class="form-group">
-		<?php echo $form->labelEx($model,'desk'); ?>
-		<?php echo $form->textArea($model,'desk',array('class'=>'form-control'),array('size'=>60,'maxlength'=>300)); ?>
-		<?php echo $form->error($model,'desk'); ?>
+		<?php echo $form->labelEx($model,'hasil_inspeksi'); ?>
+		<?php echo $form->textArea($model,'hasil_inspeksi',array('class'=>'form-control'),array('size'=>60,'maxlength'=>300)); ?>
+		<?php echo $form->error($model,'hasil_inspeksi'); ?>
 	</div>
 
 	<div class="form-group">

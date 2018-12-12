@@ -108,6 +108,7 @@ class PenawaranController extends Controller
 		if(isset($_POST['Penawaran']))
 		{
 			$model->attributes=$_POST['Penawaran'];
+			
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -127,9 +128,12 @@ class PenawaranController extends Controller
 		if(isset($_POST['Penawaran']))
 		{
 			$model->attributes=$_POST['Penawaran'];
+			$model->file_review_eng = CUploadedFile::getInstance($model, 'file_review_eng');       
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/penawaran/RE-'.$model->file_review_eng;
+			$model->file_review_eng->saveAs($path);
 			if($model->save())
-				Yii::app()->user->setFlash('success', 'Dokumen penawaran berhasil di upload');
-				$this->redirect(array('permintaan/view','idm'=>$model->material));
+				Yii::app()->user->setFlash('success', 'Dokumen penawaran berhasil di review');
+				$this->redirect(array('penawaran/view','idm'=>$model->id_material));
 		}
 
 		$this->render('update',array(

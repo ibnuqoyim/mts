@@ -31,12 +31,12 @@ class Pengiriman extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_material, tanggal_pengiriman, tujuan, status, pic, kontak, tgl_create', 'required'),
-			array('id_material, kontak', 'numerical', 'integerOnly'=>true),
+			array('id_material,  tujuan, tgl_create', 'required'),
+			array('id_material', 'numerical', 'integerOnly'=>true),
 			array('tujuan, status, pic', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_material, tanggal_pengiriman, tujuan, status, pic, kontak, tgl_create', 'safe', 'on'=>'search'),
+			array('id, id_material, tanggal_pengiriman, tujuan, status, pic, tgl_create', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,7 +64,7 @@ class Pengiriman extends CActiveRecord
 			'tujuan' => 'Tujuan',
 			'status' => 'Status',
 			'pic' => 'Pic',
-			'kontak' => 'Kontak',
+			
 			'tgl_create' => 'Tgl Create',
 		);
 	}

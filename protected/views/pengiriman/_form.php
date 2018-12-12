@@ -20,36 +20,30 @@
 
 	<div class="col-lg-6">
 		<p style="font-size: 16px">Detail Material : </p>
-		<?php foreach ($irn as $res)
-            { ?>
+		
          <table class="table table-hover table-dark" style="width:100%">
               <tr>
                 <td>Nama Material</td>
-                <td><?php echo $res->materiala->nama ?></td>
+                <td><?php echo $modal->nama ?></td>
               </tr>
               <tr>
                 <td>Klien</td>
-                 <td><?php echo $res->materiala->clienta->nama ?></td>
+                 <td><?php echo $modal->clienta->nama ?></td>
               </tr>
               <tr>
                 <td>Vendor</td>
-               <td><?php echo $res->materiala->usera->nama ?></td>
+               <td><?php echo $modal->usera->nama ?></td>
               </tr>
               <tr>
                 <td>IRN</td>
-                <td><?php echo $res->irn ?></td>
+                <td><?php echo $modal->irn->irn ?></td>
               </tr>
             </table> 
-          <?php  }?>
+          
           <br>
 
 	<p style="font-size: 16px">Input detail pengiriman untuk <?php echo "".$modal->nama; ?> : </p>
 	<?php echo $form->errorSummary($model); ?>
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'tanggal_pengiriman'); ?>
-		<?php echo $form->dateField($model,'tanggal_pengiriman',array('class'=>'form-control'),array('size'=>60,'maxlength'=>300)); ?>
-		<?php echo $form->error($model,'tanggal_pengiriman'); ?>
-	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'tujuan'); ?>
@@ -64,27 +58,12 @@
 	</div>
 
 	<div class="form-group">
-		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->dropDownList(
-                    $model,'status',
-                    array(
-                            'Akan dikirim' => 'Akan dikirim',
-                            'Sedang Dikirim' => 'Sedang Dikirim',
-                           'Telah di terima' => 'Telah di terima',
-                        ), array('prompt'=>'Pilih status','class'=>'form-control'),array('size'=>60,'maxlength'=>100)); ?>	
-		<?php echo $form->error($model,'status'); ?>
-
-	<div class="form-group">
 		<?php echo $form->labelEx($model,'pic'); ?>
 		<?php echo $form->textField($model,'pic',array('class'=>'form-control'),array('size'=>60,'maxlength'=>300)); ?>
 		<?php echo $form->error($model,'pic'); ?>
 	</div>
 
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'kontak'); ?>
-		<?php echo $form->textField($model,'kontak',array('class'=>'form-control'),array('size'=>60,'maxlength'=>300)); ?>
-		<?php echo $form->error($model,'kontak'); ?>
-	</div>
+
 
 
 

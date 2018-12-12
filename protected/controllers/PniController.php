@@ -32,7 +32,7 @@ class PniController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','progres','update','hasil'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -64,7 +64,8 @@ class PniController extends Controller
 	{
 		$model=new Pni; 
 		$modal=Material::model()->findByPk($idm);
-		$kontrak=Kontrak::model()->findAll('id_material ='.$idm);
+		$kontrak=Kontrak::model()->findByPk($idm);
+		$kom=Kom::model()->findByPk($idm);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -73,8 +74,9 @@ class PniController extends Controller
 			$model->attributes=$_POST['Pni'];
 			
 			$model->id_material=$idm;
-			
-			$modal->actual_kom = date("Y-m-d H:i:s");
+			$model->pic = Yii::app()->user->id;
+			$kom->actual_kom = date("Y-m-d H:i:s");
+			$kom->save();
 			$modal->status=8.5;
 			$modal->save();
 			$model->file = CUploadedFile::getInstance($model, 'file');       
@@ -91,6 +93,83 @@ class PniController extends Controller
 		));
 	}
 
+	public function actionProgres($idm)
+	{
+		$model=$this->loadModel($idm);
+ 
+		$modal=Material::model()->findByPk($idm);
+
+
+		if(isset($_POST['Pni']))
+		{
+			$model->attributes=$_POST['Pni'];
+			
+			
+			$model->save();
+				if($model->progres == 100){
+					$modal->status = 9;
+					$model->actual_produksi = date("Y-m-d H:i:s");
+					$date = strtotime(date("Y-m-d H:i:s"));
+					$a = strtotime("+2 day", $date);
+					
+					$model->plan_inspeksi=date("Y-m-d H:i:s",$a);
+					$modal->save();
+					$model->save();
+				}
+				
+				
+				Yii::app()->user->setFlash('success', 'Progress produksi telah diupdate');
+				$this->redirect(array('material/index'));
+		}
+
+		$this->render('createp',array(
+			'model'=>$model, 'modal'=>$modal
+		));
+		
+	}
+
+	public function actionHasil($idm)
+	{
+		$model=$this->loadModel($idm);
+ 
+		$modal=Material::model()->findByPk($idm);
+
+
+		if(isset($_POST['Pni']))
+		{
+			$model->attributes=$_POST['Pni'];
+			
+			$model->file_hasil_inspeksi = CUploadedFile::getInstance($model, 'file_hasil_inspeksi');       
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/pni/hasil-'.$model->file_hasil_inspeksi;
+			$model->file_hasil_inspeksi->saveAs($path);
+			
+			if($model->save())
+				if($model->status_inspeksi == "Lulus"){
+					$model->actual_inspeksi = date("Y-m-d H:i:s");
+					$date = strtotime(date("Y-m-d H:i:s"));
+					$a = strtotime("+3 day", $date);
+					
+					$modal->plan_irn=date("Y-m-d H:i:s",$a);
+					$modal->save();
+					$this->redirect(array('irn/create','idm'=>$modal->id));
+				}
+				else{
+				$modal->status=10;
+				$model->actual_inspeksi = date("Y-m-d H:i:s");
+				$date = strtotime(date("Y-m-d H:i:s"));
+				$a = strtotime("+5 day", $date);
+					
+				$modal->plan_repair=date("Y-m-d H:i:s",$a);
+				$modal->save();
+				Yii::app()->user->setFlash('success', 'Berita Acara Inspeksi berhasil di upload');
+				$this->redirect(array('material/index'));
+		}}
+
+		$this->render('createh',array(
+			'model'=>$model, 'modal'=>$modal
+		));
+		
+	}
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.

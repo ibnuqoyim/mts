@@ -63,6 +63,7 @@ class IrnController extends Controller
 	public function actionCreate($idm)
 	{
 		$model=new Irn;
+		$modul=Pni::Model()->findByPk($idm);
 		$modal=Material::model()->findByPk($idm);
 		$repair=Hasilrepair::model()->findAll('id_material ='.$idm);
 		// Uncomment the following line if AJAX validation is needed
@@ -72,15 +73,15 @@ class IrnController extends Controller
 		{
 			$model->attributes=$_POST['Irn'];
 			$model->id_material=$idm;
-			$modal->actual_fatnirn=date("Y-m-d H:i:s");
+			//$modal->actual_fatnirn=date("Y-m-d H:i:s");
 			$date = strtotime(date("Y-m-d H:i:s"));
 			$a = strtotime("+7 day", $date);
 					
-			$modal->deadline_pengiriman=date("Y-m-d H:i:s",$a);
+			$modal->plan_pengiriman=date("Y-m-d H:i:s",$a);
 			$modal->status=12;
 			$modal->save();
 			
-			$model->tgl_create= date("Y-m-d",time());
+			$model->actual_release= date("Y-m-d",time());
 			if($model->save())
 				Yii::app()->user->setFlash('success', 'IRN untuk '.$modal->nama.' telah di Release!');
 				$this->redirect(array('material/index'));

@@ -20,39 +20,34 @@
 
 	<div class="col-lg-6">
 		<p style="font-size: 16px">Detail Pengiriman : </p>
-		<?php foreach ($pengiriman as $res)
-            { ?>
+		
          <table class="table table-hover table-dark" style="width:100%">
               <tr>
                 <td>Nama Material</td>
-                <td><?php echo $res->materiala->nama ?></td>
+                <td><?php echo $modal->nama ?></td>
               </tr>
               <tr>
                 <td>Klien</td>
-                 <td><?php echo $res->materiala->clienta->nama ?></td>
+                 <td><?php echo $modal->clienta->nama ?></td>
               </tr>
               <tr>
                 <td>Vendor</td>
-               <td><?php echo $res->materiala->usera->nama ?></td>
+               <td><?php echo $modal->usera->nama ?></td>
               </tr>
               <tr>
                 <td>Tanggal Kirim</td>
-                <td><?php echo $res->tanggal_pengiriman ?></td>
+                <td><?php echo $modal->pengiriman->actual_pengiriman ?></td>
               </tr>
               <tr>
                 <td>Warehouse tujuan</td>
-                <td><?php echo $res->tujuan ?></td>
+                <td><?php echo $modal->pengiriman->tujuan ?></td>
               </tr>
               <tr>
                 <td>PIC</td>
-                <td><?php echo $res->pic ?></td>
-              </tr>
-              <tr>
-                <td>Kontak</td>
-                <td><?php echo $res->kontak ?></td>
+                <td><?php echo $modal->pengiriman->pic ?></td>
               </tr>
             </table> 
-          <?php  }?>
+          
           <br>
 	<p style="font-size: 16px">Klik Konfirm jika Material telah sampai di Warehouse! </p>
 

@@ -2,7 +2,7 @@
             <div class="info">
                 <div class="container">
                     <div class="col-lg-4 left">
-                        <a class="page"><span class="glyphicon glyphicon-user gold" aria-hidden="true"></span> Jadwal Kick of Meeting <?php echo $modal->nama?></a>
+                        <a class="page"><span class="glyphicon glyphicon-user gold" aria-hidden="true"></span> Production and Inspection <?php echo $modal->nama?></a>
                     </div>
                     <div class="col-lg-5 right alamat">
                         <?php
@@ -25,5 +25,5 @@
 
 
         <section class="container">
-            <?php $this->renderPartial('_form', array('model'=>$model,'kontrak'=>$kontrak,'modal'=>$modal)); ?>
-        </section>
+            <?php $this->renderPartial('_formh', array('model'=>$model, 'modal'=>$modal)); ?>
+        </section><?php

@@ -190,7 +190,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                             (
                                                 'view' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-download" aria-hidden="true"></span>',
+                                                        'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
                                                         'imageUrl'=>true,
                                                         'visible' =>'$data->status == 1',
                                                         'url'=>'$this->grid->controller->createUrl("/dokEng/view",array("id"=>$data->id))',
@@ -199,14 +199,14 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                         (
                                                         'label'=>'<span class="glyphicon glyphicon-ok" style="color:green" aria-hidden="true"></span>',
                                                         'imageUrl'=>false,
-                                                        'visible' => '$data->status == 1 && $data->dokeng != null',
+                                                        'visible' => '$data->status == 1 ',
                                                         'url'=>'$this->grid->controller->createUrl("/clientRespon/create",array("idm"=>$data->id))',
                                                         ),
                                                 'no' => array
                                                           (
                                                         'label'=>'<span class="glyphicon glyphicon-remove" style="color:red" aria-hidden="true"></span>',
                                                         'imageUrl'=>false,
-                                                        'visible' => '$data->status == 1 && $data->dokeng != null',
+                                                        'visible' => '$data->status == 1 ',
                                                         'url'=>'$this->grid->controller->createUrl("/clientRespon/creater",array("idm"=>$data->id))',
                                                           ),
 
@@ -376,7 +376,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                         'label'=>'<span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 8.5',
-                                                        'url'=>'$this->grid->controller->createUrl("/produksi/create",array("idm"=>$data->id))',
+                                                        'url'=>'$this->grid->controller->createUrl("/pni/progres",array("idm"=>$data->id))',
                                                              ),
 
                                                           
@@ -504,7 +504,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                         'label'=>'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 9',
-                                                        'url'=>'$this->grid->controller->createUrl("/hasilPni/create",array("idm"=>$data->id))',
+                                                        'url'=>'$this->grid->controller->createUrl("/pni/hasil",array("idm"=>$data->id))',
                                                              ),
 
                                                 'pni' => array

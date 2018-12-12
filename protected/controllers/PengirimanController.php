@@ -52,13 +52,18 @@ class PengirimanController extends Controller
 	public function actionView($idm)
 	{
 		$modal=Material::model()->findByPk($idm);
-		$pengiriman = Pengiriman::Model()->findAll('id_material='.$idm);
+		$pengiriman = Pengiriman::Model()->findByPk($idm);
 		if(isset($_POST['Material']))
 		{
 			$modal->attributes=$_POST['Material'];
 			$modal->status=13;
-			$modal->save();
 			
+			$pengiriman->actual_penerimaan=date("Y-m-d",time());
+			$date = strtotime(date("Y-m-d H:i:s"));
+			$a = strtotime("+2 day", $date);
+			$modal->plan_inspeksiwh=date("Y-m-d H:i:s",$a);
+			$modal->save();
+			$pengiriman->save();
 			if($modal->save())
 				Yii::app()->user->setFlash('success', 'Pengiriman '.$modal->nama.' telah diterima!');
 				$this->redirect(array('material/index'));

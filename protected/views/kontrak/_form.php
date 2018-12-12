@@ -46,8 +46,8 @@
 	<div class="form-group">
             <?php echo 'Silahkan Upload Dokumen Kontrak dengan '.$modal->usera->nama.' : ' ?>
             <br>
-			<?php echo '<br>'.$form->fileField($model,'file'); ?>
-			<?php echo $form->error($model,'file'); ?>
+			<?php echo '<br>'.$form->fileField($model,'file_kontrak'); ?>
+			<?php echo $form->error($model,'file_kontrak'); ?>
     </div>
     <br>
 	<div class="form-group">

@@ -55,6 +55,11 @@ class Material extends CActiveRecord
 			'kategoria' => array(self::BELONGS_TO, 'Kategori', 'kategori'),
 			'dokenga'=>array(self::HAS_ONE, 'DokEng', 'id_material'),
 			'tender'=>array(self::HAS_ONE, 'Permintaan', 'id_material'),
+			'kontrak'=>array(self::HAS_ONE, 'Kontrak', 'id_material'),
+			'kom'=>array(self::HAS_ONE, 'Kom', 'id_material'),
+			'pni'=>array(self::HAS_ONE, 'Pni', 'id_material'),
+			'irn'=>array(self::HAS_ONE, 'Irn', 'id_material'),
+			'pengiriman'=>array(self::HAS_ONE, 'Pengiriman', 'id_material'),
 		);
 	}
 
@@ -102,7 +107,7 @@ class Material extends CActiveRecord
 		$criteria->compare('status',$this->status);
 		$criteria->compare('pemenang',$this->pemenang,true);
 		$criteria->compare('stok',$this->stok);
-		$criteria->compare('deadline_produksi',$this->deadline_produksi);
+	
 		$criteria->compare('create_date',$this->create_date,true);
 		$criteria->compare('last_update',$this->last_update,true);
 

@@ -149,6 +149,7 @@ class MaterialController extends Controller
 			$a = strtotime("+14 day", $date);
 			$dokeng->plan_approve=date("Y-m-d H:i:s",$a);
 			$model->status = 1 ;
+			$model->pic = Yii::app()->user->id;
 
 			if($model->save())
 				$dokeng->id_material = $model->id;
@@ -171,21 +172,38 @@ class MaterialController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$dokeng=DokEng::Model()->findByPk($idm);
 		$respon = ClientRespon::Model()->findAll('material_id='.$id);
 		$old = $model->dokeng;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Material']))
+		if(isset($_POST['Material'], $_POST['DokEng']))
 		{
 			$model->attributes=$_POST['Material'];
-			$model->dokeng = CUploadedFile::getInstance($model, 'dokeng');
-			                        
-			$path = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/'.$model->dokeng;
-			$model->dokeng->saveAs($path);
-			//$pathold = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/old-'.$model->dokeng;
-			//$old->saveAs($pathold);
-			
+			$dokeng->attributes=$_POST['DokEng'];
+			$dokeng->file_mto = CUploadedFile::getInstance($dokeng, 'file_mto');
+			if($dokeng->file_mto != null){
+				$path1 = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/MTO-'.$dokeng->file_mto;
+				$dokeng->file_mto->saveAs($path1);
+			}
+			$dokeng->file_dwg = CUploadedFile::getInstance($dokeng, 'file_dwg');
+			if($dokeng->file_dwg != null){
+				$path2 = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/DWG-'.$dokeng->file_dwg;
+				$dokeng->file_dwg->saveAs($path2);
+			}
+			$dokeng->file_spec = CUploadedFile::getInstance($dokeng, 'file_spec');
+			if($dokeng->file_spec != null){
+				$path3 = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/SPEC-'.$dokeng->file_spec;
+				$dokeng->file_spec->saveAs($path3);
+			}
+			$dokeng->file_datasheet = CUploadedFile::getInstance($dokeng, 'file_datasheet');                        
+			if($dokeng->file_datasheet != null){
+				$path4 = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/DS-'.$dokeng->file_datasheet;
+				$dokeng->file_datasheet->saveAs($path4);
+			}
+			$dokeng->tgl_rejected=date("Y-m-d",time());
+			$dokeng->save();
 			$model->create_date= date("Y-m-d",time());
 			$model->last_update= date("Y-m-d",time());
 			$model->status = 1 ;
@@ -196,22 +214,26 @@ class MaterialController extends Controller
 		}
 
 		$this->render('update',array(
-			'model'=>$model,'respon'=>$respon
+			'model'=>$model,'respon'=>$respon, 'dokeng'=>$dokeng,
 		));
 	}
 	
 	public function actionClosetender($idm)
 	{
 		$model=$this->loadModel($idm);
+		$tender=Permintaan::Model()->findByPk($idm);
 		$model->status_tender = 2;
-		$model->actual_dokpenawaran = date("Y-m-d H:i:s");
+		$tender->actual_tutup = date("Y-m-d H:i:s");
 		$date = strtotime(date("Y-m-d H:i:s"));
 		$a = strtotime("+17 day", $date);
-		$model->deadline_pemenang=date("Y-m-d H:i:s",$a);
+		$tender->plan_pemenang=date("Y-m-d H:i:s",$a);
 		$model->save();
+		$tender->save();
 		Yii::app()->user->setFlash('success', 'Tender telah ditutup');
 		$this->redirect(array('material/index'));
 	}
+
+
 	public function actionUpdateDP($id)
 	{
 		$model=$this->loadModel($id);
@@ -298,14 +320,16 @@ class MaterialController extends Controller
 	public function actionWin($idp, $idm)
 	{
 		$model=$this->loadModel($idm);
+		$tender=Permintaan::Model()->findByPk($idm);
 		$model->pemenang=$idp;
 		$model->status=6;
-		$model->actual_pemenang = date("Y-m-d H:i:s");
+		$tender->actual_pemenang = date("Y-m-d H:i:s");
 		$date = strtotime(date("Y-m-d H:i:s"));
 		$a = strtotime("+5 day", $date);
-		$model->deadline_kontrak=date("Y-m-d H:i:s",$a);
+		$model->plan_kontrak=date("Y-m-d H:i:s",$a);
 		$model->save();
-
+		$tender->save();
+		Yii::app()->user->setFlash('success', 'Pemenang telah ditetapkan');
 		$this->redirect('index');
 	}
 

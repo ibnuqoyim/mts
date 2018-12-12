@@ -26,12 +26,16 @@
 
             <div class="col-lg-12">
 
-			<h1>Data Dokumen Engineering <?php echo $model->material->nama; ?></h1>
+			
 			 <div class="col-lg-6">
 			<?php $this->widget('zii.widgets.CDetailView', array(
 				'data'=>$model,
 				'attributes'=>array(
-					'id_material',
+					array('name'=>'Material',
+                          'type'=>'raw',
+                          'value'=>$model->material->nama,
+                          
+                          ),
 					array('name'=>'Material Take Off',
                           'type'=>'raw',
                           'value'=>'<a href="/mts/dokumen/dokeng/MTO-'.$model->file_mto.'">'.$model->file_mto.'</a>',
@@ -57,7 +61,7 @@
 			)); ?>
 		</div>
 	</div>
-	
-	<?php echo '<br>'.CHtml::link('<br> <br> <button class="btn btn-lg btn-success ">Approve</button>', array('/clientRespon/create','idm'=>$model->id_material)); ?>
+	<br> <br> <br> <br>  
+	<?php echo '<br>'.CHtml::link('<button class="btn btn-lg btn-success ">Approve</button>', array('/clientRespon/create','idm'=>$model->id_material)); ?>
 	<?php echo '  '.CHtml::link(' <button class="btn btn-lg btn-warning ">Reject</button>', array('/clientRespon/creater','idm'=>$model->id_material)); ?>
 	</section>

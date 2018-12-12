@@ -28,12 +28,12 @@ class HasilinspeksiWH extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_material, file, desk, tgl_create', 'required'),
+			array('id_material, file_hasil_inspeksi, hasil_inspeksi, tgl_create', 'required'),
 			array('id_material', 'numerical', 'integerOnly'=>true),
-			array('file', 'length', 'max'=>100),
+			array('file_hasil_inspeksi', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_material, file, desk, tgl_create', 'safe', 'on'=>'search'),
+			array('id, id_material, file_hasil_inspeksi, hasil_inspeksi, tgl_create', 'safe', 'on'=>'search'),
 		);
 	}
 

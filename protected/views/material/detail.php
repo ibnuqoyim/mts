@@ -37,77 +37,68 @@
               </tr>
               <tr>
                 <td  >Pemenang</td>
-               <td  ><?php if($model->pemenang == null){echo "Belum ada pemenang";} else {echo $model->usera->nama;} ?></td>
+               <td  ></td>
               </tr>
               <tr>
                 <td  >Dokumen Engineering</td>
-                <td  ><a href="/mts/dokumen/dokeng/<?php echo $model->dokeng ?>"><?php echo $model->dokeng ?></a></td>
+                <td  ></a></td>
               </tr>
-              <?php foreach($respon as $res) { ?>
+
               <tr>
                 <td  >Respon Klien</td>
-                 <td  ><?php echo $res->isi; ?></td>
+                 <td  ></td>
               </tr>
-              <?php } ?>
-                <?php foreach($hasilPni as $res) { ?>
+
                <tr>
                 <td  >Dokumen Permintaan</td>
-                <td  ><a href="/mts/dokumen/dokeng/<?php echo $res->file ?>"><?php echo $res->file ?></a></td>
+                <td  >  </a></td>
               </tr>
-              <?php } ?>
-                <?php foreach($hasilPni as $res) { ?>
+
                <tr>
                 <td  >Dokumen Penawaran</td>
-                <td  ><a href="/mts/dokumen/dokeng/<?php echo $res->file ?>"><?php echo $res->file ?></a></td>
+                <td  >  </a></td>
               </tr>
-              <?php } ?>
-                <?php foreach($hasilPni as $res) { ?>
+
                <tr>
                 <td  >Dokumen Kontrak</td>
-                <td  ><a href="/mts/dokumen/dokeng/<?php echo $res->file ?>"><?php echo $res->file ?></a></td>
+                <td  >  </a></td>
               </tr>
-              <?php } ?>
-                <?php foreach($hasilPni as $res) { ?>
+
                <tr>
                 <td  >Jadwal Kick of Meeting</td>
-                <td  ><a href="/mts/dokumen/dokeng/<?php echo $model->dokeng ?>"><?php echo $model->dokeng ?></a></td>
+                <td  ></a></td>
               </tr>
-              <?php foreach($hasilPni as $res) { ?>
+ 
                <tr>
                 <td  >Production and Inspection Plan</td>
-                <td  ><a href="/mts/dokumen/pni/<?php echo $res->file ?>"><?php echo $res->file ?></a></td>
+                <td  ></a></td>
                 </tr>
-                <?php } ?>
-                <?php foreach($hasilPni as $res) { ?>
+
                 <tr>
                 <td  >Hasil Inspeksi QC</td>
-                <td  ><a href="/mts/dokumen/dokeng/<?php echo $res->file ?>"><?php echo $res->file ?></a></td>
+                <td  ></a></td>
               </tr>
-               <?php } ?>
-                <?php foreach($hasilPni as $res) { ?>
+
                <tr>
                 <td  >Berita Acara Repair Punch List</td>
-                <td  ><a href="/mts/dokumen/dokeng/<?php echo $res->file ?>"><?php echo $res->fileg ?></a></td>
+                <td  ></a></td>
               </tr>
-              <?php } ?>
-                <?php foreach($hasilPni as $res) { ?>
+
                <tr>
                 <td  >Jadwal Pengiriman</td>
-                <td  ><a href="/mts/dokumen/dokeng/<?php echo $model->dokeng ?>"><?php echo $model->dokeng ?></a></td>
+                <td  ></a></td>
               </tr>
-              <?php } ?>
-                <?php foreach($hasilPni as $res) { ?>
+
                <tr>
                 <td  >Hasil Inspeksi WareHouse</td>
-                <td  ><a href="/mts/dokumen/dokeng/<?php echo $res->file ?>"><?php echo $res->file ?></a></td>
+                <td  ></a></td>
               </tr>
-              <?php } ?>
 
                <tr>
                 <td  >Stok</td>
-                <td  ><a href="/mts/dokumen/dokeng/<?php echo $model->dokeng ?>"><?php echo $model->dokeng ?></a></td>
+                <td  ></td>
               </tr>
-              </tr>
+              
             </table> 
             </div>
         </section>

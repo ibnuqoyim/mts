@@ -28,12 +28,12 @@ class Kontrak extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_material, file, deskripsi, tgl_create', 'required'),
+			array('id_material, file_kontrak', 'required'),
 			array('id_material', 'numerical', 'integerOnly'=>true),
-			array('file, deskripsi', 'length', 'max'=>250),
+			array('file_kontrak', 'length', 'max'=>250),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_material, file, deskripsi, tgl_create', 'safe', 'on'=>'search'),
+			array('id_material, file_kontrak, deskripsi, tgl_create', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -45,7 +45,7 @@ class Kontrak extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'materiala' => array(self::BELONGS_TO, 'Material', 'id_material'),
+			'material'=>array(self::HAS_ONE, 'Material', 'id'),
 		);
 	}
 
