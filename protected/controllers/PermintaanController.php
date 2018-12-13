@@ -80,7 +80,7 @@ class PermintaanController extends Controller
 			$model->tgl_create= date("Y-m-d",time());
 			$date = strtotime(date("Y-m-d H:i:s"));
 			$a = strtotime("+10 day", $date);
-			
+			$model->pic = Yii::app()->user->id;
 			$model->deadline_tutup=date("Y-m-d H:i:s",$a);
 			$modal->save();
 			if($model->save())

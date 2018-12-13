@@ -57,16 +57,6 @@
 		<?php echo $form->error($model,'tujuan'); ?>
 	</div>
 
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'pic'); ?>
-		<?php echo $form->textField($model,'pic',array('class'=>'form-control'),array('size'=>60,'maxlength'=>300)); ?>
-		<?php echo $form->error($model,'pic'); ?>
-	</div>
-
-
-
-
-
 	<div class="form-group buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Submit' : 'Save', array('class'=>'btn  btn-info left ')); ?>
 	</div>

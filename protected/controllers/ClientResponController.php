@@ -100,6 +100,7 @@ class ClientResponController extends Controller
 	{
 		$model=new ClientRespon;
 		$modal=Material::model()->findByPk($idm);
+		$dokeng=DokEng::model()->findByPk($idm);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 

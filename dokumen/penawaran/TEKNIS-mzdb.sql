@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 13, 2018 at 06:23 PM
+-- Generation Time: Dec 09, 2018 at 04:28 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.0.31
 
@@ -64,9 +64,19 @@ CREATE TABLE `client_respon` (
 --
 
 INSERT INTO `client_respon` (`id`, `material_id`, `isi`, `file_respon`, `tgl_create`) VALUES
-(16, 43, 'dfddsfsdfsdfsdf', NULL, '2018-12-12'),
-(17, 44, 'dsafsdfasfsd', 'mzdb (2).sql', '2018-12-13'),
-(18, 45, 'SADASD', NULL, '2018-12-13');
+(1, 1, 'hahahahahah', 'am.sql', '2018-11-15'),
+(2, 22, 'hhehehehe', 'MTS.graphml', '2018-11-15'),
+(3, 35, '', NULL, '2018-11-18'),
+(4, 34, 'dokumen belum detail, masih banyak salahnya.', 'cv-library-general-cv-template.docx', '2018-11-18'),
+(5, 34, 'bagus', NULL, '2018-11-18'),
+(6, 36, 'tidak bisa dipahami masbro', 'Surat Pernyataan.pdf', '2018-11-20'),
+(7, 36, 'mantap, gitu dong bro. hehehe', NULL, '2018-11-20'),
+(8, 36, 'hlhlkhlhlkh', NULL, '2018-11-20'),
+(9, 38, 'k;lk;k', NULL, '2018-12-03'),
+(10, 37, 'lkjlkjlj', NULL, '2018-12-03'),
+(11, 33, 'ljlkjlkjljl', NULL, '2018-12-03'),
+(12, 1, '', NULL, '2018-12-03'),
+(13, 39, 'goooooood', NULL, '2018-12-09');
 
 -- --------------------------------------------------------
 
@@ -75,27 +85,19 @@ INSERT INTO `client_respon` (`id`, `material_id`, `isi`, `file_respon`, `tgl_cre
 --
 
 CREATE TABLE `dok_eng` (
-  `id_material` int(11) NOT NULL,
-  `file_mto` varchar(110) NOT NULL,
-  `file_dwg` varchar(100) NOT NULL,
-  `file_spec` varchar(110) DEFAULT NULL,
-  `file_datasheet` varchar(110) DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `material` int(11) NOT NULL,
+  `file` varchar(100) NOT NULL,
   `deskripsi` text,
-  `plan_approve` date DEFAULT NULL,
-  `actual_approve` date DEFAULT NULL,
-  `tgl_rejected` date DEFAULT NULL,
-  `tgl_create` date DEFAULT NULL,
-  `plan_permintaan` date DEFAULT NULL
+  `tgl_create` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `dok_eng`
 --
 
-INSERT INTO `dok_eng` (`id_material`, `file_mto`, `file_dwg`, `file_spec`, `file_datasheet`, `deskripsi`, `plan_approve`, `actual_approve`, `tgl_rejected`, `tgl_create`, `plan_permintaan`) VALUES
-(43, 'ARIS.docx', 'Investasi - Aya.xlsx', 'CONTOH LAMPIRAN.pdf', 'kabisaaris.xlsx', NULL, '2018-12-26', '2018-12-12', NULL, NULL, NULL),
-(44, 'am.sql', 'am.sql', 'am.sql', 'am.sql', NULL, '2018-12-27', NULL, '2018-12-13', NULL, NULL),
-(45, '', '', NULL, NULL, NULL, '2018-12-27', '2018-12-13', NULL, NULL, NULL);
+INSERT INTO `dok_eng` (`id`, `material`, `file`, `deskripsi`, `tgl_create`) VALUES
+(1, 2, 'ksjdafklasdjfklj', 'sdalkjfklasdjfklas', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -104,20 +106,12 @@ INSERT INTO `dok_eng` (`id_material`, `file_mto`, `file_dwg`, `file_spec`, `file
 --
 
 CREATE TABLE `hasilinspeksiwh` (
+  `id` int(11) NOT NULL,
   `id_material` int(11) NOT NULL,
-  `file_hasil_inspeksi` varchar(110) NOT NULL,
-  `hasil_inspeksi` varchar(100) NOT NULL,
-  `pic` varchar(100) NOT NULL,
+  `file` varchar(100) NOT NULL,
+  `desk` text NOT NULL,
   `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `hasilinspeksiwh`
---
-
-INSERT INTO `hasilinspeksiwh` (`id_material`, `file_hasil_inspeksi`, `hasil_inspeksi`, `pic`, `tgl_create`) VALUES
-(43, 'mzdb (2).sql', 'gdfsgdsgsdgsdf', '51', '2018-12-13'),
-(45, 'mzdb.sql', 'dfssfsdf', '51', '2018-12-13');
 
 -- --------------------------------------------------------
 
@@ -148,8 +142,7 @@ INSERT INTO `hasilpni` (`id`, `id_material`, `status`, `file`, `desk`, `tgl_crea
 (7, 14, 'Lulus', 'ceklist TA(AutoRecovered).xlsx', 'dsdfsdf', '2018-12-02'),
 (8, 14, 'Lulus', 'ceklist TA(AutoRecovered).xlsx', 'dfssdafsd', '2018-12-02'),
 (9, 14, 'Lulus', 'ceklist TA(AutoRecovered).xlsx', 'dsaadfadf', '2018-12-02'),
-(10, 11, 'Repair', 'ceklist TA(AutoRecovered).xlsx', 'adfsdfasd', '2018-12-02'),
-(11, 40, 'Repair', 'PRICE LIST.xlsx', 'dsdsfsdfsd', '2018-12-10');
+(10, 11, 'Repair', 'ceklist TA(AutoRecovered).xlsx', 'adfsdfasd', '2018-12-02');
 
 -- --------------------------------------------------------
 
@@ -172,8 +165,7 @@ CREATE TABLE `hasilrepair` (
 INSERT INTO `hasilrepair` (`id`, `id_material`, `file`, `desk`, `tgl_create`) VALUES
 (1, 2, 'Manrisk - Aya.pdf', 'sdafasfasfsadfasdf', '2018-11-19'),
 (2, 36, 'Salsabila Comp.jpg', 'dsafasdfadfsad', '2018-11-20'),
-(3, 11, 'ceklist TA(AutoRecovered).xlsx', 'jlkjjljl', '2018-12-02'),
-(4, 40, 'PRICE LIST.xlsx', 'fdsafasfasd', '2018-12-10');
+(3, 11, 'ceklist TA(AutoRecovered).xlsx', 'jlkjjljl', '2018-12-02');
 
 -- --------------------------------------------------------
 
@@ -182,24 +174,21 @@ INSERT INTO `hasilrepair` (`id`, `id_material`, `file`, `desk`, `tgl_create`) VA
 --
 
 CREATE TABLE `irn` (
+  `id` int(11) NOT NULL,
   `id_material` int(11) NOT NULL,
   `irn` varchar(100) NOT NULL,
-  `actual_release` date DEFAULT NULL,
-  `plan_release` date DEFAULT NULL
+  `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `irn`
 --
 
-INSERT INTO `irn` (`id_material`, `irn`, `actual_release`, `plan_release`) VALUES
-(1, '3423242324', '2018-11-19', NULL),
-(2, '3423242324', '2018-11-19', NULL),
-(3, 'jhj6767676', '2018-11-20', NULL),
-(4, '90238490238', '2018-12-02', NULL),
-(5, 'fdsafsfasfd', '2018-12-10', NULL),
-(43, '3423242324', '2018-12-12', NULL),
-(45, '223423432', '2018-12-13', NULL);
+INSERT INTO `irn` (`id`, `id_material`, `irn`, `tgl_create`) VALUES
+(1, 2, '3423242324', '2018-11-19'),
+(2, 2, '3423242324', '2018-11-19'),
+(3, 36, 'jhj6767676', '2018-11-20'),
+(4, 14, '90238490238', '2018-12-02');
 
 -- --------------------------------------------------------
 
@@ -231,22 +220,22 @@ INSERT INTO `kategori` (`id`, `nama`, `singkatan`, `desk`) VALUES
 --
 
 CREATE TABLE `kom` (
+  `id` int(11) NOT NULL,
   `id_material` int(11) NOT NULL,
-  `tanggal` date DEFAULT NULL,
-  `actual_kom` date DEFAULT NULL,
+  `tanggal` date NOT NULL,
   `tempat` varchar(100) NOT NULL,
   `tgl_create` date NOT NULL,
-  `pic` int(11) NOT NULL,
-  `keterangan` text
+  `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kom`
 --
 
-INSERT INTO `kom` (`id_material`, `tanggal`, `actual_kom`, `tempat`, `tgl_create`, `pic`, `keterangan`) VALUES
-(43, '2018-12-31', '2018-12-12', 'Wika tower 2', '2018-12-12', 51, 'asdasdasdasdasdasdasd'),
-(45, '2018-12-31', '2018-12-13', 'asdasdas', '2018-12-13', 51, 'dasdasdasd');
+INSERT INTO `kom` (`id`, `id_material`, `tanggal`, `tempat`, `tgl_create`, `keterangan`) VALUES
+(1, 11, '2018-11-02', 'PT WIKA (Persero)', '2018-11-17', 'Harus hadir'),
+(2, 2, '2018-11-20', 'Wika tower 2', '2018-11-19', 'pukul 5-9'),
+(3, 36, '2018-11-22', 'PT WIKA (Persero)', '2018-11-20', 'jadslkkjsafd;lkkl dksljklsajdklf');
 
 -- --------------------------------------------------------
 
@@ -255,20 +244,21 @@ INSERT INTO `kom` (`id_material`, `tanggal`, `actual_kom`, `tempat`, `tgl_create
 --
 
 CREATE TABLE `kontrak` (
+  `id` int(11) NOT NULL,
   `id_material` int(11) NOT NULL,
-  `file_kontrak` varchar(110) NOT NULL,
-  `pic` varchar(250) NOT NULL,
+  `file` varchar(250) NOT NULL,
   `deskripsi` varchar(250) NOT NULL,
-  `tgl_submit` date NOT NULL
+  `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kontrak`
 --
 
-INSERT INTO `kontrak` (`id_material`, `file_kontrak`, `pic`, `deskripsi`, `tgl_submit`) VALUES
-(43, 'password aris connect.pdf', '51', '', '2018-12-12'),
-(45, 'MTS.graphml', '51', '', '2018-12-13');
+INSERT INTO `kontrak` (`id`, `id_material`, `file`, `deskripsi`, `tgl_create`) VALUES
+(1, 11, 'MTS.graphml', 'sadadasdas', '2018-11-16'),
+(2, 2, 'PMO ayaa.pdf', 'sfsdfsdfsdfs', '2018-11-19'),
+(3, 36, 'ceklist TA(AutoRecovered).xlsx', 'asdfsadfasfasdf', '2018-11-20');
 
 -- --------------------------------------------------------
 
@@ -278,37 +268,71 @@ INSERT INTO `kontrak` (`id_material`, `file_kontrak`, `pic`, `deskripsi`, `tgl_s
 
 CREATE TABLE `material` (
   `id` int(11) NOT NULL,
-  `proyek` varchar(110) DEFAULT NULL,
+  `serial` varchar(110) DEFAULT NULL,
   `kategori` int(11) DEFAULT NULL,
   `client` int(11) NOT NULL,
   `nama` varchar(100) NOT NULL,
+  `dokeng` varchar(100) NOT NULL,
   `status` float DEFAULT NULL,
   `progres` int(11) DEFAULT NULL,
   `pemenang` varchar(110) DEFAULT NULL,
   `stok` int(11) DEFAULT NULL,
-  `status_tender` int(11) NOT NULL,
-  `plan_tender` date DEFAULT NULL,
-  `plan_kontrak` date DEFAULT NULL,
-  `plan_kom` date DEFAULT NULL,
-  `plan_irn` date NOT NULL,
-  `plan_pengiriman` date DEFAULT NULL,
-  `plan_penerimaan` date NOT NULL,
-  `plan_inspeksiwh` date NOT NULL,
-  `plan_finish` date NOT NULL,
-  `actual_finish` date NOT NULL,
+  `deadline_responclient` datetime DEFAULT NULL,
+  `actual_responclient` datetime DEFAULT NULL,
+  `deadline_dokpemintaan` datetime DEFAULT NULL,
+  `actual_dokpermintaan` datetime DEFAULT NULL,
+  `deadline_dokpenawaran` datetime DEFAULT NULL,
+  `actual_dokpenawaran` datetime DEFAULT NULL,
+  `deadline_pemenang` datetime DEFAULT NULL,
+  `actual_pemenang` datetime DEFAULT NULL,
+  `deadline_kontrak` datetime DEFAULT NULL,
+  `actual_kontrak` datetime DEFAULT NULL,
+  `deadline_kom` datetime DEFAULT NULL,
+  `actual_kom` datetime DEFAULT NULL,
+  `deadline_produksi` datetime DEFAULT NULL,
+  `actual_produksi` datetime DEFAULT NULL,
+  `deadline_inspeksiqc` datetime DEFAULT NULL,
+  `actual_inspeksiqc` datetime DEFAULT NULL,
+  `deadline_repair` datetime DEFAULT NULL,
+  `actual_repair` datetime DEFAULT NULL,
+  `deadline_fatnirn` datetime DEFAULT NULL,
+  `actual_fatnirn` datetime DEFAULT NULL,
+  `deadline_pengiriman` datetime DEFAULT NULL,
+  `actual_pengiriman` datetime DEFAULT NULL,
   `create_date` date NOT NULL,
-  `last_update` date NOT NULL,
-  `pic` int(11) NOT NULL
+  `last_update` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `material`
 --
 
-INSERT INTO `material` (`id`, `proyek`, `kategori`, `client`, `nama`, `status`, `progres`, `pemenang`, `stok`, `status_tender`, `plan_tender`, `plan_kontrak`, `plan_kom`, `plan_irn`, `plan_pengiriman`, `plan_penerimaan`, `plan_inspeksiwh`, `plan_finish`, `actual_finish`, `create_date`, `last_update`, `pic`) VALUES
-(43, NULL, 2, 1, 'Materia Z1', 15, NULL, '51', 124, 2, '2018-12-14', '2018-12-17', '2018-12-14', '2018-12-15', '2018-12-19', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2018-12-12', '2018-12-12', 51),
-(44, NULL, 2, 1, 'Pipa', 3, NULL, NULL, NULL, 0, NULL, NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2018-12-13', '2018-12-13', 51),
-(45, NULL, 1, 1, 'DASDASD', 15, NULL, '4', 1, 2, '2018-12-15', '2018-12-18', NULL, '2018-12-16', '2018-12-20', '0000-00-00', '2018-12-15', '0000-00-00', '0000-00-00', '2018-12-13', '2018-12-13', 51);
+INSERT INTO `material` (`id`, `serial`, `kategori`, `client`, `nama`, `dokeng`, `status`, `progres`, `pemenang`, `stok`, `deadline_responclient`, `actual_responclient`, `deadline_dokpemintaan`, `actual_dokpermintaan`, `deadline_dokpenawaran`, `actual_dokpenawaran`, `deadline_pemenang`, `actual_pemenang`, `deadline_kontrak`, `actual_kontrak`, `deadline_kom`, `actual_kom`, `deadline_produksi`, `actual_produksi`, `deadline_inspeksiqc`, `actual_inspeksiqc`, `deadline_repair`, `actual_repair`, `deadline_fatnirn`, `actual_fatnirn`, `deadline_pengiriman`, `actual_pengiriman`, `create_date`, `last_update`) VALUES
+(1, NULL, NULL, 1, 'Material A', 'PRICE LIST.xlsx', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-12-03', '2018-12-03'),
+(2, NULL, NULL, 1, 'Material B', '', 15, NULL, '4', 1245, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-07', '2018-11-07'),
+(8, NULL, NULL, 2, 'Material C', '', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-07', '2018-11-07'),
+(9, NULL, NULL, 1, 'Material D', '', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
+(10, NULL, NULL, 1, 'Material E', '', 5, NULL, '', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
+(11, NULL, NULL, 1, 'Material F', '', 11, NULL, '51', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
+(12, NULL, NULL, 2, 'Material G', '', 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
+(13, NULL, NULL, 1, 'Material H', '', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
+(14, NULL, NULL, 2, 'Material I', '', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
+(15, NULL, NULL, 1, 'Material J', '', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
+(16, NULL, NULL, 2, 'Material K', '', 11, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
+(17, NULL, NULL, 1, 'Material L', '', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
+(18, NULL, NULL, 2, 'Material M', '', 13, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
+(19, NULL, NULL, 1, 'Material  N', '', 14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
+(20, NULL, NULL, 2, 'Material  O', '', 15, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
+(21, NULL, NULL, 1, 'Material  P', '', 15, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-08', '2018-11-08'),
+(22, NULL, NULL, 2, 'material  Z', 'Understanding the IoT.pdf', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-09', '2018-11-09'),
+(31, NULL, NULL, 2, 'SDFASDF', '', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-14', '2018-11-14'),
+(33, NULL, NULL, 2, 'material XX', 'Understanding the IoT.pdf 	', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-18', '2018-11-18'),
+(34, NULL, NULL, 1, 'Material Z3', 'resume.docx', 8.5, 50, '51', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-18', '2018-11-18'),
+(35, NULL, NULL, 2, 'Material Z5', 'resume.docx', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-18', '2018-11-18'),
+(36, NULL, NULL, 1, 'Mx2310', 'Materi 15 Mei 2018.pptx', 15, NULL, '51', 2342342, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-20', '2018-11-20'),
+(37, NULL, NULL, 1, 'Beton', 'ceklist TA(AutoRecovered).xlsx', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-12-01', '2018-12-01'),
+(38, NULL, 1, 2, 'sdadas', 'Salsabila Comp.psd', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-12-01', '2018-12-01'),
+(39, NULL, 1, 1, 'sadfsafasdfsad', 'Q FIX.jpg', 2, NULL, NULL, NULL, '2018-12-23 06:51:53', '2018-12-09 07:00:34', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-12-09', '2018-12-09');
 
 -- --------------------------------------------------------
 
@@ -320,10 +344,7 @@ CREATE TABLE `penawaran` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_material` int(11) NOT NULL,
-  `file_administrasi` varchar(250) NOT NULL,
-  `file_teknis` varchar(250) DEFAULT NULL,
-  `review_engineering` varchar(110) NOT NULL,
-  `file_review_eng` varchar(110) NOT NULL,
+  `file` varchar(250) NOT NULL,
   `deskripsi` varchar(250) NOT NULL,
   `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -332,18 +353,12 @@ CREATE TABLE `penawaran` (
 -- Dumping data for table `penawaran`
 --
 
-INSERT INTO `penawaran` (`id`, `id_user`, `id_material`, `file_administrasi`, `file_teknis`, `review_engineering`, `file_review_eng`, `deskripsi`, `tgl_create`) VALUES
-(1, 4, 2, 'MTS.graphml', NULL, '', '', 'asdfsadfasdfasd', '2018-11-16'),
-(2, 6, 2, 'list table.ods', NULL, '', '', 'fwefwerwf', '2018-11-19'),
-(3, 4, 36, 'Peralatan.pdf', NULL, '', '', 'bala bala bala bala bala', '2018-11-20'),
-(4, 6, 36, 'modulpwdlaravel.pdf', NULL, '', '', 'bala bala balabasdjflkasjdfanlksdkflasjflkjadsjfljadslkfjlkdsajf', '2018-11-20'),
-(5, 51, 36, 'IFIXUP NOTA.xlsm', NULL, '', '', 'lkasjfklasjdfkljasdlkfjdsalkf lkdsajfjsalkfjlsadkjf ljsdalkfjklasdfjadtk ljklsdajfklsajfdlkasdjl', '2018-11-20'),
-(6, 51, 40, 'PRICE LIST.xlsx', 'IFIXUP NOTA.xlsm', '', '', 'dsgsgfdsdfsd', '2018-12-10'),
-(7, 4, 40, 'PRICE LIST.xlsx', 'PRICE LIST.xlsx', '', '', 'dfsfdsfsdf', '2018-12-10'),
-(8, 51, 42, 'lapooran service.xlsx', 'ACARA BERSAMA FOKALISMAS Qcard.docx', '', '', 'hlkhlkj', '2018-12-11'),
-(9, 51, 43, 'CV_Muhamad Ibnu Q.pdf', 'penguin-156616_960_720.png', '', 'HC.pdf', 'dsfsdfsdfsdf', '2018-12-12'),
-(10, 4, 45, 'db.graphml', 'mzdb.sql', '', '', 'sdafasdfsadf', '2018-12-13'),
-(11, 51, 45, 'mzdb.sql', 'MTS.graphml', '', '', 'adadasdasdasd', '2018-12-13');
+INSERT INTO `penawaran` (`id`, `id_user`, `id_material`, `file`, `deskripsi`, `tgl_create`) VALUES
+(1, 4, 2, 'MTS.graphml', 'asdfsadfasdfasd', '2018-11-16'),
+(2, 6, 2, 'list table.ods', 'fwefwerwf', '2018-11-19'),
+(3, 4, 36, 'Peralatan.pdf', 'bala bala bala bala bala', '2018-11-20'),
+(4, 6, 36, 'modulpwdlaravel.pdf', 'bala bala balabasdjflkasjdfanlksdkflasjflkjadsjfljadslkfjlkdsajf', '2018-11-20'),
+(5, 51, 36, 'IFIXUP NOTA.xlsm', 'lkasjfklasjdfkljasdlkfjdsalkf lkdsajfjsalkfjlsadkjf ljsdalkfjklasdfjadtk ljklsdajfklsajfdlkasdjl', '2018-11-20');
 
 -- --------------------------------------------------------
 
@@ -352,13 +367,13 @@ INSERT INTO `penawaran` (`id`, `id_user`, `id_material`, `file_administrasi`, `f
 --
 
 CREATE TABLE `pengiriman` (
+  `id` int(11) NOT NULL,
   `id_material` int(11) NOT NULL,
-  `actual_pengiriman` date NOT NULL,
-  `plan_penerimaan` date NOT NULL,
+  `tanggal_pengiriman` date NOT NULL,
   `tujuan` varchar(100) NOT NULL,
   `status` varchar(100) NOT NULL,
-  `pic` int(100) NOT NULL,
-  `actual_penerimaan` date NOT NULL,
+  `pic` varchar(100) NOT NULL,
+  `kontak` int(20) NOT NULL,
   `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -366,9 +381,9 @@ CREATE TABLE `pengiriman` (
 -- Dumping data for table `pengiriman`
 --
 
-INSERT INTO `pengiriman` (`id_material`, `actual_pengiriman`, `plan_penerimaan`, `tujuan`, `status`, `pic`, `actual_penerimaan`, `tgl_create`) VALUES
-(43, '0000-00-00', '0000-00-00', 'Warehouse Pusat', '', 51, '2018-12-12', '2018-12-12'),
-(45, '0000-00-00', '0000-00-00', 'Warehouse Pusat', '', 51, '2018-12-13', '2018-12-13');
+INSERT INTO `pengiriman` (`id`, `id_material`, `tanggal_pengiriman`, `tujuan`, `status`, `pic`, `kontak`, `tgl_create`) VALUES
+(1, 2, '2018-11-20', 'Warehouse Pusat', 'Akan dikirim', 'jhon', 2147483647, '2018-11-19'),
+(2, 36, '2018-11-23', 'Warehouse Pusat', 'Akan dikirim', 'asdfasdfds', 2147483647, '2018-11-20');
 
 -- --------------------------------------------------------
 
@@ -377,25 +392,29 @@ INSERT INTO `pengiriman` (`id_material`, `actual_pengiriman`, `plan_penerimaan`,
 --
 
 CREATE TABLE `permintaan` (
+  `id` int(11) NOT NULL,
   `id_material` int(11) NOT NULL,
   `file` varchar(100) NOT NULL,
-  `status` varchar(50) DEFAULT NULL,
+  `deadline` datetime DEFAULT NULL,
   `deskripsi` varchar(300) DEFAULT NULL,
-  `deadline_tutup` date DEFAULT NULL,
-  `actual_tutup` date DEFAULT NULL,
-  `plan_pemenang` date DEFAULT NULL,
-  `actual_pemenang` date DEFAULT NULL,
-  `tgl_create` date NOT NULL,
-  `pic` int(11) NOT NULL
+  `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `permintaan`
 --
 
-INSERT INTO `permintaan` (`id_material`, `file`, `status`, `deskripsi`, `deadline_tutup`, `actual_tutup`, `plan_pemenang`, `actual_pemenang`, `tgl_create`, `pic`) VALUES
-(43, 'Presentation1.pptx', NULL, 'dsfsdfsdfsd', '2018-12-22', NULL, NULL, '2018-12-12', '2018-12-12', 51),
-(45, 'db.graphml', NULL, 'SADADASD', '2018-12-23', '2018-12-13', '2018-12-30', '2018-12-13', '2018-12-13', 51);
+INSERT INTO `permintaan` (`id`, `id_material`, `file`, `deadline`, `deskripsi`, `tgl_create`) VALUES
+(1, 2, 'MTS.graphml', NULL, 'dsafasfsadfsadf', '2018-11-14'),
+(3, 34, 'UTF-8\'\'Flow Proses Bisnis - Improvement (R.1)31.08.2018.xlsx', NULL, 'harus menjelaskan detail banget', '2018-11-18'),
+(4, 36, 'HARI AKHIR.pptx', NULL, 'asdjfklasdjfaslkfjsalkjdf', '2018-11-20'),
+(5, 22, 'PRICE LIST.xlsx', '0000-00-00 00:00:00', NULL, '2018-12-03'),
+(6, 35, 'PRICE LIST.xlsx', '0000-00-00 00:00:00', 'ljkl', '2018-12-03'),
+(7, 38, 'PRICE LIST.xlsx', '0000-00-00 00:00:00', 'kjljljljl', '2018-12-03'),
+(8, 37, 'PRICE LIST.xlsx', '2018-12-03 16:53:39', 'jlkjlkjljl', '2018-12-03'),
+(9, 33, 'PRICE LIST.xlsx', '0000-00-00 00:00:00', 'k;k;l', '2018-12-03'),
+(10, 1, 'PRICE LIST.xlsx', '2018-12-13 00:00:00', NULL, '2018-12-03'),
+(11, 1, 'PRICE LIST.xlsx', '2018-12-13 17:05:24', 'klhklhlkh', '2018-12-03');
 
 -- --------------------------------------------------------
 
@@ -404,22 +423,10 @@ INSERT INTO `permintaan` (`id_material`, `file`, `status`, `deskripsi`, `deadlin
 --
 
 CREATE TABLE `pni` (
+  `id` int(11) NOT NULL,
   `id_material` int(11) NOT NULL,
-  `desk` text NOT NULL,
-  `pic` int(11) DEFAULT NULL,
-  `file` varchar(100) DEFAULT NULL,
-  `pic_qc` int(11) DEFAULT NULL,
-  `plan_produksi` date NOT NULL,
-  `actual_produksi` date NOT NULL,
-  `progres` varchar(110) NOT NULL,
-  `plan_inspeksi` date NOT NULL,
-  `actual_inspeksi` date DEFAULT NULL,
-  `hasil_inspeksi` varchar(100) DEFAULT NULL,
-  `status_inspeksi` varchar(100) DEFAULT NULL,
-  `file_hasil_inspeksi` varchar(100) DEFAULT NULL,
-  `plan_repair` date DEFAULT NULL,
-  `actual_repair` date DEFAULT NULL,
-  `file_repair` date DEFAULT NULL,
+  `file` varchar(110) NOT NULL,
+  `desk` varchar(110) NOT NULL,
   `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -427,9 +434,10 @@ CREATE TABLE `pni` (
 -- Dumping data for table `pni`
 --
 
-INSERT INTO `pni` (`id_material`, `desk`, `pic`, `file`, `pic_qc`, `plan_produksi`, `actual_produksi`, `progres`, `plan_inspeksi`, `actual_inspeksi`, `hasil_inspeksi`, `status_inspeksi`, `file_hasil_inspeksi`, `plan_repair`, `actual_repair`, `file_repair`, `tgl_create`) VALUES
-(43, 'ax', 51, 'CV_Muhamad Ibnu Q.pdf', 51, '2019-01-05', '2018-12-12', '100', '2018-12-14', NULL, 'sdfsdffdsf', 'Lulus', 'HC.pdf', NULL, NULL, NULL, '2018-12-12'),
-(45, '', 51, '', 51, '0000-00-00', '2018-12-13', '100', '2018-12-15', NULL, 'dsafasdfasdfsdfsdf', 'Lulus', 'db.graphml', NULL, NULL, NULL, '2018-12-13');
+INSERT INTO `pni` (`id`, `id_material`, `file`, `desk`, `tgl_create`) VALUES
+(1, 11, 'MTS.graphml', 'vxvxcvxcvxcv', '2018-11-18'),
+(2, 2, 'PC EDI.xlsx', 'dasfasdfasdfsa', '2018-11-19'),
+(3, 36, 'PRICE LIST.xlsx', 'sadadsfsfafasfadf', '2018-11-20');
 
 -- --------------------------------------------------------
 
@@ -451,8 +459,7 @@ CREATE TABLE `produksi` (
 
 INSERT INTO `produksi` (`id`, `id_material`, `progres`, `keterangan`, `tgl_create`) VALUES
 (1, 34, 25, 'kjdalfksjfalksfj', '2018-12-03'),
-(2, 34, 50, ';lakf;sldkf;l', '2018-12-03'),
-(3, 40, 100, 'dfsdfsdfsd', '2018-12-10');
+(2, 34, 50, ';lakf;sldkf;l', '2018-12-03');
 
 -- --------------------------------------------------------
 
@@ -550,13 +557,13 @@ ALTER TABLE `client_respon`
 -- Indexes for table `dok_eng`
 --
 ALTER TABLE `dok_eng`
-  ADD PRIMARY KEY (`id_material`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `hasilinspeksiwh`
 --
 ALTER TABLE `hasilinspeksiwh`
-  ADD PRIMARY KEY (`id_material`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `hasilpni`
@@ -574,7 +581,7 @@ ALTER TABLE `hasilrepair`
 -- Indexes for table `irn`
 --
 ALTER TABLE `irn`
-  ADD PRIMARY KEY (`id_material`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `kategori`
@@ -586,13 +593,13 @@ ALTER TABLE `kategori`
 -- Indexes for table `kom`
 --
 ALTER TABLE `kom`
-  ADD PRIMARY KEY (`id_material`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `kontrak`
 --
 ALTER TABLE `kontrak`
-  ADD PRIMARY KEY (`id_material`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `material`
@@ -610,19 +617,19 @@ ALTER TABLE `penawaran`
 -- Indexes for table `pengiriman`
 --
 ALTER TABLE `pengiriman`
-  ADD PRIMARY KEY (`id_material`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `permintaan`
 --
 ALTER TABLE `permintaan`
-  ADD PRIMARY KEY (`id_material`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `pni`
 --
 ALTER TABLE `pni`
-  ADD PRIMARY KEY (`id_material`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `produksi`
@@ -656,25 +663,37 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT for table `client_respon`
 --
 ALTER TABLE `client_respon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `dok_eng`
+--
+ALTER TABLE `dok_eng`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `hasilinspeksiwh`
+--
+ALTER TABLE `hasilinspeksiwh`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hasilpni`
 --
 ALTER TABLE `hasilpni`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `hasilrepair`
 --
 ALTER TABLE `hasilrepair`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `irn`
 --
 ALTER TABLE `irn`
-  MODIFY `id_material` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -683,22 +702,52 @@ ALTER TABLE `kategori`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `kom`
+--
+ALTER TABLE `kom`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `kontrak`
+--
+ALTER TABLE `kontrak`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `material`
 --
 ALTER TABLE `material`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `penawaran`
 --
 ALTER TABLE `penawaran`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `pengiriman`
+--
+ALTER TABLE `pengiriman`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `permintaan`
+--
+ALTER TABLE `permintaan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `pni`
+--
+ALTER TABLE `pni`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `produksi`
 --
 ALTER TABLE `produksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`

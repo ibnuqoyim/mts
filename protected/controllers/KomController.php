@@ -76,7 +76,7 @@ class KomController extends Controller
 			
 			$modal->status=7.5;
 			$modal->save();
-			
+			$model->pic = Yii::app()->user->id;
 			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
 				Yii::app()->user->setFlash('success', 'Jadwal Kick of Meeting berhasil di buat');

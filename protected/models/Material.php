@@ -52,6 +52,7 @@ class Material extends CActiveRecord
 			'statusa' => array(self::BELONGS_TO, 'Status', 'status'),
 			'clienta' => array(self::BELONGS_TO, 'Client', 'client'),
 			'usera' => array(self::BELONGS_TO, 'User', 'pemenang'),
+			'pica' => array(self::BELONGS_TO, 'User', 'pic'),
 			'kategoria' => array(self::BELONGS_TO, 'Kategori', 'kategori'),
 			'dokenga'=>array(self::HAS_ONE, 'DokEng', 'id_material'),
 			'tender'=>array(self::HAS_ONE, 'Permintaan', 'id_material'),
@@ -60,6 +61,7 @@ class Material extends CActiveRecord
 			'pni'=>array(self::HAS_ONE, 'Pni', 'id_material'),
 			'irn'=>array(self::HAS_ONE, 'Irn', 'id_material'),
 			'pengiriman'=>array(self::HAS_ONE, 'Pengiriman', 'id_material'),
+			'wh'=>array(self::HAS_ONE, 'HasilInspeksiWH', 'id_material'),
 		);
 	}
 

@@ -91,6 +91,7 @@ class PengirimanController extends Controller
 			$model->id_material=$idm;
 			$modal->save();
 			$model->tgl_create= date("Y-m-d",time());
+			$model->pic = Yii::app()->user->id;
 			if($model->save())
 				Yii::app()->user->setFlash('success', 'Detail Pengiriman '.$modal->nama.' telah di simpan!');
 				$this->redirect(array('material/index'));

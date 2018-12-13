@@ -72,11 +72,13 @@ class HasilinspeksiWHController extends Controller
 		{
 			$model->attributes=$_POST['HasilinspeksiWH'];
 			$model->id_material=$idm;
-			
+			$model->file_hasil_inspeksi = CUploadedFile::getInstance($model, 'file_hasil_inspeksi');       
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/Warehouse/inspeksi-'.$model->file_hasil_inspeksi;
+			$model->file_hasil_inspeksi->saveAs($path);
 			$modal->status=15;
 			$modal->attributes=$_POST['Material'];
 			$modal->save();
-			
+			$model->pic = Yii::app()->user->id;
 			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
 				Yii::app()->user->setFlash('success', 'Hasil Inspeksi Warehouse berhasil di submit!');

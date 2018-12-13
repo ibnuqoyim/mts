@@ -28,11 +28,11 @@ class PniController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','progres'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','progres','update','hasil'),
+				'actions'=>array('create','update','hasil'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -83,6 +83,7 @@ class PniController extends Controller
 			$path = Yii::getPathOfAlias("webroot"). '/dokumen/pni/'.$model->file;
 			$model->file->saveAs($path);
 			$model->tgl_create= date("Y-m-d",time());
+			$model->save();
 			if($model->save())
 				Yii::app()->user->setFlash('success', 'Perencanaan Production and Inspection berhasil di upload');
 				$this->redirect(array('material/index'));
@@ -142,7 +143,7 @@ class PniController extends Controller
 			$model->file_hasil_inspeksi = CUploadedFile::getInstance($model, 'file_hasil_inspeksi');       
 			$path = Yii::getPathOfAlias("webroot"). '/dokumen/pni/hasil-'.$model->file_hasil_inspeksi;
 			$model->file_hasil_inspeksi->saveAs($path);
-			
+			$model->pic_qc = Yii::app()->user->id;
 			if($model->save())
 				if($model->status_inspeksi == "Lulus"){
 					$model->actual_inspeksi = date("Y-m-d H:i:s");
@@ -151,6 +152,7 @@ class PniController extends Controller
 					
 					$modal->plan_irn=date("Y-m-d H:i:s",$a);
 					$modal->save();
+					$model->save();
 					$this->redirect(array('irn/create','idm'=>$modal->id));
 				}
 				else{
@@ -158,11 +160,12 @@ class PniController extends Controller
 				$model->actual_inspeksi = date("Y-m-d H:i:s");
 				$date = strtotime(date("Y-m-d H:i:s"));
 				$a = strtotime("+5 day", $date);
-					
+				$model->save();	
 				$modal->plan_repair=date("Y-m-d H:i:s",$a);
 				$modal->save();
 				Yii::app()->user->setFlash('success', 'Berita Acara Inspeksi berhasil di upload');
 				$this->redirect(array('material/index'));
+
 		}}
 
 		$this->render('createh',array(
@@ -178,7 +181,9 @@ class PniController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+		$modal=Material::model()->findByPk($id);
+		$kontrak=Kontrak::model()->findByPk($id);
+		$kom=Kom::model()->findByPk($id);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -186,11 +191,11 @@ class PniController extends Controller
 		{
 			$model->attributes=$_POST['Pni'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('view','id'=>$model->id_material));
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model, 'modal'=>$modal,
 		));
 	}
 

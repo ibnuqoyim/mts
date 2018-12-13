@@ -47,6 +47,7 @@ class Kom extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'material'=>array(self::HAS_ONE, 'Material', 'id'),
+			'pica' => array(self::BELONGS_TO, 'User', 'pic'),
 		);
 	}
 

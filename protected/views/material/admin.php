@@ -97,7 +97,7 @@
                                 array(
                                     'class'=>'CButtonColumn',
                                     'header'=>'Action',
-                                    'template'=>'{edit}',
+                                    'template'=>'{log}    {edit}',
                                     'buttons'=>array
                                             (
                                                 'edit' => array
@@ -105,6 +105,14 @@
                                                         'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
                                                         'imageUrl'=>false,
                                                         'url'=>'$this->grid->controller->createUrl("/material/detail",array("id"=>$data->id))',
+                                                             ),
+
+                                                         
+                                                'log' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-time" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'url'=>'$this->grid->controller->createUrl("/material/log",array("id"=>$data->id))',
                                                              ),
 
                                                           ),

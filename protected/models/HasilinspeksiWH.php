@@ -46,6 +46,7 @@ class HasilinspeksiWH extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'materiala' => array(self::BELONGS_TO, 'Material', 'id_material'),
+			'pica' => array(self::BELONGS_TO, 'User', 'pic'),
 		);
 	}
 

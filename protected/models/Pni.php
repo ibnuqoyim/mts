@@ -40,7 +40,7 @@ class Pni extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_material, desk, plan_produksi, actual_produksi, progres, plan_inspeksi, tgl_create', 'required'),
+			array('id_material', 'required'),
 			array('id_material, pic, pic_qc', 'numerical', 'integerOnly'=>true),
 			array('file, hasil_inspeksi, status_inspeksi, file_hasil_inspeksi', 'length', 'max'=>100),
 			array('progres', 'length', 'max'=>110),
@@ -60,6 +60,8 @@ class Pni extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'material'=>array(self::HAS_ONE, 'Material', 'id'),
+			'pica' => array(self::BELONGS_TO, 'User', 'pic'),
+			'picq' => array(self::BELONGS_TO, 'User', 'pic_qc'),
 		);
 	}
 

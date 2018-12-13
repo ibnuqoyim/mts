@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 13, 2018 at 06:23 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.0.31
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 12 Des 2018 pada 10.53
+-- Versi server: 10.1.31-MariaDB
+-- Versi PHP: 5.6.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `client`
+-- Struktur dari tabel `client`
 --
 
 CREATE TABLE `client` (
@@ -38,7 +38,7 @@ CREATE TABLE `client` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `client`
+-- Dumping data untuk tabel `client`
 --
 
 INSERT INTO `client` (`id`, `nama`, `alamat`, `telepon`, `pic`, `kontak_pic`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `client` (`id`, `nama`, `alamat`, `telepon`, `pic`, `kontak_pic`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `client_respon`
+-- Struktur dari tabel `client_respon`
 --
 
 CREATE TABLE `client_respon` (
@@ -60,18 +60,16 @@ CREATE TABLE `client_respon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `client_respon`
+-- Dumping data untuk tabel `client_respon`
 --
 
 INSERT INTO `client_respon` (`id`, `material_id`, `isi`, `file_respon`, `tgl_create`) VALUES
-(16, 43, 'dfddsfsdfsdfsdf', NULL, '2018-12-12'),
-(17, 44, 'dsafsdfasfsd', 'mzdb (2).sql', '2018-12-13'),
-(18, 45, 'SADASD', NULL, '2018-12-13');
+(16, 43, 'dfddsfsdfsdfsdf', NULL, '2018-12-12');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dok_eng`
+-- Struktur dari tabel `dok_eng`
 --
 
 CREATE TABLE `dok_eng` (
@@ -89,18 +87,16 @@ CREATE TABLE `dok_eng` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dok_eng`
+-- Dumping data untuk tabel `dok_eng`
 --
 
 INSERT INTO `dok_eng` (`id_material`, `file_mto`, `file_dwg`, `file_spec`, `file_datasheet`, `deskripsi`, `plan_approve`, `actual_approve`, `tgl_rejected`, `tgl_create`, `plan_permintaan`) VALUES
-(43, 'ARIS.docx', 'Investasi - Aya.xlsx', 'CONTOH LAMPIRAN.pdf', 'kabisaaris.xlsx', NULL, '2018-12-26', '2018-12-12', NULL, NULL, NULL),
-(44, 'am.sql', 'am.sql', 'am.sql', 'am.sql', NULL, '2018-12-27', NULL, '2018-12-13', NULL, NULL),
-(45, '', '', NULL, NULL, NULL, '2018-12-27', '2018-12-13', NULL, NULL, NULL);
+(43, 'ARIS.docx', 'Investasi - Aya.xlsx', 'CONTOH LAMPIRAN.pdf', 'kabisaaris.xlsx', NULL, '2018-12-26', '2018-12-12', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hasilinspeksiwh`
+-- Struktur dari tabel `hasilinspeksiwh`
 --
 
 CREATE TABLE `hasilinspeksiwh` (
@@ -111,18 +107,10 @@ CREATE TABLE `hasilinspeksiwh` (
   `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `hasilinspeksiwh`
---
-
-INSERT INTO `hasilinspeksiwh` (`id_material`, `file_hasil_inspeksi`, `hasil_inspeksi`, `pic`, `tgl_create`) VALUES
-(43, 'mzdb (2).sql', 'gdfsgdsgsdgsdf', '51', '2018-12-13'),
-(45, 'mzdb.sql', 'dfssfsdf', '51', '2018-12-13');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hasilpni`
+-- Struktur dari tabel `hasilpni`
 --
 
 CREATE TABLE `hasilpni` (
@@ -135,7 +123,7 @@ CREATE TABLE `hasilpni` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `hasilpni`
+-- Dumping data untuk tabel `hasilpni`
 --
 
 INSERT INTO `hasilpni` (`id`, `id_material`, `status`, `file`, `desk`, `tgl_create`) VALUES
@@ -154,7 +142,7 @@ INSERT INTO `hasilpni` (`id`, `id_material`, `status`, `file`, `desk`, `tgl_crea
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hasilrepair`
+-- Struktur dari tabel `hasilrepair`
 --
 
 CREATE TABLE `hasilrepair` (
@@ -166,7 +154,7 @@ CREATE TABLE `hasilrepair` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `hasilrepair`
+-- Dumping data untuk tabel `hasilrepair`
 --
 
 INSERT INTO `hasilrepair` (`id`, `id_material`, `file`, `desk`, `tgl_create`) VALUES
@@ -178,7 +166,7 @@ INSERT INTO `hasilrepair` (`id`, `id_material`, `file`, `desk`, `tgl_create`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `irn`
+-- Struktur dari tabel `irn`
 --
 
 CREATE TABLE `irn` (
@@ -189,7 +177,7 @@ CREATE TABLE `irn` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `irn`
+-- Dumping data untuk tabel `irn`
 --
 
 INSERT INTO `irn` (`id_material`, `irn`, `actual_release`, `plan_release`) VALUES
@@ -198,13 +186,12 @@ INSERT INTO `irn` (`id_material`, `irn`, `actual_release`, `plan_release`) VALUE
 (3, 'jhj6767676', '2018-11-20', NULL),
 (4, '90238490238', '2018-12-02', NULL),
 (5, 'fdsafsfasfd', '2018-12-10', NULL),
-(43, '3423242324', '2018-12-12', NULL),
-(45, '223423432', '2018-12-13', NULL);
+(43, '3423242324', '2018-12-12', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori`
+-- Struktur dari tabel `kategori`
 --
 
 CREATE TABLE `kategori` (
@@ -215,7 +202,7 @@ CREATE TABLE `kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kategori`
+-- Dumping data untuk tabel `kategori`
 --
 
 INSERT INTO `kategori` (`id`, `nama`, `singkatan`, `desk`) VALUES
@@ -227,7 +214,7 @@ INSERT INTO `kategori` (`id`, `nama`, `singkatan`, `desk`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kom`
+-- Struktur dari tabel `kom`
 --
 
 CREATE TABLE `kom` (
@@ -241,17 +228,16 @@ CREATE TABLE `kom` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kom`
+-- Dumping data untuk tabel `kom`
 --
 
 INSERT INTO `kom` (`id_material`, `tanggal`, `actual_kom`, `tempat`, `tgl_create`, `pic`, `keterangan`) VALUES
-(43, '2018-12-31', '2018-12-12', 'Wika tower 2', '2018-12-12', 51, 'asdasdasdasdasdasdasd'),
-(45, '2018-12-31', '2018-12-13', 'asdasdas', '2018-12-13', 51, 'dasdasdasd');
+(43, '2018-12-31', '2018-12-12', 'Wika tower 2', '2018-12-12', 0, 'asdasdasdasdasdasdasd');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kontrak`
+-- Struktur dari tabel `kontrak`
 --
 
 CREATE TABLE `kontrak` (
@@ -263,17 +249,16 @@ CREATE TABLE `kontrak` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kontrak`
+-- Dumping data untuk tabel `kontrak`
 --
 
 INSERT INTO `kontrak` (`id_material`, `file_kontrak`, `pic`, `deskripsi`, `tgl_submit`) VALUES
-(43, 'password aris connect.pdf', '51', '', '2018-12-12'),
-(45, 'MTS.graphml', '51', '', '2018-12-13');
+(43, 'password aris connect.pdf', '51', '', '2018-12-12');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `material`
+-- Struktur dari tabel `material`
 --
 
 CREATE TABLE `material` (
@@ -287,11 +272,11 @@ CREATE TABLE `material` (
   `pemenang` varchar(110) DEFAULT NULL,
   `stok` int(11) DEFAULT NULL,
   `status_tender` int(11) NOT NULL,
-  `plan_tender` date DEFAULT NULL,
-  `plan_kontrak` date DEFAULT NULL,
-  `plan_kom` date DEFAULT NULL,
+  `plan_tender` datetime DEFAULT NULL,
+  `plan_kontrak` datetime DEFAULT NULL,
+  `plan_kom` datetime DEFAULT NULL,
   `plan_irn` date NOT NULL,
-  `plan_pengiriman` date DEFAULT NULL,
+  `plan_pengiriman` datetime DEFAULT NULL,
   `plan_penerimaan` date NOT NULL,
   `plan_inspeksiwh` date NOT NULL,
   `plan_finish` date NOT NULL,
@@ -302,18 +287,16 @@ CREATE TABLE `material` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `material`
+-- Dumping data untuk tabel `material`
 --
 
 INSERT INTO `material` (`id`, `proyek`, `kategori`, `client`, `nama`, `status`, `progres`, `pemenang`, `stok`, `status_tender`, `plan_tender`, `plan_kontrak`, `plan_kom`, `plan_irn`, `plan_pengiriman`, `plan_penerimaan`, `plan_inspeksiwh`, `plan_finish`, `actual_finish`, `create_date`, `last_update`, `pic`) VALUES
-(43, NULL, 2, 1, 'Materia Z1', 15, NULL, '51', 124, 2, '2018-12-14', '2018-12-17', '2018-12-14', '2018-12-15', '2018-12-19', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2018-12-12', '2018-12-12', 51),
-(44, NULL, 2, 1, 'Pipa', 3, NULL, NULL, NULL, 0, NULL, NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2018-12-13', '2018-12-13', 51),
-(45, NULL, 1, 1, 'DASDASD', 15, NULL, '4', 1, 2, '2018-12-15', '2018-12-18', NULL, '2018-12-16', '2018-12-20', '0000-00-00', '2018-12-15', '0000-00-00', '0000-00-00', '2018-12-13', '2018-12-13', 51);
+(43, NULL, 2, 1, 'Materia Z1', 15, NULL, '51', 124, 2, '2018-12-14 04:05:08', '2018-12-17 04:32:00', '2018-12-14 08:02:46', '2018-12-15', '2018-12-19 09:18:15', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2018-12-12', '2018-12-12', 51);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penawaran`
+-- Struktur dari tabel `penawaran`
 --
 
 CREATE TABLE `penawaran` (
@@ -329,7 +312,7 @@ CREATE TABLE `penawaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `penawaran`
+-- Dumping data untuk tabel `penawaran`
 --
 
 INSERT INTO `penawaran` (`id`, `id_user`, `id_material`, `file_administrasi`, `file_teknis`, `review_engineering`, `file_review_eng`, `deskripsi`, `tgl_create`) VALUES
@@ -341,14 +324,12 @@ INSERT INTO `penawaran` (`id`, `id_user`, `id_material`, `file_administrasi`, `f
 (6, 51, 40, 'PRICE LIST.xlsx', 'IFIXUP NOTA.xlsm', '', '', 'dsgsgfdsdfsd', '2018-12-10'),
 (7, 4, 40, 'PRICE LIST.xlsx', 'PRICE LIST.xlsx', '', '', 'dfsfdsfsdf', '2018-12-10'),
 (8, 51, 42, 'lapooran service.xlsx', 'ACARA BERSAMA FOKALISMAS Qcard.docx', '', '', 'hlkhlkj', '2018-12-11'),
-(9, 51, 43, 'CV_Muhamad Ibnu Q.pdf', 'penguin-156616_960_720.png', '', 'HC.pdf', 'dsfsdfsdfsdf', '2018-12-12'),
-(10, 4, 45, 'db.graphml', 'mzdb.sql', '', '', 'sdafasdfsadf', '2018-12-13'),
-(11, 51, 45, 'mzdb.sql', 'MTS.graphml', '', '', 'adadasdasdasd', '2018-12-13');
+(9, 51, 43, 'CV_Muhamad Ibnu Q.pdf', 'penguin-156616_960_720.png', '', 'HC.pdf', 'dsfsdfsdfsdf', '2018-12-12');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengiriman`
+-- Struktur dari tabel `pengiriman`
 --
 
 CREATE TABLE `pengiriman` (
@@ -357,23 +338,22 @@ CREATE TABLE `pengiriman` (
   `plan_penerimaan` date NOT NULL,
   `tujuan` varchar(100) NOT NULL,
   `status` varchar(100) NOT NULL,
-  `pic` int(100) NOT NULL,
+  `pic` varchar(100) NOT NULL,
   `actual_penerimaan` date NOT NULL,
   `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pengiriman`
+-- Dumping data untuk tabel `pengiriman`
 --
 
 INSERT INTO `pengiriman` (`id_material`, `actual_pengiriman`, `plan_penerimaan`, `tujuan`, `status`, `pic`, `actual_penerimaan`, `tgl_create`) VALUES
-(43, '0000-00-00', '0000-00-00', 'Warehouse Pusat', '', 51, '2018-12-12', '2018-12-12'),
-(45, '0000-00-00', '0000-00-00', 'Warehouse Pusat', '', 51, '2018-12-13', '2018-12-13');
+(43, '0000-00-00', '0000-00-00', 'Warehouse Pusat', '', 'jhon', '2018-12-12', '2018-12-12');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permintaan`
+-- Struktur dari tabel `permintaan`
 --
 
 CREATE TABLE `permintaan` (
@@ -385,22 +365,20 @@ CREATE TABLE `permintaan` (
   `actual_tutup` date DEFAULT NULL,
   `plan_pemenang` date DEFAULT NULL,
   `actual_pemenang` date DEFAULT NULL,
-  `tgl_create` date NOT NULL,
-  `pic` int(11) NOT NULL
+  `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `permintaan`
+-- Dumping data untuk tabel `permintaan`
 --
 
-INSERT INTO `permintaan` (`id_material`, `file`, `status`, `deskripsi`, `deadline_tutup`, `actual_tutup`, `plan_pemenang`, `actual_pemenang`, `tgl_create`, `pic`) VALUES
-(43, 'Presentation1.pptx', NULL, 'dsfsdfsdfsd', '2018-12-22', NULL, NULL, '2018-12-12', '2018-12-12', 51),
-(45, 'db.graphml', NULL, 'SADADASD', '2018-12-23', '2018-12-13', '2018-12-30', '2018-12-13', '2018-12-13', 51);
+INSERT INTO `permintaan` (`id_material`, `file`, `status`, `deskripsi`, `deadline_tutup`, `actual_tutup`, `plan_pemenang`, `actual_pemenang`, `tgl_create`) VALUES
+(43, 'Presentation1.pptx', NULL, 'dsfsdfsdfsd', '2018-12-22', NULL, NULL, '2018-12-12', '2018-12-12');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pni`
+-- Struktur dari tabel `pni`
 --
 
 CREATE TABLE `pni` (
@@ -424,17 +402,16 @@ CREATE TABLE `pni` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pni`
+-- Dumping data untuk tabel `pni`
 --
 
 INSERT INTO `pni` (`id_material`, `desk`, `pic`, `file`, `pic_qc`, `plan_produksi`, `actual_produksi`, `progres`, `plan_inspeksi`, `actual_inspeksi`, `hasil_inspeksi`, `status_inspeksi`, `file_hasil_inspeksi`, `plan_repair`, `actual_repair`, `file_repair`, `tgl_create`) VALUES
-(43, 'ax', 51, 'CV_Muhamad Ibnu Q.pdf', 51, '2019-01-05', '2018-12-12', '100', '2018-12-14', NULL, 'sdfsdffdsf', 'Lulus', 'HC.pdf', NULL, NULL, NULL, '2018-12-12'),
-(45, '', 51, '', 51, '0000-00-00', '2018-12-13', '100', '2018-12-15', NULL, 'dsafasdfasdfsdfsdf', 'Lulus', 'db.graphml', NULL, NULL, NULL, '2018-12-13');
+(43, 'ax', 51, 'CV_Muhamad Ibnu Q.pdf', NULL, '2019-01-05', '2018-12-12', '100', '2018-12-14', NULL, 'sdfsdffdsf', 'Lulus', 'HC.pdf', NULL, NULL, NULL, '2018-12-12');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produksi`
+-- Struktur dari tabel `produksi`
 --
 
 CREATE TABLE `produksi` (
@@ -446,7 +423,7 @@ CREATE TABLE `produksi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `produksi`
+-- Dumping data untuk tabel `produksi`
 --
 
 INSERT INTO `produksi` (`id`, `id_material`, `progres`, `keterangan`, `tgl_create`) VALUES
@@ -457,7 +434,7 @@ INSERT INTO `produksi` (`id`, `id_material`, `progres`, `keterangan`, `tgl_creat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `status`
+-- Struktur dari tabel `status`
 --
 
 CREATE TABLE `status` (
@@ -467,7 +444,7 @@ CREATE TABLE `status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `status`
+-- Dumping data untuk tabel `status`
 --
 
 INSERT INTO `status` (`id`, `namaStatus`, `keterangan`) VALUES
@@ -492,7 +469,7 @@ INSERT INTO `status` (`id`, `namaStatus`, `keterangan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -509,7 +486,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id`, `nama`, `alamat`, `email`, `telp`, `username`, `password`, `enkrip`, `role`, `kodeAsrama`) VALUES
@@ -535,173 +512,173 @@ INSERT INTO `user` (`id`, `nama`, `alamat`, `email`, `telp`, `username`, `passwo
 --
 
 --
--- Indexes for table `client`
+-- Indeks untuk tabel `client`
 --
 ALTER TABLE `client`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `client_respon`
+-- Indeks untuk tabel `client_respon`
 --
 ALTER TABLE `client_respon`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dok_eng`
+-- Indeks untuk tabel `dok_eng`
 --
 ALTER TABLE `dok_eng`
   ADD PRIMARY KEY (`id_material`);
 
 --
--- Indexes for table `hasilinspeksiwh`
+-- Indeks untuk tabel `hasilinspeksiwh`
 --
 ALTER TABLE `hasilinspeksiwh`
   ADD PRIMARY KEY (`id_material`);
 
 --
--- Indexes for table `hasilpni`
+-- Indeks untuk tabel `hasilpni`
 --
 ALTER TABLE `hasilpni`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `hasilrepair`
+-- Indeks untuk tabel `hasilrepair`
 --
 ALTER TABLE `hasilrepair`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `irn`
+-- Indeks untuk tabel `irn`
 --
 ALTER TABLE `irn`
   ADD PRIMARY KEY (`id_material`);
 
 --
--- Indexes for table `kategori`
+-- Indeks untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `kom`
+-- Indeks untuk tabel `kom`
 --
 ALTER TABLE `kom`
   ADD PRIMARY KEY (`id_material`);
 
 --
--- Indexes for table `kontrak`
+-- Indeks untuk tabel `kontrak`
 --
 ALTER TABLE `kontrak`
   ADD PRIMARY KEY (`id_material`);
 
 --
--- Indexes for table `material`
+-- Indeks untuk tabel `material`
 --
 ALTER TABLE `material`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `penawaran`
+-- Indeks untuk tabel `penawaran`
 --
 ALTER TABLE `penawaran`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pengiriman`
+-- Indeks untuk tabel `pengiriman`
 --
 ALTER TABLE `pengiriman`
   ADD PRIMARY KEY (`id_material`);
 
 --
--- Indexes for table `permintaan`
+-- Indeks untuk tabel `permintaan`
 --
 ALTER TABLE `permintaan`
   ADD PRIMARY KEY (`id_material`);
 
 --
--- Indexes for table `pni`
+-- Indeks untuk tabel `pni`
 --
 ALTER TABLE `pni`
   ADD PRIMARY KEY (`id_material`);
 
 --
--- Indexes for table `produksi`
+-- Indeks untuk tabel `produksi`
 --
 ALTER TABLE `produksi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `status`
+-- Indeks untuk tabel `status`
 --
 ALTER TABLE `status`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `client`
+-- AUTO_INCREMENT untuk tabel `client`
 --
 ALTER TABLE `client`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `client_respon`
+-- AUTO_INCREMENT untuk tabel `client_respon`
 --
 ALTER TABLE `client_respon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `hasilpni`
+-- AUTO_INCREMENT untuk tabel `hasilpni`
 --
 ALTER TABLE `hasilpni`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `hasilrepair`
+-- AUTO_INCREMENT untuk tabel `hasilrepair`
 --
 ALTER TABLE `hasilrepair`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `irn`
+-- AUTO_INCREMENT untuk tabel `irn`
 --
 ALTER TABLE `irn`
-  MODIFY `id_material` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_material` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT for table `kategori`
+-- AUTO_INCREMENT untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `material`
+-- AUTO_INCREMENT untuk tabel `material`
 --
 ALTER TABLE `material`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT for table `penawaran`
+-- AUTO_INCREMENT untuk tabel `penawaran`
 --
 ALTER TABLE `penawaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `produksi`
+-- AUTO_INCREMENT untuk tabel `produksi`
 --
 ALTER TABLE `produksi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
