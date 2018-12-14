@@ -72,6 +72,7 @@ class ClientResponController extends Controller
 		{
 			$model->attributes=$_POST['ClientRespon'];
 			$model->material_id = $modal->id;
+			
 			$model->file_respon = CUploadedFile::getInstance($model, 'file_respon');                       
 			$path = Yii::getPathOfAlias("webroot"). '/dokumen/responclient/terima-'.$model->file_respon;
 			if($model->file_respon != null){
@@ -110,7 +111,9 @@ class ClientResponController extends Controller
 			$model->material_id = $modal->id;
 			$model->file_respon = CUploadedFile::getInstance($model, 'file_respon');                       
 			$path = Yii::getPathOfAlias("webroot"). '/dokumen/responclient/tolak-'.$model->file_respon;
+			if($model->file_respon != null){
 			$model->file_respon->saveAs($path);
+		}
 			$model->tgl_create= date("Y-m-d",time());
 			$dokeng->tgl_rejected=date("Y-m-d H:i:s");
 			$dokeng->save();

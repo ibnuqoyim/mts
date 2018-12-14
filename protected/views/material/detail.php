@@ -25,7 +25,7 @@
 
 
         <section class="container">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <table class="table table-hover table-dark" style="width:100% border-top: 1px solid #2e2bb1">
               <tr>
                 <td  >Nama Material</td>
@@ -70,7 +70,7 @@
               </tr>
 
                <tr>
-                <td  rowspan="<?php echo $s=(count($permintaan)*5)+1?>">Dokumen Penawaran</td>
+                <td  rowspan="<?php echo $s=(count($penawaran)*5)+1?>">Dokumen Penawaran</td>
                 <td  >  </a></td>
               </tr>
               <?php foreach ($penawaran as $tender) { ?>

@@ -31,10 +31,10 @@ class Penawaran extends CActiveRecord
 		return array(
 			array('id_user, id_material, file_administrasi, file_teknis, deskripsi, deskripsi, tgl_create', 'required'),
 			array('id_user, id_material', 'numerical', 'integerOnly'=>true),
-			array('file_administrasi, file_teknis, deskripsi, deskripsi', 'length', 'max'=>250),
+			array('file_administrasi, file_teknis, review_engineering, deskripsi, deskripsi', 'length', 'max'=>250),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_user, id_material, file_administrasi, file_teknis, deskripsi, deskripsi, tgl_create', 'safe', 'on'=>'search'),
+			array('id, id_user, id_material, file_administrasi, review_engineering, file_teknis, deskripsi, deskripsi, tgl_create', 'safe', 'on'=>'search'),
 		);
 	}
 

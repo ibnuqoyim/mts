@@ -40,7 +40,7 @@ class Pni extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_material', 'required'),
+			array('id_material, desk, plan_produksi', 'required'),
 			array('id_material, pic, pic_qc', 'numerical', 'integerOnly'=>true),
 			array('file, hasil_inspeksi, status_inspeksi, file_hasil_inspeksi', 'length', 'max'=>100),
 			array('progres', 'length', 'max'=>110),

@@ -210,9 +210,9 @@ class MaterialController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Material'], $_POST['DokEng']))
+		if(isset($_POST['DokEng']))
 		{
-			$model->attributes=$_POST['Material'];
+			//$model->attributes=$_POST['Material'];
 			$dokeng->attributes=$_POST['DokEng'];
 			$dokeng->file_mto = CUploadedFile::getInstance($dokeng, 'file_mto');
 			if($dokeng->file_mto != null){

@@ -42,7 +42,7 @@
           <?php  }?>
           <br>
 	 <div class="form-group">
-            <?php echo "Upload Dokumen MTO : " ?>
+      <?php echo "Upload Dokumen MTO : " ?>
       <?php echo $form->fileField($dokeng,'file_mto'); ?>
       <?php echo $form->error($dokeng,'file_mto'); ?>
     </div>
@@ -63,7 +63,7 @@
     </div>
     </div>
     <div class="form-group col-lg-12">
-            <?php echo CHtml::submitButton($model->isNewRecord ? 'Ajukan' : 'Update', array('class'=>'btn btn-primary left ')); ?>
+            <?php echo CHtml::submitButton($dokeng->isNewRecord ? 'Ajukan' : 'Update', array('class'=>'btn btn-primary left ')); ?>
     </div>
 
 <?php $this->endWidget(); ?>
