@@ -85,6 +85,11 @@ class PniController extends Controller
 			$model->tgl_create= date("Y-m-d",time());
 			$model->save();
 			if($model->save())
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Upload dokumen Production and Inspection Plan untuk pengadaan material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 				Yii::app()->user->setFlash('success', 'Perencanaan Production and Inspection berhasil di upload');
 				$this->redirect(array('material/index'));
 		}
@@ -118,7 +123,11 @@ class PniController extends Controller
 					$model->save();
 				}
 				
-				
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Update progres '.$model->progres.' untuk pengadaan material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 				Yii::app()->user->setFlash('success', 'Progress produksi telah diupdate');
 				$this->redirect(array('material/index'));
 		}
@@ -153,6 +162,11 @@ class PniController extends Controller
 					$modal->plan_irn=date("Y-m-d H:i:s",$a);
 					$modal->save();
 					$model->save();
+					$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Upload dokumen hasil Inspeksi dari QC untuk material  '.$modal->nama.' untuk status LULUS';
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 					$this->redirect(array('irn/create','idm'=>$modal->id));
 				}
 				else{
@@ -163,6 +177,11 @@ class PniController extends Controller
 				$model->save();	
 				$modal->plan_repair=date("Y-m-d H:i:s",$a);
 				$modal->save();
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Upload dokumen hasil inspeksi dari QC untuk pengadaan material  '.$modal->nama.' untuk status Repair';
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 				Yii::app()->user->setFlash('success', 'Berita Acara Inspeksi berhasil di upload');
 				$this->redirect(array('material/index'));
 

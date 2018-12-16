@@ -79,6 +79,11 @@ class KomController extends Controller
 			$model->pic = Yii::app()->user->id;
 			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Membuat jadwal dan undangan untuk pelaksanaan Kick of Meeting pelaksanaan pengadaan material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 				Yii::app()->user->setFlash('success', 'Jadwal Kick of Meeting berhasil di buat');
 				$this->redirect(array('material/index'));
 		}
@@ -101,6 +106,11 @@ class KomController extends Controller
 			$modal->attributes=$_POST['Material'];
 			$modal->status = 8;
 			if($modal->save())
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Mengkonfirmasi undangan Kick of Meeting untuk pengdaan material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 				Yii::app()->user->setFlash('success', 'Jadwal Kick of Meeting telah di Konfirmasi');
 				$this->redirect(array('material/index'));
 		}

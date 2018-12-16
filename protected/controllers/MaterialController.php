@@ -75,7 +75,7 @@ class MaterialController extends Controller
 
 	public function actionDetail($id)
 	{
-
+		$log = new Log;
 		$respon = ClientRespon::Model()->findAll('material_id='.$id);
 		$hasilPni = HasilPni::Model()->findAll('id_material='.$id);
 		$hasilinspeksiWH = HasilinspeksiWH::Model()->findAll('id_material='.$id);
@@ -88,7 +88,10 @@ class MaterialController extends Controller
 		$penawaran = Penawaran::Model()->findAll('id_material='.$id);
 		$pengiriman = Pengiriman::Model()->findAll('id_material='.$id);
 		$model = $this->loadModel($id);
-
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Melihat detail material '.$model->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();		
 		$this->render('detail',array(
 			'model'=>$model,
 			'respon'=>$respon,
@@ -107,7 +110,7 @@ class MaterialController extends Controller
 
 	public function actionLog($id)
 	{
-
+		$log = new Log;
 		$respon = ClientRespon::Model()->findAll('material_id='.$id);
 		$hasilPni = HasilPni::Model()->findAll('id_material='.$id);
 		$hasilinspeksiWH = HasilinspeksiWH::Model()->findAll('id_material='.$id);
@@ -120,6 +123,10 @@ class MaterialController extends Controller
 		$penawaran = Penawaran::Model()->findAll('id_material='.$id);
 		$pengiriman = Pengiriman::Model()->findAll('id_material='.$id);
 		$model = $this->loadModel($id);
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Melihat log material '.$model->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 
 		$this->render('log',array(
 			'model'=>$model,
@@ -145,6 +152,7 @@ class MaterialController extends Controller
 	{
 		$model=new Material;
 		$dokeng=new DokEng;
+		$log = new Log;
 		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -186,6 +194,10 @@ class MaterialController extends Controller
 			if($model->save())
 				$dokeng->id_material = $model->id;
 				$dokeng->save();
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = "Mengajukan material baru";
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 				Yii::app()->user->setFlash('success', 'Material '.$model->nama.' telah diajukan!!');
 				$this->redirect(array('material/index')); 
 		
@@ -203,6 +215,7 @@ class MaterialController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+		$log = new Log;
 		$model=$this->loadModel($id);
 		$dokeng=DokEng::Model()->findByPk($id);
 		$respon = ClientRespon::Model()->findAll('material_id='.$id);
@@ -241,6 +254,10 @@ class MaterialController extends Controller
 			$model->status = 1 ;
 
 			if($model->save())
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Mengupdate dokumen engineering untuk material '.$model->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 				Yii::app()->user->setFlash('success', 'Dokumen Engineering Material '.$model->nama.' berhasil di update!!');
 				$this->redirect(array('material/index')); 
 		}
@@ -252,6 +269,7 @@ class MaterialController extends Controller
 	
 	public function actionClosetender($idm)
 	{
+		$log = new Log;
 		$model=$this->loadModel($idm);
 		$tender=Permintaan::Model()->findByPk($idm);
 		$model->status_tender = 2;
@@ -261,6 +279,10 @@ class MaterialController extends Controller
 		$tender->plan_pemenang=date("Y-m-d H:i:s",$a);
 		$model->save();
 		$tender->save();
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Menutup tender untuk material '.$model->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 		Yii::app()->user->setFlash('success', 'Tender telah ditutup');
 		$this->redirect(array('material/index'));
 	}
@@ -351,6 +373,7 @@ class MaterialController extends Controller
 
 	public function actionWin($idp, $idm)
 	{
+		$log = new Log;
 		$model=$this->loadModel($idm);
 		$tender=Permintaan::Model()->findByPk($idm);
 		$model->pemenang=$idp;
@@ -361,6 +384,10 @@ class MaterialController extends Controller
 		$model->plan_kontrak=date("Y-m-d H:i:s",$a);
 		$model->save();
 		$tender->save();
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Menentukan pemenang tender untuk  '.$model->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();		
 		Yii::app()->user->setFlash('success', 'Pemenang telah ditetapkan');
 		$this->redirect('index');
 	}

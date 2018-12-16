@@ -84,6 +84,11 @@ class PermintaanController extends Controller
 			$model->deadline_tutup=date("Y-m-d H:i:s",$a);
 			$modal->save();
 			if($model->save())
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Upload dokumen permintaan penawaran vendor unuk pengadaan material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 				Yii::app()->user->setFlash('success', 'Dokumen permintaan penawaran berhasil di upload');
 				$this->redirect(array('material/index'));
 		}

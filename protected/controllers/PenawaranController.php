@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 class PenawaranController extends Controller
 {
@@ -85,6 +85,11 @@ class PenawaranController extends Controller
 			$model->file_administrasi->saveAs($path);
 			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Input penawaran untuk tender pengadaan material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 				Yii::app()->user->setFlash('success', 'Dokumen penawaran berhasil di upload');
 				$this->redirect(array('material/index'));
 		}
@@ -132,6 +137,11 @@ class PenawaranController extends Controller
 			$path = Yii::getPathOfAlias("webroot"). '/dokumen/penawaran/RE-'.$model->file_review_eng;
 			$model->file_review_eng->saveAs($path);
 			if($model->save())
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Memberikan memberikan review untuk penawaran tender material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 				Yii::app()->user->setFlash('success', 'Dokumen penawaran berhasil di review');
 				$this->redirect(array('penawaran/view','idm'=>$model->id_material));
 		}

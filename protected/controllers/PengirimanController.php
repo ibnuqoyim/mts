@@ -65,6 +65,11 @@ class PengirimanController extends Controller
 			$modal->save();
 			$pengiriman->save();
 			if($modal->save())
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Konfirmasi penerimaan material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 				Yii::app()->user->setFlash('success', 'Pengiriman '.$modal->nama.' telah diterima!');
 				$this->redirect(array('material/index'));
 			}
@@ -93,6 +98,11 @@ class PengirimanController extends Controller
 			$model->tgl_create= date("Y-m-d",time());
 			$model->pic = Yii::app()->user->id;
 			if($model->save())
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Input detail pengiriman untuk material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 				Yii::app()->user->setFlash('success', 'Detail Pengiriman '.$modal->nama.' telah di simpan!');
 				$this->redirect(array('material/index'));
 		}

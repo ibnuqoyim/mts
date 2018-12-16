@@ -62,6 +62,8 @@ class ClientResponController extends Controller
 	 */
 	public function actionCreate($idm)
 	{
+
+		$log = new Log;
 		$model=new ClientRespon;
 		$modal=Material::model()->findByPk($idm);
 		$dokeng=DokEng::model()->findByPk($idm);
@@ -88,6 +90,10 @@ class ClientResponController extends Controller
 			$modal->save();
 			$dokeng->save();
 			if($model->save())
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Memberikan approval untuk pengajuan material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 				Yii::app()->user->setFlash('success', 'Dokumen Engineering Material '.$modal->nama.' berhasil di Approve!!');
 				$this->redirect(array('material/index'));
 		}
@@ -99,6 +105,7 @@ class ClientResponController extends Controller
 
 	public function actionCreateR($idm)
 	{
+		$log = new Log;
 		$model=new ClientRespon;
 		$modal=Material::model()->findByPk($idm);
 		$dokeng=DokEng::model()->findByPk($idm);
@@ -120,6 +127,10 @@ class ClientResponController extends Controller
 			$modal->status=3;
 			$modal->save();
 			if($model->save())
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Memberikan penolakan untuk pengajuan material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 				Yii::app()->user->setFlash('success', 'Dokumen Engineering Material '.$modal->nama.' berhasil di reject!!');
 				$this->redirect(array('material/index'));
 		}

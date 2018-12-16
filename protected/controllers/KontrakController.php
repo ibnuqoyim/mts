@@ -86,6 +86,11 @@ class KontrakController extends Controller
 			$model->tgl_submit= date("Y-m-d",time());
 			$model->pic=Yii::app()->user->id;
 			if($model->save())
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Upload dokumen kontrak untuk pengadaan material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 				Yii::app()->user->setFlash('success', 'Dokumen kontrak berhasil di upload');
 				$this->redirect(array('material/index'));
 		}

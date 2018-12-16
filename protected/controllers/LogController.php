@@ -1,6 +1,6 @@
 <?php
 
-class IrnController extends Controller
+class LogController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -60,40 +60,22 @@ class IrnController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate($idm)
+	public function actionCreate()
 	{
-		$model=new Irn;
-		$modul=Pni::Model()->findByPk($idm);
-		$modal=Material::model()->findByPk($idm);
-		$repair=Hasilrepair::model()->findAll('id_material ='.$idm);
+		$model=new Log;
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Irn']))
+		if(isset($_POST['Log']))
 		{
-			$model->attributes=$_POST['Irn'];
-			$model->id_material=$idm;
-			//$modal->actual_fatnirn=date("Y-m-d H:i:s");
-			$date = strtotime(date("Y-m-d H:i:s"));
-			$a = strtotime("+7 day", $date);
-					
-			$modal->plan_pengiriman=date("Y-m-d H:i:s",$a);
-			$modal->status=12;
-			$modal->save();
-			
-			$model->actual_release= date("Y-m-d",time());
+			$model->attributes=$_POST['Log'];
 			if($model->save())
-				$log = new Log;
-				$log->id_user = Yii::app()->user->id;
-				$log->kegiatan = 'Input IRN untuk material  '.$modal->nama;
-				$log->tgl = date("Y-m-d",time());
-				$log->save();
-				Yii::app()->user->setFlash('success', 'IRN untuk '.$modal->nama.' telah di Release!');
-				$this->redirect(array('material/index'));
+				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('create',array(
-			'model'=>$model, 'modal'=>$modal, 'repair'=>$repair
+			'model'=>$model,
 		));
 	}
 
@@ -109,9 +91,9 @@ class IrnController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Irn']))
+		if(isset($_POST['Log']))
 		{
-			$model->attributes=$_POST['Irn'];
+			$model->attributes=$_POST['Log'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -140,9 +122,13 @@ class IrnController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Irn');
+		$model=new Log('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Log']))
+			$model->attributes=$_GET['Log'];
+
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$model,
 		));
 	}
 
@@ -151,10 +137,10 @@ class IrnController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Irn('search');
+		$model=new Log('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Irn']))
-			$model->attributes=$_GET['Irn'];
+		if(isset($_GET['Log']))
+			$model->attributes=$_GET['Log'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -165,12 +151,12 @@ class IrnController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Irn the loaded model
+	 * @return Log the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Irn::model()->findByPk($id);
+		$model=Log::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -178,11 +164,11 @@ class IrnController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Irn $model the model to be validated
+	 * @param Log $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='irn-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='log-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

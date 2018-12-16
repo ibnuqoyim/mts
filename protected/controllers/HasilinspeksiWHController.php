@@ -81,6 +81,11 @@ class HasilinspeksiWHController extends Controller
 			$model->pic = Yii::app()->user->id;
 			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Menginput hasil inspeksi di warehouse untuk material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 				Yii::app()->user->setFlash('success', 'Hasil Inspeksi Warehouse berhasil di submit!');
 				$this->redirect(array('material/index'));
 		}

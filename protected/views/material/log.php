@@ -32,77 +32,87 @@
                 <td  >PIC</td>
                 <td  >Plan Finish</td>
                 <td  >Actual Finish</td>
-                <td>Status</td>
+                <td colspan="2">Status</td>
               </tr>
               <tr>
                 <td  >Penyusunan Dokumen Engineering</td>
                 <td  ><?php echo $model->pica->nama ?></td>
                 <td  ><?php echo $a=$model->dokenga->plan_approve ?></td>
                 <td  ><?php echo $b=$model->dokenga->actual_approve ?></td>
-                <td> <?php selisih($a,$b)?></td>
+                <td> <?php $s = selisih($a,$b)?></td>
+                <td> <?php emoji($a,$b)?></td>
               </tr>
               <tr>
                 <td  >Penyusunan Dokumen Permintaan Penawaran</td>
                 <td  ><?php echo $model->tender->pica->nama ?></td>
                 <td  ><?php echo $a=$model->plan_tender ?></td>
                 <td  ><?php echo $b=$model->tender->tgl_create ?></td>
-                <td> <?php selisih($a,$b)?></td>
+                <td> <?php $s = selisih($a,$b)?></td>
+                <td> <?php emoji($a,$b)?></td>
               </tr>
               <tr>
                 <td  >Pelaksanaan Tender</td>
                 <td  ><?php echo $model->tender->pica->nama ?></td>
                 <td  ><?php echo $a=$model->tender->plan_pemenang ?></td>
                 <td  ><?php echo $b=$model->tender->actual_pemenang ?></td>
-                <td> <?php selisih($a,$b)?></td>
+                <td> <?php $s = selisih($a,$b)?></td>
+                <td> <?php emoji($a,$b)?></td>
               </tr>
               <tr>
                 <td  >Penyusunan Dokumen Kontrak</td>
                  <td  ><?php echo $model->kontrak->pica->nama ?></td>
                 <td  ><?php echo $a=$model->plan_kontrak ?></td>
                 <td  ><?php echo $b=$model->kontrak->tgl_submit ?></td>
-                <td> <?php selisih($a,$b)?></td>
+                <td> <?php $s = selisih($a,$b)?></td>
+                <td> <?php emoji($a,$b)?></td>
               </tr>
              <tr>
                 <td  >Pelaksanaan Kick of Meeting</td>
                 <td  ><?php echo $model->kom->pica->nama ?></td>
                 <td  ><?php echo $a=$model->kom->tanggal ?></td>
                 <td  ><?php echo $b=$model->kom->actual_kom ?></td>
-                <td> <?php selisih($a,$b)?></td>
+                <td> <?php $s = selisih($a,$b)?></td>
+                <td> <?php emoji($a,$b)?></td>
               </tr>
               <tr>
                 <td  >Tahap Produksi</td>
                 <td  ><?php echo $model->pni->pica->nama ?></td>
                 <td  ><?php echo $a=$model->pni->plan_produksi ?></td>
                 <td  ><?php echo $b=$model->pni->actual_produksi ?></td>
-                <td> <?php selisih($a,$b)?></td>
+                <td> <?php $s = selisih($a,$b)?></td>
+                <td> <?php emoji($a,$b)?></td>
               </tr>
               <tr>
                 <td  >Inspeksi oleh QC</td>
                 <td  ><?php echo $model->pni->picq->nama ?></td>
                 <td  ><?php echo $a=$model->pni->plan_inspeksi ?></td>
                 <td  ><?php echo $b=$model->pni->actual_inspeksi ?></td>
-                <td> <?php selisih($a,$b)?></td>
+                <td> <?php $s = selisih($a,$b)?></td>
+                <td> <?php emoji($a,$b)?></td>
               </tr>
               <tr>
                 <td  >Pengiriman</td>
                 <td  ><?php echo $model->pengiriman->pica->nama ?></td>
                 <td  ><?php echo $a=$model->plan_pengiriman ?></td>
                 <td  ><?php echo $b=$model->pengiriman->tgl_create ?></td>
-                <td> <?php selisih($a,$b)?></td>
+                <td> <?php $s = selisih($a,$b)?></td>
+                <td> <?php emoji($a,$b)?></td>
               </tr>
               <tr>
                 <td  >Diterima Warehouse Tujuan</td>
                 <td  ><?php echo $model->wh->pica->nama ?></td>
                 <td  ><?php echo $a=$model->plan_penerimaan ?></td>
                 <td  ><?php echo $b=$model->pengiriman->actual_penerimaan ?></td>
-                <td> <?php selisih($a,$b)?></td>
+                <td> <?php $s1 = selisih($a,$b)?></td>
+                <td> <?php emoji($a,$b)?></td>
               </tr>
               <tr>
                 <td  >Update Stok</td>
                 <td  ><?php echo $model->wh->pica->nama ?></td>
                 <td  ><?php echo $a=$model->plan_finish ?></td>
                 <td  ><?php echo $b=$model->actual_finish ?></td>
-                <td> <?php selisih($a,$b)?></td>
+                <td> <?php $s = selisih($a,$b)?></td>
+                <td> <?php emoji($a,$b)?></td>
               </tr>
             </table> 
             </div>
@@ -117,13 +127,29 @@
           $x = $interval->format('%a');
           $x = intval($x);
           if($x == 0){
-            echo "Tepat Waktu";
+            echo "Tepat Waktu" ;
           }elseif ($x < 0) {
             echo "Telat";
           }elseif ($x > 0) {
             echo "Cepat";
           }else{
             echo "Data tidak lengkap";
+          }
+        }
+
+        function emoji($a, $b){
+          $ad = new Datetime($a);
+          $bd = new Datetime($b);
+
+          $interval = $bd->diff($ad);
+          $x = $interval->format('%a');
+          $x = intval($x);
+          if($x == 0){
+            echo '<img class="logo" align="center" src="'.Yii::app()->theme->baseUrl.'/assets/img/slightly-smiling-face_1f642.png" width="30%" alt="Logo">';
+          }elseif($x < 0){
+            echo '<img class="logo" align="center" src="'.Yii::app()->theme->baseUrl.'/assets/img/pouting-face_1f621.png" width="30%" alt="Logo">';
+          }elseif($x > 0){
+            echo '<img class="logo" align="center" src="'.Yii::app()->theme->baseUrl.'/assets/img/grinning-face_1f600.png" width="30%" alt="Logo">';
           }
         }
         ?>
