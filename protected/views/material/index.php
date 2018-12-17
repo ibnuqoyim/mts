@@ -85,7 +85,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                 <?php if(Yii::app()->user->role == "Engineering" || Yii::app()->user->role =="Admin" ){ echo CHtml::link('<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Ajukan Material Baru', array('/material/create'),array('class'=>'btn btn-lg btn-default btn-block')); }?>
                  
 
-                 <?php   
+                 <?php   /*
               $kategori=new Material; // initilize it in controller
               $form=$this->beginWidget('CActiveForm', array(
               'id'=>'dependent-form',
@@ -106,7 +106,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
             'url'=>Yii::app()->createUrl('material/test'), //  get states list
             'update'=>'#test', // add the state dropdown id
             'data'=>array('kategori'=>'js:this.value'),
-            ))); $this->endWidget();
+            ))); $this->endWidget(); */
             ?>
             <div id="test">
                 <?php $data1 = $model->proyek()?>
