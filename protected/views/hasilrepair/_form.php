@@ -43,15 +43,10 @@
 
 	<div class="form-group">
             <?php echo " " ?>
-			<?php echo $form->fileField($model,'file'); ?>
-			<?php echo $form->error($model,'file'); ?>
+			<?php echo $form->fileField($model,'file_repair'); ?>
+			<?php echo $form->error($model,'file_repair'); ?>
     </div>
 
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'desk'); ?>
-		<?php echo $form->textArea($model,'desk',array('class'=>'form-control'),array('size'=>60,'maxlength'=>300)); ?>
-		<?php echo $form->error($model,'desk'); ?>
-	</div>
 
 
 

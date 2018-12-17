@@ -98,7 +98,7 @@ class PniController extends Controller
 			'model'=>$model, 'modal'=>$modal,'kontrak'=>$kontrak
 		));
 	}
-
+ 
 	public function actionProgres($idm)
 	{
 		$model=$this->loadModel($idm);
@@ -125,7 +125,7 @@ class PniController extends Controller
 				
 				$log = new Log;
 				$log->id_user = Yii::app()->user->id;
-				$log->kegiatan = 'Update progres '.$model->progres.' untuk pengadaan material  '.$modal->nama;
+				$log->kegiatan = 'Update progres '.$model->progres.'% untuk pengadaan material  '.$modal->nama;
 				$log->tgl = date("Y-m-d",time());
 				$log->save();
 				Yii::app()->user->setFlash('success', 'Progress produksi telah diupdate');
@@ -165,7 +165,7 @@ class PniController extends Controller
 					$log = new Log;
 				$log->id_user = Yii::app()->user->id;
 				$log->kegiatan = 'Upload dokumen hasil Inspeksi dari QC untuk material  '.$modal->nama.' untuk status LULUS';
-				$log->tgl = date("Y-m-d",time());
+				$log->tgl = date("Y-m-d H:i:s");
 				$log->save();
 					$this->redirect(array('irn/create','idm'=>$modal->id));
 				}
@@ -174,13 +174,14 @@ class PniController extends Controller
 				$model->actual_inspeksi = date("Y-m-d H:i:s");
 				$date = strtotime(date("Y-m-d H:i:s"));
 				$a = strtotime("+5 day", $date);
+				$model->plan_repair=date("Y-m-d H:i:s",$a);
 				$model->save();	
-				$modal->plan_repair=date("Y-m-d H:i:s",$a);
+				
 				$modal->save();
 				$log = new Log;
 				$log->id_user = Yii::app()->user->id;
 				$log->kegiatan = 'Upload dokumen hasil inspeksi dari QC untuk pengadaan material  '.$modal->nama.' untuk status Repair';
-				$log->tgl = date("Y-m-d",time());
+				$log->tgl = date("Y-m-d H:i:s");
 				$log->save();
 				Yii::app()->user->setFlash('success', 'Berita Acara Inspeksi berhasil di upload');
 				$this->redirect(array('material/index'));

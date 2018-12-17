@@ -116,6 +116,9 @@
               </tr>
             </table> 
             </div>
+
+           
+            <div id="Kategori"> </div>
         </section>
 
         <?php 
@@ -124,14 +127,15 @@
           $bd = new Datetime($b);
 
           $interval = $bd->diff($ad);
-          $x = $interval->format('%a');
+          $x = $interval->format('%R%a');
           $x = intval($x);
+
           if($x == 0){
-            echo "Tepat Waktu" ;
+            echo 'Tepat Waktu'  ;
           }elseif ($x < 0) {
-            echo "Telat";
+            echo 'Telat';
           }elseif ($x > 0) {
-            echo "Cepat";
+            echo 'Cepat';
           }else{
             echo "Data tidak lengkap";
           }
@@ -142,7 +146,7 @@
           $bd = new Datetime($b);
 
           $interval = $bd->diff($ad);
-          $x = $interval->format('%a');
+          $x = $interval->format('%R%a');
           $x = intval($x);
           if($x == 0){
             echo '<img class="logo" align="center" src="'.Yii::app()->theme->baseUrl.'/assets/img/slightly-smiling-face_1f642.png" width="30%" alt="Logo">';

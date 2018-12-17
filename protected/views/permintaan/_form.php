@@ -78,7 +78,5 @@
 	</div>
 
 </div>
-<div class="col-lg-6">
-	<?php echo '&nbsp &nbsp'.CHtml::link(' <button class="btn  btn-warning ">Back</button>', array('/material/index')); ?>
-</div>
+
 </div><!-- form -->

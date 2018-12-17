@@ -31,7 +31,7 @@ class Pengiriman extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_material,  tujuan, tgl_create', 'required'),
+			array('id_material,  tujuan, plan_penerimaan, tgl_create', 'required'),
 			array('id_material', 'numerical', 'integerOnly'=>true),
 			array('tujuan, status, pic', 'length', 'max'=>100),
 			// The following rule is used by search().

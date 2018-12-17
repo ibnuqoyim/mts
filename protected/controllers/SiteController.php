@@ -199,6 +199,11 @@ class SiteController extends Controller
 					$this->redirect(array('task/indem'));
 				} else {
                 Yii::app()->user->setFlash('success', 'Welcome back '.Yii::app()->user->nama);
+                $log = New Log;
+                $log->id_user = Yii::app()->user->id;
+                $log->kegiatan = "Berhasil login ke sistem";
+                $log->tgl = date("Y-m-d",time());
+                $log->save();   
                 $this->redirect(array('material/index'));}
             }
         }

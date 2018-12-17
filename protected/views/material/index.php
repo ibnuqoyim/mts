@@ -50,7 +50,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
 
 
 
-												 <p class="head"><?php echo CHtml::link(Yii::app()->user->nama .' (Originator)', array('/user/update','id'=>Yii::app()->user->id), array('class'=>'gold')); ?></p>
+												 <p class="head"><?php echo CHtml::link(Yii::app()->user->nama .'('.Yii::app()->user->role.')', array('/user/update','id'=>Yii::app()->user->id), array('class'=>'gold')); ?></p>
 
 						 </div>
 						 <div class="clear"></div>
@@ -83,6 +83,37 @@ CHtml::ajaxLink('View Popup', 'material/index',
                 </div> 
 
                 <?php if(Yii::app()->user->role == "Engineering" || Yii::app()->user->role =="Admin" ){ echo CHtml::link('<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Ajukan Material Baru', array('/material/create'),array('class'=>'btn btn-lg btn-default btn-block')); }?>
+                 
+
+                 <?php   
+              $kategori=new Material; // initilize it in controller
+              $form=$this->beginWidget('CActiveForm', array(
+              'id'=>'dependent-form',
+              'enableClientValidation'=>true,
+              'htmlOptions' => array('enctype' => 'multipart/form-data','autocomplete'=>'off'),
+              'clientOptions'=>array(
+              'validateOnSubmit'=>true,
+              )
+              )); 
+            
+                                            
+            echo $form->dropDownList($kategori,'kategori', 
+            CHtml::listData(Kategori::model()->findAll(), 'id', 'nama'),
+            array(
+            'prompt'=>'Select Kategori',
+            'ajax' => array(
+            'type'=>'POST', 
+            'url'=>Yii::app()->createUrl('material/test'), //  get states list
+            'update'=>'#test', // add the state dropdown id
+            'data'=>array('kategori'=>'js:this.value'),
+            ))); $this->endWidget();
+            ?>
+            <div id="test">
+                <?php $data1 = $model->proyek()?>
+            </div>
+            <?php  ?>
+
+
             </div>
             <div class="col-lg-9">
             <?php if(Yii::app()->user->role == "Engineering" || Yii::app()->user->role =="Admin" ){ ?>
@@ -185,7 +216,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                 array(
                                         'class'=>'CButtonColumn',
                                         'header'=>'Action',
-                                    'template'=>'{view}{ok}{no}',
+                                    'template'=>'{view}',
                                     'buttons'=>array
                                             (
                                                 'view' => array
@@ -309,7 +340,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                         }
                         elseif ($b == 8.5) {
                             $material = Material::Model()->findbyPk($id);
-                            echo 'Progres Produksi Material '.$material->progres.'%';
+                            echo 'Progres Produksi Material '.$material->pni->progres.'%';
                         }
                         else
                         {
@@ -427,7 +458,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                          ),
                                 array('name'=>'status',
                                          'header'=>'Status',
-                                         'value'=>'($data->status == 8.5 ) ? "Progres Produksi Material ".$data->progres."%" : $data->statusa->keterangan',
+                                         'value'=>'($data->status == 8.5 ) ? "Progres Produksi Material ".$data->pni->progres."%" : $data->statusa->keterangan',
 
                                          ),
                                 array(
@@ -654,13 +685,13 @@ CHtml::ajaxLink('View Popup', 'material/index',
                     )); ?>
             </div>
             <?php } ?>
-            <?php if(Yii::app()->user->role == "proyek" || Yii::app()->user->role =="Admin" ){ ?>
+            <?php if(Yii::app()->user->role == "Proyek" || Yii::app()->user->role =="Admin" ){ ?>
            <div id="Proyek" class="col-lg-12">
             <br>
                 <b align="center">Dashboard Proyek</b>
                 <?php $this->widget('zii.widgets.grid.CGridView', array(
-                        'id'=>'user-grid',
-                        'dataProvider'=>$model->proyek(),
+                        'id'=>'proyek-grid',
+                        'dataProvider'=>$data1,
                         //'filter'=>$model,
                         'pager'=>array(
                             'header'         => '',
@@ -683,12 +714,12 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                          'value'=>'$data->statusa->namaStatus',
 
                                          ),
-                                /*
-                                array('name'=>'client',
-                                         'header'=>'Client',
-                                         'value'=>'$data->clienta->nama',
+                                
+                                array('name'=>'kategori',
+                                         'header'=>'Kategori',
+                                         'value'=>'$data->kategoria->nama',
 
-                                         ), */
+                                         ), 
                                 'stok',
                                // array(
                                         //'class'=>'CButtonColumn',

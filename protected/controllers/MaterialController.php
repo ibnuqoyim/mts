@@ -32,7 +32,7 @@ class MaterialController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','UpdateDPP', 'log','win','admin','detail','closetender'),
+				'actions'=>array('create','update','UpdateDPP', 'log','win','admin','detail','closetender','test'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -90,7 +90,7 @@ class MaterialController extends Controller
 		$model = $this->loadModel($id);
 				$log->id_user = Yii::app()->user->id;
 				$log->kegiatan = 'Melihat detail material '.$model->nama;
-				$log->tgl = date("Y-m-d",time());
+				$log->tgl = date("Y-m-d H:i:s");
 				$log->save();		
 		$this->render('detail',array(
 			'model'=>$model,
@@ -107,6 +107,14 @@ class MaterialController extends Controller
 			'pengiriman'=>$pengiriman, 
 		));
 	}
+
+	public function actionTest(){
+		/*if((int) $_POST['kategori'] == 1){
+			echo $data1 = $model->engineering();
+			}*/
+
+			if($_POST['kategori'] == 1){$data1 = $model->vendor();}
+		}
 
 	public function actionLog($id)
 	{
@@ -125,7 +133,7 @@ class MaterialController extends Controller
 		$model = $this->loadModel($id);
 				$log->id_user = Yii::app()->user->id;
 				$log->kegiatan = 'Melihat log material '.$model->nama;
-				$log->tgl = date("Y-m-d",time());
+				$log->tgl = date("Y-m-d H:i:s");
 				$log->save();
 
 		$this->render('log',array(

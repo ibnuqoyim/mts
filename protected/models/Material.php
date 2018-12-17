@@ -34,7 +34,7 @@ class Material extends CActiveRecord
 			array('client, nama, create_date, last_update', 'required'),
 			array('client, stok, kategori, progres', 'numerical', 'integerOnly'=>true),
 			array('nama', 'length', 'max'=>100),
-			array('pemenang', 'length', 'max'=>110),
+			array('pemenang, plan_penerimaan, plan_finish, actual_finish', 'length', 'max'=>110),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, client, nama, deadline_responclient, deadline_produksi, actual_responclient, status, pemenang, stok, create_date, last_update', 'safe', 'on'=>'search'),

@@ -57,7 +57,8 @@ $(document).ready(function() {
                             $this->widget('zii.widgets.CMenu',array(
                                 'items'=>array(
                                     array('label'=>'Material', 'url'=>array('/material/admin'), 'visible'=>Yii::app()->user->isAdmin),
-                                    array('label'=>'User', 'url'=>array('/user/admin'), 'visible'=>!Yii::app()->user->isGuest)
+                                    array('label'=>'User', 'url'=>array('/user/admin'), 'visible'=>Yii::app()->user->isAdmin),
+                                    array('label'=>'Log Activity', 'url'=>array('/log/index'), 'visible'=>Yii::app()->user->isAdmin),
                                 ),
                                     'htmlOptions' => array(
                                     'class'=>'nav navbar-nav navbar-left',

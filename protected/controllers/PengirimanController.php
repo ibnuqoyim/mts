@@ -61,7 +61,7 @@ class PengirimanController extends Controller
 			$pengiriman->actual_penerimaan=date("Y-m-d",time());
 			$date = strtotime(date("Y-m-d H:i:s"));
 			$a = strtotime("+2 day", $date);
-			$modal->plan_inspeksiwh=date("Y-m-d H:i:s",$a);
+			$modal->plan_finish=date("Y-m-d H:i:s",$a);
 			$modal->save();
 			$pengiriman->save();
 			if($modal->save())
@@ -93,6 +93,8 @@ class PengirimanController extends Controller
 		if(isset($_POST['Pengiriman']))
 		{
 			$model->attributes=$_POST['Pengiriman'];
+			$modal->attributes=$_POST['Material'];
+			$model->plan_penerimaan = $modal->plan_penerimaan;
 			$model->id_material=$idm;
 			$modal->save();
 			$model->tgl_create= date("Y-m-d",time());
@@ -119,6 +121,7 @@ class PengirimanController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+		$modal=Material::model()->findByPk($idm);
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
@@ -132,7 +135,7 @@ class PengirimanController extends Controller
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model, 'modal'=>$modal
 		));
 	}
 

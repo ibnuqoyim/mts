@@ -62,27 +62,27 @@ class HasilrepairController extends Controller
 	 */
 	public function actionCreate($idm)
 	{
-		$model=new Hasilrepair;
+		$model=Pni::model()->findByPk($idm);
 		$modal=Material::model()->findByPk($idm);
 		$bapni=HasilPni::model()->findAll('id_material='.$idm);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Hasilrepair']))
+		if(isset($_POST['Pni']))
 		{
-			$model->attributes=$_POST['Hasilrepair'];
-			$model->id_material=$idm;
-			$modal->actual_repair = date("Y-m-d H:i:s");
+			$model->attributes=$_POST['Pni'];
+			
+			$model->actual_repair = date("Y-m-d H:i:s");
 			$date = strtotime(date("Y-m-d H:i:s"));
 			$a = strtotime("+3 day", $date);
 					
-			$modal->deadline_fatnirn=date("Y-m-d H:i:s",$a);
+			$modal->plan_irn=date("Y-m-d H:i:s",$a);
 			$modal->status=11;
 			$modal->save();
-			$model->file = CUploadedFile::getInstance($model, 'file');       
-			$path = Yii::getPathOfAlias("webroot"). '/dokumen/hasilrepair/hasil-'.$model->file;
-			$model->file->saveAs($path);
-			$model->tgl_create= date("Y-m-d",time());
+			$model->file_repair = CUploadedFile::getInstance($model, 'file_repair');       
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/hasilrepair/hasil-'.$model->file_repair;
+			$model->file_repair->saveAs($path);
+			//$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
 				Yii::app()->user->setFlash('success', 'Berita Acara Repair and Closing berhasil di upload');
 				$this->redirect(array('material/index'));

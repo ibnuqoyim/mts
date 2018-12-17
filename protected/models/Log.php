@@ -29,6 +29,7 @@ class Log extends CActiveRecord
 		return array(
 			array('id_user, kegiatan, tgl', 'required'),
 			array('id_user', 'numerical', 'integerOnly'=>true),
+			array('kegiatan', 'length', 'max'=>110),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, id_user, kegiatan, tgl', 'safe', 'on'=>'search'),

@@ -58,11 +58,7 @@
 
 
 
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'desk'); ?>
-		<?php echo $form->textArea($model,'desk',array('class'=>'form-control'),array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'desk'); ?>
-	</div>
+
 
 	<div class="form-group buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn btn-info left ')); ?>

@@ -56,6 +56,11 @@
                         ), array('prompt'=>'Pilih Warehouse','class'=>'form-control'),array('size'=>60,'maxlength'=>100)); ?>	
 		<?php echo $form->error($model,'tujuan'); ?>
 	</div>
+  <div class="form-group">
+    <?php echo "Estimasi diterima Warehouse : " ?>
+    <?php echo $form->dateField($modal,'plan_penerimaan',array('class'=>'form-control')); ?>
+    <?php echo $form->error($modal,'plan_penerimaan'); ?>
+  </div>
 
 	<div class="form-group buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Submit' : 'Save', array('class'=>'btn  btn-info left ')); ?>

@@ -47,11 +47,7 @@
 			<?php echo $form->fileField($model,'file_hasil_inspeksi'); ?>
 			<?php echo $form->error($model,'file_hasil_inspeksi'); ?>
     </div>
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'plan_produksi'); ?>
-		<?php echo $form->dateField($model,'plan_produksi',array('class'=>'form-control')); ?>
-		<?php echo $form->error($model,'plan_produksi'); ?>
-	</div>
+
 
 
 

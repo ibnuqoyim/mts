@@ -44,7 +44,7 @@
               </tr>
               <tr>
                 <td>PIC</td>
-                <td><?php echo $modal->pengiriman->pic ?></td>
+                <td><?php echo $modal->pengiriman->pica->nama ?></td>
               </tr>
             </table> 
           

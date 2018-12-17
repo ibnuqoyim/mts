@@ -126,7 +126,7 @@ class PenawaranController extends Controller
 	public function actionReview_eng($id)
 	{
 		$model=$this->loadModel($id);
-
+		$modal=Material::Model()->findByPk($id);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -139,7 +139,7 @@ class PenawaranController extends Controller
 			if($model->save())
 				$log = new Log;
 				$log->id_user = Yii::app()->user->id;
-				$log->kegiatan = 'Memberikan memberikan review untuk penawaran tender material  '.$modal->nama;
+				$log->kegiatan = 'Memberikan memberikan review untuk penawaran  ';
 				$log->tgl = date("Y-m-d",time());
 				$log->save();
 				Yii::app()->user->setFlash('success', 'Dokumen penawaran berhasil di review');

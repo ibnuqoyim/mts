@@ -77,6 +77,8 @@ class HasilinspeksiWHController extends Controller
 			$model->file_hasil_inspeksi->saveAs($path);
 			$modal->status=15;
 			$modal->attributes=$_POST['Material'];
+			
+			$modal->actual_finish=date("Y-m-d H:i:s");
 			$modal->save();
 			$model->pic = Yii::app()->user->id;
 			$model->tgl_create= date("Y-m-d",time());
