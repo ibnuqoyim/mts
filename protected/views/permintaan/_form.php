@@ -19,13 +19,17 @@
 	
 
 	<?php echo $form->errorSummary($model); ?>
-
+	
 
 	<div class="col-lg-6">
 			<?php echo "<br> <b> Dokumen Engineering : </b>" ?>
 			<?php $this->widget('zii.widgets.CDetailView', array(
 				'data'=>$modal,
 				'attributes'=>array(
+					array('name'=>'Kode Material',
+                          'type'=>'raw',
+                          'value'=>$modal->proyek,
+                          ),
 					array('name'=>'Material',
                           'type'=>'raw',
                           'value'=>$modal->nama,

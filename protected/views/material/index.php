@@ -58,7 +58,70 @@ CHtml::ajaxLink('View Popup', 'material/index',
 		 </div>
  </header>
  <section class="container">
+            <?php 
+         function selisih($c, $id){
+                $model = Material::Model()->findbyPk($id);
 
+                $b = date("Y-m-d");
+          switch ($c) {
+              case '1' :
+                  $a = $model->dokenga->plan_approve;
+                  break;
+            case '3' :
+                  $a = $model->dokenga->plan_approve;
+                  break;
+              case '2':
+                  $a = $model->plan_tender;
+                  break;
+            case '4':
+                  $a =$model->tender->deadline_tutup;
+                  break;
+            case '5':
+                  $a =$model->tender->deadline_tutup;
+                  break;
+            case '6':
+                  $a =$model->plan_kontrak;
+                  break;
+            case '7' :
+                  $a =$model->plan_kom;
+                  break;
+             case '8':
+                  $a =$model->plan_kom;
+                  break;
+            case '8.5' :
+                  $a = $model->pni->plan_produksi;
+                  break;
+            case '9' :
+                  $a =$model->pni->plan_inspeksi;
+                  break;
+            case  '10' :
+                  $a =$model->pni->plan_inspeksi;
+                  break;
+            case  '11':
+                  $a =$model->pni->plan_inspeksi;
+                  break;
+            case '12':
+                  $a =$model->plan_pengiriman;
+                  break;
+            case '13':
+                  $a =$model->plan_penerimaan;
+                  break;
+            case '14' :
+                  $a =$model->plan_finish;
+                  break;
+            default :
+                  $a = date("Y-m-d");
+                  break;
+              
+          }
+          $ad = new Datetime($a);
+          $bd = new Datetime($b);
+
+          $interval = $bd->diff($ad);
+          $x = $interval->format('%R%a');
+          $x = intval($x);
+          echo $x.' hari';
+        } ?>
 
             <div class="col-lg-3">
                 <div class="panel panel-default">
@@ -146,8 +209,13 @@ CHtml::ajaxLink('View Popup', 'material/index',
 
                                          ),
                                 array('name'=>'status',
-                                         'header'=>'Status',
+                                         'header'=>'Keterangan',
                                          'value'=>'$data->statusa->keterangan',
+
+                                         ),
+                                array('name'=>'status',
+                                         'header'=>'Deadline',
+                                         'value'=>'selisih($data->status, $data->id)',
 
                                          ),
                                 array(
@@ -208,8 +276,13 @@ CHtml::ajaxLink('View Popup', 'material/index',
 
                                          ),
                                 array('name'=>'status',
-                                         'header'=>'Status',
+                                         'header'=>'Keterangan',
                                          'value'=>'$data->statusa->keterangan',
+
+                                         ),
+                                array('name'=>'status',
+                                         'header'=>'Deadline',
+                                         'value'=>'selisih($data->status, $data->id)',
 
                                          ),
                                 //'stok',
@@ -251,6 +324,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
             <?php if(Yii::app()->user->role == "Pengadaan" || Yii::app()->user->role =="Admin" ){ ?>
            <div id="Pengadaan" class="col-lg-12">
             <br>
+
                 <b>Dashboard Pengadaan</b>
                 <?php $this->widget('zii.widgets.grid.CGridView', array(
                         'id'=>'user-grid',
@@ -279,8 +353,13 @@ CHtml::ajaxLink('View Popup', 'material/index',
 
                                          ),
                                 array('name'=>'status',
-                                         'header'=>'Status',
+                                         'header'=>'Keterangan',
                                          'value'=>'$data->statusa->keterangan',
+
+                                         ),
+                                array('name'=>'status',
+                                         'header'=>'Deadline',
+                                         'value'=>'selisih($data->status, $data->id)',
 
                                          ),
                                 array(
@@ -378,8 +457,13 @@ CHtml::ajaxLink('View Popup', 'material/index',
 
                                          ),
                                 array('name'=>'status',
-                                         'header'=>'Status',
+                                         'header'=>'Keterangan',
                                          'value'=>'dor($data->id, $data->pemenang,$data->status,$data->status_tender)',
+
+                                         ),
+                                array('name'=>'status',
+                                         'header'=>'Deadline',
+                                         'value'=>'selisih($data->status, $data->id)',
 
                                          ),
                                 array(
@@ -457,8 +541,13 @@ CHtml::ajaxLink('View Popup', 'material/index',
 
                                          ),
                                 array('name'=>'status',
-                                         'header'=>'Status',
+                                         'header'=>'Keterangan',
                                          'value'=>'($data->status == 8.5 ) ? "Progres Produksi Material ".$data->pni->progres."%" : $data->statusa->keterangan',
+
+                                         ),
+                                array('name'=>'status',
+                                         'header'=>'Deadline',
+                                         'value'=>'selisih($data->status, $data->id)',
 
                                          ),
                                 array(
@@ -520,8 +609,13 @@ CHtml::ajaxLink('View Popup', 'material/index',
 
                                          ),
                                 array('name'=>'status',
-                                         'header'=>'Status',
+                                         'header'=>'Keterangan',
                                          'value'=>'$data->statusa->keterangan',
+
+                                         ),
+                                array('name'=>'status',
+                                         'header'=>'Deadline',
+                                         'value'=>'selisih($data->status, $data->id)',
 
                                          ),
                                 array(
@@ -583,8 +677,13 @@ CHtml::ajaxLink('View Popup', 'material/index',
 
                                          ),
                                 array('name'=>'status',
-                                         'header'=>'Status',
+                                         'header'=>'Keterangan',
                                          'value'=>'$data->statusa->keterangan',
+
+                                         ),
+                                array('name'=>'status',
+                                         'header'=>'Deadline',
+                                         'value'=>'selisih($data->status, $data->id)',
 
                                          ),
                                 array(
@@ -646,8 +745,13 @@ CHtml::ajaxLink('View Popup', 'material/index',
 
                                          ),
                                 array('name'=>'status',
-                                         'header'=>'Status',
+                                         'header'=>'Keterangan',
                                          'value'=>'$data->statusa->keterangan',
+
+                                         ),
+                                array('name'=>'status',
+                                         'header'=>'Deadline',
+                                         'value'=>'selisih($data->status, $data->id)',
 
                                          ),
                                 array(

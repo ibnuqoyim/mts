@@ -73,10 +73,7 @@
 
         							),
                             	'nama',
-								array('name'=>'client',
-                                         'header'=>'Client',
-                                         'value'=>'$data->clienta->nama',
-                                         ),
+								
 								array('name'=>'pemenang',
                                          'header'=>'Pemenang',
                                          'value'=>'$data->pemenang != null ? $data->usera->nama : "Belum ada Pemenang"',

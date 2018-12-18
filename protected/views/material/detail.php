@@ -28,13 +28,15 @@
             <div class="col-lg-12">
                 <table class="table table-hover table-dark" style="width:100% border-top: 1px solid #2e2bb1">
               <tr>
+                <td  >Kode Material</td>
+                <td  ><?php echo $model->proyek ?></td>
+              </tr>
+               <tr>
                 <td  >Nama Material</td>
                 <td  ><?php echo $model->nama ?></td>
               </tr>
-              <tr>
-                <td  >Klien</td>
-                 <td  ><?php echo $model->clienta->nama ?></td>
-              </tr>
+              
+              <?php if($model->status > 3){ ?>
               <tr>
                 <td  >Pemenang</td>
                <td  > <?php echo $model->usera->nama ?></td>
@@ -63,16 +65,26 @@
                  <td > File : <a href="/dokumen/responclient/terima-<?php echo $res->file_respon ?>"><?php echo $res->file_respon ?></a> </td>
               </tr>
                <?php } } ?>
-              
+              <?php } else{ ?> 
+
+              <tr>
+                <td  colspan="2" style="text-align: center;"><i>Nothing data to show!!!</i></td>
+                
+              </tr>
+              <?php } ?>
+               <?php if($model->status > 4){?>
+
                <tr>
                 <td  >Dokumen Permintaan</td>
                 <td  >  <a href="/dokumen/permintaan/<?php echo $model->tender->file ?>"><?php echo $model->tender->file ?></a> </td>
               </tr>
-
+              <?php } if($model->status > 5) {?>
                <tr>
                 <td  rowspan="<?php echo $s=(count($penawaran)*5)+1?>">Dokumen Penawaran</td>
                 <td  >  </a></td>
               </tr>
+
+
               <?php foreach ($penawaran as $tender) { ?>
                 <tr>
                 <td  >Vendor : <?php echo $tender->usera->nama?></td>
@@ -90,12 +102,13 @@
                 <td  >Status : <?php echo ($tender->id_user == $model->pemenang ? "Pemenang" : "Kalah" ) ?></td>
               </tr>
              <?php } ?>
+             <?php } if($model->status > 6){?>
 
                <tr>
                 <td  >Dokumen Kontrak</td>
                 <td  >  <a href="/dokumen/kontrak/<?php echo $model->kontrak->file_kontrak ?>"><?php echo $model->kontrak->file_kontrak ?></a></td>
               </tr>
-
+                <?php } if($model->status > 8 ) {?>              
                <tr>
                 <td rowspan="2" >Kick of Meeting</td>
                 <td  >Tanggal : <?php echo $model->kom->tanggal ?></td>
@@ -104,11 +117,12 @@
                 
                 <td  >Tempat : <?php echo $model->kom->tempat ?></td>
               </tr>
+              <?php } if($model->status > 9 ) {?>
                <tr>
                 <td  >Production and Inspection Plan</td>
                 <td  ><a href="/dokumen/pni/<?php echo $model->pni->file ?>"><?php echo $model->pni->file ?></td>
                 </tr>
-
+                <?php } if($model->status > 11 ) {?>
                 <tr>
                 <td  >Hasil Inspeksi QC</td>
                 <td  ><a href="/dokumen/pni/hasil<?php echo $model->pni->file_hasil_inspeksi ?>"><?php echo $model->pni->file_hasil_inspeksi ?></td>
@@ -118,7 +132,8 @@
                 <td  >Berita Acara Repair Punch List</td>
                 <td  ><?php echo ($model->pni->file_repair == null ? "Tidak ada" : '<a href="/dokumen/pni/'.$model->pni->file_repair.'">'.$model->pni->file) ?></td>
               </tr>
-
+              <?php } if($model->status > 12 ) {?>
+                
                <tr>
                 <td  rowspan="2" >Pengiriman</td>
                 <td  >Tujuan : <?php echo $model->pengiriman->tujuan ?></td>
@@ -127,6 +142,7 @@
                 
                 <td  >PIC : <?php echo $model->pengiriman->pic ?></td>
               </tr>
+              <?php } if($model->status > 13 ) {?>
                <tr>
                  <td  rowspan="2" >Warehouse</td>
                 <td  >Hasil Inspeksi : <?php echo $model->wh->hasil_inspeksi ?></td>
@@ -135,12 +151,13 @@
                 
                 <td  >File : <a href="/dokumen/pni/hasil<?php echo $model->pni->file_hasil_inspeksi ?>"><?php echo $model->wh->file_hasil_inspeksi ?></td>
               </tr>
+              <?php } if($model->status > 15 ) {?>
 
                <tr>
                 <td  >Stok</td>
                 <td  ><?php echo $model->stok ?></td>
               </tr>
-              
+              <?php } ?>
             </table> 
             </div>
         </section>

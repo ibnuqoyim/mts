@@ -34,6 +34,7 @@
                 <td  >Actual Finish</td>
                 <td colspan="2">Status</td>
               </tr>
+             <?php if($model->status > 3){ ?>
               <tr>
                 <td  >Penyusunan Dokumen Engineering</td>
                 <td  ><?php echo $model->pica->nama ?></td>
@@ -42,6 +43,14 @@
                 <td> <?php $s = selisih($a,$b)?></td>
                 <td> <?php emoji($a,$b)?></td>
               </tr>
+              <?php } else{ ?> 
+
+              <tr>
+                <td  colspan="5" style="text-align: center;"><i>Nothing data to show!!!</i></td>
+                
+              </tr>
+              <?php } ?>
+               <?php if($model->status > 4){?>
               <tr>
                 <td  >Penyusunan Dokumen Permintaan Penawaran</td>
                 <td  ><?php echo $model->tender->pica->nama ?></td>
@@ -50,6 +59,7 @@
                 <td> <?php $s = selisih($a,$b)?></td>
                 <td> <?php emoji($a,$b)?></td>
               </tr>
+              <?php } if($model->status > 5) {?>
               <tr>
                 <td  >Pelaksanaan Tender</td>
                 <td  ><?php echo $model->tender->pica->nama ?></td>
@@ -58,6 +68,7 @@
                 <td> <?php $s = selisih($a,$b)?></td>
                 <td> <?php emoji($a,$b)?></td>
               </tr>
+              <?php } if($model->status > 6){?>
               <tr>
                 <td  >Penyusunan Dokumen Kontrak</td>
                  <td  ><?php echo $model->kontrak->pica->nama ?></td>
@@ -66,6 +77,7 @@
                 <td> <?php $s = selisih($a,$b)?></td>
                 <td> <?php emoji($a,$b)?></td>
               </tr>
+              <?php } if($model->status > 8 ) {?>
              <tr>
                 <td  >Pelaksanaan Kick of Meeting</td>
                 <td  ><?php echo $model->kom->pica->nama ?></td>
@@ -74,6 +86,7 @@
                 <td> <?php $s = selisih($a,$b)?></td>
                 <td> <?php emoji($a,$b)?></td>
               </tr>
+              <?php } if($model->status > 9 ) {?>
               <tr>
                 <td  >Tahap Produksi</td>
                 <td  ><?php echo $model->pni->pica->nama ?></td>
@@ -82,6 +95,7 @@
                 <td> <?php $s = selisih($a,$b)?></td>
                 <td> <?php emoji($a,$b)?></td>
               </tr>
+              <?php } if($model->status > 11 ) {?>
               <tr>
                 <td  >Inspeksi oleh QC</td>
                 <td  ><?php echo $model->pni->picq->nama ?></td>
@@ -90,6 +104,7 @@
                 <td> <?php $s = selisih($a,$b)?></td>
                 <td> <?php emoji($a,$b)?></td>
               </tr>
+              <?php } if($model->status > 12 ) {?>
               <tr>
                 <td  >Pengiriman</td>
                 <td  ><?php echo $model->pengiriman->pica->nama ?></td>
@@ -98,6 +113,7 @@
                 <td> <?php $s = selisih($a,$b)?></td>
                 <td> <?php emoji($a,$b)?></td>
               </tr>
+              <?php } if($model->status > 13 ) {?>
               <tr>
                 <td  >Diterima Warehouse Tujuan</td>
                 <td  ><?php echo $model->wh->pica->nama ?></td>
@@ -106,6 +122,7 @@
                 <td> <?php $s1 = selisih($a,$b)?></td>
                 <td> <?php emoji($a,$b)?></td>
               </tr>
+              <?php } if($model->status > 15 ) {?>
               <tr>
                 <td  >Update Stok</td>
                 <td  ><?php echo $model->wh->pica->nama ?></td>
@@ -114,6 +131,7 @@
                 <td> <?php $s = selisih($a,$b)?></td>
                 <td> <?php emoji($a,$b)?></td>
               </tr>
+              <?php } ?>
             </table> 
             </div>
 

@@ -32,24 +32,17 @@
                     array('prompt'=>'Pilih kategori','class'=>'form-control'),array('size'=>60,'maxlength'=>100)); ?>
             <?php echo $form->error($model,'kategori'); ?>
         </div>
-
+        <div class="form-group">
+            <?php echo "Kode Material"; ?>
+            <?php echo $form->textField($model,'proyek',array('class'=>'form-control'),array('size'=>60,'maxlength'=>100)); ?>
+            <?php echo $form->error($model,'proyek'); ?>
+        </div>
         <div class="form-group">
             <?php echo "Nama Material"; ?>
 			<?php echo $form->textField($model,'nama',array('class'=>'form-control'),array('size'=>60,'maxlength'=>100)); ?>
 			<?php echo $form->error($model,'nama'); ?>
         </div>
-        <div class="form-group">
-            <?php echo $form->labelEx($model,'client'); ?>
-            <?php echo $form->dropDownList(
-                    $model,'client',
-                    array(
-                            '1' => 'PLN',
-                            '2' => 'Telkom',
-                            
-                        ),
-                    array('prompt'=>'Pilih Client','class'=>'form-control'),array('size'=>60,'maxlength'=>100)); ?>
-            <?php echo $form->error($model,'client'); ?>
-        </div>
+        
 	<div class="form-group">
             <?php echo "Upload Dokumen MTO : " ?>
 			<?php echo $form->fileField($dokeng,'file_mto'); ?>

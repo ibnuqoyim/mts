@@ -34,11 +34,15 @@ $form=$this->beginWidget('CActiveForm', array(
 			<?php $this->widget('zii.widgets.CDetailView', array(
 				'data'=>$modal,
 				'attributes'=>array(
+					array('name'=>'Kode',
+                          'type'=>'raw',
+                          'value'=>$modal->proyek,
+                          ),
 					array('name'=>'Material',
                           'type'=>'raw',
                           'value'=>$modal->nama,
                           ),
-					array('name'=>'Material Take Off',
+					array('name'=>'Kategori',
                           'type'=>'raw',
                           'value'=>$modal->kategoria->nama,
                           ),

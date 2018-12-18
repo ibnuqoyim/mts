@@ -26,13 +26,14 @@
             { ?>
          <table class="table table-hover table-dark" style="width:100%">
               <tr>
+                <td>Kode Material</td>
+                <td><?php echo $res->materiala->proyek ?></td>
+              </tr>
+              <tr>
                 <td>Nama Material</td>
                 <td><?php echo $res->materiala->nama ?></td>
               </tr>
-              <tr>
-                <td>Klien</td>
-                 <td><?php echo $res->materiala->clienta->nama ?></td>
-              </tr>
+              
               <tr>
                 <td>Pemenang</td>
                <td><?php echo $res->materiala->usera->nama ?></td>
