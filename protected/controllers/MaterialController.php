@@ -32,7 +32,7 @@ class MaterialController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','UpdateDPP', 'log','win','admin','detail','closetender','test'),
+				'actions'=>array('create','update','dynamicform', 'log','win','admin','detail','closetender','test'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -71,6 +71,25 @@ class MaterialController extends Controller
 			'model'=>$this->loadModel($id),
 			'dokeng'=>new DokEng,
 		));
+	}
+
+	public function actionDynamicform()
+	{
+	    $x=(int) $_POST['kategori'];
+	    if($x == 1){
+	    echo '<script>
+			function myFunction() {
+			  document.getElementById("dok1").style.visibility = "hidden";
+			}
+			myFunction()
+			</script>' ;
+		}	else{
+	    echo '<script>
+			function myFunction() {
+			  document.getElementById("dok1").style.visibility = "visible";
+			}
+			myFunction()
+			</script>' ; }
 	}
 
 	public function actionDetail($id)

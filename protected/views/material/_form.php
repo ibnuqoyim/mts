@@ -43,7 +43,7 @@
 			<?php echo $form->error($model,'nama'); ?>
         </div>
         
-	<div class="form-group">
+	<div id="dok1" class="form-group">
             <?php echo "Upload Dokumen MTO : " ?>
 			<?php echo $form->fileField($dokeng,'file_mto'); ?>
 			<?php echo $form->error($dokeng,'file_mto'); ?>
@@ -63,6 +63,18 @@
             <?php echo $form->fileField($dokeng,'file_datasheet'); ?>
             <?php echo $form->error($dokeng,'file_datasheet'); ?>
     </div>
+    <?php /*echo CHtml::dropDownList('kategori','', array(1=>'USA',2=>'France',3=>'Japan'),
+            array(
+            'ajax' => array(
+            'type'=>'POST', //request type
+            'url'=>CController::createUrl('material/dynamicform'), //url to call.
+            //Style: CController::createUrl('currentController/methodToCall')
+            'update'=>'#dinamik', //selector to update
+            //'data'=>'js:javascript statement' 
+            //leave out the data key to pass all form values through
+            ))); */
+             ?>
+            <div id="dinamik"> </div>
     </div>
     <div class="form-group col-lg-12">
             <?php echo CHtml::submitButton($model->isNewRecord ? 'Ajukan' : 'Save', array('class'=>'btn btn-lg btn-primary left ')); ?>

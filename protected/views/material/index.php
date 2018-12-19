@@ -226,18 +226,24 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                             (
                                                 'edit' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
+                                                        'label'=>'<i class="glyphicon glyphicon-pencil"></i>',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 3',
                                                         'url'=>'$this->grid->controller->createUrl("/material/update",array("id"=>$data->id))',
-                                                             ),
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Update Material Detail', ),     ),
                                                 'view' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
+                                                        'label'=>'<i class="glyphicon glyphicon-eye-open"></i>',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 5',
                                                         'url'=>'$this->grid->controller->createUrl("/penawaran/view",array("idm"=>$data->id))',
-                                                             ),
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Review Penawaran', ),),
 
                                                           ),
                                                      ),
@@ -294,9 +300,14 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                             (
                                                 'view' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
+                                                        'label'=>'<i class="glyphicon glyphicon-eye-open"></i>',
                                                         'imageUrl'=>true,
                                                         'visible' =>'$data->status == 1',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'View Material Detail', ),
+                                                        
                                                         'url'=>'$this->grid->controller->createUrl("/dokEng/view",array("id"=>$data->id))',
                                                              ),
                                                 'ok' => array
@@ -370,24 +381,36 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                             (
                                                 'edit' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
+                                                        'label'=>'<i class="glyphicon glyphicon-pencil"></i>',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 2',
                                                         'url'=>'$this->grid->controller->createUrl("/permintaan/create",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Buka Tender', ),
                                                              ),
                                                 'view' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
+                                                        'label'=>'<i class="glyphicon glyphicon-eye-open"></i>',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 5',
                                                         'url'=>'$this->grid->controller->createUrl("/penawaran/view",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'View Tender Detail', ),
                                                              ),
                                                 'kontrak' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-file" aria-hidden="true"></span>',
+                                                        'label'=>'<i class="glyphicon glyphicon-file"></i>',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 6',
                                                         'url'=>'$this->grid->controller->createUrl("/kontrak/create",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Buat Dokumen Kontrak', ),
                                                              ),
 
                                                           ),
@@ -474,34 +497,50 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                             (
                                                 'edit' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
+                                                        'label'=>'<i class="glyphicon glyphicon-pencil" ></i>',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 5 && $data->status_tender == 1',
                                                         'url'=>'$this->grid->controller->createUrl("/penawaran/create",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Ajukan Penawaran', ),
                                                              ),
                                                 'kom' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
+                                                        'label'=>'<i class="glyphicon glyphicon-eye-open" ></i>',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 7.5',
                                                         'url'=>'$this->grid->controller->createUrl("/kom/approve",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Konfirmasi Undangan', ),
                                                              ),
                                                     'progres' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>',
+                                                        'label'=>'<i class="glyphicon glyphicon-dashboard" ></i>',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 8.5',
                                                         'url'=>'$this->grid->controller->createUrl("/pni/progres",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Add Progres', ),
                                                              ),
 
                                                           
                                             'repair' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>',
+                                                        'label'=>'<i class="glyphicon glyphicon-wrench" ></i>',
                                                         'type'=>'raw',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 10',
                                                         'url'=>'$this->grid->controller->createUrl("/hasilrepair/create",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Repair Punch List', ),
                                                              ),
 
                                                           ),
@@ -558,18 +597,26 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                             (
                                                 'kom' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
+                                                        'label'=>'<i class="glyphicon glyphicon-pencil"></i>',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 7',
                                                         'url'=>'$this->grid->controller->createUrl("/kom/create",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Buat Undangan Kick of Meeting', ),
                                                              ),
 
                                                 'pni' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
+                                                        'label'=>'<i class="glyphicon glyphicon-pencil"></i>',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 8',
                                                         'url'=>'$this->grid->controller->createUrl("/pni/create",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Upload Production and Inspection Plan', ),
                                                              ),
 
                                                           ),
@@ -626,18 +673,26 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                             (
                                                 'kom' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
+                                                        'label'=>'<i class="glyphicon glyphicon-pencil"></i>',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 9',
                                                         'url'=>'$this->grid->controller->createUrl("/pni/hasil",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Upload hasil Inspeksi', ),
                                                              ),
 
                                                 'pni' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
+                                                        'label'=>'<i class="glyphicon glyphicon-eye-open"></i>',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 11',
                                                         'url'=>'$this->grid->controller->createUrl("/irn/create",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Release IRN', ),
                                                              ),
 
                                                           ),
@@ -694,19 +749,16 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                             (
                                                 'send' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-plane" aria-hidden="true"></span>',
+                                                        'label'=>'<i class="glyphicon glyphicon-plane"></i>',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 12',
                                                         'url'=>'$this->grid->controller->createUrl("/pengiriman/create",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Buat Rencana Pengiriman', ),
                                                              ),
 
-                                                'received' => array
-                                                    (
-                                                        'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
-                                                        'imageUrl'=>false,
-                                                        'visible' =>'$data->status == 10',
-                                                        'url'=>'$this->grid->controller->createUrl("/irn/create",array("idm"=>$data->id))',
-                                                             ),
 
                                                           ),
                                 ),
@@ -757,30 +809,32 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                 array(
                                         'class'=>'CButtonColumn',
                                         'header'=>'Action',
-                                        'template'=>'{view}{received}{inspeksi}',
+                                        'template'=>'{view}{inspeksi}',
                                         'buttons'=>array
                                             (
                                                 'view' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
+                                                        'label'=>'<i class="glyphicon glyphicon-eye-open"></i>',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 12',
                                                         'url'=>'$this->grid->controller->createUrl("/pengiriman/view",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Konfirmasi Pengiriman', ),
                                                              ),
 
-                                                'received' => array
-                                                    (
-                                                        'label'=>'<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>',
-                                                        'imageUrl'=>false,
-                                                        'visible' =>'$data->status == 10',
-                                                        'url'=>'$this->grid->controller->createUrl("/irn/create",array("idm"=>$data->id))',
-                                                             ),
+                                                
                                                 'inspeksi' => array
                                                     (
-                                                        'label'=>'<span class="glyphicon glyphicon-check" aria-hidden="true"></span>',
+                                                        'label'=>'<i class="glyphicon glyphicon-check" ></i>',
                                                         'imageUrl'=>false,
                                                         'visible' =>'$data->status == 13',
                                                         'url'=>'$this->grid->controller->createUrl("/hasilinspeksiWH/create",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Upload Hasil Inspeksi', ),
                                                              ),
 
                                                           ),
