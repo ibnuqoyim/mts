@@ -31,9 +31,9 @@ class Material extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('client, nama, create_date, last_update', 'required'),
+			array(' nama, create_date, last_update', 'required'),
 			array('client, stok, kategori, progres', 'numerical', 'integerOnly'=>true),
-			array('nama', 'length', 'max'=>100),
+			array('nama, proyek', 'length', 'max'=>100),
 			array('pemenang, plan_penerimaan, plan_finish, actual_finish', 'length', 'max'=>110),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

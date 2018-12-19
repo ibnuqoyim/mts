@@ -26,13 +26,14 @@
             { ?>
          <table class="table table-hover table-dark" style="width:100%">
               <tr>
+                <td>Kode Material</td>
+                <td><?php echo $modal->proyek ?></td>
+              </tr>
+              <tr>
                 <td>Nama Material</td>
                 <td><?php echo $res->materiala->nama ?></td>
               </tr>
-              <tr>
-                <td>Klien</td>
-                 <td><?php echo $res->materiala->clienta->nama ?></td>
-              </tr>
+              
               <tr>
                 <td>Vendor</td>
                <td><?php echo $res->materiala->usera->nama ?></td>
@@ -56,6 +57,11 @@
 		<?php echo $form->labelEx($model,'hasil_inspeksi'); ?>
 		<?php echo $form->textArea($model,'hasil_inspeksi',array('class'=>'form-control'),array('size'=>60,'maxlength'=>300)); ?>
 		<?php echo $form->error($model,'hasil_inspeksi'); ?>
+	</div>
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'lokasi'); ?>
+		<?php echo $form->textArea($model,'lokasi',array('class'=>'form-control'),array('size'=>60,'maxlength'=>300)); ?>
+		<?php echo $form->error($model,'lokasi'); ?>
 	</div>
 
 	<div class="form-group">

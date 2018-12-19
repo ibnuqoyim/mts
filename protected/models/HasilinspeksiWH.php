@@ -30,7 +30,7 @@ class HasilinspeksiWH extends CActiveRecord
 		return array(
 			array('id_material, file_hasil_inspeksi, hasil_inspeksi, tgl_create', 'required'),
 			array('id_material', 'numerical', 'integerOnly'=>true),
-			array('file_hasil_inspeksi', 'length', 'max'=>100),
+			array('file_hasil_inspeksi, lokasi', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, id_material, file_hasil_inspeksi, hasil_inspeksi, tgl_create', 'safe', 'on'=>'search'),
@@ -61,6 +61,7 @@ class HasilinspeksiWH extends CActiveRecord
 			'file' => 'File',
 			'desk' => 'Desk',
 			'tgl_create' => 'Tgl Create',
+			'lokasi' => 'Lokasi Penyimpanan',
 		);
 	}
 

@@ -105,7 +105,7 @@ class ClientResponController extends Controller
 
 	public function actionCreateR($idm)
 	{
-		$log = new Log;
+
 		$model=new ClientRespon;
 		$modal=Material::model()->findByPk($idm);
 		$dokeng=DokEng::model()->findByPk($idm);
@@ -127,6 +127,7 @@ class ClientResponController extends Controller
 			$modal->status=3;
 			$modal->save();
 			if($model->save())
+				$log = new Log;
 				$log->id_user = Yii::app()->user->id;
 				$log->kegiatan = 'Memberikan penolakan untuk pengajuan material  '.$modal->nama;
 				$log->tgl = date("Y-m-d",time());

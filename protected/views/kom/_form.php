@@ -22,14 +22,15 @@
 	<div class="col-lg-6 left">
 		
          <table class="table table-hover table-dark" style="width:100%">
+              
               <tr>
+                <td>Nama Kode</td>
+                <td><?php echo $modal->proyek ?></td>
+              </tr><tr>
                 <td>Nama Material</td>
                 <td><?php echo $modal->nama ?></td>
               </tr>
-              <tr>
-                <td>Klien</td>
-                 <td><?php echo $modal->clienta->nama ?></td>
-              </tr>
+              
               <tr>
                 <td>Vendor</td>
                <td><?php echo $modal->usera->nama ?></td>
