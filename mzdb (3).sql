@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Des 2018 pada 11.10
+-- Waktu pembuatan: 19 Des 2018 pada 10.43
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 5.6.34
 
@@ -59,6 +59,13 @@ CREATE TABLE `client_respon` (
   `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `client_respon`
+--
+
+INSERT INTO `client_respon` (`id`, `material_id`, `isi`, `file_respon`, `tgl_create`) VALUES
+(28, 50, 'Bagus', NULL, '2018-12-17');
+
 -- --------------------------------------------------------
 
 --
@@ -79,6 +86,14 @@ CREATE TABLE `dok_eng` (
   `plan_permintaan` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `dok_eng`
+--
+
+INSERT INTO `dok_eng` (`id_material`, `file_mto`, `file_dwg`, `file_spec`, `file_datasheet`, `deskripsi`, `plan_approve`, `actual_approve`, `tgl_rejected`, `tgl_create`, `plan_permintaan`) VALUES
+(50, 'penguin-156616_960_720.png', 'CV_Muhamad Ibnu Q.pdf', NULL, NULL, NULL, '2018-12-31', '2018-12-17', NULL, NULL, NULL),
+(51, 'HC.pdf', '', NULL, NULL, NULL, '2019-01-02', NULL, NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -90,8 +105,16 @@ CREATE TABLE `hasilinspeksiwh` (
   `file_hasil_inspeksi` varchar(110) NOT NULL,
   `hasil_inspeksi` varchar(100) NOT NULL,
   `pic` varchar(100) NOT NULL,
+  `lokasi` varchar(100) NOT NULL,
   `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `hasilinspeksiwh`
+--
+
+INSERT INTO `hasilinspeksiwh` (`id_material`, `file_hasil_inspeksi`, `hasil_inspeksi`, `pic`, `lokasi`, `tgl_create`) VALUES
+(50, 'html5.html', 'apa', '11', '', '2018-12-17');
 
 -- --------------------------------------------------------
 
@@ -135,6 +158,13 @@ CREATE TABLE `irn` (
   `plan_release` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `irn`
+--
+
+INSERT INTO `irn` (`id_material`, `irn`, `actual_release`, `plan_release`) VALUES
+(50, '123', '2018-12-17', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -174,6 +204,13 @@ CREATE TABLE `kom` (
   `keterangan` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `kom`
+--
+
+INSERT INTO `kom` (`id_material`, `tanggal`, `actual_kom`, `tempat`, `tgl_create`, `pic`, `keterangan`) VALUES
+(50, '2018-12-19', '2018-12-17', 'Tower 1 Wika', '2018-12-17', 8, 'test');
+
 -- --------------------------------------------------------
 
 --
@@ -187,6 +224,13 @@ CREATE TABLE `kontrak` (
   `deskripsi` varchar(250) NOT NULL,
   `tgl_submit` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `kontrak`
+--
+
+INSERT INTO `kontrak` (`id_material`, `file_kontrak`, `pic`, `deskripsi`, `tgl_submit`) VALUES
+(50, 'HC.pdf', '5', '', '2018-12-17');
 
 -- --------------------------------------------------------
 
@@ -206,7 +250,41 @@ CREATE TABLE `log` (
 --
 
 INSERT INTO `log` (`id`, `id_user`, `kegiatan`, `tgl`) VALUES
-(109, 51, 'Berhasil login ke sistem', '2018-12-17 00:00:00');
+(109, 51, 'Berhasil login ke sistem', '2018-12-17 00:00:00'),
+(110, 3, 'Berhasil login ke sistem', '2018-12-17 00:00:00'),
+(111, 3, 'Mengajukan material baru', '2018-12-17 00:00:00'),
+(112, 7, 'Berhasil login ke sistem', '2018-12-17 00:00:00'),
+(113, 7, 'Memberikan approval untuk pengajuan material  Materia Z1', '2018-12-17 00:00:00'),
+(114, 5, 'Berhasil login ke sistem', '2018-12-17 00:00:00'),
+(115, 5, 'Upload dokumen permintaan penawaran vendor unuk pengadaan material  Materia Z1', '2018-12-17 00:00:00'),
+(116, 6, 'Berhasil login ke sistem', '2018-12-17 00:00:00'),
+(117, 6, 'Input penawaran untuk tender pengadaan material  Materia Z1', '2018-12-17 00:00:00'),
+(118, 3, 'Berhasil login ke sistem', '2018-12-17 00:00:00'),
+(119, 3, 'Memberikan memberikan review untuk penawaran  ', '2018-12-17 00:00:00'),
+(120, 4, 'Berhasil login ke sistem', '2018-12-17 00:00:00'),
+(121, 4, 'Input penawaran untuk tender pengadaan material  Materia Z1', '2018-12-17 00:00:00'),
+(122, 5, 'Menutup tender untuk material Materia Z1', '2018-12-17 00:00:00'),
+(123, 5, 'Menentukan pemenang tender untuk  Materia Z1', '2018-12-17 00:00:00'),
+(124, 6, 'Berhasil login ke sistem', '2018-12-17 00:00:00'),
+(125, 5, 'Upload dokumen kontrak untuk pengadaan material  Materia Z1', '2018-12-17 00:00:00'),
+(126, 8, 'Berhasil login ke sistem', '2018-12-17 00:00:00'),
+(127, 8, 'Membuat jadwal dan undangan untuk pelaksanaan Kick of Meeting pelaksanaan pengadaan material  Materia Z1', '2018-12-17 00:00:00'),
+(128, 6, 'Mengkonfirmasi undangan Kick of Meeting untuk pengdaan material  Materia Z1', '2018-12-17 00:00:00'),
+(129, 8, 'Upload dokumen Production and Inspection Plan untuk pengadaan material  Materia Z1', '2018-12-17 00:00:00'),
+(130, 6, 'Update progres 25% untuk pengadaan material  Materia Z1', '2018-12-17 00:00:00'),
+(131, 6, 'Update progres 100% untuk pengadaan material  Materia Z1', '2018-12-17 00:00:00'),
+(132, 10, 'Berhasil login ke sistem', '2018-12-17 00:00:00'),
+(133, 10, 'Upload dokumen hasil Inspeksi dari QC untuk material  Materia Z1 untuk status LULUS', '2018-12-17 11:57:07'),
+(134, 10, 'Input IRN untuk material  Materia Z1', '2018-12-17 00:00:00'),
+(135, 9, 'Berhasil login ke sistem', '2018-12-17 00:00:00'),
+(136, 9, 'Input detail pengiriman untuk material  Materia Z1', '2018-12-17 00:00:00'),
+(137, 11, 'Berhasil login ke sistem', '2018-12-17 00:00:00'),
+(138, 11, 'Konfirmasi penerimaan material  Materia Z1', '2018-12-17 00:00:00'),
+(139, 11, 'Menginput hasil inspeksi di warehouse untuk material  Materia Z1', '2018-12-17 00:00:00'),
+(140, 51, 'Melihat log material Materia Z1', '2018-12-17 12:01:40'),
+(141, 51, 'Melihat detail material Materia Z1', '2018-12-17 12:02:27'),
+(142, 51, 'Berhasil login ke sistem', '2018-12-19 00:00:00'),
+(143, 51, 'Mengajukan material baru', '2018-12-19 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -239,6 +317,14 @@ CREATE TABLE `material` (
   `pic` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `material`
+--
+
+INSERT INTO `material` (`id`, `proyek`, `kategori`, `client`, `nama`, `status`, `progres`, `pemenang`, `stok`, `status_tender`, `plan_tender`, `plan_kontrak`, `plan_kom`, `plan_irn`, `plan_pengiriman`, `plan_penerimaan`, `plan_inspeksiwh`, `plan_finish`, `actual_finish`, `create_date`, `last_update`, `pic`) VALUES
+(50, NULL, 1, 1, 'Materia Z1', 15, NULL, '6', 12, 2, '2018-12-19', '2018-12-22', NULL, '2018-12-20', '2018-12-24', '2018-12-19', '0000-00-00', '2018-12-19', '2018-12-17', '2018-12-17', '2018-12-17', 3),
+(51, '332sd4', 1, 0, 'Pompa', 1, NULL, NULL, NULL, 0, NULL, NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2018-12-19', '2018-12-19', 51);
+
 -- --------------------------------------------------------
 
 --
@@ -257,6 +343,14 @@ CREATE TABLE `penawaran` (
   `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `penawaran`
+--
+
+INSERT INTO `penawaran` (`id`, `id_user`, `id_material`, `file_administrasi`, `file_teknis`, `review_engineering`, `file_review_eng`, `deskripsi`, `tgl_create`) VALUES
+(19, 6, 50, 'html4.html', 'index.html', 'test', 'html5.html', 'k;ksdkf;skfs;d', '2018-12-17'),
+(20, 4, 50, 'html4.html', 'html5.html', '', '', 'test', '2018-12-17');
+
 -- --------------------------------------------------------
 
 --
@@ -273,6 +367,13 @@ CREATE TABLE `pengiriman` (
   `actual_penerimaan` date NOT NULL,
   `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `pengiriman`
+--
+
+INSERT INTO `pengiriman` (`id_material`, `actual_pengiriman`, `plan_penerimaan`, `tujuan`, `status`, `pic`, `actual_penerimaan`, `tgl_create`) VALUES
+(50, '0000-00-00', '2018-12-19', 'Warehouse Surabaya', '', 9, '2018-12-17', '2018-12-17');
 
 -- --------------------------------------------------------
 
@@ -292,6 +393,13 @@ CREATE TABLE `permintaan` (
   `tgl_create` date NOT NULL,
   `pic` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `permintaan`
+--
+
+INSERT INTO `permintaan` (`id_material`, `file`, `status`, `deskripsi`, `deadline_tutup`, `actual_tutup`, `plan_pemenang`, `actual_pemenang`, `tgl_create`, `pic`) VALUES
+(50, 'Presentation1.pptx', NULL, 'dokumen', '2018-12-27', '2018-12-17', '2019-01-03', '2018-12-17', '2018-12-17', 5);
 
 -- --------------------------------------------------------
 
@@ -318,6 +426,13 @@ CREATE TABLE `pni` (
   `file_repair` varchar(100) DEFAULT NULL,
   `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `pni`
+--
+
+INSERT INTO `pni` (`id_material`, `desk`, `pic`, `file`, `pic_qc`, `plan_produksi`, `actual_produksi`, `progres`, `plan_inspeksi`, `actual_inspeksi`, `hasil_inspeksi`, `status_inspeksi`, `file_hasil_inspeksi`, `plan_repair`, `actual_repair`, `file_repair`, `tgl_create`) VALUES
+(50, 'jkdjkjsf', 8, 'html4.html', 10, '2019-01-05', '2018-12-17', '100', '2018-12-19', '2018-12-17', 'test', 'Lulus', 'html4.html', NULL, NULL, NULL, '2018-12-17');
 
 -- --------------------------------------------------------
 
@@ -536,25 +651,25 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT untuk tabel `client_respon`
 --
 ALTER TABLE `client_respon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `hasilpni`
 --
 ALTER TABLE `hasilpni`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `hasilrepair`
 --
 ALTER TABLE `hasilrepair`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `irn`
 --
 ALTER TABLE `irn`
-  MODIFY `id_material` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_material` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori`
@@ -566,31 +681,31 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT untuk tabel `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
 
 --
 -- AUTO_INCREMENT untuk tabel `material`
 --
 ALTER TABLE `material`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT untuk tabel `penawaran`
 --
 ALTER TABLE `penawaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `produksi`
 --
 ALTER TABLE `produksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
