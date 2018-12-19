@@ -11752,3 +11752,27 @@ Stack trace:
 REQUEST_URI=/mts/index.php/material/test
 in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (116)
 in C:\xampp\htdocs\mts\index.php (13)
+2018/12/17 11:33:21 [warning] [application] Failed to set unsafe attribute "file_mto" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (171)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/17 11:33:21 [warning] [application] Failed to set unsafe attribute "file_dwg" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (171)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/17 11:33:21 [warning] [application] Failed to set unsafe attribute "file_spec" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (171)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/17 11:33:21 [warning] [application] Failed to set unsafe attribute "file_datasheet" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (171)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/17 11:42:01 [warning] [application] Failed to set unsafe attribute "file_review_eng" of "Penawaran".
+in C:\xampp\htdocs\mts\protected\controllers\PenawaranController.php (135)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/17 11:47:21 [warning] [application] Failed to set unsafe attribute "deskripsi" of "Kontrak".
+in C:\xampp\htdocs\mts\protected\controllers\KontrakController.php (74)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/17 11:53:29 [warning] [application] Failed to set unsafe attribute "status" of "Material".
+in C:\xampp\htdocs\mts\protected\controllers\KomController.php (106)
+in C:\xampp\htdocs\mts\index.php (13)
+2018/12/17 11:59:37 [warning] [application] Failed to set unsafe attribute "status" of "Material".
+in C:\xampp\htdocs\mts\protected\controllers\PengirimanController.php (58)
+in C:\xampp\htdocs\mts\index.php (13)
