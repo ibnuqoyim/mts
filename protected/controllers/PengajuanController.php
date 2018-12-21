@@ -32,7 +32,7 @@ class PengajuanController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','approve','reject','konfirmasi','cekstok'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -49,10 +49,12 @@ class PengajuanController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView($id)
+	public function actionView($idm)
 	{
+		$pengajuan = Pengajuan::Model()->findAll('id_material ='.$idm);
+		$modal=Material::model()->findByPk($idm);
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'pengajuan'=>$pengajuan, 'modal'=>$modal
 		));
 	}
 
@@ -71,6 +73,10 @@ class PengajuanController extends Controller
 		{
 			$model->attributes=$_POST['Pengajuan'];
 			$model->id_material=$idm;
+			$model->id_pengaju = Yii::app()->user->id;
+			$model->tgl_create = date("Y-m-d");
+			$model->disetujui = 0;
+			$model->diterima =0;
 			//$modal->actual_fatnirn=date("Y-m-d H:i:s");
 			$date = strtotime(date("Y-m-d H:i:s"));
 			$a = strtotime("+7 day", $date);
@@ -85,7 +91,7 @@ class PengajuanController extends Controller
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$model, 'modal'=>$modal,
 		));
 	}
 
@@ -94,38 +100,71 @@ class PengajuanController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionApprove($id)
+	public function actionApprove($id, $idm)
 	{
+		$modal=Material::model()->findByPk($idm);
 		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Pengajuan']))
-		{
-			$model->attributes=$_POST['Pengajuan'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
+		$modal->stok = $modal->stok - $model->jumlah;
+		$modal->save();
+		$model->disetujui = 1;
+		$model->pic_wh = Yii::app()->user->id;
+		$model->tgl_setujui = date("Y-m-d");
+		$model->save();
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Menerima pengajuan untuk material '.$modal->nama.' yang diajukan oleh '.$model->pengaju->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
+				Yii::app()->user->setFlash('success', 'Pengajuan Material  '.$modal->nama.' telah di approve!');
+				$this->redirect(array('material/index'));
+		
 	}
 
+	public function actionReject($id, $idm)
+	{
+		$modal=Material::model()->findByPk($idm);
+		$model=$this->loadModel($id);
+		//$modal->stok = $modal->stok - $model->jumlah;
+		$modal->save();
+		$model->disetujui = 2;
+		$model->pic_wh = Yii::app()->user->id;
+		$model->tgl_setujui = date("Y-m-d");
+		$model->save();
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Menolak pengajuan untuk material '.$modal->nama.' yang diajukan oleh '.$model->pengaju->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
+				Yii::app()->user->setFlash('success', 'Pengajuan Material  '.$modal->nama.' telah di reject!');
+				$this->redirect(array('material/index'));
+		
+	}
+
+	public function actionKonfirmasi($id, $idm)
+	{
+		$modal=Material::model()->findByPk($idm);
+		$model=$this->loadModel($id);
+		//$modal->stok = $modal->stok - $model->jumlah;
+		$modal->save();
+		$model->disetujui = 3;
+		$model->id_penerima = Yii::app()->user->id;
+		$model->tgl_diterima = date("Y-m-d");
+		$model->save();
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Konfirmasi penerimaan untuk material '.$modal->nama.' yang diajukan oleh '.$model->pengaju->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
+				Yii::app()->user->setFlash('success', 'Pengajuan Material  '.$modal->nama.' telah di konfirmasi!');
+				$this->redirect(array('material/index'));
+		
+	}
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionKonfirmasi($id)
-	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
+	
 
 	/**
 	 * Lists all models.
@@ -136,6 +175,12 @@ class PengajuanController extends Controller
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
+	}
+
+	public function actionCekstok(){
+		$x=(int) $_POST['jumlah'];
+		$xc = $_POST['jumlah'];
+		echo $xc;
 	}
 
 	/**

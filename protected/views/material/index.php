@@ -83,7 +83,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                   $a =$model->plan_kontrak;
                   break;
             case '7' :
-                  $a =$model->plan_kom;
+                  $a =2;
                   break;
              case '8':
                   $a =$model->plan_kom;
@@ -770,7 +770,11 @@ CHtml::ajaxLink('View Popup', 'material/index',
            <div id="Warehouse" class="col-lg-12">
             <br>
                 <b align="center">Dashboard Warehouse</b>
-                <?php $this->widget('zii.widgets.grid.CGridView', array(
+                <?php 
+                function cekpengajuan($idm){
+                $pengajuan = Pengajuan::Model()->findAll('id_material ='.$idm);
+                return count($pengajuan);}
+                $this->widget('zii.widgets.grid.CGridView', array(
                         'id'=>'user-grid',
                         'dataProvider'=>$model->warehouse(),
                         //'filter'=>$model,
@@ -809,7 +813,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                 array(
                                         'class'=>'CButtonColumn',
                                         'header'=>'Action',
-                                        'template'=>'{view}{inspeksi}',
+                                        'template'=>'{view}{inspeksi}{pengajuan}',
                                         'buttons'=>array
                                             (
                                                 'view' => array
@@ -840,8 +844,8 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                     (
                                                         'label'=>'<i class="glyphicon glyphicon-pencil" ></i>',
                                                         'imageUrl'=>false,
-                                                        'visible' =>'$data->status == 15',
-                                                        'url'=>'$this->grid->controller->createUrl("/hasilinspeksiWH/create",array("idm"=>$data->id))',
+                                                        'visible' =>'$data->status == 15 && cekpengajuan($data->id) > 0',
+                                                        'url'=>'$this->grid->controller->createUrl("/pengajuan/view",array("idm"=>$data->id))',
                                                         'options' => array(
                                                                 'rel' => 'tooltip',
                                                                 'data-toggle' => 'tooltip', 
@@ -893,32 +897,30 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                array(
                                         'class'=>'CButtonColumn',
                                         'header'=>'Action',
-                                        'template'=>'{pengajuan}{diterima}',
+                                        'template'=>'{pengajuan}  {view}',
                                         'buttons'=>array
                                             (
                                                 'pengajuan' => array
                                                     (
                                                         'label'=>'<i class="glyphicon glyphicon-pencil"></i>',
                                                         'imageUrl'=>false,
-                                                        'visible' =>'$data->status == 15',
+                                                        'visible' =>'$data->status == 15 && $data->stok > 0',
                                                         'url'=>'$this->grid->controller->createUrl("/pengajuan/create",array("idm"=>$data->id))',
                                                         'options' => array(
                                                                 'rel' => 'tooltip',
                                                                 'data-toggle' => 'tooltip', 
                                                                 'title'       => 'Pengajuan Material', ),
                                                              ),
-
-                                                
-                                                'diterima' => array
+                                                'view' => array
                                                     (
-                                                        'label'=>'<i class="glyphicon glyphicon-check" ></i>',
+                                                        'label'=>'<i class="glyphicon glyphicon-eye-open" ></i>',
                                                         'imageUrl'=>false,
-                                                        'visible' =>'$data->status == 15 && Pengajuan::Model()->findAll($id_material = $data->id) != null',
-                                                        'url'=>'$this->grid->controller->createUrl("/pengajuan/konfirmasi",array("idm"=>$data->id))',
+                                                        'visible' =>'$data->status == 15',
+                                                        'url'=>'$this->grid->controller->createUrl("/pengajuan/view",array("idm"=>$data->id))',
                                                         'options' => array(
                                                                 'rel' => 'tooltip',
                                                                 'data-toggle' => 'tooltip', 
-                                                                'title'       => 'Konfirmasi penerimaan material', ),
+                                                                'title'       => 'Cek Status Pengajuan', ),
                                                              ),
 
                                                           ),
