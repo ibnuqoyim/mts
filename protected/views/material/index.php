@@ -836,6 +836,17 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                                 'data-toggle' => 'tooltip', 
                                                                 'title'       => 'Upload Hasil Inspeksi', ),
                                                              ),
+                                                'pengajuan' => array
+                                                    (
+                                                        'label'=>'<i class="glyphicon glyphicon-pencil" ></i>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 15',
+                                                        'url'=>'$this->grid->controller->createUrl("/hasilinspeksiWH/create",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Lihat Pengajuan Material', ),
+                                                             ),
 
                                                           ),
                                 ),
@@ -879,9 +890,39 @@ CHtml::ajaxLink('View Popup', 'material/index',
 
                                          ), 
                                 'stok',
-                               // array(
-                                        //'class'=>'CButtonColumn',
-                               // ),
+                               array(
+                                        'class'=>'CButtonColumn',
+                                        'header'=>'Action',
+                                        'template'=>'{pengajuan}{diterima}',
+                                        'buttons'=>array
+                                            (
+                                                'pengajuan' => array
+                                                    (
+                                                        'label'=>'<i class="glyphicon glyphicon-pencil"></i>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 15',
+                                                        'url'=>'$this->grid->controller->createUrl("/pengajuan/create",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Pengajuan Material', ),
+                                                             ),
+
+                                                
+                                                'diterima' => array
+                                                    (
+                                                        'label'=>'<i class="glyphicon glyphicon-check" ></i>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 15 && Pengajuan::Model()->findAll($id_material = $data->id) != null',
+                                                        'url'=>'$this->grid->controller->createUrl("/pengajuan/konfirmasi",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Konfirmasi penerimaan material', ),
+                                                             ),
+
+                                                          ),
+                                ),
                         ),
                         'emptyText' => 'Ops, no Material to show!',
 
