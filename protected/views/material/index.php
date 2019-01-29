@@ -83,7 +83,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                   $a =$model->plan_kontrak;
                   break;
             case '7' :
-                  $a =2;
+                  $a =$model->plan_kontrak;
                   break;
              case '8':
                   $a =$model->plan_kom;
