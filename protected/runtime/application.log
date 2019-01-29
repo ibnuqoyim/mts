@@ -1845,3 +1845,15 @@ Stack trace:
 REQUEST_URI=/mts/index.php/pengajuan/create?idm=43
 in C:\xampp\htdocs\mts\protected\controllers\PengajuanController.php (85)
 in C:\xampp\htdocs\mts\index.php (13)
+2019/01/29 09:27:11 [warning] [application] Failed to set unsafe attribute "file_mto" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (256)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/29 09:27:11 [warning] [application] Failed to set unsafe attribute "file_dwg" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (256)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/29 09:27:11 [warning] [application] Failed to set unsafe attribute "file_spec" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (256)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/29 09:27:11 [warning] [application] Failed to set unsafe attribute "file_datasheet" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (256)
+in C:\xampp\htdocs\mts\index.php (13)
