@@ -32,7 +32,7 @@ class MaterialController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','dynamicform', 'log','win','admin','detail','closetender','test'),
+				'actions'=>array('hapus','create','update','dynamicform', 'log','win','admin','detail','closetender','test'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -70,6 +70,19 @@ class MaterialController extends Controller
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 			'dokeng'=>new DokEng,
+		));
+	}
+
+	public function actionHapus($id)
+	{
+
+		$model=new Material('search');
+		$modal=$this->loadModel($id);
+		$modal->proyek = 1;  // clear any default values
+		$modal->save();
+
+		$this->render('admin',array(
+			'model'=>$model,
 		));
 	}
 
@@ -210,6 +223,7 @@ class MaterialController extends Controller
 			}
 			
 			//$model->serial = $model->kategoria->singkatan.'-'.$model->id;
+			$model->proyek = 0;
 			$model->create_date= date("Y-m-d",time());
 			$model->last_update= date("Y-m-d",time());
 			$date = strtotime(date("Y-m-d H:i:s"));

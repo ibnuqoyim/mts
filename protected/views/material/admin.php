@@ -80,6 +80,7 @@
                                          ),
 								
 								'stok',
+                                
 								'create_date',
                                 array('name'=>'status',
                                          'header'=>'Status',
@@ -91,10 +92,15 @@
                                          'value'=>'$data->statusa->keterangan',
 
                                          ),
+                                array('name'=>'status',
+                                         'header'=>'Deleted',
+                                         'value'=>'$data->proyek == 1 ? "Yes" : "No"',
+
+                                         ),
                                 array(
                                     'class'=>'CButtonColumn',
                                     'header'=>'Action',
-                                    'template'=>'{log}    {edit}',
+                                    'template'=>'{log}    {edit}    {hapus}',
                                     'buttons'=>array
                                             (
                                                 'edit' => array
@@ -103,7 +109,16 @@
                                                         'imageUrl'=>false,
                                                         'url'=>'$this->grid->controller->createUrl("/material/detail",array("id"=>$data->id))',
                                                              ),
-
+                                                'hapus' => array
+                                                    (
+                                                        'label'=>'<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>',
+                                                        'imageUrl'=>false,
+                                                        'url'=>'$this->grid->controller->createUrl("/material/hapus",array("id"=>$data->id))',
+                                                        'options' => array(  // set all kind of html options in here
+                                                        'onclick' =>"js:alert('do u want to book this offer!')",
+                                                         'style' => 'font-weight: bold',
+                                                     ),
+                                                             ),
                                                          
                                                 'log' => array
                                                     (
