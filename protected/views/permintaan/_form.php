@@ -34,7 +34,7 @@
                           'type'=>'raw',
                           'value'=>$modal->nama,
                           ),
-					array('name'=>'Material Take Off',
+					array('name'=>'Kategori',
                           'type'=>'raw',
                           'value'=>$modal->kategoria->nama,
                           ),
@@ -62,7 +62,7 @@
 				),
 			)); ?>
 	<div class="form-group">
-            <?php echo "<br> <b> Silahkan Upload Dokumen Permintaan Penawaran : </b>" ?>
+            <?php echo "<br> <b> Silahkan Upload Dokumen Permintaan Penawaran : </b>" ; if($model->file != null){echo '<a href="/mts/dokumen/permintaan/'.$model->file.'">'.$model->file.'</a>';}?>
 			<?php echo $form->fileField($model,'file'); ?>
 			<?php echo $form->error($model,'file'); ?>
     </div>

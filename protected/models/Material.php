@@ -129,7 +129,7 @@ class Material extends CActiveRecord
 		$criteria->compare('status',$this->status);
 		$criteria->compare('pemenang',$this->pemenang,true);
 		$criteria->compare('stok',$this->stok);
-		$criteria->addCondition('status=2 || status = 3 || status = 5' );
+		$criteria->addCondition(' status < 3 || status = 5' );
 		$criteria->addCondition('proyek!=1 ' );
 
 		return new CActiveDataProvider($this, array(
@@ -148,7 +148,7 @@ class Material extends CActiveRecord
 		$criteria->compare('status',$this->status);
 		$criteria->compare('pemenang',$this->pemenang,true);
 		$criteria->compare('stok',$this->stok);
-		$criteria->addCondition('status=1' );
+		$criteria->addCondition('status<3' );
 		$criteria->addCondition('proyek!=1 ' );
 
 		return new CActiveDataProvider($this, array(

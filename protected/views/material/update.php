@@ -25,5 +25,10 @@
 
 
         <section class="container">
-            <?php $this->renderPartial('_formu', array('model'=>$model,'dokeng'=>$dokeng,'respon'=>$respon)); ?>
+            <?php if($model->status == 1){
+                $this->renderPartial('_form', array('model'=>$model,'dokeng'=>$dokeng,'respon'=>$respon));
+            }else{
+             $this->renderPartial('_formu', array('model'=>$model,'dokeng'=>$dokeng,'respon'=>$respon)); }?>
+            
+            
         </section>

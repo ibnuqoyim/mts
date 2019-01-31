@@ -1,21 +1,29 @@
-<?php
-/* @var $this PermintaanController */
-/* @var $model Permintaan */
+        <header>
+            <div class="info">
+                <div class="container">
+                    <div class="col-lg-4 left">
+                        <a class="page"><span class="glyphicon glyphicon-user gold" aria-hidden="true"></span> Pra-Tender</a>
+                    </div>
+                    <div class="col-lg-5 right alamat">
+                        <?php
+                            if(Yii::app()->user->kodeAsrama != NULL){
+                        ?>
+                                <p class="head"><?php echo CHtml::link(Yii::app()->user->nama .' ('.Yii::app()->user->role.' '.Yii::app()->user->asrama.')', array('/user/update','id'=>Yii::app()->user->id), array('class'=>'gold')); ?></p>
+                        <?php
+                            }  else {
+                        ?>
+                                <p class="head"><?php echo CHtml::link(Yii::app()->user->nama .' ('.Yii::app()->user->role.')', array('/user/update','id'=>Yii::app()->user->id), array('class'=>'gold')); ?></p>
+                        <?php        
+                            }
+                        ?>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div> 
+        </header>
 
-$this->breadcrumbs=array(
-	'Permintaans'=>array('index'),
-	$model->id=>array('view','id'=>$model->id),
-	'Update',
-);
 
-$this->menu=array(
-	array('label'=>'List Permintaan', 'url'=>array('index')),
-	array('label'=>'Create Permintaan', 'url'=>array('create')),
-	array('label'=>'View Permintaan', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Permintaan', 'url'=>array('admin')),
-);
-?>
 
-<h1>Update Permintaan <?php echo $model->id; ?></h1>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+        <section class="container">
+            <?php $this->renderPartial('_form', array('model'=>$model, 'modal'=>$modal)); ?>
+        </section>

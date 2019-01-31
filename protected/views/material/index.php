@@ -228,7 +228,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                     (
                                                         'label'=>'<i class="glyphicon glyphicon-pencil"></i>',
                                                         'imageUrl'=>false,
-                                                        'visible' =>'$data->status == 3',
+                                                        'visible' =>'$data->status == 3 || $data->status == 1 ',
                                                         'url'=>'$this->grid->controller->createUrl("/material/update",array("id"=>$data->id))',
                                                         'options' => array(
                                                                 'rel' => 'tooltip',
@@ -376,7 +376,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                 array(
                                         'class'=>'CButtonColumn',
                                         'header'=>'Action',
-                                        'template'=>'{edit} {view} {kontrak}',
+                                        'template'=>'{edit} {update} {view} {kontrak}',
                                         'buttons'=>array
                                             (
                                                 'edit' => array
@@ -389,6 +389,17 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                                 'rel' => 'tooltip',
                                                                 'data-toggle' => 'tooltip', 
                                                                 'title'       => 'Buka Tender', ),
+                                                             ),
+                                                'update' => array
+                                                    (
+                                                        'label'=>'<i class="glyphicon glyphicon-pencil"></i>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 5',
+                                                        'url'=>'$this->grid->controller->createUrl("/permintaan/update",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Edit Tender', ),
                                                              ),
                                                 'view' => array
                                                     (
