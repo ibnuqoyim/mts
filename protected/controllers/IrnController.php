@@ -72,6 +72,11 @@ class IrnController extends Controller
 		if(isset($_POST['Irn']))
 		{
 			$model->attributes=$_POST['Irn'];
+			$model->sertifikat = CUploadedFile::getInstance($model, 'sertifikat'); 
+			if($model->sertifikat != null){      
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/sertifikat/'.$model->sertifikat;
+			$model->sertifikat->saveAs($path);
+		}
 			$model->id_material=$idm;
 			//$modal->actual_fatnirn=date("Y-m-d H:i:s");
 			$date = strtotime(date("Y-m-d H:i:s"));

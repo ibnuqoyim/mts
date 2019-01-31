@@ -47,7 +47,11 @@
 		<?php echo $form->textField($model,'irn',array('class'=>'form-control'),array('size'=>60,'maxlength'=>300)); ?>
 		<?php echo $form->error($model,'irn'); ?>
 	</div>
-
+  <div class="form-group">
+            <?php echo "Upload Sertifikat : " ?>
+            <?php echo $form->fileField($model,'sertifikat'); ?>
+            <?php echo $form->error($model,'sertifikat'); ?>
+    </div>
 
 
 	<div class="form-group">

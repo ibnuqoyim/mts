@@ -1845,6 +1845,20 @@ Stack trace:
 REQUEST_URI=/mts/index.php/pengajuan/create?idm=43
 in C:\xampp\htdocs\mts\protected\controllers\PengajuanController.php (85)
 in C:\xampp\htdocs\mts\index.php (13)
+<<<<<<< HEAD
+2019/01/29 09:27:11 [warning] [application] Failed to set unsafe attribute "file_mto" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (256)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/29 09:27:11 [warning] [application] Failed to set unsafe attribute "file_dwg" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (256)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/29 09:27:11 [warning] [application] Failed to set unsafe attribute "file_spec" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (256)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/29 09:27:11 [warning] [application] Failed to set unsafe attribute "file_datasheet" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (256)
+in C:\xampp\htdocs\mts\index.php (13)
+=======
 2019/01/29 03:04:05 [warning] [application] Failed to set unsafe attribute "file_mto" of "DokEng".
 in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (190)
 in C:\xampp\htdocs\mts\index.php (13)
@@ -2075,7 +2089,72 @@ in C:\xampp\htdocs\mts\index.php (13)
 2019/01/29 08:40:03 [warning] [application] Failed to set unsafe attribute "status" of "Material".
 in C:\xampp\htdocs\mts\protected\controllers\PengirimanController.php (58)
 in C:\xampp\htdocs\mts\index.php (13)
+<<<<<<< HEAD
 2019/01/30 10:53:54 [error] [exception.CException] exception 'CException' with message 'Property "WebUser.nama" is not defined.' in C:\xampp\htdocs\mts\framework\base\CComponent.php:130
+=======
+>>>>>>> 1608421d467aff2e65a9fe728763f16d9a615df4
+2019/01/30 10:41:38 [warning] [application] Failed to set unsafe attribute "file_mto" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (190)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/30 10:41:38 [warning] [application] Failed to set unsafe attribute "file_dwg" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (190)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/30 10:41:38 [warning] [application] Failed to set unsafe attribute "file_spec" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (190)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/30 10:41:38 [warning] [application] Failed to set unsafe attribute "file_datasheet" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (190)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/30 11:21:38 [warning] [application] Failed to set unsafe attribute "file_mto" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (190)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/30 11:21:38 [warning] [application] Failed to set unsafe attribute "file_dwg" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (190)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/30 11:21:38 [warning] [application] Failed to set unsafe attribute "file_spec" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (190)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/30 11:21:38 [warning] [application] Failed to set unsafe attribute "file_datasheet" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (190)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/30 11:25:00 [warning] [application] Failed to set unsafe attribute "file_mto" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (190)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/30 11:25:00 [warning] [application] Failed to set unsafe attribute "file_dwg" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (190)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/30 11:25:00 [warning] [application] Failed to set unsafe attribute "file_spec" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (190)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/30 11:25:00 [warning] [application] Failed to set unsafe attribute "file_datasheet" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (190)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 03:16:56 [warning] [application] Failed to set unsafe attribute "file_mto" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (203)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 03:16:56 [warning] [application] Failed to set unsafe attribute "file_dwg" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (203)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 03:16:56 [warning] [application] Failed to set unsafe attribute "file_spec" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (203)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 03:16:56 [warning] [application] Failed to set unsafe attribute "file_datasheet" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (203)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 03:23:51 [warning] [application] Failed to set unsafe attribute "file_mto" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (270)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 03:23:51 [warning] [application] Failed to set unsafe attribute "file_dwg" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (270)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 03:23:51 [warning] [application] Failed to set unsafe attribute "file_spec" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (270)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 03:23:51 [warning] [application] Failed to set unsafe attribute "file_datasheet" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (270)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 03:29:34 [error] [exception.CException] exception 'CException' with message 'Property "WebUser.nama" is not defined.' in C:\xampp\htdocs\mts\framework\base\CComponent.php:130
+>>>>>>> 3f3b666395cfd137c33e58f6fa4be0df95cf06f5
 Stack trace:
 #0 C:\xampp\htdocs\mts\framework\web\auth\CWebUser.php(146): CComponent->__get('nama')
 #1 C:\xampp\htdocs\mts\protected\views\material\index.php(53): CWebUser->__get('nama')
@@ -2083,7 +2162,11 @@ Stack trace:
 #3 C:\xampp\htdocs\mts\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
 #4 C:\xampp\htdocs\mts\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
 #5 C:\xampp\htdocs\mts\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+<<<<<<< HEAD
 #6 C:\xampp\htdocs\mts\protected\controllers\MaterialController.php(398): CController->render('index', Array)
+=======
+#6 C:\xampp\htdocs\mts\protected\controllers\MaterialController.php(412): CController->render('index', Array)
+>>>>>>> 3f3b666395cfd137c33e58f6fa4be0df95cf06f5
 #7 C:\xampp\htdocs\mts\framework\web\actions\CInlineAction.php(49): MaterialController->actionIndex()
 #8 C:\xampp\htdocs\mts\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
 #9 C:\xampp\htdocs\mts\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
@@ -2100,3 +2183,132 @@ Stack trace:
 #20 {main}
 REQUEST_URI=/mts/index.php/material/index
 ---
+<<<<<<< HEAD
+=======
+2019/01/31 03:32:11 [warning] [application] Failed to set unsafe attribute "file_review_eng" of "Penawaran".
+in C:\xampp\htdocs\mts\protected\controllers\PenawaranController.php (135)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 03:32:31 [warning] [application] Failed to set unsafe attribute "file_review_eng" of "Penawaran".
+in C:\xampp\htdocs\mts\protected\controllers\PenawaranController.php (135)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 03:33:04 [warning] [application] Failed to set unsafe attribute "file_review_eng" of "Penawaran".
+in C:\xampp\htdocs\mts\protected\controllers\PenawaranController.php (135)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 03:36:01 [warning] [application] Failed to set unsafe attribute "deskripsi" of "Kontrak".
+in C:\xampp\htdocs\mts\protected\controllers\KontrakController.php (74)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 03:42:57 [warning] [application] Failed to set unsafe attribute "status" of "Material".
+in C:\xampp\htdocs\mts\protected\controllers\KomController.php (106)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 03:47:41 [warning] [application] Failed to set unsafe attribute "status" of "Material".
+in C:\xampp\htdocs\mts\protected\controllers\PengirimanController.php (58)
+in C:\xampp\htdocs\mts\index.php (13)
+>>>>>>> 3f3b666395cfd137c33e58f6fa4be0df95cf06f5
+2019/01/31 04:43:22 [warning] [application] Failed to set unsafe attribute "file_mto" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (203)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 04:43:22 [warning] [application] Failed to set unsafe attribute "file_dwg" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (203)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 04:43:22 [warning] [application] Failed to set unsafe attribute "file_spec" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (203)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 04:43:22 [warning] [application] Failed to set unsafe attribute "file_datasheet" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (203)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 04:52:26 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\mts\protected\views\material\detail.php:42)
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(869): MaterialController->renderFile()
+#1 C:\xampp\htdocs\mts\framework\web\CController.php(782): MaterialController->renderPartial()
+#2 C:\xampp\htdocs\mts\protected\controllers\MaterialController.php(140): MaterialController->render()
+#3 unknown(0): MaterialController->actionDetail()
+#4 C:\xampp\htdocs\mts\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#5 C:\xampp\htdocs\mts\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\xampp\htdocs\mts\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\xampp\htdocs\mts\framework\web\filters\CFilterChain.php(133): MaterialController->runAction()
+#8 C:\xampp\htdocs\mts\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\mts\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 C:\xampp\htdocs\mts\framework\web\filters\CInlineFilter.php(58): MaterialController->filterAccessControl()
+#11 C:\xampp\htdocs\mts\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#12 C:\xampp\htdocs\mts\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\mts\framework\web\CController.php(265): MaterialController->runActionWithFilters()
+#14 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): MaterialController->run()
+#15 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\mts\index.php(13): CWebApplication->run()
+REQUEST_URI=/mts/index.php/material/detail/5
+in C:\xampp\htdocs\mts\protected\views\material\detail.php (42)
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (140)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 04:52:42 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\mts\protected\views\material\detail.php:42)
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\CController.php(869): MaterialController->renderFile()
+#1 C:\xampp\htdocs\mts\framework\web\CController.php(782): MaterialController->renderPartial()
+#2 C:\xampp\htdocs\mts\protected\controllers\MaterialController.php(140): MaterialController->render()
+#3 unknown(0): MaterialController->actionDetail()
+#4 C:\xampp\htdocs\mts\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#5 C:\xampp\htdocs\mts\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\xampp\htdocs\mts\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\xampp\htdocs\mts\framework\web\filters\CFilterChain.php(133): MaterialController->runAction()
+#8 C:\xampp\htdocs\mts\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\mts\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 C:\xampp\htdocs\mts\framework\web\filters\CInlineFilter.php(58): MaterialController->filterAccessControl()
+#11 C:\xampp\htdocs\mts\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#12 C:\xampp\htdocs\mts\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\mts\framework\web\CController.php(265): MaterialController->runActionWithFilters()
+#14 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): MaterialController->run()
+#15 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\mts\index.php(13): CWebApplication->run()
+REQUEST_URI=/mts/index.php/material/detail/5
+in C:\xampp\htdocs\mts\protected\views\material\detail.php (42)
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (140)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 05:11:12 [warning] [application] Failed to set unsafe attribute "file_mto" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (203)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 05:11:12 [warning] [application] Failed to set unsafe attribute "file_dwg" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (203)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 05:11:12 [warning] [application] Failed to set unsafe attribute "file_spec" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (203)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 05:11:12 [warning] [application] Failed to set unsafe attribute "file_datasheet" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (203)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 05:15:09 [warning] [application] Failed to set unsafe attribute "file_review_eng" of "Penawaran".
+in C:\xampp\htdocs\mts\protected\controllers\PenawaranController.php (135)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 05:15:09 [error] [php] Undefined variable: dokeng (C:\xampp\htdocs\mts\protected\controllers\PenawaranController.php:137)
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\htdocs\mts\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\mts\framework\web\filters\CFilterChain.php(133): PenawaranController->runAction()
+#3 C:\xampp\htdocs\mts\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\mts\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\xampp\htdocs\mts\framework\web\filters\CInlineFilter.php(58): PenawaranController->filterAccessControl()
+#6 C:\xampp\htdocs\mts\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\xampp\htdocs\mts\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\mts\framework\web\CController.php(265): PenawaranController->runActionWithFilters()
+#9 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): PenawaranController->run()
+#10 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\mts\index.php(13): CWebApplication->run()
+REQUEST_URI=/mts/index.php/penawaran/review_eng/3
+in C:\xampp\htdocs\mts\protected\controllers\PenawaranController.php (137)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 05:15:25 [warning] [application] Failed to set unsafe attribute "file_review_eng" of "Penawaran".
+in C:\xampp\htdocs\mts\protected\controllers\PenawaranController.php (135)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 05:43:08 [warning] [application] Failed to set unsafe attribute "deskripsi" of "Kontrak".
+in C:\xampp\htdocs\mts\protected\controllers\KontrakController.php (74)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 05:43:43 [warning] [application] Failed to set unsafe attribute "status" of "Material".
+in C:\xampp\htdocs\mts\protected\controllers\KomController.php (106)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 05:44:55 [warning] [application] Failed to set unsafe attribute "sertifikat" of "Irn".
+in C:\xampp\htdocs\mts\protected\controllers\IrnController.php (74)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/01/31 05:47:14 [warning] [application] Failed to set unsafe attribute "status" of "Material".
+in C:\xampp\htdocs\mts\protected\controllers\PengirimanController.php (58)
+in C:\xampp\htdocs\mts\index.php (13)

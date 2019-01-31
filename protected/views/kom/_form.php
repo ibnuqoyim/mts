@@ -25,7 +25,7 @@
               
               <tr>
                 <td>Nama Kode</td>
-                <td><?php echo $modal->proyek ?></td>
+                <td><?php echo $modal->kode ?></td>
               </tr><tr>
                 <td>Nama Material</td>
                 <td><?php echo $modal->nama ?></td>

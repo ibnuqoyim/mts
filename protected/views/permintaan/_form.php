@@ -28,7 +28,7 @@
 				'attributes'=>array(
 					array('name'=>'Kode Material',
                           'type'=>'raw',
-                          'value'=>$modal->proyek,
+                          'value'=>$modal->kode,
                           ),
 					array('name'=>'Material',
                           'type'=>'raw',

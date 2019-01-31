@@ -33,7 +33,7 @@ class Material extends CActiveRecord
 		return array(
 			array(' nama, create_date, last_update', 'required'),
 			array('client, stok, kategori, progres', 'numerical', 'integerOnly'=>true),
-			array('nama, proyek', 'length', 'max'=>100),
+			array('nama, proyek, kode', 'length', 'max'=>100),
 			array('pemenang, plan_penerimaan, plan_finish, actual_finish', 'length', 'max'=>110),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -130,7 +130,7 @@ class Material extends CActiveRecord
 		$criteria->compare('pemenang',$this->pemenang,true);
 		$criteria->compare('stok',$this->stok);
 		$criteria->addCondition('status=2 || status = 3 || status = 5' );
-
+		$criteria->addCondition('proyek!=1 ' );
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -149,7 +149,7 @@ class Material extends CActiveRecord
 		$criteria->compare('pemenang',$this->pemenang,true);
 		$criteria->compare('stok',$this->stok);
 		$criteria->addCondition('status=1' );
-
+		$criteria->addCondition('proyek!=1 ' );
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -167,7 +167,7 @@ class Material extends CActiveRecord
 		$criteria->compare('pemenang',$this->pemenang,true);
 		$criteria->compare('stok',$this->stok);
 		$criteria->addCondition('status=2 || status=5 || status=6' );
-
+		$criteria->addCondition('proyek!=1 ' );
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -186,7 +186,7 @@ class Material extends CActiveRecord
 		$criteria->compare('pemenang',$this->pemenang,true);
 		$criteria->compare('stok',$this->stok);
 		$criteria->addCondition('status = 5 || status = 6 || (pemenang = '.$idv.' && status<15)' );
-
+		$criteria->addCondition('proyek!=1 ' );
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -208,7 +208,7 @@ class Material extends CActiveRecord
 		$criteria->compare('pemenang',$this->pemenang,true);
 		$criteria->compare('stok',$this->stok);
 		$criteria->addCondition('status>=6 && status<=8.5' );
-
+		$criteria->addCondition('proyek!=1 ' );
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -227,7 +227,7 @@ class Material extends CActiveRecord
 		$criteria->compare('pemenang',$this->pemenang,true);
 		$criteria->compare('stok',$this->stok);
 		$criteria->addCondition('status>=9 && status<=12' );
-
+		$criteria->addCondition('proyek!=1 ' );
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -245,7 +245,7 @@ class Material extends CActiveRecord
 		$criteria->compare('pemenang',$this->pemenang,true);
 		$criteria->compare('stok',$this->stok);
 		$criteria->addCondition('status>=12 && status<14' );
-
+		$criteria->addCondition('proyek!=1 ' );
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -264,7 +264,7 @@ class Material extends CActiveRecord
 		$criteria->compare('pemenang',$this->pemenang,true);
 		$criteria->compare('stok',$this->stok);
 		$criteria->addCondition('status>=12 && status<=15' );
-
+		$criteria->addCondition('proyek!=1 ' );
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -283,7 +283,7 @@ class Material extends CActiveRecord
 		$criteria->compare('pemenang',$this->pemenang,true);
 		$criteria->compare('stok',$this->stok);
 		$criteria->addCondition('status=15' );
-
+		$criteria->addCondition('proyek!=1 ' );
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

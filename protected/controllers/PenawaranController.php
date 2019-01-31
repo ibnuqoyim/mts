@@ -133,9 +133,11 @@ class PenawaranController extends Controller
 		if(isset($_POST['Penawaran']))
 		{
 			$model->attributes=$_POST['Penawaran'];
-			$model->file_review_eng = CUploadedFile::getInstance($model, 'file_review_eng');       
+			$model->file_review_eng = CUploadedFile::getInstance($model, 'file_review_eng'); 
+			if($model->file_review_eng != null){      
 			$path = Yii::getPathOfAlias("webroot"). '/dokumen/penawaran/RE-'.$model->file_review_eng;
 			$model->file_review_eng->saveAs($path);
+		}
 			if($model->save())
 				$log = new Log;
 				$log->id_user = Yii::app()->user->id;

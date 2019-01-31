@@ -34,8 +34,8 @@
         </div>
         <div class="form-group">
             <?php echo "Kode Material"; ?>
-            <?php echo $form->textField($model,'proyek',array('class'=>'form-control'),array('size'=>60,'maxlength'=>100)); ?>
-            <?php echo $form->error($model,'proyek'); ?>
+            <?php echo $form->textField($model,'kode',array('class'=>'form-control'),array('size'=>60,'maxlength'=>100)); ?>
+            <?php echo $form->error($model,'kode'); ?>
         </div>
         <div class="form-group">
             <?php echo "Nama Material"; ?>

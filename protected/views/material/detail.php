@@ -29,7 +29,7 @@
                 <table class="table table-hover table-dark" style="width:100% border-top: 1px solid #2e2bb1">
               <tr>
                 <td  >Kode Material</td>
-                <td  ><?php echo $model->proyek ?></td>
+                <td  ><?php echo $model->kode ?></td>
               </tr>
                <tr>
                 <td  >Nama Material</td>

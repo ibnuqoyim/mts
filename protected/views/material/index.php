@@ -744,7 +744,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                 array(
                                         'class'=>'CButtonColumn',
                                          'header'=>'Action',
-                                        'template'=>'{send}{received}',
+                                        'template'=>'{send}',
                                         'buttons'=>array
                                             (
                                                 'send' => array
