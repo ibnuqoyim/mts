@@ -44,22 +44,22 @@
         </div>
         
 	<div id="dok1" class="form-group">
-            <?php echo "Upload Dokumen MTO : " ?>
+            <?php echo "Upload Dokumen MTO : "; if($model->dokenga->file_mto != null){echo '<a href="/mts/dokumen/dokeng/MTO-'.$model->dokenga->file_mto.'">'.$model->dokenga->file_mto.'</a>';} ?>
 			<?php echo $form->fileField($dokeng,'file_mto'); ?>
 			<?php echo $form->error($dokeng,'file_mto'); ?>
     </div>
     <div class="form-group">
-            <?php echo "Upload Dokumen Drawing : "?>
+            <?php echo "Upload Dokumen Drawing : "; if($model->dokenga->file_dwg != null){echo '<a href="/mts/dokumen/dokeng/MTO-'.$model->dokenga->file_dwg.'">'.$model->dokenga->file_dwg.'</a>';}  ?>
             <?php echo $form->fileField($dokeng,'file_dwg'); ?>
             <?php echo $form->error($dokeng,'file_dwg'); ?>
     </div>
     <div class="form-group">
-            <?php echo "Upload Dokumen Spesifikasi : "?>
+            <?php echo "Upload Dokumen Spesifikasi : " ; if($model->dokenga->file_spec != null){echo '<a href="/mts/dokumen/dokeng/MTO-'.$model->dokenga->file_spec.'">'.$model->dokenga->file_spec.'</a>';} ?>
             <?php echo $form->fileField($dokeng,'file_spec'); ?>
             <?php echo $form->error($dokeng,'file_spec'); ?>
     </div>
     <div class="form-group">
-            <?php echo "Upload Dokumen Datasheet : "?>
+            <?php echo "Upload Dokumen Datasheet : " ; if($model->dokenga->file_datasheet != null){echo '<a href="/mts/dokumen/dokeng/MTO-'.$model->dokenga->file_datasheet.'">'.$model->dokenga->file_datasheet.'</a>';} ?>
             <?php echo $form->fileField($dokeng,'file_datasheet'); ?>
             <?php echo $form->error($dokeng,'file_datasheet'); ?>
     </div>
@@ -77,7 +77,7 @@
             <div id="dinamik"> </div>
     </div>
     <div class="form-group col-lg-12">
-            <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn btn-lg btn-primary left ')); ?>
+            <?php echo CHtml::submitButton($model->isNewRecord ? 'Ajukan' : 'Save', array('class'=>'btn btn-lg btn-primary left ')); ?>
     </div>
 
 <?php $this->endWidget(); ?>

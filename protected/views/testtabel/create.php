@@ -2,7 +2,7 @@
             <div class="info">
                 <div class="container">
                     <div class="col-lg-4 left">
-                        <a class="page"><span class="glyphicon glyphicon-file gold" aria-hidden="true"></span> Update Material</a>
+                        <a class="page"><span class="glyphicon glyphicon-user gold" aria-hidden="true"></span> Pra-Tender</a>
                     </div>
                     <div class="col-lg-5 right alamat">
                         <?php
@@ -25,10 +25,5 @@
 
 
         <section class="container">
-            <?php if($model->status == 0.5){
-                $this->renderPartial('_forma', array('model'=>$model,'dokeng'=>$dokeng,'respon'=>$respon));
-            }else{
-             $this->renderPartial('_formu', array('model'=>$model,'dokeng'=>$dokeng,'respon'=>$respon)); }?>
-            
-            
+            <?php $this->renderPartial('_form', array('model'=>$model)); ?>
         </section>

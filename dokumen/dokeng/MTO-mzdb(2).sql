@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 06, 2019 at 12:29 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.1.26
+-- Generation Time: Dec 21, 2018 at 12:58 AM
+-- Server version: 10.1.34-MariaDB
+-- PHP Version: 7.0.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -72,26 +72,7 @@ INSERT INTO `client_respon` (`id`, `material_id`, `isi`, `file_respon`, `tgl_cre
 (21, 47, 'sadasdasd', NULL, '2018-12-16'),
 (22, 48, 'adsadasd', NULL, '2018-12-18'),
 (23, 44, 'dsfsdf', NULL, '2018-12-18'),
-(24, 49, 'dsfsdf', NULL, '2018-12-18'),
-(25, 51, 'sdasdasd', NULL, '2019-02-05'),
-(26, 53, 'dasdasd', 'yiicmd.php', '2019-02-05'),
-(27, 53, 'sdasdasd', NULL, '2019-02-05'),
-(28, 52, 'wsdasda', NULL, '2019-02-05'),
-(29, 51, '', NULL, '2019-02-05'),
-(30, 51, '', NULL, '2019-02-05');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `dokpermintaan`
---
-
-CREATE TABLE `dokpermintaan` (
-  `id` int(11) NOT NULL,
-  `file_dokpermintaan` varchar(111) NOT NULL,
-  `id_material` int(11) NOT NULL,
-  `id_vendor` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(24, 49, 'dsfsdf', NULL, '2018-12-18');
 
 -- --------------------------------------------------------
 
@@ -124,11 +105,7 @@ INSERT INTO `dok_eng` (`id_material`, `file_mto`, `file_dwg`, `file_spec`, `file
 (46, 'MTS.graphml', '', NULL, NULL, NULL, '2018-12-30', '2018-12-16', NULL, NULL, NULL),
 (47, 'MTS.graphml', '', NULL, NULL, NULL, '2018-12-30', NULL, '2018-12-16', NULL, NULL),
 (48, 'am.sql', '', NULL, NULL, NULL, '2019-01-01', '2018-12-18', NULL, NULL, NULL),
-(49, '', '', NULL, NULL, NULL, '2019-01-01', '2018-12-18', NULL, NULL, NULL),
-(50, '', '', NULL, NULL, NULL, '2019-02-13', NULL, NULL, NULL, NULL),
-(51, 'newfile.txt', '', NULL, NULL, NULL, '2019-02-14', '2019-02-05', '2019-02-05', NULL, NULL),
-(52, '', '', NULL, NULL, NULL, '2019-02-19', NULL, '2019-02-05', NULL, NULL),
-(53, 'newfile.txt', 'newfile.txt', 'list table.ods', 'mzdb (3).sql', NULL, '2019-02-19', NULL, '2019-02-05', NULL, NULL);
+(49, '', '', NULL, NULL, NULL, '2019-01-01', '2018-12-18', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -383,46 +360,7 @@ INSERT INTO `log` (`id`, `id_user`, `kegiatan`, `tgl`) VALUES
 (51, 51, 'Melihat detail material Materia Z1', '2018-12-18 23:26:00'),
 (52, 51, 'Melihat detail material sdfsdf', '2018-12-18 23:34:52'),
 (53, 51, 'Melihat detail material sdfsdf', '2018-12-18 23:35:12'),
-(54, 51, 'Berhasil login ke sistem', '2018-12-20 00:00:00'),
-(55, 51, 'Berhasil login ke sistem', '2019-01-30 00:00:00'),
-(56, 51, 'Mengajukan material baru', '2019-01-30 00:00:00'),
-(57, 51, 'Berhasil login ke sistem', '2019-01-30 00:00:00'),
-(58, 51, 'Berhasil login ke sistem', '2019-01-31 00:00:00'),
-(59, 51, 'Mengajukan material baru', '2019-01-31 00:00:00'),
-(60, 51, 'Mengupdate dokumen engineering untuk material tetikus', '2019-01-31 00:00:00'),
-(61, 51, 'Upload dokumen permintaan penawaran vendor unuk pengadaan material  kljljlkjlk', '2019-01-31 00:00:00'),
-(62, 51, 'Berhasil login ke sistem', '2019-02-02 00:00:00'),
-(63, 51, 'Berhasil login ke sistem', '2019-02-04 00:00:00'),
-(64, 51, 'Berhasil login ke sistem', '2019-02-05 00:00:00'),
-(65, 51, 'Berhasil login ke sistem', '2019-02-05 00:00:00'),
-(66, 51, 'membuat material baru', '2019-02-05 00:00:00'),
-(67, 51, 'mensubmit material baru', '2019-02-05 00:00:00'),
-(68, 51, 'mensubmit material baru', '2019-02-05 00:00:00'),
-(69, 51, 'Memberikan penolakan untuk pengajuan material  tetikus', '2019-02-05 00:00:00'),
-(70, 51, 'Mengupdate dokumen engineering untuk material tetikus', '2019-02-05 00:00:00'),
-(71, 51, 'Mengupdate dokumen engineering untuk material tetikus', '2019-02-05 00:00:00'),
-(72, 51, 'mensubmit material baru', '2019-02-05 00:00:00'),
-(73, 51, 'membuat material baru', '2019-02-05 00:00:00'),
-(74, 51, 'Mengupdate dokumen engineering untuk material sad', '2019-02-05 00:00:00'),
-(75, 51, 'Mengupdate dokumen engineering untuk material sad', '2019-02-05 00:00:00'),
-(76, 51, 'Mengupdate dokumen engineering untuk material sad', '2019-02-05 00:00:00'),
-(77, 51, 'Mengupdate dokumen engineering untuk material sad', '2019-02-05 00:00:00'),
-(78, 51, 'Mengupdate dokumen engineering untuk material sad', '2019-02-05 00:00:00'),
-(79, 51, 'Mengupdate dokumen engineering untuk material sad', '2019-02-05 00:00:00'),
-(80, 51, 'Mengupdate dokumen engineering untuk material sad', '2019-02-05 00:00:00'),
-(81, 51, 'mensubmit material baru', '2019-02-05 00:00:00'),
-(82, 51, 'Memberikan penolakan untuk pengajuan material  sad', '2019-02-05 00:00:00'),
-(83, 51, 'mensubmit material baru', '2019-02-05 00:00:00'),
-(84, 51, 'Memberikan penolakan untuk pengajuan material  sad', '2019-02-05 00:00:00'),
-(85, 51, 'Mengupdate dokumen engineering untuk material sad', '2019-02-05 00:00:00'),
-(86, 51, 'Mengupdate dokumen engineering untuk material sad', '2019-02-05 00:00:00'),
-(87, 51, 'Memberikan penolakan untuk pengajuan material  asdasd', '2019-02-05 00:00:00'),
-(88, 51, 'Memberikan penolakan untuk pengajuan material  tetikus', '2019-02-05 00:00:00'),
-(89, 51, 'Mengupdate dokumen engineering untuk material tetikus', '2019-02-05 00:00:00'),
-(90, 51, 'Mengupdate dokumen engineering untuk material tetikus', '2019-02-05 00:00:00'),
-(91, 51, 'mensubmit material baru', '2019-02-05 00:00:00'),
-(92, 51, 'Memberikan approval untuk pengajuan material  tetikus', '2019-02-05 00:00:00'),
-(93, 51, 'mensubmit material baru', '2019-02-05 00:00:00');
+(54, 51, 'Berhasil login ke sistem', '2018-12-20 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -452,26 +390,21 @@ CREATE TABLE `material` (
   `actual_finish` date NOT NULL,
   `create_date` date NOT NULL,
   `last_update` date NOT NULL,
-  `pic` int(11) NOT NULL,
-  `kode` varchar(110) DEFAULT NULL
+  `pic` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `material`
 --
 
-INSERT INTO `material` (`id`, `proyek`, `kategori`, `client`, `nama`, `status`, `progres`, `pemenang`, `stok`, `status_tender`, `plan_tender`, `plan_kontrak`, `plan_kom`, `plan_irn`, `plan_pengiriman`, `plan_penerimaan`, `plan_inspeksiwh`, `plan_finish`, `actual_finish`, `create_date`, `last_update`, `pic`, `kode`) VALUES
-(43, '1', 2, 1, 'Materia Z1', 15, NULL, '51', 124, 2, '2018-12-14', '2018-12-17', '2018-12-14', '2018-12-15', '2018-12-19', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2018-12-12', '2018-12-12', 51, NULL),
-(44, '0', 2, 1, 'Pipa', 15, NULL, '51', 1, 2, '2018-12-20', '2018-12-23', NULL, '2018-12-21', '2018-12-25', '2018-12-29', '0000-00-00', '2018-12-20', '2018-12-18', '2018-12-18', '2018-12-18', 51, NULL),
-(45, '1', 1, 1, 'DASDASD', 15, NULL, '4', 1, 2, '2018-12-15', '2018-12-18', NULL, '2018-12-16', '2018-12-20', '0000-00-00', '2018-12-15', '0000-00-00', '0000-00-00', '2018-12-13', '2018-12-13', 51, NULL),
-(46, '0', 1, 1, 'kljljlkjlk', 5, NULL, NULL, NULL, 1, '2018-12-18', NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2018-12-16', '2018-12-16', 51, NULL),
-(47, '1', 1, 1, 'kljljlkjlk', 3, NULL, NULL, NULL, 0, NULL, NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2018-12-16', '2018-12-16', 51, NULL),
-(48, 'CVL-3440-XX', 1, 0, 'Pengki Ajaib', 15, NULL, '51', 12, 2, '2018-12-20', '2018-12-23', NULL, '2018-12-21', '2018-12-25', '2018-12-29', '0000-00-00', '2018-12-20', '2018-12-18', '2018-12-18', '2018-12-18', 51, NULL),
-(49, '1', 2, 0, 'sdfsdf', 2, NULL, NULL, NULL, 0, '2018-12-20', NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2018-12-18', '2018-12-18', 51, NULL),
-(50, '1', 1, 0, 'dsfsdfsdf', 1, NULL, NULL, NULL, 0, NULL, NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2019-01-30', '2019-01-30', 51, NULL),
-(51, '0', 1, 0, 'tetikus', 5, NULL, NULL, NULL, 1, '2019-02-07', NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2019-02-05', '2019-02-05', 51, '2342343'),
-(52, '0', 1, 0, 'asdasd', 3, NULL, NULL, NULL, 0, NULL, NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2019-02-05', '2019-02-05', 51, '3424'),
-(53, '0', 1, 0, 'sad', 1, NULL, NULL, NULL, 0, NULL, NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2019-02-05', '2019-02-05', 51, 'asd');
+INSERT INTO `material` (`id`, `proyek`, `kategori`, `client`, `nama`, `status`, `progres`, `pemenang`, `stok`, `status_tender`, `plan_tender`, `plan_kontrak`, `plan_kom`, `plan_irn`, `plan_pengiriman`, `plan_penerimaan`, `plan_inspeksiwh`, `plan_finish`, `actual_finish`, `create_date`, `last_update`, `pic`) VALUES
+(43, NULL, 2, 1, 'Materia Z1', 15, NULL, '51', 124, 2, '2018-12-14', '2018-12-17', '2018-12-14', '2018-12-15', '2018-12-19', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2018-12-12', '2018-12-12', 51),
+(44, NULL, 2, 1, 'Pipa', 15, NULL, '51', 1, 2, '2018-12-20', '2018-12-23', NULL, '2018-12-21', '2018-12-25', '2018-12-29', '0000-00-00', '2018-12-20', '2018-12-18', '2018-12-18', '2018-12-18', 51),
+(45, NULL, 1, 1, 'DASDASD', 15, NULL, '4', 1, 2, '2018-12-15', '2018-12-18', NULL, '2018-12-16', '2018-12-20', '0000-00-00', '2018-12-15', '0000-00-00', '0000-00-00', '2018-12-13', '2018-12-13', 51),
+(46, NULL, 1, 1, 'kljljlkjlk', 2, NULL, NULL, NULL, 0, '2018-12-18', NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2018-12-16', '2018-12-16', 51),
+(47, NULL, 1, 1, 'kljljlkjlk', 3, NULL, NULL, NULL, 0, NULL, NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2018-12-16', '2018-12-16', 51),
+(48, 'CVL-3440-XX', 1, 0, 'Pengki Ajaib', 15, NULL, '51', 12, 2, '2018-12-20', '2018-12-23', NULL, '2018-12-21', '2018-12-25', '2018-12-29', '0000-00-00', '2018-12-20', '2018-12-18', '2018-12-18', '2018-12-18', 51),
+(49, 'fsdfsd', 2, 0, 'sdfsdf', 2, NULL, NULL, NULL, 0, '2018-12-20', NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2018-12-18', '2018-12-18', 51);
 
 -- --------------------------------------------------------
 
@@ -597,7 +530,6 @@ INSERT INTO `permintaan` (`id_material`, `file`, `status`, `deskripsi`, `deadlin
 (43, 'Presentation1.pptx', NULL, 'dsfsdfsdfsd', '2018-12-22', NULL, NULL, '2018-12-12', '2018-12-12', 51),
 (44, 'am.sql', NULL, 'gjgjhg', '2018-12-28', '2018-12-18', '2019-01-04', '2018-12-18', '2018-12-18', 51),
 (45, 'db.graphml', NULL, 'SADADASD', '2018-12-23', '2018-12-13', '2018-12-30', '2018-12-13', '2018-12-13', 51),
-(46, 'list table.ods', NULL, 'sdasdasdasd', '2019-02-10', NULL, NULL, NULL, '2019-01-31', 51),
 (48, 'mzdb (2).sql', NULL, 'dsfsdfsdf', '2018-12-28', '2018-12-18', '2019-01-04', '2018-12-18', '2018-12-18', 51);
 
 -- --------------------------------------------------------
@@ -676,7 +608,6 @@ CREATE TABLE `status` (
 --
 
 INSERT INTO `status` (`id`, `namaStatus`, `keterangan`) VALUES
-(0.5, 'Material in Draft', 'Pengajuan Material masih dalam tahap draft'),
 (1, 'Waiting for Approval', 'Dokumen Engineering menunggu respon klien'),
 (2, 'Document Approved', 'Dokumen Engineering sudah di approve klien	'),
 (3, 'Document Rejected', 'Dokumen Engineering ditolak klien, sedang diperbaiki engineer	'),
@@ -694,26 +625,6 @@ INSERT INTO `status` (`id`, `namaStatus`, `keterangan`) VALUES
 (13, 'Material received', 'Material telah diterima Warehouse	'),
 (14, 'Material inspection', 'Material telah di inspeksi Warehouse	'),
 (15, 'Material in Stock', 'Stok Material telah di update	');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `testtabel`
---
-
-CREATE TABLE `testtabel` (
-  `id` int(11) NOT NULL,
-  `namatest` varchar(100) NOT NULL,
-  `tgl_test` date NOT NULL,
-  `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `testtabel`
---
-
-INSERT INTO `testtabel` (`id`, `namatest`, `tgl_test`, `password`) VALUES
-(1, 'ibnuqoyim', '2019-02-14', 'Sintiaibnu17');
 
 -- --------------------------------------------------------
 
@@ -770,12 +681,6 @@ ALTER TABLE `client`
 -- Indexes for table `client_respon`
 --
 ALTER TABLE `client_respon`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `dokpermintaan`
---
-ALTER TABLE `dokpermintaan`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -887,12 +792,6 @@ ALTER TABLE `status`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `testtabel`
---
-ALTER TABLE `testtabel`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -912,13 +811,7 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT for table `client_respon`
 --
 ALTER TABLE `client_respon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
-
---
--- AUTO_INCREMENT for table `dokpermintaan`
---
-ALTER TABLE `dokpermintaan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `hasilpni`
@@ -948,13 +841,13 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `material`
 --
 ALTER TABLE `material`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `penawaran`
@@ -973,12 +866,6 @@ ALTER TABLE `pengajuan`
 --
 ALTER TABLE `produksi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `testtabel`
---
-ALTER TABLE `testtabel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`

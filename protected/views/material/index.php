@@ -221,19 +221,29 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                 array(
                                     'class'=>'CButtonColumn',
                                     'header'=>'Action',
-                                    'template'=>'{edit} {view}',
+                                    'template'=>'{edit} {submit} {view}',
                                     'buttons'=>array
                                             (
                                                 'edit' => array
                                                     (
                                                         'label'=>'<i class="glyphicon glyphicon-pencil"></i>',
                                                         'imageUrl'=>false,
-                                                        'visible' =>'$data->status == 3 || $data->status == 1 ',
+                                                        'visible' =>'$data->status == 3 || $data->status == 0.5 ',
                                                         'url'=>'$this->grid->controller->createUrl("/material/update",array("id"=>$data->id))',
                                                         'options' => array(
                                                                 'rel' => 'tooltip',
                                                                 'data-toggle' => 'tooltip', 
                                                                 'title'       => 'Update Material Detail', ),     ),
+                                                'submit' => array
+                                                    (
+                                                        'label'=>'<i class="glyphicon glyphicon-send" style="color:green"></i>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 3 || $data->status == 0.5 ',
+                                                        'url'=>'$this->grid->controller->createUrl("/material/submit",array("id"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Submit Pengajuan Material', ),     ),
                                                 'view' => array
                                                     (
                                                         'label'=>'<i class="glyphicon glyphicon-eye-open"></i>',

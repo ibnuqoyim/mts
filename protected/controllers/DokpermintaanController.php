@@ -1,6 +1,6 @@
 <?php
 
-class PermintaanController extends Controller
+class DokpermintaanController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -62,85 +62,49 @@ class PermintaanController extends Controller
 	 */
 	public function actionCreate($idm)
 	{
-		$model=new Permintaan;
-		$modal=Material::model()->findByPk($idm);
-		$respon = Dokpermintaan::Model()->findAll('id_material='.$idm);
+		$model=new Dokpermintaan;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-/*
-		if(isset($_POST['Permintaan']))
+
+		if(isset($_POST['Dokpermintaan']))
 		{
-			$model->attributes=$_POST['Permintaan'];
-			$model->id_material=$idm;
-			$modal->status_tender=1;
-			$modal->status=5;
-			
-			//$model->file = CUploadedFile::getInstance($model, 'file');       
-			//$path = Yii::getPathOfAlias("webroot"). '/dokumen/permintaan/'.$model->file;
-			//$model->file->saveAs($path);
-			$model->tgl_create= date("Y-m-d",time());
-			$date = strtotime(date("Y-m-d H:i:s"));
-			$a = strtotime("+10 day", $date);
-			$model->pic = Yii::app()->user->id;
-			$model->deadline_tutup=date("Y-m-d H:i:s",$a);
-			$modal->save();
+			$model->attributes=$_POST['Dokpermintaan'];
+			$model->id_material = $idm;
+			$model->file_dokpermintaan = CUploadedFile::getInstance($model, 'file_dokpermintaan');       
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/permintaan/'.$model->file_dokpermintaan;
+			$model->file->saveAs($path);
 			if($model->save())
-				//$log = new Log;
-				//$log->id_user = Yii::app()->user->id;
-				//$log->kegiatan = 'Upload dokumen permintaan penawaran vendor unuk pengadaan material  '.$modal->nama;
-				//$log->tgl = date("Y-m-d",time());
-				//$log->save();
-				Yii::app()->user->setFlash('success', 'Dokumen permintaan penawaran berhasil di upload');
-				$this->redirect(array('material/index'));
+				$this->redirect(array('permintaan/create','id'=>$idm));
 		}
-		*/
+
 		$this->render('create',array(
-			'model'=>$model, 'modal'=>$modal, 'respon'=>$respon
+			'model'=>$model,
 		));
 	}
-
-
 
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($idm)
+	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($idm);
-		$modal=Material::model()->findByPk($idm);
+		$model=$this->loadModel($id);
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Permintaan']))
+		if(isset($_POST['Dokpermintaan']))
 		{
-			$model->attributes=$_POST['Permintaan'];
-			$model->id_material=$idm;
-			$modal->status_tender=1;
-			$modal->status=5;
-			
-			//$model->file = CUploadedFile::getInstance($model, 'file');       
-			//$path = Yii::getPathOfAlias("webroot"). '/dokumen/permintaan/'.$model->file;
-			//$model->file->saveAs($path);
-			$model->tgl_create= date("Y-m-d",time());
-			$date = strtotime(date("Y-m-d H:i:s"));
-			$a = strtotime("+10 day", $date);
-			$model->pic = Yii::app()->user->id;
-			$model->deadline_tutup=date("Y-m-d H:i:s",$a);
-			$modal->save();
+			$model->attributes=$_POST['Dokpermintaan'];
+
 			if($model->save())
-				//$log = new Log;
-				//$log->id_user = Yii::app()->user->id;
-				//$log->kegiatan = 'Upload dokumen permintaan penawaran vendor unuk pengadaan material  '.$modal->nama;
-				//$log->tgl = date("Y-m-d",time());
-				//$log->save();
-				Yii::app()->user->setFlash('success', 'Dokumen permintaan penawaran berhasil di update');
+				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('update',array(
-			'model'=>$model, 'modal'=>$modal,
+			'model'=>$model,
 		));
 	}
 
@@ -163,7 +127,7 @@ class PermintaanController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Permintaan');
+		$dataProvider=new CActiveDataProvider('Dokpermintaan');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -174,10 +138,10 @@ class PermintaanController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Permintaan('search');
+		$model=new Dokpermintaan('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Permintaan']))
-			$model->attributes=$_GET['Permintaan'];
+		if(isset($_GET['Dokpermintaan']))
+			$model->attributes=$_GET['Dokpermintaan'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -188,12 +152,12 @@ class PermintaanController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Permintaan the loaded model
+	 * @return Dokpermintaan the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Permintaan::model()->findByPk($id);
+		$model=Dokpermintaan::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -201,11 +165,11 @@ class PermintaanController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Permintaan $model the model to be validated
+	 * @param Dokpermintaan $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='permintaan-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='dokpermintaan-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

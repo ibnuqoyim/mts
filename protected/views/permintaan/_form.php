@@ -61,6 +61,36 @@
 					
 				),
 			)); ?>
+			<br>
+			<table class="table" style="width:100% ; border: 2px solid black;">
+              <tr>
+                <td>No</td>
+                <td>Vendor</td>
+                <td>Dokumen Permintaan</td>
+              </tr>
+              <?php $o = 0 ?>
+	<?php foreach ($respon as $res)
+            { ?>
+         
+              <tr>
+                <td><?php echo $o++ ?></td>
+                <td><?php echo $res->usera->nama ?></td>
+                <td><?php echo $res->file_dokpermintaan ?></td>
+              </tr>
+              
+          <?php  } 
+          if(count($respon) == 0){
+          	?>
+          	<tr>
+                <td colspan="3" style="text-align: center; size: 8px">Nothing to show</td>
+                
+              </tr>
+          	<?php
+          }?>
+           </table>
+           <?php echo '<br>'.CHtml::link('<button class="btn btn-success "><i class="glyphicon glyphicon-plus-sign"></i> Permintaan</button>', array('/dokpermintaan/create','idm'=>$modal->id)); ?>
+
+
 	<div class="form-group">
             <?php echo "<br> <b> Silahkan Upload Dokumen Permintaan Penawaran : </b>" ; if($model->file != null){echo '<a href="/mts/dokumen/permintaan/'.$model->file.'">'.$model->file.'</a>';}?>
 			<?php echo $form->fileField($model,'file'); ?>

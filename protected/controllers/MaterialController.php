@@ -32,7 +32,7 @@ class MaterialController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('hapus','create','update','dynamicform', 'log','win','admin','detail','closetender','test'),
+				'actions'=>array('hapus','submit','create','update','dynamicform', 'log','win','admin','detail','closetender','test'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -229,17 +229,17 @@ class MaterialController extends Controller
 			$date = strtotime(date("Y-m-d H:i:s"));
 			$a = strtotime("+14 day", $date);
 			$dokeng->plan_approve=date("Y-m-d H:i:s",$a);
-			$model->status = 1 ;
+			$model->status = 0.5 ;
 			$model->pic = Yii::app()->user->id;
 
 			if($model->save())
 				$dokeng->id_material = $model->id;
 				$dokeng->save();
 				$log->id_user = Yii::app()->user->id;
-				$log->kegiatan = "Mengajukan material baru";
+				$log->kegiatan = "membuat material baru";
 				$log->tgl = date("Y-m-d",time());
 				$log->save();
-				Yii::app()->user->setFlash('success', 'Material '.$model->nama.' telah diajukan!!');
+				Yii::app()->user->setFlash('success', 'Material '.$model->nama.' telah buat!!');
 				$this->redirect(array('material/index')); 
 		
 		}
@@ -249,6 +249,20 @@ class MaterialController extends Controller
 		));
 	}
 
+	public function actionSubmit($id)
+	{
+		$log = new Log;
+		$model=$this->loadModel($id);
+		$model->status = 1;
+		$model->save();
+		$log->id_user = Yii::app()->user->id;
+		$log->kegiatan = "mensubmit material baru";
+		$log->tgl = date("Y-m-d",time());
+		$log->save();
+		Yii::app()->user->setFlash('success', 'Material '.$model->nama.' telah diajukan!!');
+		$this->redirect(array('material/index')); 
+		
+	}
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -268,23 +282,28 @@ class MaterialController extends Controller
 		{
 			//$model->attributes=$_POST['Material'];
 			$dokeng->attributes=$_POST['DokEng'];
-			$dokeng->file_mto = CUploadedFile::getInstance($dokeng, 'file_mto');
-			if($dokeng->file_mto != null){
+			//$mto_old = $dokeng->file_mto;
+			$new = CUploadedFile::getInstance($dokeng, 'file_mto');
+			if($new != null){
+				$dokeng->file_mto = $new;
 				$path1 = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/MTO-'.$dokeng->file_mto;
 				$dokeng->file_mto->saveAs($path1);
 			}
-			$dokeng->file_dwg = CUploadedFile::getInstance($dokeng, 'file_dwg');
-			if($dokeng->file_dwg != null){
+			 $new1 = CUploadedFile::getInstance($dokeng, 'file_dwg');
+			if($new1 != null){
+				$dokeng->file_dwg = $new1;
 				$path2 = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/DWG-'.$dokeng->file_dwg;
 				$dokeng->file_dwg->saveAs($path2);
 			}
-			$dokeng->file_spec = CUploadedFile::getInstance($dokeng, 'file_spec');
-			if($dokeng->file_spec != null){
+			$new2  = CUploadedFile::getInstance($dokeng, 'file_spec');
+			if( $new2 != null){
+				$dokeng->file_spec =$new2 ;
 				$path3 = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/SPEC-'.$dokeng->file_spec;
 				$dokeng->file_spec->saveAs($path3);
 			}
-			$dokeng->file_datasheet = CUploadedFile::getInstance($dokeng, 'file_datasheet');                        
-			if($dokeng->file_datasheet != null){
+			 $new3 = CUploadedFile::getInstance($dokeng, 'file_datasheet');                        
+			if($new3  != null){
+				$dokeng->file_datasheet = $new3 ;
 				$path4 = Yii::getPathOfAlias("webroot"). '/dokumen/dokeng/DS-'.$dokeng->file_datasheet;
 				$dokeng->file_datasheet->saveAs($path4);
 			}
@@ -292,7 +311,7 @@ class MaterialController extends Controller
 			$dokeng->save();
 			$model->create_date= date("Y-m-d",time());
 			$model->last_update= date("Y-m-d",time());
-			$model->status = 1 ;
+			$model->status = 0.5 ;
 
 			if($model->save())
 				$log->id_user = Yii::app()->user->id;
