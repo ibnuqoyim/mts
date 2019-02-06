@@ -2,7 +2,7 @@
             <div class="info">
                 <div class="container">
                     <div class="col-lg-4 left">
-                        <a class="page"><span class="glyphicon glyphicon-user gold" aria-hidden="true"></span> Create User</a>
+                        <a class="page"><span class="glyphicon glyphicon-user gold" aria-hidden="true"></span> Dok Permintaan User</a>
                     </div>
                     <div class="col-lg-5 right alamat">
                         <?php
@@ -38,27 +38,7 @@
         <?php echo $form->errorSummary($model); ?>
     </div>
 
-    <div class="col-lg-6">
-        <div class="form-group">
-            <?php echo $form->labelEx($model,'nama'); ?>
-            <?php echo $form->textField($model,'nama',array('class'=>'form-control','readonly'=>true),array('size'=>60,'maxlength'=>100)); ?>
-            <?php echo $form->error($model,'nama'); ?>
-        </div>
-
-    <div class="form-group">
-            <?php echo $form->labelEx($model,'id_dok_eng'); ?>
-            <?php echo $form->textField($model,'id_dok_eng',array('class'=>'form-control','readonly'=>true)); ?>
-            <?php echo $form->error($model,'id_dok_eng'); ?>
-    </div>
-    <div class="form-group">
-            <?php echo "Upload Dokumen Permintaan Penawaran"; ?>
-            <?php echo $form->textField($model,'permintaan_penawaran',array('class'=>'form-control','readonly'=>true)); ?>
-            <?php echo $form->error($model,'permintaan_penawaran'); ?>
-    </div>
-    </div>
-    <div class="form-group col-lg-12">
-            <?php echo CHtml::submitButton($model->isNewRecord ? 'Ajukan' : 'Save', array('class'=>'btn btn-lg btn-primary left ')); ?>
-    </div>
+    
 
 <?php $this->endWidget(); ?>
         </section><?php

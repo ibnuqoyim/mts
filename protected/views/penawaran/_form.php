@@ -4,23 +4,7 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
 
-<?php 
-	
-$form=$this->beginWidget('CActiveForm', array(
-	'id'=>'permintaan-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-	'htmlOptions' => array('enctype' => 'multipart/form-data'),
-)); ?>
-
-	
-
-	<?php echo $form->errorSummary($model); ?>
 <!--
 	<div class="row">
 		<?php //echo $form->labelEx($model,'id_user'); ?>
@@ -29,6 +13,10 @@ $form=$this->beginWidget('CActiveForm', array(
 		<?php //echo $form->error($model,'id_user'); ?>
 	</div>
 -->
+
+	<?php foreach ($dok_per as $dp) { ?>
+		
+	
 	<div class="col-lg-6">
 			<?php echo "<br> <b> Dokumen Engineering : </b>" ?>
 			<?php $this->widget('zii.widgets.CDetailView', array(
@@ -66,14 +54,31 @@ $form=$this->beginWidget('CActiveForm', array(
                           'value'=>'<a href="/mts/dokumen/dokeng/DS-'.$modal->dokenga->file_datasheet.'">'.$modal->dokenga->file_datasheet.'</a>',
                           'visible' =>$modal->dokenga->file_datasheet != null,
                           ),
-					array('name'=>'Dokumen Penawaran',
+					array('name'=>'Dokumen Permintaan Penawaran',
                           'type'=>'raw',
-                          'value'=>'<a href="/mts/dokumen/penawaran/'.$modal->tender->file.'">'.$modal->tender->file.'</a>',
+                          'value'=>'<a href="/mts/dokumen/permintaan/'.$dp->file_dokpermintaan.'">'.$dp->file_dokpermintaan.'</a>',
                           
                           ),
 					
 				),
-			)); ?>
+			));  } ?>
+	<div class="form">
+
+<?php 
+	if(count($list) == 0){
+$form=$this->beginWidget('CActiveForm', array(
+	'id'=>'permintaan-form',
+	// Please note: When you enable ajax validation, make sure the corresponding
+	// controller action is handling ajax validation correctly.
+	// There is a call to performAjaxValidation() commented in generated controller code.
+	// See class documentation of CActiveForm for details on this.
+	'enableAjaxValidation'=>false,
+	'htmlOptions' => array('enctype' => 'multipart/form-data'),
+)); ?>
+
+	
+
+	<?php echo $form->errorSummary($model); ?>
 	<br>
 	
 	<div class="form-group">
@@ -100,6 +105,31 @@ $form=$this->beginWidget('CActiveForm', array(
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Upload' : 'Save', array('class'=>'btn btn-success left ')); ?>
 	</div>
 </div>
-<?php $this->endWidget(); ?>
-
+<?php $this->endWidget(); } else{
+	echo "<br> <b> Dokumen Penawaran : </b>";
+	foreach ($list as $lista) {
+	  ?>
+<?php $this->widget('zii.widgets.CDetailView', array(
+				'data'=>$list,
+				'attributes'=>array(
+					
+					array('name'=>'Dokumen Administrasi',
+                          'type'=>'raw',
+                          'value'=>'<a href="/mts/dokumen/dokeng/MTO-'.$lista->file_administrasi.'">'.$lista->file_administrasi.'</a>',
+                          
+                          ),
+					
+					array('name'=>'Dokumen Teknis',
+                          'type'=>'raw',
+                          'value'=>'<a href="/mts/dokumen/dokeng/SPEC-'.$lista->file_teknis.'">'.$lista->file_teknis.'</a>',
+                          
+                          ),
+					array('name'=>'',
+								'type'=>'raw',
+                                         'value'=>CHtml::link('<button class="btn btn-success "> Edit </button>', array('penawaran/updatec','idm'=>$lista->id)),
+									),
+					
+					
+				),
+			));  }}?>
 </div><!-- form -->

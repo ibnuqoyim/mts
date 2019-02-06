@@ -4,21 +4,7 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'permintaan-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-	'htmlOptions' => array('enctype' => 'multipart/form-data'),
-)); ?>
-
-	
-
-	<?php echo $form->errorSummary($model); ?>
 	
 
 	<div class="col-lg-6">
@@ -68,14 +54,14 @@
                 <td>Vendor</td>
                 <td>Dokumen Permintaan</td>
               </tr>
-              <?php $o = 0 ?>
+              <?php $o = 1 ?>
 	<?php foreach ($respon as $res)
             { ?>
          
               <tr>
                 <td><?php echo $o++ ?></td>
                 <td><?php echo $res->usera->nama ?></td>
-                <td><?php echo $res->file_dokpermintaan ?></td>
+                <td><?php echo '<a href="/mts/dokumen/permintaan/'.$res->file_dokpermintaan.'">'.$res->file_dokpermintaan.'</a>' ?></td>
               </tr>
               
           <?php  } 
@@ -90,12 +76,22 @@
            </table>
            <?php echo '<br>'.CHtml::link('<button class="btn btn-success "><i class="glyphicon glyphicon-plus-sign"></i> Permintaan</button>', array('/dokpermintaan/create','idm'=>$modal->id)); ?>
 
+<div class="form">
 
-	<div class="form-group">
-            <?php echo "<br> <b> Silahkan Upload Dokumen Permintaan Penawaran : </b>" ; if($model->file != null){echo '<a href="/mts/dokumen/permintaan/'.$model->file.'">'.$model->file.'</a>';}?>
-			<?php echo $form->fileField($model,'file'); ?>
-			<?php echo $form->error($model,'file'); ?>
-    </div>
+<?php $form=$this->beginWidget('CActiveForm', array(
+	'id'=>'permintaan-form',
+	// Please note: When you enable ajax validation, make sure the corresponding
+	// controller action is handling ajax validation correctly.
+	// There is a call to performAjaxValidation() commented in generated controller code.
+	// See class documentation of CActiveForm for details on this.
+	'enableAjaxValidation'=>false,
+	'htmlOptions' => array('enctype' => 'multipart/form-data'),
+)); ?>
+
+	
+
+	<?php echo $form->errorSummary($model); ?>
+	
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'deskripsi'); ?>
@@ -106,7 +102,7 @@
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Upload' : 'Save',array('class'=>'btn btn-success left ')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Save' : 'Save',array('class'=>'btn btn-success left ')); ?>
 		<?php $this->endWidget(); ?>
 	
 	</div>

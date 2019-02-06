@@ -27,7 +27,7 @@ class Dokpermintaan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('file_dokpermintaan, id_material, id_vendor', 'required'),
+			array('file_dokpermintaan, id_vendor', 'required'),
 			array('id_material, id_vendor', 'numerical', 'integerOnly'=>true),
 			array('file_dokpermintaan', 'length', 'max'=>111),
 			// The following rule is used by search().
@@ -44,6 +44,7 @@ class Dokpermintaan extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'usera' => array(self::BELONGS_TO, 'User', 'id_vendor'),
 		);
 	}
 
@@ -56,7 +57,7 @@ class Dokpermintaan extends CActiveRecord
 			'id' => 'ID',
 			'file_dokpermintaan' => 'File Dokpermintaan',
 			'id_material' => 'Id Material',
-			'id_vendor' => 'Id Vendor',
+			'id_vendor' => 'Pilih Vendor',
 		);
 	}
 

@@ -32,7 +32,7 @@ class PermintaanController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','submit','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -49,10 +49,10 @@ class PermintaanController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView($id)
+	public function actionView($idm)
 	{
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>Material::model()->findByPk($idm),
 		));
 	}
 
@@ -68,13 +68,13 @@ class PermintaanController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-/*
+
 		if(isset($_POST['Permintaan']))
 		{
 			$model->attributes=$_POST['Permintaan'];
 			$model->id_material=$idm;
 			$modal->status_tender=1;
-			$modal->status=5;
+			$modal->status=4.5;
 			
 			//$model->file = CUploadedFile::getInstance($model, 'file');       
 			//$path = Yii::getPathOfAlias("webroot"). '/dokumen/permintaan/'.$model->file;
@@ -86,15 +86,15 @@ class PermintaanController extends Controller
 			$model->deadline_tutup=date("Y-m-d H:i:s",$a);
 			$modal->save();
 			if($model->save())
-				//$log = new Log;
-				//$log->id_user = Yii::app()->user->id;
-				//$log->kegiatan = 'Upload dokumen permintaan penawaran vendor unuk pengadaan material  '.$modal->nama;
-				//$log->tgl = date("Y-m-d",time());
-				//$log->save();
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Upload dokumen permintaan penawaran vendor unuk pengadaan material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
 				Yii::app()->user->setFlash('success', 'Dokumen permintaan penawaran berhasil di upload');
 				$this->redirect(array('material/index'));
 		}
-		*/
+		
 		$this->render('create',array(
 			'model'=>$model, 'modal'=>$modal, 'respon'=>$respon
 		));
@@ -107,40 +107,43 @@ class PermintaanController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
+	public function actionSubmit($id)
+	{
+		$log = new Log;
+		$model=Material::model()->findByPk($id);
+		$model->status = 5;
+		$model->save();
+		$log->id_user = Yii::app()->user->id;
+		$log->kegiatan = "mensubmit dokumen permintaan material baru";
+		$log->tgl = date("Y-m-d",time());
+		$log->save();
+		Yii::app()->user->setFlash('success', 'Permintaan Material '.$model->nama.' telah dikrim!!');
+		$this->redirect(array('material/index')); 
+		
+	}
+
 	public function actionUpdate($idm)
 	{
 		$model=$this->loadModel($idm);
 		$modal=Material::model()->findByPk($idm);
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$respon = Dokpermintaan::Model()->findAll('id_material='.$idm);
 
 		if(isset($_POST['Permintaan']))
 		{
 			$model->attributes=$_POST['Permintaan'];
-			$model->id_material=$idm;
-			$modal->status_tender=1;
-			$modal->status=5;
 			
-			//$model->file = CUploadedFile::getInstance($model, 'file');       
-			//$path = Yii::getPathOfAlias("webroot"). '/dokumen/permintaan/'.$model->file;
-			//$model->file->saveAs($path);
-			$model->tgl_create= date("Y-m-d",time());
-			$date = strtotime(date("Y-m-d H:i:s"));
-			$a = strtotime("+10 day", $date);
-			$model->pic = Yii::app()->user->id;
-			$model->deadline_tutup=date("Y-m-d H:i:s",$a);
-			$modal->save();
 			if($model->save())
-				//$log = new Log;
-				//$log->id_user = Yii::app()->user->id;
-				//$log->kegiatan = 'Upload dokumen permintaan penawaran vendor unuk pengadaan material  '.$modal->nama;
-				//$log->tgl = date("Y-m-d",time());
-				//$log->save();
-				Yii::app()->user->setFlash('success', 'Dokumen permintaan penawaran berhasil di update');
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Upload dokumen permintaan penawaran vendor unuk pengadaan material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
+				Yii::app()->user->setFlash('success', 'Dokumen permintaan penawaran berhasil di upload');
+				$this->redirect(array('material/index'));
 		}
 
-		$this->render('update',array(
-			'model'=>$model, 'modal'=>$modal,
+		$this->render('create',array(
+			'model'=>$model, 'modal'=>$modal, 'respon'=>$respon
 		));
 	}
 

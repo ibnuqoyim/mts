@@ -2,7 +2,7 @@
             <div class="info">
                 <div class="container">
                     <div class="col-lg-4 left">
-                        <a class="page"><span class="glyphicon glyphicon-check blue" aria-hidden="true"></span> Tambah Dokumen Permintaan</a>
+                        <a class="page"><span class="glyphicon glyphicon-user gold" aria-hidden="true"></span> Update Dokumen Penawaran</a>
                     </div>
                     <div class="col-lg-5 right alamat">
                         <?php
@@ -25,7 +25,5 @@
 
 
         <section class="container">
-            <p>Berikan Komentar atas persetujuan anda : </p>
-            <?php $a = "Komentar";
-            $this->renderPartial('_form', array('model'=>$model)); ?>
+            <?php $this->renderPartial('_formc', array('model'=>$model)); ?>
         </section>

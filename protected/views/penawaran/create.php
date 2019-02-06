@@ -25,5 +25,5 @@
 
 
         <section class="container">
-            <?php $this->renderPartial('_form', array('model'=>$model,'modal'=>$modal, 'permintaan'=>$permintaan,)); ?>
+            <?php $this->renderPartial('_form', array('model'=>$model, 'list'=>$list,'modal'=>$modal, 'permintaan'=>$permintaan, 'dok_per'=> $dok_per)); ?>
         </section>

@@ -72,10 +72,10 @@ class DokpermintaanController extends Controller
 			$model->attributes=$_POST['Dokpermintaan'];
 			$model->id_material = $idm;
 			$model->file_dokpermintaan = CUploadedFile::getInstance($model, 'file_dokpermintaan');       
-			$path = Yii::getPathOfAlias("webroot"). '/dokumen/permintaan/'.$model->file_dokpermintaan;
-			$model->file->saveAs($path);
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/permintaan/'$idm.'-'.$model->file_dokpermintaan;
+			$model->file_dokpermintaan->saveAs($path);
 			if($model->save())
-				$this->redirect(array('permintaan/create','id'=>$idm));
+				$this->redirect(array('permintaan/update','id'=>$idm));
 		}
 
 		$this->render('create',array(

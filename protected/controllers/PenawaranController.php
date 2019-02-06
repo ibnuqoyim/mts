@@ -32,7 +32,7 @@ class PenawaranController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','review_eng'),
+				'actions'=>array('create','updatec','update','review_eng'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -65,8 +65,10 @@ class PenawaranController extends Controller
 	public function actionCreate($idm)
 	{
 		$model=new Penawaran;
+		$dok_per = Dokpermintaan::model()->findAll('id_material ='.$idm.' AND id_vendor ='.Yii::app()->user->id);
 		$modal=Material::model()->findByPk($idm);
 		$permintaan = Permintaan::Model()->findByPk($idm);
+		$list = Penawaran::model()->findAll('id_material = '.$idm.' AND id_user ='.Yii::app()->user->id);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -94,10 +96,40 @@ class PenawaranController extends Controller
 				$this->redirect(array('material/index'));
 		}
 		$this->render('create',array(
-			'model'=>$model, 'modal'=>$modal, 'permintaan'=>$permintaan,
+			'model'=>$model, 'dok_per'=> $dok_per,'modal'=>$modal, 'permintaan'=>$permintaan, 'list'=>$list,
 		));
 	}
 
+	public function actionUpdatec($idm)
+	{
+		$model=$this->loadModel($idm);
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Penawaran']))
+		{
+			$model->attributes=$_POST['Penawaran'];
+			
+			$model->file_teknis = CUploadedFile::getInstance($model, 'file_teknis');       
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/penawaran/TEKNIS-'.$model->file_teknis;
+			$model->file_teknis->saveAs($path);
+			$model->file_administrasi = CUploadedFile::getInstance($model, 'file_administrasi');       
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/penawaran/ADM-'.$model->file_administrasi;
+			$model->file_administrasi->saveAs($path);
+			$model->tgl_create= date("Y-m-d",time());
+			if($model->save())
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Input penawaran untuk tender pengadaan material  ';
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
+				Yii::app()->user->setFlash('success', 'Dokumen penawaran berhasil di upload');
+				$this->redirect(array('material/index'));
+		}
+		$this->render('createc',array(
+			'model'=>$model
+		));
+	}
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.

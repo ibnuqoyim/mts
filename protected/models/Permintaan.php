@@ -28,7 +28,7 @@ class Permintaan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array( 'file,  tgl_create', 'required'),
+			array( 'tgl_create', 'required'),
 			array('id_material', 'numerical', 'integerOnly'=>true),
 			array('file', 'length', 'max'=>100),
 			array('deskripsi', 'length', 'max'=>300),

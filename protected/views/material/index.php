@@ -386,7 +386,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                 array(
                                         'class'=>'CButtonColumn',
                                         'header'=>'Action',
-                                        'template'=>'{edit} {update} {view} {kontrak}',
+                                        'template'=>'{edit} {update} {submit} {view} {kontrak}',
                                         'buttons'=>array
                                             (
                                                 'edit' => array
@@ -404,13 +404,24 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                     (
                                                         'label'=>'<i class="glyphicon glyphicon-pencil"></i>',
                                                         'imageUrl'=>false,
-                                                        'visible' =>'$data->status == 5',
+                                                        'visible' =>'$data->status == 4.5',
                                                         'url'=>'$this->grid->controller->createUrl("/permintaan/update",array("idm"=>$data->id))',
                                                         'options' => array(
                                                                 'rel' => 'tooltip',
                                                                 'data-toggle' => 'tooltip', 
                                                                 'title'       => 'Edit Tender', ),
                                                              ),
+
+                                                  'submit' => array
+                                                    (
+                                                        'label'=>'<i class="glyphicon glyphicon-send" style="color:green"></i>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>' $data->status == 4.5 ',
+                                                        'url'=>'$this->grid->controller->createUrl("/permintaan/submit",array("id"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Submit Pengajuan Material', ),     ),
                                                 'view' => array
                                                     (
                                                         'label'=>'<i class="glyphicon glyphicon-eye-open"></i>',

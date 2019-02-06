@@ -32,7 +32,7 @@ class MaterialController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('hapus','submit','create','update','dynamicform', 'log','win','admin','detail','closetender','test'),
+				'actions'=>array('hapus','permintaan','submit','create','update','dynamicform', 'log','win','admin','detail','closetender','test'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -71,6 +71,24 @@ class MaterialController extends Controller
 			'model'=>$this->loadModel($id),
 			'dokeng'=>new DokEng,
 		));
+	}
+
+	public function actionPermintaan($idm)
+	{
+
+		//$permintaan = Permintaan::Model()->findAll('id_material='.$idm);
+		if($permintaan != null){
+
+		$this->render('updateDPP',array(
+			'model'=>$this->loadModel($idm),
+			
+		));}
+		else{
+			$this->render('updateDPP',array(
+			'model'=>$this->loadModel($idm),
+			
+		));
+		}
 	}
 
 	public function actionHapus($id)
