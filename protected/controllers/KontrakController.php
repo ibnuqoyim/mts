@@ -32,7 +32,7 @@ class KontrakController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','submit'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -74,7 +74,7 @@ class KontrakController extends Controller
 			$model->attributes=$_POST['Kontrak'];
 			$model->id_material=$idm;
 			
-			$modal->status=7;
+			$modal->status=6.5;
 			
 			//$date = strtotime(date("Y-m-d H:i:s"));
 			//$a = strtotime("+2 day", $date);
@@ -100,27 +100,65 @@ class KontrakController extends Controller
 		));
 	}
 
+	public function actionSubmit($id)
+	{
+		$log = new Log;
+		$model=Material::model()->findByPk($id);
+		$model->status = 7;
+		$model->save();
+		$log->id_user = Yii::app()->user->id;
+		$log->kegiatan = "mensubmit dokumen kontrak material baru";
+		$log->tgl = date("Y-m-d",time());
+		$log->save();
+		Yii::app()->user->setFlash('success', 'Dokumen Kontak Material '.$model->nama.' telah dikrim!!');
+		$this->redirect(array('material/index')); 
+		
+	}
+
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+	public function actionUpdate($idm)
 	{
-		$model=$this->loadModel($id);
-
+		$model=$this->loadModel($idm);
+		$modal=Material::model()->findByPk($idm);
+		$penawaran=Penawaran::model()->findAll('id_material='.$idm.' and id_user ='.$modal->pemenang);
+		$old = $model->file_kontrak;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Kontrak']))
 		{
 			$model->attributes=$_POST['Kontrak'];
+			$model->id_material=$idm;
+			
+			$modal->status=6.5;
+			
+			//$date = strtotime(date("Y-m-d H:i:s"));
+			//$a = strtotime("+2 day", $date);
+			//$modal->plan_kom=date("Y-m-d H:i:s",$a);
+			$modal->save();
+			$model->file_kontrak = CUploadedFile::getInstance($model, 'file_kontrak');  
+			if($model->file_kontrak != Null){     
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/kontrak/'.$model->file_kontrak;
+			$model->file_kontrak->saveAs($path);
+		}else{$model->file_kontrak = $old;}
+			$model->tgl_submit= date("Y-m-d",time());
+			$model->pic=Yii::app()->user->id;
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Update dokumen kontrak untuk pengadaan material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
+				Yii::app()->user->setFlash('success', 'Dokumen kontrak berhasil di update');
+				$this->redirect(array('material/index'));
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model, 'modal'=>$modal, 'penawaran'=>$penawaran
 		));
 	}
 

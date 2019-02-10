@@ -32,7 +32,7 @@ class PengirimanController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','submit','updatee'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -96,6 +96,7 @@ class PengirimanController extends Controller
 			$modal->attributes=$_POST['Material'];
 			$model->plan_penerimaan = $modal->plan_penerimaan;
 			$model->id_material=$idm;
+			$modal->status = 12.5;
 			$modal->save();
 			$model->tgl_create= date("Y-m-d",time());
 			$model->pic = Yii::app()->user->id;
@@ -110,6 +111,54 @@ class PengirimanController extends Controller
 		}
 
 		$this->render('create',array(
+			'model'=>$model, 'modal'=>$modal, 'irn'=>$irn
+		));
+	}
+
+	public function actionSubmit($idm)
+	{
+		$log = new Log;
+		$model=Material::model()->findByPk($idm);
+		$model->status = 125;
+		$model->save();
+		$log->id_user = Yii::app()->user->id;
+		$log->kegiatan = "mensubmit Detail Pengiriman";
+		$log->tgl = date("Y-m-d",time());
+		$log->save();
+		Yii::app()->user->setFlash('success', 'Detail Pengiriman '.$model->nama.' telah disubmit!!');
+		$this->redirect(array('material/index')); 
+		
+	}
+
+	public function actionUpdatee($idm)
+	{
+		$model=$this->loadModel($idm);
+		$modal=Material::model()->findByPk($idm);
+		$irn=Irn::model()->findAll('id_material='.$idm);
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Pengiriman']))
+		{
+			$model->attributes=$_POST['Pengiriman'];
+			$modal->attributes=$_POST['Material'];
+			$model->plan_penerimaan = $modal->plan_penerimaan;
+			$model->id_material=$idm;
+			$modal->status = 12.5;
+			$modal->save();
+			$model->tgl_create= date("Y-m-d",time());
+			$model->pic = Yii::app()->user->id;
+			if($model->save())
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'update detail pengiriman untuk material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
+				Yii::app()->user->setFlash('success', 'Detail Pengiriman '.$modal->nama.' telah di update!');
+				$this->redirect(array('material/index'));
+		}
+
+		$this->render('updatee',array(
 			'model'=>$model, 'modal'=>$modal, 'irn'=>$irn
 		));
 	}
@@ -138,6 +187,7 @@ class PengirimanController extends Controller
 			'model'=>$model, 'modal'=>$modal
 		));
 	}
+
 
 	/**
 	 * Deletes a particular model.

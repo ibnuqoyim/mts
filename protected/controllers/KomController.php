@@ -32,7 +32,7 @@ class KomController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','approve'),
+				'actions'=>array('create','submit','update','approve'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -74,7 +74,7 @@ class KomController extends Controller
 			$model->attributes=$_POST['Kom'];
 			$model->id_material=$idm;
 			
-			$modal->status=7.5;
+			$modal->status=75;
 			$modal->save();
 			$model->pic = Yii::app()->user->id;
 			$model->tgl_create= date("Y-m-d",time());
@@ -125,9 +125,27 @@ class KomController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+	public function actionSubmit($idm)
 	{
-		$model=$this->loadModel($id);
+		$log = new Log;
+		$model=Material::model()->findByPk($idm);
+		$model->status = 7.5;
+		$model->save();
+		$log->id_user = Yii::app()->user->id;
+		$log->kegiatan = "mensubmit jadwal Kick Of Meeting";
+		$log->tgl = date("Y-m-d",time());
+		$log->save();
+		Yii::app()->user->setFlash('success', 'jadwal Kick Of Meeting '.$model->nama.' telah disubmit!!');
+		$this->redirect(array('material/index')); 
+		
+	}
+
+
+	public function actionUpdate($idm)
+	{
+		$model=$this->loadModel($idm);
+		$modal=Material::model()->findByPk($idm);
+		$kontrak=Kontrak::model()->findAll('id_material ='.$idm);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -135,12 +153,24 @@ class KomController extends Controller
 		if(isset($_POST['Kom']))
 		{
 			$model->attributes=$_POST['Kom'];
+			$model->id_material=$idm;
+			
+			$modal->status=75;
+			$modal->save();
+			$model->pic = Yii::app()->user->id;
+			$model->tgl_create= date("Y-m-d",time());
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Mengupdate jadwal dan undangan untuk pelaksanaan Kick of Meeting pelaksanaan pengadaan material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
+				Yii::app()->user->setFlash('success', 'Jadwal Kick of Meeting berhasil di update');
+				$this->redirect(array('material/index'));
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$model, 'modal'=>$modal,'kontrak'=>$kontrak
 		));
 	}
 

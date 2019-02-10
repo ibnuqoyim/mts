@@ -109,4 +109,6 @@
 
 </div>
 
+ <?php echo '<br>'.CHtml::link('<button class="btn btn-success "><i class="glyphicon glyphicon-plus-sign"></i> Save</button>', array('/permintaan/simpan')); ?>
+
 </div><!-- form -->

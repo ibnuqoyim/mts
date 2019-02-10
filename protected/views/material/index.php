@@ -386,7 +386,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                 array(
                                         'class'=>'CButtonColumn',
                                         'header'=>'Action',
-                                        'template'=>'{edit} {update} {submit} {view} {kontrak}',
+                                        'template'=>'{edit} {update} {update2} {submit} {submit2} {view} {kontrak}',
                                         'buttons'=>array
                                             (
                                                 'edit' => array
@@ -422,6 +422,27 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                                 'rel' => 'tooltip',
                                                                 'data-toggle' => 'tooltip', 
                                                                 'title'       => 'Submit Pengajuan Material', ),     ),
+                                                    'update2' => array
+                                                    (
+                                                        'label'=>'<i class="glyphicon glyphicon-pencil"></i>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 6.5',
+                                                        'url'=>'$this->grid->controller->createUrl("/kontrak/update",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Edit Kontrak', ),
+                                                             ),
+                                                    'submit2' => array
+                                                    (
+                                                        'label'=>'<i class="glyphicon glyphicon-send" style="color:green"></i>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>' $data->status == 6.5 ',
+                                                        'url'=>'$this->grid->controller->createUrl("/kontrak/submit",array("id"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Submit Dokumen Kontrak', ),     ),
                                                 'view' => array
                                                     (
                                                         'label'=>'<i class="glyphicon glyphicon-eye-open"></i>',
@@ -624,7 +645,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                 array(
                                         'class'=>'CButtonColumn',
                                         'header'=>'Action',
-                                        'template'=>'{kom}{pni}',
+                                        'template'=>'{kom} {pni} {update} {submit} {update2} {submit2}',
                                         'buttons'=>array
                                             (
                                                 'kom' => array
@@ -638,6 +659,28 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                                 'data-toggle' => 'tooltip', 
                                                                 'title'       => 'Buat Undangan Kick of Meeting', ),
                                                              ),
+                                                    'update' => array
+                                                    (
+                                                        'label'=>'<i class="glyphicon glyphicon-pencil"></i>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 75',
+                                                        'url'=>'$this->grid->controller->createUrl("/kom/update",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Update Undangan Kick of Meeting', ),
+                                                             ),
+                                                    'submit' => array
+                                                    (
+                                                        'label'=>'<i class="glyphicon glyphicon-send" style="color:green"></i>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 75',
+                                                        'url'=>'$this->grid->controller->createUrl("/kom/submit",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Submit Undangan Kick of Meeting', ),
+                                                             ),
 
                                                 'pni' => array
                                                     (
@@ -649,6 +692,28 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                                 'rel' => 'tooltip',
                                                                 'data-toggle' => 'tooltip', 
                                                                 'title'       => 'Upload Production and Inspection Plan', ),
+                                                             ),
+                                                'update2' => array
+                                                    (
+                                                        'label'=>'<i class="glyphicon glyphicon-pencil"></i>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 85',
+                                                        'url'=>'$this->grid->controller->createUrl("/pni/updatepni",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Update Undangan Kick of Meeting', ),
+                                                             ),
+                                                    'submit2' => array
+                                                    (
+                                                        'label'=>'<i class="glyphicon glyphicon-send" style="color:green"></i>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 85',
+                                                        'url'=>'$this->grid->controller->createUrl("/pni/submit",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Submit Undangan Kick of Meeting', ),
                                                              ),
 
                                                           ),
@@ -776,9 +841,31 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                 array(
                                         'class'=>'CButtonColumn',
                                          'header'=>'Action',
-                                        'template'=>'{send}',
+                                        'template'=>'{send} {update} {submit}',
                                         'buttons'=>array
                                             (
+                                                'update' => array
+                                                    (
+                                                        'label'=>'<i class="glyphicon glyphicon-pencil"></i>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 12.5',
+                                                        'url'=>'$this->grid->controller->createUrl("/pengiriman/updatee",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Update Undangan Kick of Meeting', ),
+                                                             ),
+                                                    'submit' => array
+                                                    (
+                                                        'label'=>'<i class="glyphicon glyphicon-send" style="color:green"></i>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 12.5',
+                                                        'url'=>'$this->grid->controller->createUrl("/pengiriman/submit",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Submit Undangan Kick of Meeting', ),
+                                                             ),
                                                 'send' => array
                                                     (
                                                         'label'=>'<i class="glyphicon glyphicon-plane"></i>',
@@ -845,14 +932,14 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                 array(
                                         'class'=>'CButtonColumn',
                                         'header'=>'Action',
-                                        'template'=>'{view}{inspeksi}{pengajuan}',
+                                        'template'=>'{view}{inspeksi} {update} {submit} {pengajuan}',
                                         'buttons'=>array
                                             (
                                                 'view' => array
                                                     (
                                                         'label'=>'<i class="glyphicon glyphicon-eye-open"></i>',
                                                         'imageUrl'=>false,
-                                                        'visible' =>'$data->status == 12',
+                                                        'visible' =>'$data->status == 125',
                                                         'url'=>'$this->grid->controller->createUrl("/pengiriman/view",array("idm"=>$data->id))',
                                                         'options' => array(
                                                                 'rel' => 'tooltip',
@@ -882,6 +969,28 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                                                 'rel' => 'tooltip',
                                                                 'data-toggle' => 'tooltip', 
                                                                 'title'       => 'Lihat Pengajuan Material', ),
+                                                             ),
+                                                    'update' => array
+                                                    (
+                                                        'label'=>'<i class="glyphicon glyphicon-pencil"></i>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 13.5',
+                                                        'url'=>'$this->grid->controller->createUrl("/hasilinspeksiWH/update",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Update Undangan Kick of Meeting', ),
+                                                             ),
+                                                    'submit' => array
+                                                    (
+                                                        'label'=>'<i class="glyphicon glyphicon-send" style="color:green"></i>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 13.5',
+                                                        'url'=>'$this->grid->controller->createUrl("/hasilinspeksiWH/submit",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Submit Undangan Kick of Meeting', ),
                                                              ),
 
                                                           ),
@@ -932,6 +1041,29 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                         'template'=>'{pengajuan}  {view}',
                                         'buttons'=>array
                                             (
+                                                
+                                                    'update' => array
+                                                    (
+                                                        'label'=>'<i class="glyphicon glyphicon-pencil"></i>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 75',
+                                                        'url'=>'$this->grid->controller->createUrl("/kom/update",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Update Undangan Kick of Meeting', ),
+                                                             ),
+                                                    'submit' => array
+                                                    (
+                                                        'label'=>'<i class="glyphicon glyphicon-send" style="color:green"></i>',
+                                                        'imageUrl'=>false,
+                                                        'visible' =>'$data->status == 75',
+                                                        'url'=>'$this->grid->controller->createUrl("/kom/submit",array("idm"=>$data->id))',
+                                                        'options' => array(
+                                                                'rel' => 'tooltip',
+                                                                'data-toggle' => 'tooltip', 
+                                                                'title'       => 'Submit Undangan Kick of Meeting', ),
+                                                             ),
                                                 'pengajuan' => array
                                                     (
                                                         'label'=>'<i class="glyphicon glyphicon-pencil"></i>',

@@ -32,7 +32,7 @@ class PniController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','hasil'),
+				'actions'=>array('create','update','submit','hasil','updatepni'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -77,7 +77,7 @@ class PniController extends Controller
 			$model->pic = Yii::app()->user->id;
 			$kom->actual_kom = date("Y-m-d H:i:s");
 			$kom->save();
-			$modal->status=8.5;
+			$modal->status=85;
 			$modal->save();
 			$model->file = CUploadedFile::getInstance($model, 'file');       
 			$path = Yii::getPathOfAlias("webroot"). '/dokumen/pni/'.$model->file;
@@ -98,7 +98,66 @@ class PniController extends Controller
 			'model'=>$model, 'modal'=>$modal,'kontrak'=>$kontrak
 		));
 	}
- 
+
+	public function actionSubmit($idm)
+	{
+		$log = new Log;
+		$model=Material::model()->findByPk($idm);
+		$model->status = 8.5;
+		$model->save();
+		$log->id_user = Yii::app()->user->id;
+		$log->kegiatan = "mensubmit dokumen Plan Produksi material baru";
+		$log->tgl = date("Y-m-d",time());
+		$log->save();
+		Yii::app()->user->setFlash('success', 'Dokumen Plan Produksi '.$model->nama.' telah dikrim!!');
+		$this->redirect(array('material/index')); 
+		
+	}
+ 	
+ 	public function actionUpdatepni($idm)
+	{
+		$model=$this->loadModel($idm);; 
+		$modal=Material::model()->findByPk($idm);
+		$kontrak=Kontrak::model()->findByPk($idm);
+		$kom=Kom::model()->findByPk($idm);
+		$old = $model->file;
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Pni']))
+		{
+			$model->attributes=$_POST['Pni'];
+			
+			$model->id_material=$idm;
+			$model->pic = Yii::app()->user->id;
+			$kom->actual_kom = date("Y-m-d H:i:s");
+			$kom->save();
+			$modal->status=85;
+			$modal->save();
+
+			$model->file = CUploadedFile::getInstance($model, 'file');       
+			if($model->file != Null){
+			$path = Yii::getPathOfAlias("webroot"). '/dokumen/pni/'.$model->file;
+			$model->file->saveAs($path);
+		}else{
+		$model->file = $old;}
+			$model->tgl_create= date("Y-m-d",time());
+			$model->save();
+			if($model->save())
+				$log = new Log;
+				$log->id_user = Yii::app()->user->id;
+				$log->kegiatan = 'Update dokumen Production and Inspection Plan untuk pengadaan material  '.$modal->nama;
+				$log->tgl = date("Y-m-d",time());
+				$log->save();
+				Yii::app()->user->setFlash('success', 'Perencanaan Production and Inspection berhasil di update');
+				$this->redirect(array('material/index'));
+		}
+
+		$this->render('update',array(
+			'model'=>$model, 'modal'=>$modal,'kontrak'=>$kontrak
+		));
+	}
+
 	public function actionProgres($idm)
 	{
 		$model=$this->loadModel($idm);

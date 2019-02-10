@@ -159,6 +159,7 @@ class PenawaranController extends Controller
 	{
 		$model=$this->loadModel($id);
 		$modal=Material::Model()->findByPk($id);
+		$old = $model->file_review_eng;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -169,7 +170,7 @@ class PenawaranController extends Controller
 			if($model->file_review_eng != null){      
 			$path = Yii::getPathOfAlias("webroot"). '/dokumen/penawaran/RE-'.$model->file_review_eng;
 			$model->file_review_eng->saveAs($path);
-		}
+		}else{$model->file_review_eng = $old;}
 			if($model->save())
 				$log = new Log;
 				$log->id_user = Yii::app()->user->id;
@@ -179,6 +180,7 @@ class PenawaranController extends Controller
 				Yii::app()->user->setFlash('success', 'Dokumen penawaran berhasil di review');
 				$this->redirect(array('penawaran/view','idm'=>$model->id_material));
 		}
+		
 
 		$this->render('update',array(
 			'model'=>$model,

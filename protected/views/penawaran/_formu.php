@@ -1,3 +1,4 @@
+
 <?php
 /* @var $this PermintaanController */
 /* @var $model Permintaan */
@@ -24,9 +25,13 @@ $form=$this->beginWidget('CActiveForm', array(
 <div class="col-lg-6">
 
 
+
     <div class="form-group">
-            <?php echo "<h4><b>Silahkan Upload Dokumen review : </b></h4><br>" ?>
-			<?php echo $form->fileField($model,'file_review_eng'); ?>
+            <?php echo "<h4><b>Silahkan Upload Dokumen review : </b></h4>";
+            if($model->file_review_eng !== Null){
+            	echo ' File Dokumen Review : <a href="/mts//dokumen/penawaran/RE-'.$model->file_review_eng.'">'.$model->file_review_eng.'</a> <br>';
+            } ?>
+			<?php echo '<b> Upload Baru : </b>'.$form->fileField($model,'file_review_eng'); ?>
 			<?php echo $form->error($model,'file_review_eng'); ?>
     </div>
 

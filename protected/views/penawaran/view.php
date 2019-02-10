@@ -74,7 +74,7 @@
 									),
                             array('name'=>'Review',
                                 'type'=>'raw',
-                                         'value'=>$pen->file_review_eng != NULL ? "Sudah di review" : CHtml::link('<button class="btn btn-success "> Upload review Engineering </button>', array('penawaran/review_eng','id'=>$pen->id)),
+                                         'value'=>$pen->file_review_eng != NULL ? 'Sudah di review '.CHtml::link('<button class="btn btn-success "> Edit</button>', array('penawaran/review_eng','id'=>$pen->id)) : CHtml::link('<button class="btn btn-success "> Upload review Engineering </button>', array('penawaran/review_eng','id'=>$pen->id)),
                                          'visible' =>$modal->status_tender == 1 && (Yii::app()->user->role == "Admin" || Yii::app()->user->role == "Engineering"),
                                     ),
 						),

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 07 Feb 2019 pada 00.34
--- Versi server: 10.1.37-MariaDB
--- Versi PHP: 7.1.26
+-- Generation Time: Feb 10, 2019 at 11:45 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.1.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `client`
+-- Table structure for table `client`
 --
 
 CREATE TABLE `client` (
@@ -38,7 +38,7 @@ CREATE TABLE `client` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `client`
+-- Dumping data for table `client`
 --
 
 INSERT INTO `client` (`id`, `nama`, `alamat`, `telepon`, `pic`, `kontak_pic`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `client` (`id`, `nama`, `alamat`, `telepon`, `pic`, `kontak_pic`) VA
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `client_respon`
+-- Table structure for table `client_respon`
 --
 
 CREATE TABLE `client_respon` (
@@ -60,7 +60,7 @@ CREATE TABLE `client_respon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `client_respon`
+-- Dumping data for table `client_respon`
 --
 
 INSERT INTO `client_respon` (`id`, `material_id`, `isi`, `file_respon`, `tgl_create`) VALUES
@@ -79,12 +79,16 @@ INSERT INTO `client_respon` (`id`, `material_id`, `isi`, `file_respon`, `tgl_cre
 (28, 52, 'wsdasda', NULL, '2019-02-05'),
 (29, 51, '', NULL, '2019-02-05'),
 (30, 51, '', NULL, '2019-02-05'),
-(31, 54, 'sadasd', NULL, '2019-02-06');
+(31, 54, 'sadasd', NULL, '2019-02-06'),
+(32, 56, 'k.mn,bkn,', NULL, '2019-02-09'),
+(33, 56, 'ljlkjjlk', NULL, '2019-02-09'),
+(34, 55, '', NULL, '2019-02-10'),
+(35, 57, '', NULL, '2019-02-10');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dokpermintaan`
+-- Table structure for table `dokpermintaan`
 --
 
 CREATE TABLE `dokpermintaan` (
@@ -95,17 +99,22 @@ CREATE TABLE `dokpermintaan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `dokpermintaan`
+-- Dumping data for table `dokpermintaan`
 --
 
 INSERT INTO `dokpermintaan` (`id`, `file_dokpermintaan`, `id_material`, `id_vendor`) VALUES
 (1, 'newfile.txt', 54, 4),
-(2, 'list table.ods', 54, 6);
+(2, 'list table.ods', 54, 6),
+(3, 'list table.ods', 56, 6),
+(4, 'yiicmd.php', 56, 4),
+(5, 'newfile.txt', 55, 4),
+(6, 'yiicmd.php', 55, 4),
+(7, 'yiicmd.php', 57, 4);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dok_eng`
+-- Table structure for table `dok_eng`
 --
 
 CREATE TABLE `dok_eng` (
@@ -123,7 +132,7 @@ CREATE TABLE `dok_eng` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `dok_eng`
+-- Dumping data for table `dok_eng`
 --
 
 INSERT INTO `dok_eng` (`id_material`, `file_mto`, `file_dwg`, `file_spec`, `file_datasheet`, `deskripsi`, `plan_approve`, `actual_approve`, `tgl_rejected`, `tgl_create`, `plan_permintaan`) VALUES
@@ -139,12 +148,14 @@ INSERT INTO `dok_eng` (`id_material`, `file_mto`, `file_dwg`, `file_spec`, `file
 (52, '', '', NULL, NULL, NULL, '2019-02-19', NULL, '2019-02-05', NULL, NULL),
 (53, 'newfile.txt', 'newfile.txt', 'list table.ods', 'mzdb (3).sql', NULL, '2019-02-19', NULL, '2019-02-05', NULL, NULL),
 (54, 'yiicmd.php', '', NULL, NULL, NULL, '2019-02-20', '2019-02-06', NULL, NULL, NULL),
-(55, 'phpinfo.php', '', NULL, NULL, NULL, '2019-02-20', NULL, NULL, NULL, NULL);
+(55, 'phpinfo.php', '', NULL, NULL, NULL, '2019-02-20', '2019-02-10', NULL, NULL, NULL),
+(56, 'phpinfo.php', 'index.php', 'list table.ods', NULL, NULL, '2019-02-23', '2019-02-09', '2019-02-09', NULL, NULL),
+(57, '', '', NULL, NULL, NULL, '2019-02-24', '2019-02-10', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `hasilinspeksiwh`
+-- Table structure for table `hasilinspeksiwh`
 --
 
 CREATE TABLE `hasilinspeksiwh` (
@@ -157,19 +168,21 @@ CREATE TABLE `hasilinspeksiwh` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `hasilinspeksiwh`
+-- Dumping data for table `hasilinspeksiwh`
 --
 
 INSERT INTO `hasilinspeksiwh` (`id_material`, `lokasi`, `file_hasil_inspeksi`, `hasil_inspeksi`, `pic`, `tgl_create`) VALUES
 (43, '', 'mzdb (2).sql', 'gdfsgdsgsdgsdf', '51', '2018-12-13'),
 (44, 'sdfsdfsdf', 'mzdb (2).sql', 'sddfsdf', '51', '2018-12-18'),
 (45, '', 'mzdb.sql', 'dfssfsdf', '51', '2018-12-13'),
-(48, 'sadasdasd', 'am.sql', 'sadsadas', '51', '2018-12-18');
+(48, 'sadasdasd', 'am.sql', 'sadsadas', '51', '2018-12-18'),
+(54, 'sdafsadfasfd', 'yiicmd.php', 'dsfsfasdf', '51', '2019-02-10'),
+(55, 'fghfhf', 'newfile.txt', ';k;lk;k', '51', '2019-02-10');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `hasilpni`
+-- Table structure for table `hasilpni`
 --
 
 CREATE TABLE `hasilpni` (
@@ -182,7 +195,7 @@ CREATE TABLE `hasilpni` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `hasilpni`
+-- Dumping data for table `hasilpni`
 --
 
 INSERT INTO `hasilpni` (`id`, `id_material`, `status`, `file`, `desk`, `tgl_create`) VALUES
@@ -201,7 +214,7 @@ INSERT INTO `hasilpni` (`id`, `id_material`, `status`, `file`, `desk`, `tgl_crea
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `hasilrepair`
+-- Table structure for table `hasilrepair`
 --
 
 CREATE TABLE `hasilrepair` (
@@ -213,7 +226,7 @@ CREATE TABLE `hasilrepair` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `hasilrepair`
+-- Dumping data for table `hasilrepair`
 --
 
 INSERT INTO `hasilrepair` (`id`, `id_material`, `file`, `desk`, `tgl_create`) VALUES
@@ -225,35 +238,39 @@ INSERT INTO `hasilrepair` (`id`, `id_material`, `file`, `desk`, `tgl_create`) VA
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `irn`
+-- Table structure for table `irn`
 --
 
 CREATE TABLE `irn` (
   `id_material` int(11) NOT NULL,
   `irn` varchar(100) NOT NULL,
+  `sertifikat` varchar(110) NOT NULL,
   `actual_release` date DEFAULT NULL,
   `plan_release` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `irn`
+-- Dumping data for table `irn`
 --
 
-INSERT INTO `irn` (`id_material`, `irn`, `actual_release`, `plan_release`) VALUES
-(1, '3423242324', '2018-11-19', NULL),
-(2, '3423242324', '2018-11-19', NULL),
-(3, 'jhj6767676', '2018-11-20', NULL),
-(4, '90238490238', '2018-12-02', NULL),
-(5, 'fdsafsfasfd', '2018-12-10', NULL),
-(43, '3423242324', '2018-12-12', NULL),
-(44, ';k;k;', '2018-12-18', NULL),
-(45, '223423432', '2018-12-13', NULL),
-(48, 'asdasd', '2018-12-18', NULL);
+INSERT INTO `irn` (`id_material`, `irn`, `sertifikat`, `actual_release`, `plan_release`) VALUES
+(1, '3423242324', '', '2018-11-19', NULL),
+(2, '3423242324', '', '2018-11-19', NULL),
+(3, 'jhj6767676', '', '2018-11-20', NULL),
+(4, '90238490238', '', '2018-12-02', NULL),
+(5, 'fdsafsfasfd', '', '2018-12-10', NULL),
+(43, '3423242324', '', '2018-12-12', NULL),
+(44, ';k;k;', '', '2018-12-18', NULL),
+(45, '223423432', '', '2018-12-13', NULL),
+(48, 'asdasd', '', '2018-12-18', NULL),
+(54, 'asadsadas', 'yiicmd.php', '2019-02-10', NULL),
+(55, '6997987', 'phpinfo.php', '2019-02-10', NULL),
+(57, '90-9', 'yiicmd.php', '2019-02-10', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori`
+-- Table structure for table `kategori`
 --
 
 CREATE TABLE `kategori` (
@@ -264,7 +281,7 @@ CREATE TABLE `kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kategori`
+-- Dumping data for table `kategori`
 --
 
 INSERT INTO `kategori` (`id`, `nama`, `singkatan`, `desk`) VALUES
@@ -276,7 +293,7 @@ INSERT INTO `kategori` (`id`, `nama`, `singkatan`, `desk`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kom`
+-- Table structure for table `kom`
 --
 
 CREATE TABLE `kom` (
@@ -290,19 +307,22 @@ CREATE TABLE `kom` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kom`
+-- Dumping data for table `kom`
 --
 
 INSERT INTO `kom` (`id_material`, `tanggal`, `actual_kom`, `tempat`, `tgl_create`, `pic`, `keterangan`) VALUES
 (43, '2018-12-31', '2018-12-12', 'Wika tower 2', '2018-12-12', 51, 'asdasdasdasdasdasdasd'),
 (44, '2018-12-29', '2018-12-18', 'klk', '2018-12-18', 51, 'klklkl'),
 (45, '2018-12-31', '2018-12-13', 'asdasdas', '2018-12-13', 51, 'dasdasdasd'),
-(48, '2018-12-14', '2018-12-18', 'sadad', '2018-12-18', 51, 'sadasdasd');
+(48, '2018-12-14', '2018-12-18', 'sadad', '2018-12-18', 51, 'sadasdasd'),
+(54, '2019-02-17', '2019-02-10', 'wito', '2019-02-10', 51, 'hlkjlkjlk'),
+(55, '2019-02-24', '2019-02-10', 'witok', '2019-02-10', 51, 'hkjhkhk'),
+(57, '2019-02-24', '2019-02-10', 'e', '2019-02-10', 51, 'erw');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kontrak`
+-- Table structure for table `kontrak`
 --
 
 CREATE TABLE `kontrak` (
@@ -314,19 +334,22 @@ CREATE TABLE `kontrak` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kontrak`
+-- Dumping data for table `kontrak`
 --
 
 INSERT INTO `kontrak` (`id_material`, `file_kontrak`, `pic`, `deskripsi`, `tgl_submit`) VALUES
 (43, 'password aris connect.pdf', '51', '', '2018-12-12'),
 (44, 'am.sql', '51', '', '2018-12-18'),
 (45, 'MTS.graphml', '51', '', '2018-12-13'),
-(48, 'am.sql', '51', '', '2018-12-18');
+(48, 'am.sql', '51', '', '2018-12-18'),
+(54, 'newfile.txt', '51', '', '2019-02-10'),
+(55, 'list table.ods', '51', '', '2019-02-10'),
+(57, 'error_log', '51', '', '2019-02-10');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `log`
+-- Table structure for table `log`
 --
 
 CREATE TABLE `log` (
@@ -337,7 +360,7 @@ CREATE TABLE `log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `log`
+-- Dumping data for table `log`
 --
 
 INSERT INTO `log` (`id`, `id_user`, `kegiatan`, `tgl`) VALUES
@@ -451,12 +474,118 @@ INSERT INTO `log` (`id`, `id_user`, `kegiatan`, `tgl`) VALUES
 (108, 4, 'Berhasil login ke sistem', '2019-02-06 00:00:00'),
 (109, 6, 'Berhasil login ke sistem', '2019-02-06 00:00:00'),
 (110, 6, 'Input penawaran untuk tender pengadaan material  sadasdda', '2019-02-06 00:00:00'),
-(111, 4, 'Input penawaran untuk tender pengadaan material  sadasdda', '2019-02-06 00:00:00');
+(111, 4, 'Input penawaran untuk tender pengadaan material  sadasdda', '2019-02-06 00:00:00'),
+(112, 51, 'Berhasil login ke sistem', '2019-02-09 00:00:00'),
+(113, 51, 'membuat material baru', '2019-02-09 00:00:00'),
+(114, 51, 'Mengupdate dokumen engineering untuk material werwer', '2019-02-09 00:00:00'),
+(115, 51, 'mensubmit material baru', '2019-02-09 00:00:00'),
+(116, 51, 'Memberikan penolakan untuk pengajuan material  werwer', '2019-02-09 00:00:00'),
+(117, 51, 'Mengupdate dokumen engineering untuk material werwer', '2019-02-09 00:00:00'),
+(118, 51, 'Mengupdate dokumen engineering untuk material werwer', '2019-02-09 00:00:00'),
+(119, 51, 'mensubmit material baru', '2019-02-09 00:00:00'),
+(120, 51, 'Memberikan approval untuk pengajuan material  werwer', '2019-02-09 00:00:00'),
+(121, 51, 'mensubmit material baru', '2019-02-10 00:00:00'),
+(122, 51, 'Memberikan approval untuk pengajuan material  asdasd', '2019-02-10 00:00:00'),
+(123, 51, 'Upload dokumen permintaan penawaran vendor unuk pengadaan material  asdasd', '2019-02-10 00:00:00'),
+(124, 51, 'membuat material baru', '2019-02-10 00:00:00'),
+(125, 51, 'mensubmit material baru', '2019-02-10 00:00:00'),
+(126, 51, 'Memberikan approval untuk pengajuan material  swer', '2019-02-10 00:00:00'),
+(127, 51, 'Upload dokumen permintaan penawaran vendor unuk pengadaan material  swer', '2019-02-10 00:00:00'),
+(128, 51, 'mensubmit dokumen permintaan material baru', '2019-02-10 00:00:00'),
+(129, 51, 'mensubmit dokumen permintaan material baru', '2019-02-10 00:00:00'),
+(130, 51, 'mensubmit dokumen permintaan material baru', '2019-02-10 00:00:00'),
+(131, 4, 'Berhasil login ke sistem', '2019-02-10 00:00:00'),
+(132, 4, 'Input penawaran untuk tender pengadaan material  swer', '2019-02-10 00:00:00'),
+(133, 51, 'Menutup tender untuk material swer', '2019-02-10 00:00:00'),
+(134, 51, 'Memberikan memberikan review untuk penawaran  ', '2019-02-10 00:00:00'),
+(135, 51, 'Memberikan memberikan review untuk penawaran  ', '2019-02-10 00:00:00'),
+(136, 51, 'Berhasil login ke sistem', '2019-02-10 00:00:00'),
+(137, 51, 'Memberikan memberikan review untuk penawaran  ', '2019-02-10 00:00:00'),
+(138, 51, 'Menutup tender untuk material sadasdda', '2019-02-10 00:00:00'),
+(139, 51, 'Menentukan pemenang tender untuk  sadasdda', '2019-02-10 00:00:00'),
+(140, 6, 'Berhasil login ke sistem', '2019-02-10 00:00:00'),
+(141, 51, 'Upload dokumen kontrak untuk pengadaan material  sadasdda', '2019-02-10 00:00:00'),
+(142, 51, 'Input penawaran untuk tender pengadaan material  werwer', '2019-02-10 00:00:00'),
+(143, 51, 'Menentukan pemenang tender untuk  swer', '2019-02-10 00:00:00'),
+(144, 51, 'Upload dokumen kontrak untuk pengadaan material  swer', '2019-02-10 00:00:00'),
+(145, 51, 'Update dokumen kontrak untuk pengadaan material  swer', '2019-02-10 00:00:00'),
+(146, 51, 'mensubmit dokumen kontrak material baru', '2019-02-10 00:00:00'),
+(147, 51, 'Membuat jadwal dan undangan untuk pelaksanaan Kick of Meeting pelaksanaan pengadaan material  sadasdda', '2019-02-10 00:00:00'),
+(148, 51, 'mensubmit jadwal Kick Of Meeting', '2019-02-10 00:00:00'),
+(149, 6, 'Berhasil login ke sistem', '2019-02-10 00:00:00'),
+(150, 6, 'Mengkonfirmasi undangan Kick of Meeting untuk pengdaan material  sadasdda', '2019-02-10 00:00:00'),
+(151, 51, 'Upload dokumen Production and Inspection Plan untuk pengadaan material  sadasdda', '2019-02-10 00:00:00'),
+(152, 51, 'Update dokumen Production and Inspection Plan untuk pengadaan material  sadasdda', '2019-02-10 00:00:00'),
+(153, 51, 'Update dokumen Production and Inspection Plan untuk pengadaan material  sadasdda', '2019-02-10 00:00:00'),
+(154, 51, 'Update dokumen Production and Inspection Plan untuk pengadaan material  sadasdda', '2019-02-10 00:00:00'),
+(155, 51, 'Update dokumen Production and Inspection Plan untuk pengadaan material  sadasdda', '2019-02-10 00:00:00'),
+(156, 51, 'Update dokumen Production and Inspection Plan untuk pengadaan material  sadasdda', '2019-02-10 00:00:00'),
+(157, 51, 'mensubmit dokumen Plan Produksi material baru', '2019-02-10 00:00:00'),
+(158, 6, 'Update progres 100% untuk pengadaan material  sadasdda', '2019-02-10 00:00:00'),
+(159, 51, 'Upload dokumen hasil inspeksi dari QC untuk pengadaan material  sadasdda untuk status Repair', '2019-02-10 16:38:19'),
+(160, 51, 'Input IRN untuk material  sadasdda', '2019-02-10 00:00:00'),
+(161, 51, 'Input detail pengiriman untuk material  sadasdda', '2019-02-10 00:00:00'),
+(162, 51, 'Konfirmasi penerimaan material  sadasdda', '2019-02-10 00:00:00'),
+(163, 51, 'Menginput hasil inspeksi di warehouse untuk material  sadasdda', '2019-02-10 00:00:00'),
+(164, 51, 'Menginput hasil inspeksi di warehouse untuk material  sadasdda', '2019-02-10 00:00:00'),
+(165, 51, 'Menginput hasil inspeksi di warehouse untuk material  sadasdda', '2019-02-10 00:00:00'),
+(166, 51, 'mensubmit dokumen Plan Produksi material baru', '2019-02-10 00:00:00'),
+(167, 51, 'Membuat jadwal dan undangan untuk pelaksanaan Kick of Meeting pelaksanaan pengadaan material  swer', '2019-02-10 00:00:00'),
+(168, 51, 'Mengupdate jadwal dan undangan untuk pelaksanaan Kick of Meeting pelaksanaan pengadaan material  swer', '2019-02-10 00:00:00'),
+(169, 51, 'mensubmit jadwal Kick Of Meeting', '2019-02-10 00:00:00'),
+(170, 51, 'mensubmit jadwal Kick Of Meeting', '2019-02-10 00:00:00'),
+(171, 6, 'Mengkonfirmasi undangan Kick of Meeting untuk pengdaan material  swer', '2019-02-10 00:00:00'),
+(172, 51, 'Upload dokumen Production and Inspection Plan untuk pengadaan material  swer', '2019-02-10 00:00:00'),
+(173, 51, 'mensubmit dokumen Plan Produksi material baru', '2019-02-10 00:00:00'),
+(174, 6, 'Update progres 100% untuk pengadaan material  swer', '2019-02-10 00:00:00'),
+(175, 51, 'Upload dokumen hasil inspeksi dari QC untuk pengadaan material  swer untuk status Repair', '2019-02-10 17:29:07'),
+(176, 51, 'Input IRN untuk material  swer', '2019-02-10 00:00:00'),
+(177, 51, 'Input detail pengiriman untuk material  swer', '2019-02-10 00:00:00'),
+(178, 51, 'update detail pengiriman untuk material  swer', '2019-02-10 00:00:00'),
+(179, 51, 'mensubmit Detail Pengiriman', '2019-02-10 00:00:00'),
+(180, 51, 'Konfirmasi penerimaan material  swer', '2019-02-10 00:00:00'),
+(181, 4, 'Berhasil login ke sistem', '2019-02-10 00:00:00'),
+(182, 51, 'Berhasil login ke sistem', '2019-02-10 00:00:00'),
+(183, 4, 'Input penawaran untuk tender pengadaan material  asdasd', '2019-02-10 00:00:00'),
+(184, 4, 'Input penawaran untuk tender pengadaan material  ', '2019-02-10 00:00:00'),
+(185, 51, 'Memberikan memberikan review untuk penawaran  ', '2019-02-10 00:00:00'),
+(186, 51, 'Memberikan memberikan review untuk penawaran  ', '2019-02-10 00:00:00'),
+(187, 51, 'Memberikan memberikan review untuk penawaran  ', '2019-02-10 00:00:00'),
+(188, 51, 'Memberikan memberikan review untuk penawaran  ', '2019-02-10 00:00:00'),
+(189, 51, 'Memberikan memberikan review untuk penawaran  ', '2019-02-10 00:00:00'),
+(190, 51, 'Memberikan memberikan review untuk penawaran  ', '2019-02-10 00:00:00'),
+(191, 51, 'Menutup tender untuk material asdasd', '2019-02-10 00:00:00'),
+(192, 51, 'Menentukan pemenang tender untuk  asdasd', '2019-02-10 00:00:00'),
+(193, 51, 'Upload dokumen kontrak untuk pengadaan material  asdasd', '2019-02-10 00:00:00'),
+(194, 51, 'Update dokumen kontrak untuk pengadaan material  asdasd', '2019-02-10 00:00:00'),
+(195, 51, 'Update dokumen kontrak untuk pengadaan material  asdasd', '2019-02-10 00:00:00'),
+(196, 51, 'mensubmit dokumen kontrak material baru', '2019-02-10 00:00:00'),
+(197, 51, 'Membuat jadwal dan undangan untuk pelaksanaan Kick of Meeting pelaksanaan pengadaan material  asdasd', '2019-02-10 00:00:00'),
+(198, 51, 'Mengupdate jadwal dan undangan untuk pelaksanaan Kick of Meeting pelaksanaan pengadaan material  asdasd', '2019-02-10 00:00:00'),
+(199, 51, 'mensubmit jadwal Kick Of Meeting', '2019-02-10 00:00:00'),
+(200, 4, 'Mengkonfirmasi undangan Kick of Meeting untuk pengdaan material  asdasd', '2019-02-10 00:00:00'),
+(201, 51, 'Upload dokumen Production and Inspection Plan untuk pengadaan material  asdasd', '2019-02-10 00:00:00'),
+(202, 51, 'Update dokumen Production and Inspection Plan untuk pengadaan material  asdasd', '2019-02-10 00:00:00'),
+(203, 51, 'Update dokumen Production and Inspection Plan untuk pengadaan material  asdasd', '2019-02-10 00:00:00'),
+(204, 51, 'mensubmit dokumen Plan Produksi material baru', '2019-02-10 00:00:00'),
+(205, 4, 'Update progres 25% untuk pengadaan material  asdasd', '2019-02-10 00:00:00'),
+(206, 4, 'Update progres 100% untuk pengadaan material  asdasd', '2019-02-10 00:00:00'),
+(207, 51, 'Upload dokumen hasil Inspeksi dari QC untuk material  asdasd untuk status LULUS', '2019-02-10 23:42:30'),
+(208, 51, 'Input IRN untuk material  asdasd', '2019-02-10 00:00:00'),
+(209, 51, 'Input detail pengiriman untuk material  asdasd', '2019-02-10 00:00:00'),
+(210, 51, 'update detail pengiriman untuk material  asdasd', '2019-02-10 00:00:00'),
+(211, 51, 'mensubmit Detail Pengiriman', '2019-02-10 00:00:00'),
+(212, 51, 'Konfirmasi penerimaan material  asdasd', '2019-02-10 00:00:00'),
+(213, 51, 'Menginput hasil inspeksi di warehouse untuk material  asdasd', '2019-02-10 00:00:00'),
+(214, 51, 'Menginput hasil inspeksi di warehouse untuk material  asdasd', '2019-02-10 00:00:00'),
+(215, 51, 'mensubmit dokumen Plan Produksi material baru', '2019-02-10 00:00:00'),
+(216, 51, 'Pengajuan Material oleh user', '2019-02-10 00:00:00'),
+(217, 51, 'Menerima pengajuan untuk material sadasdda yang diajukan oleh Admin', '2019-02-10 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `material`
+-- Table structure for table `material`
 --
 
 CREATE TABLE `material` (
@@ -486,17 +615,19 @@ CREATE TABLE `material` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `material`
+-- Dumping data for table `material`
 --
 
 INSERT INTO `material` (`id`, `proyek`, `kategori`, `client`, `nama`, `status`, `progres`, `pemenang`, `stok`, `status_tender`, `plan_tender`, `plan_kontrak`, `plan_kom`, `plan_irn`, `plan_pengiriman`, `plan_penerimaan`, `plan_inspeksiwh`, `plan_finish`, `actual_finish`, `create_date`, `last_update`, `pic`, `kode`) VALUES
-(54, '0', 1, 0, 'sadasdda', 5, NULL, NULL, NULL, 1, '2019-02-08', NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2019-02-06', '2019-02-06', 51, 'esadsd'),
-(55, '0', 1, 0, 'asdasd', 0.5, NULL, NULL, NULL, 0, NULL, NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2019-02-06', '2019-02-06', 51, 'sadasd');
+(54, '0', 1, 0, 'sadasdda', 15, NULL, '6', 42, 2, '2019-02-08', '2019-02-15', NULL, '2019-02-13', '2019-02-17', '2019-02-17', '0000-00-00', '2019-02-12', '2019-02-10', '2019-02-06', '2019-02-06', 51, 'esadsd'),
+(55, '0', 1, 0, 'asdasd', 15, NULL, '4', 32, 2, '2019-02-12', '2019-02-15', NULL, '2019-02-13', '2019-02-17', '2019-03-31', '0000-00-00', '2019-02-12', '2019-02-10', '2019-02-06', '2019-02-06', 51, 'sadasd'),
+(56, '0', 2, 0, 'werwer', 5, NULL, NULL, NULL, 1, '2019-02-11', NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2019-02-09', '2019-02-09', 51, 'essdf'),
+(57, '0', 2, 0, 'swer', 13, NULL, '6', NULL, 2, '2019-02-12', '2019-02-15', NULL, '2019-02-13', '2019-02-17', '2019-02-28', '0000-00-00', '2019-02-12', '0000-00-00', '2019-02-10', '2019-02-10', 51, 'sss');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penawaran`
+-- Table structure for table `penawaran`
 --
 
 CREATE TABLE `penawaran` (
@@ -512,7 +643,7 @@ CREATE TABLE `penawaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `penawaran`
+-- Dumping data for table `penawaran`
 --
 
 INSERT INTO `penawaran` (`id`, `id_user`, `id_material`, `file_administrasi`, `file_teknis`, `review_engineering`, `file_review_eng`, `deskripsi`, `tgl_create`) VALUES
@@ -529,13 +660,16 @@ INSERT INTO `penawaran` (`id`, `id_user`, `id_material`, `file_administrasi`, `f
 (11, 51, 45, 'mzdb.sql', 'MTS.graphml', '', '', 'adadasdasdasd', '2018-12-13'),
 (12, 51, 48, 'am.sql', 'mzdb(1).sql', '', '', 'esdsdsdfsdf', '2018-12-18'),
 (13, 51, 44, 'am.sql', 'mzdb(1).sql', '', '', 'jkhkjh', '2018-12-18'),
-(14, 6, 54, 'FORMAT DRH.docx', 'FORMAT DRH.pdf', '', '', 'sdfsdfsdf', '2019-02-06'),
-(15, 4, 54, 'list table.ods', 'index.php', '', '', 'saasdasdasd', '2019-02-06');
+(14, 6, 54, 'FORMAT DRH.docx', 'FORMAT DRH.pdf', 'ffdfd', 'index.php', 'sdfsdfsdf', '2019-02-06'),
+(15, 4, 54, 'list table.ods', 'index.php', '', '', 'saasdasdasd', '2019-02-06'),
+(16, 4, 57, 'newfile.txt', 'newfile.txt', '', '', 'dsadfsad', '2019-02-10'),
+(17, 51, 56, 'yiicmd.php', 'newfile.txt', '', '', 'dsaasdasd', '2019-02-10'),
+(18, 4, 55, 'yiicmd.php', 'error_log', 'lkjjljljl', 'phpinfo.php', 'hjhkhjkhjk', '2019-02-10');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengajuan`
+-- Table structure for table `pengajuan`
 --
 
 CREATE TABLE `pengajuan` (
@@ -552,10 +686,17 @@ CREATE TABLE `pengajuan` (
   `tgl_create` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `pengajuan`
+--
+
+INSERT INTO `pengajuan` (`id`, `id_material`, `id_pengaju`, `jumlah`, `disetujui`, `pic_wh`, `tgl_setujui`, `diterima`, `id_penerima`, `tgl_diterima`, `tgl_create`) VALUES
+(1, 54, 51, 90, 1, 51, '2019-02-10', 0, 0, '0000-00-00', '2019-02-10');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengiriman`
+-- Table structure for table `pengiriman`
 --
 
 CREATE TABLE `pengiriman` (
@@ -570,19 +711,22 @@ CREATE TABLE `pengiriman` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pengiriman`
+-- Dumping data for table `pengiriman`
 --
 
 INSERT INTO `pengiriman` (`id_material`, `actual_pengiriman`, `plan_penerimaan`, `tujuan`, `status`, `pic`, `actual_penerimaan`, `tgl_create`) VALUES
 (43, '0000-00-00', '0000-00-00', 'Warehouse Pusat', '', 51, '2018-12-12', '2018-12-12'),
 (44, '0000-00-00', '2018-12-29', 'Warehouse Pusat', '', 51, '2018-12-18', '2018-12-18'),
 (45, '0000-00-00', '0000-00-00', 'Warehouse Pusat', '', 51, '2018-12-13', '2018-12-13'),
-(48, '0000-00-00', '2018-12-29', 'Warehouse Pusat', '', 51, '2018-12-18', '2018-12-18');
+(48, '0000-00-00', '2018-12-29', 'Warehouse Pusat', '', 51, '2018-12-18', '2018-12-18'),
+(54, '0000-00-00', '2019-02-17', 'Warehouse Pusat', '', 51, '2019-02-10', '2019-02-10'),
+(55, '0000-00-00', '2019-03-31', 'Warehouse Surabaya', '', 51, '2019-02-10', '2019-02-10'),
+(57, '0000-00-00', '2019-02-28', 'Warehouse Surabaya', '', 51, '2019-02-10', '2019-02-10');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penilaian`
+-- Table structure for table `penilaian`
 --
 
 CREATE TABLE `penilaian` (
@@ -595,7 +739,7 @@ CREATE TABLE `penilaian` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `permintaan`
+-- Table structure for table `permintaan`
 --
 
 CREATE TABLE `permintaan` (
@@ -612,16 +756,19 @@ CREATE TABLE `permintaan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `permintaan`
+-- Dumping data for table `permintaan`
 --
 
 INSERT INTO `permintaan` (`id_material`, `file`, `status`, `deskripsi`, `deadline_tutup`, `actual_tutup`, `plan_pemenang`, `actual_pemenang`, `tgl_create`, `pic`) VALUES
-(54, '', '5', 'harus dikumpulkan 1 hari', '2019-02-16', NULL, NULL, NULL, '2019-02-06', 51);
+(54, '', '5', 'harus dikumpulkan 1 hari', '2019-02-16', '2019-02-10', '2019-02-27', '2019-02-10', '2019-02-06', 51),
+(55, '', NULL, NULL, NULL, '2019-02-10', '2019-02-27', '2019-02-10', '0000-00-00', 0),
+(56, '', NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00', 0),
+(57, '', NULL, NULL, NULL, '2019-02-10', '2019-02-27', '2019-02-10', '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pni`
+-- Table structure for table `pni`
 --
 
 CREATE TABLE `pni` (
@@ -645,19 +792,22 @@ CREATE TABLE `pni` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pni`
+-- Dumping data for table `pni`
 --
 
 INSERT INTO `pni` (`id_material`, `desk`, `pic`, `file`, `pic_qc`, `plan_produksi`, `actual_produksi`, `progres`, `plan_inspeksi`, `actual_inspeksi`, `hasil_inspeksi`, `status_inspeksi`, `file_hasil_inspeksi`, `plan_repair`, `actual_repair`, `file_repair`, `tgl_create`) VALUES
 (43, 'ax', 51, 'CV_Muhamad Ibnu Q.pdf', 51, '2019-01-05', '2018-12-12', '100', '2018-12-14', NULL, 'sdfsdffdsf', 'Lulus', 'HC.pdf', NULL, NULL, NULL, '2018-12-12'),
 (44, 'lkjkljlk', 51, 'am.sql', 51, '2018-12-22', '2018-12-18', '100', '2018-12-20', '2018-12-18', 'hlhlhlk', 'Lulus', 'db.graphml', NULL, NULL, NULL, '2018-12-18'),
 (45, '', 51, '', 51, '0000-00-00', '2018-12-13', '100', '2018-12-15', NULL, 'dsafasdfasdfsdfsdf', 'Lulus', 'db.graphml', NULL, NULL, NULL, '2018-12-13'),
-(48, 'dssadasd', 51, 'am.sql', 51, '2018-12-22', '2018-12-18', '100', '2018-12-20', '2018-12-18', 'sdasdas', 'Lulus', 'am.sql', NULL, NULL, NULL, '2018-12-18');
+(48, 'dssadasd', 51, 'am.sql', 51, '2018-12-22', '2018-12-18', '100', '2018-12-20', '2018-12-18', 'sdasdas', 'Lulus', 'am.sql', NULL, NULL, NULL, '2018-12-18'),
+(54, 'sdasdasdasd', 51, 'yiicmd.php', 51, '2019-02-24', '2019-02-10', '100', '2019-02-12', '2019-02-10', 'dasdasdasd', 'Repair', 'newfile.txt', '2019-02-15', '2019-02-10', '0000-00-00', '2019-02-10'),
+(55, 'kjkhjkh', 51, 'list table.ods', 51, '2019-03-10', '2019-02-10', '100', '2019-02-12', '2019-02-10', 'kjlkjkljkl', 'Lulus', 'yiicmd.php', NULL, NULL, NULL, '2019-02-10'),
+(57, 'ljlj', 51, 'phpinfo.php', 51, '2019-02-24', '2019-02-10', '100', '2019-02-12', '2019-02-10', 'lkjjk', 'Repair', 'list table.ods', '2019-02-15', '2019-02-10', '0000-00-00', '2019-02-10');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produksi`
+-- Table structure for table `produksi`
 --
 
 CREATE TABLE `produksi` (
@@ -669,7 +819,7 @@ CREATE TABLE `produksi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `produksi`
+-- Dumping data for table `produksi`
 --
 
 INSERT INTO `produksi` (`id`, `id_material`, `progres`, `keterangan`, `tgl_create`) VALUES
@@ -680,7 +830,7 @@ INSERT INTO `produksi` (`id`, `id_material`, `progres`, `keterangan`, `tgl_creat
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `status`
+-- Table structure for table `status`
 --
 
 CREATE TABLE `status` (
@@ -690,7 +840,7 @@ CREATE TABLE `status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `status`
+-- Dumping data for table `status`
 --
 
 INSERT INTO `status` (`id`, `namaStatus`, `keterangan`) VALUES
@@ -702,6 +852,7 @@ INSERT INTO `status` (`id`, `namaStatus`, `keterangan`) VALUES
 (4.5, 'Permintaan Penawaran draft', 'draft'),
 (5, 'Tender', 'Pengumpulan dokumen penawaran dari vendor	'),
 (6, 'Tender Result', '	Pemenang telah dipilih, fase pembuatan kontrak	'),
+(6.5, 'Draft Kontrak', 'Kontrak belum di submit'),
 (7, 'Kick of Meeting	', '	Perencanaan Kick of Meeting	'),
 (7.5, 'Kick of Meeting', 'Jadwal Kick of Meeting telah dibuat. Silahkan Konfirmasi.'),
 (8, 'Production Planning', 'Rencana Produksi & Inspeksi'),
@@ -710,14 +861,19 @@ INSERT INTO `status` (`id`, `namaStatus`, `keterangan`) VALUES
 (10, 'Repair', 'Fase Repair Punch List oleh Vendor	'),
 (11, 'Repair Check', 'Pengecekan Hasil Repair Punch List'),
 (12, 'Material shipping', 'Fase Pengiriman Material	'),
+(12.5, 'Draft Pengiriman', 'Detail Pengiriman belum disubmit'),
 (13, 'Material received', 'Material telah diterima Warehouse	'),
+(13.5, 'Draft Inspeksi WareHouse', 'Inspeksi Warehouse belum di submit'),
 (14, 'Material inspection', 'Material telah di inspeksi Warehouse	'),
-(15, 'Material in Stock', 'Stok Material telah di update	');
+(15, 'Material in Stock', 'Stok Material telah di update	'),
+(75, 'Draft Jadwal Kick of Meeting', 'Jadwal Kick of Meeting belum Fix'),
+(85, 'Draft Plan Produksi ', 'Dokumen Plan Produksi belum di submit'),
+(125, 'Dalam Pengiriman', 'Material sedang dikirim');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `testtabel`
+-- Table structure for table `testtabel`
 --
 
 CREATE TABLE `testtabel` (
@@ -728,7 +884,7 @@ CREATE TABLE `testtabel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `testtabel`
+-- Dumping data for table `testtabel`
 --
 
 INSERT INTO `testtabel` (`id`, `namatest`, `tgl_test`, `password`) VALUES
@@ -737,7 +893,7 @@ INSERT INTO `testtabel` (`id`, `namatest`, `tgl_test`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -754,7 +910,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `nama`, `alamat`, `email`, `telp`, `username`, `password`, `enkrip`, `role`, `kodeAsrama`) VALUES
@@ -767,240 +923,235 @@ INSERT INTO `user` (`id`, `nama`, `alamat`, `email`, `telp`, `username`, `passwo
 (9, 'Traffic', '-', '-', '085711112232', 'Traffic', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Traffic', ''),
 (10, 'QC', '-', '-', '085711112236', 'QC', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'QC', ''),
 (11, 'Warehouse', '-', '-', '085711112240', 'Warehouse', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Warehouse', ''),
-(51, 'Muhamad Ibnu Qoyim', 'Bandung', 'muhamadibnu9@gmail.com', '089673569437', 'ibnuqoyim', 'f08dcb43bb4fc72e778d838ea47aadb5', '5a25118b0c3a85.82618145', 'Admin', ''),
-(52, 'Proyek', 'a', 'muhamadibnu9@gmail.com', '089673569437', 'Proyek', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Proyek', ''),
-(53, 'Kepala', 'bdg', 'muhamadibnu9@gmail.com', '089673569437', 'kepalaupt', '7b5243076625e1e0559092e5ae4e66c0', '5a2f9e85c99b71.51626435', 'Kepala UPT Asrama', ''),
-(54, 'Agung Mr.', '0852 72345 1111', '0852 72345 1111', '0852 72345 1111', 'Agung', '7ee8de7fdda016a44d0081ada2e0662a', '5a8ad923c0c659.21245113', 'Operator Lapangan', ''),
-(55, 'Miko Mr.', '0851 7686 2222', '0852 72345 1111', '0851 7686 2222', 'Miko', '54c7a62bdda3b0f339d2b89394d43fb0', '5a8ad956b357b6.51739712', 'Operator Lapangan', ''),
-(56, 'Rindang', '0851 7686 2222', '0852 72345 1111', '0851 7686 2222', 'Rindang', 'bee96cac79d6cf489e9c5970d4b1882e', '5a8ad972a6ced8.96886686', 'Manager', ''),
-(57, 'Nida', '0851 7686 2222', '0852 72345 1111', '0851 7686 2222', 'Nida', '874782e36cc77b3b36016c4879054d58', '5a8ad9849c1880.70704240', 'Administrator', '');
+(51, 'Admin', 'Bandung', 'muhamadibnu9@gmail.com', '089673569437', 'Admin', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Admin', ''),
+(52, 'Proyek', 'a', 'muhamadibnu9@gmail.com', '089673569437', 'Proyek', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Proyek', '');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `client`
+-- Indexes for table `client`
 --
 ALTER TABLE `client`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `client_respon`
+-- Indexes for table `client_respon`
 --
 ALTER TABLE `client_respon`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `dokpermintaan`
+-- Indexes for table `dokpermintaan`
 --
 ALTER TABLE `dokpermintaan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `dok_eng`
+-- Indexes for table `dok_eng`
 --
 ALTER TABLE `dok_eng`
   ADD PRIMARY KEY (`id_material`);
 
 --
--- Indeks untuk tabel `hasilinspeksiwh`
+-- Indexes for table `hasilinspeksiwh`
 --
 ALTER TABLE `hasilinspeksiwh`
   ADD PRIMARY KEY (`id_material`);
 
 --
--- Indeks untuk tabel `hasilpni`
+-- Indexes for table `hasilpni`
 --
 ALTER TABLE `hasilpni`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `hasilrepair`
+-- Indexes for table `hasilrepair`
 --
 ALTER TABLE `hasilrepair`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `irn`
+-- Indexes for table `irn`
 --
 ALTER TABLE `irn`
   ADD PRIMARY KEY (`id_material`);
 
 --
--- Indeks untuk tabel `kategori`
+-- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `kom`
+-- Indexes for table `kom`
 --
 ALTER TABLE `kom`
   ADD PRIMARY KEY (`id_material`);
 
 --
--- Indeks untuk tabel `kontrak`
+-- Indexes for table `kontrak`
 --
 ALTER TABLE `kontrak`
   ADD PRIMARY KEY (`id_material`);
 
 --
--- Indeks untuk tabel `log`
+-- Indexes for table `log`
 --
 ALTER TABLE `log`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `material`
+-- Indexes for table `material`
 --
 ALTER TABLE `material`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `penawaran`
+-- Indexes for table `penawaran`
 --
 ALTER TABLE `penawaran`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `pengajuan`
+-- Indexes for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `pengiriman`
+-- Indexes for table `pengiriman`
 --
 ALTER TABLE `pengiriman`
   ADD PRIMARY KEY (`id_material`);
 
 --
--- Indeks untuk tabel `penilaian`
+-- Indexes for table `penilaian`
 --
 ALTER TABLE `penilaian`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `permintaan`
+-- Indexes for table `permintaan`
 --
 ALTER TABLE `permintaan`
   ADD PRIMARY KEY (`id_material`);
 
 --
--- Indeks untuk tabel `pni`
+-- Indexes for table `pni`
 --
 ALTER TABLE `pni`
   ADD PRIMARY KEY (`id_material`);
 
 --
--- Indeks untuk tabel `produksi`
+-- Indexes for table `produksi`
 --
 ALTER TABLE `produksi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `status`
+-- Indexes for table `status`
 --
 ALTER TABLE `status`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `testtabel`
+-- Indexes for table `testtabel`
 --
 ALTER TABLE `testtabel`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `client`
+-- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `client_respon`
+-- AUTO_INCREMENT for table `client_respon`
 --
 ALTER TABLE `client_respon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
--- AUTO_INCREMENT untuk tabel `dokpermintaan`
+-- AUTO_INCREMENT for table `dokpermintaan`
 --
 ALTER TABLE `dokpermintaan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `hasilpni`
+-- AUTO_INCREMENT for table `hasilpni`
 --
 ALTER TABLE `hasilpni`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `hasilrepair`
+-- AUTO_INCREMENT for table `hasilrepair`
 --
 ALTER TABLE `hasilrepair`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `irn`
+-- AUTO_INCREMENT for table `irn`
 --
 ALTER TABLE `irn`
-  MODIFY `id_material` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_material` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
--- AUTO_INCREMENT untuk tabel `kategori`
+-- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `log`
+-- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
 
 --
--- AUTO_INCREMENT untuk tabel `material`
+-- AUTO_INCREMENT for table `material`
 --
 ALTER TABLE `material`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
--- AUTO_INCREMENT untuk tabel `penawaran`
+-- AUTO_INCREMENT for table `penawaran`
 --
 ALTER TABLE `penawaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT untuk tabel `pengajuan`
+-- AUTO_INCREMENT for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `produksi`
+-- AUTO_INCREMENT for table `produksi`
 --
 ALTER TABLE `produksi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `testtabel`
+-- AUTO_INCREMENT for table `testtabel`
 --
 ALTER TABLE `testtabel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;

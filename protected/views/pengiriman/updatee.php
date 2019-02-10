@@ -2,7 +2,7 @@
             <div class="info">
                 <div class="container">
                     <div class="col-lg-4 left">
-                        <a class="page"><span class="glyphicon glyphicon-user gold" aria-hidden="true"></span> Pra-Tender</a>
+                        <a class="page"><span class="glyphicon glyphicon-user gold" aria-hidden="true"></span> Pengiriman <?php echo $modal->nama?></a>
                     </div>
                     <div class="col-lg-5 right alamat">
                         <?php
@@ -25,5 +25,5 @@
 
 
         <section class="container">
-            <?php $this->renderPartial('_form', array('model'=>$model, 'modal'=>$modal, 'respon'=>$respon)); ?>
-        </section>
+            <?php $this->renderPartial('_form', array('model'=>$model,'modal'=>$modal, 'irn'=>$irn)); ?>
+        </section><?php

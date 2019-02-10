@@ -1,21 +1,30 @@
-<?php
-/* @var $this HasilinspeksiWHController */
-/* @var $model HasilinspeksiWH */
+        <header>
+            <div class="info">
+                <div class="container">
+                    <div class="col-lg-4 left">
+                        <a class="page"><span class="glyphicon glyphicon-check blue" aria-hidden="true"></span> Hasil Inspeksi </a>
+                    </div>
+                    <div class="col-lg-5 right alamat">
+                        <?php
+                            if(Yii::app()->user->kodeAsrama != NULL){
+                        ?>
+                                <p class="head"><?php echo CHtml::link(Yii::app()->user->nama .' ('.Yii::app()->user->role.' '.Yii::app()->user->asrama.')', array('/user/update','id'=>Yii::app()->user->id), array('class'=>'gold')); ?></p>
+                        <?php
+                            }  else {
+                        ?>
+                                <p class="head"><?php echo CHtml::link(Yii::app()->user->nama .' ('.Yii::app()->user->role.')', array('/user/update','id'=>Yii::app()->user->id), array('class'=>'gold')); ?></p>
+                        <?php        
+                            }
+                        ?>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div> 
+        </header>
 
-$this->breadcrumbs=array(
-	'Hasilinspeksi Whs'=>array('index'),
-	$model->id=>array('view','id'=>$model->id),
-	'Update',
-);
 
-$this->menu=array(
-	array('label'=>'List HasilinspeksiWH', 'url'=>array('index')),
-	array('label'=>'Create HasilinspeksiWH', 'url'=>array('create')),
-	array('label'=>'View HasilinspeksiWH', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage HasilinspeksiWH', 'url'=>array('admin')),
-);
-?>
 
-<h1>Update HasilinspeksiWH <?php echo $model->id; ?></h1>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+        <section class="container">
+           
+            <?php $this->renderPartial('_formu', array('model'=>$model, 'modal'=>$modal,'irn'=>$irn)); ?>
+        </section>

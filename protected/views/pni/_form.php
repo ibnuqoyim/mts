@@ -44,7 +44,8 @@
           
 
 			<div class="form-group">
-            <p style="font-size: 16px">Silahkan upload dokumen perencanaan Production and Inspection : </p>
+            <p style="font-size: 16px">Silahkan upload dokumen perencanaan Production and Inspection : <?php echo '<a href="/mts/dokumen/pni/'.$model->file.'">'.$model->file.'</a>' ?> </p>
+            <b>Upload Dokumen Plan Produksi baru :</b>
 			<?php echo $form->fileField($model,'file'); ?>
 			<?php echo $form->error($model,'file'); ?>
     </div>
