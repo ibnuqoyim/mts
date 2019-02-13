@@ -37,7 +37,7 @@ class User extends CActiveRecord
 			array('nama, alamat, email, telp, username, password, enkrip, role', 'required'),
 //                        array('password2', 'required'),
 			array('nama, username, role', 'length', 'max'=>75),
-			array('email, password', 'length', 'max'=>100),
+			array('email,kodeAsrama, password', 'length', 'max'=>100),
 			array('telp', 'length', 'max'=>15),
 			array('enkrip', 'length', 'max'=>50),
 
@@ -74,6 +74,7 @@ class User extends CActiveRecord
 			'password' => 'Password',
 			'enkrip' => 'Enkrip',
 			'role' => 'Role',
+			'kodeAsrama' => 'Perusahaan',
 
 		);
 	}

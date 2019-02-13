@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 10, 2019 at 11:45 PM
+-- Generation Time: Feb 14, 2019 at 12:40 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.1.26
 
@@ -580,7 +580,9 @@ INSERT INTO `log` (`id`, `id_user`, `kegiatan`, `tgl`) VALUES
 (214, 51, 'Menginput hasil inspeksi di warehouse untuk material  asdasd', '2019-02-10 00:00:00'),
 (215, 51, 'mensubmit dokumen Plan Produksi material baru', '2019-02-10 00:00:00'),
 (216, 51, 'Pengajuan Material oleh user', '2019-02-10 00:00:00'),
-(217, 51, 'Menerima pengajuan untuk material sadasdda yang diajukan oleh Admin', '2019-02-10 00:00:00');
+(217, 51, 'Menerima pengajuan untuk material sadasdda yang diajukan oleh Admin', '2019-02-10 00:00:00'),
+(218, 51, 'Berhasil login ke sistem', '2019-02-13 00:00:00'),
+(219, 4, 'Berhasil login ke sistem', '2019-02-13 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -906,25 +908,26 @@ CREATE TABLE `user` (
   `password` varchar(100) NOT NULL,
   `enkrip` varchar(50) NOT NULL,
   `role` varchar(75) NOT NULL,
-  `kodeAsrama` varchar(20) NOT NULL
+  `perusahaan` varchar(200) NOT NULL,
+  `kodeAsrama` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `nama`, `alamat`, `email`, `telp`, `username`, `password`, `enkrip`, `role`, `kodeAsrama`) VALUES
-(3, 'Engineering', '-', '-', '085711112228', 'Engineering', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Engineering', ''),
-(4, 'Vendor1', '-', '-', '085711112212', 'Vendor1', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Vendor', ''),
-(5, 'Pengadaan', '-', '-', '085711112216', 'Pengadaan', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Pengadaan', ''),
-(6, 'Vendor2', '-', '-', '085711112220', 'Vendor2', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Vendor', ''),
-(7, 'Client', '-', '-', '085711112224', 'Client', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Client', ''),
-(8, 'Expedeting', '-', '-', '085711112228', 'Expedeting', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Expedeting', ''),
-(9, 'Traffic', '-', '-', '085711112232', 'Traffic', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Traffic', ''),
-(10, 'QC', '-', '-', '085711112236', 'QC', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'QC', ''),
-(11, 'Warehouse', '-', '-', '085711112240', 'Warehouse', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Warehouse', ''),
-(51, 'Admin', 'Bandung', 'muhamadibnu9@gmail.com', '089673569437', 'Admin', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Admin', ''),
-(52, 'Proyek', 'a', 'muhamadibnu9@gmail.com', '089673569437', 'Proyek', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Proyek', '');
+INSERT INTO `user` (`id`, `nama`, `alamat`, `email`, `telp`, `username`, `password`, `enkrip`, `role`, `perusahaan`, `kodeAsrama`) VALUES
+(3, 'Agus S', '-', '-', '085711112228', 'Engineering', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Engineering', 'PT Wijaya Karya', ''),
+(4, 'Edi I', '-', '-', '085711112212', 'Vendor1', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Vendor', 'PT Wahana Safety', ''),
+(5, 'Shabirin', '-', '-', '085711112216', 'Pengadaan', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Pengadaan', 'PT Wijaya Karya', ''),
+(6, 'Fakhri', '-', '-', '085711112220', 'Vendor2', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Vendor', 'PT Berkat Niaga', ''),
+(7, 'Irfan', '-', '-', '085711112224', 'Client', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Client', 'PT Aneka Tambang', ''),
+(8, 'Toni', '-', '-', '085711112228', 'Expedeting', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Expedeting', 'PT Wijaya Karya', ''),
+(9, 'Emili', '-', '-', '085711112232', 'Traffic', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Traffic', 'PT Wijaya Karya', ''),
+(10, 'Sizuka', '-', '-', '085711112236', 'QC', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'QC', 'PT Wijaya Karya', ''),
+(11, 'Edo', '-', '-', '085711112240', 'Warehouse', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Warehouse', 'PT Wijaya Karya', ''),
+(51, 'Arif', 'Bandung', 'muhamadibnu9@gmail.com', '089673569437', 'Admin', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Admin', 'PT Wijaya Karya', ''),
+(52, 'Tomo', 'a', 'muhamadibnu9@gmail.com', '089673569437', 'Proyek', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Proyek', 'PT Wijaya Karya', '');
 
 --
 -- Indexes for dumped tables
@@ -1118,7 +1121,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220;
 
 --
 -- AUTO_INCREMENT for table `material`
@@ -1154,7 +1157,7 @@ ALTER TABLE `testtabel`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

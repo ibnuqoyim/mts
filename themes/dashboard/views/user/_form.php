@@ -67,15 +67,21 @@
 
 	<div class="form-group">
             <?php echo $form->labelEx($model,'role'); ?>
-            <?php echo $form->textField($model,'username', /*
+            <?php /*echo $form->textField($model,'username', */
                 echo $form->dropDownList(
                     $model,'role',
                     array(
                             'Admin' => 'Admin',
-                            'Administrator' => 'Administrator',
-                            'Operator Lapangan'=>'Operator Lapangan',
-                            'Manager'=>'Manager',
-                        ),*/
+                            'Vendor' => 'Vendor',
+                            'Engineering'=>'Engineering',
+                            'Client'=>'Client',
+                            'Pengadaan'=>'Pengadaan',
+                            'Expedeting'=>'Expedeting',
+                            'Traffic'=>'Traffic',
+                            'QC'=>'QC',
+                            'Warehouse'=>'Warehouse',
+                            'Proyek'=>'Proyek',
+                        ),
                     array('class'=>'form-control', 'readonly'=>true)
                 );
             ?>
