@@ -2312,3 +2312,44 @@ in C:\xampp\htdocs\mts\index.php (13)
 2019/01/31 05:47:14 [warning] [application] Failed to set unsafe attribute "status" of "Material".
 in C:\xampp\htdocs\mts\protected\controllers\PengirimanController.php (58)
 in C:\xampp\htdocs\mts\index.php (13)
+2019/02/14 03:39:31 [error] [exception.CException] exception 'CException' with message 'Property "WebUser.alamat" is not defined.' in C:\xampp\htdocs\mts\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\mts\framework\web\auth\CWebUser.php(146): CComponent->__get('alamat')
+#1 C:\xampp\htdocs\mts\protected\views\material\index.php(53): CWebUser->__get('alamat')
+#2 C:\xampp\htdocs\mts\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\mts\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\htdocs\mts\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#5 C:\xampp\htdocs\mts\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#6 C:\xampp\htdocs\mts\protected\controllers\MaterialController.php(449): CController->render('index', Array)
+#7 C:\xampp\htdocs\mts\framework\web\actions\CInlineAction.php(49): MaterialController->actionIndex()
+#8 C:\xampp\htdocs\mts\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\mts\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 C:\xampp\htdocs\mts\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\xampp\htdocs\mts\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\mts\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\xampp\htdocs\mts\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\xampp\htdocs\mts\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\xampp\htdocs\mts\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(282): CController->run('index')
+#17 C:\xampp\htdocs\mts\framework\web\CWebApplication.php(141): CWebApplication->runController('material/index')
+#18 C:\xampp\htdocs\mts\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#19 C:\xampp\htdocs\mts\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/mts/index.php/material/index
+HTTP_REFERER=http://localhost/mts/
+---
+2019/02/14 03:52:43 [warning] [application] Failed to set unsafe attribute "file_mto" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (221)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/02/14 03:52:43 [warning] [application] Failed to set unsafe attribute "file_dwg" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (221)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/02/14 03:52:43 [warning] [application] Failed to set unsafe attribute "file_spec" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (221)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/02/14 03:52:43 [warning] [application] Failed to set unsafe attribute "file_datasheet" of "DokEng".
+in C:\xampp\htdocs\mts\protected\controllers\MaterialController.php (221)
+in C:\xampp\htdocs\mts\index.php (13)
+2019/02/14 03:59:31 [warning] [application] Failed to set unsafe attribute "deskripsi" of "Kontrak".
+in C:\xampp\htdocs\mts\protected\controllers\KontrakController.php (74)
+in C:\xampp\htdocs\mts\index.php (13)

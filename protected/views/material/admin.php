@@ -8,8 +8,8 @@
 						 <div class="col-lg-5 right alamat">
 
 
-
-												 <p class="head"><?php echo CHtml::link(Yii::app()->user->nama .' (Originator)', array('/user/update','id'=>Yii::app()->user->id), array('class'=>'gold')); ?></p>
+                        <?php $pengguna = User::Model()->findByPk(Yii::app()->user->id); ?>
+                         <p class="head"><?php echo CHtml::link(Yii::app()->user->nama.'-'.$pengguna->alamat .' ('.Yii::app()->user->role.')', array('/user/update','id'=>Yii::app()->user->id), array('class'=>'gold')); ?></p>
 
 						 </div>
 						 <div class="clear"></div>

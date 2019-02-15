@@ -26,7 +26,7 @@
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'id_vendor'); ?>
 		<?php echo $form->dropDownList($model,'id_vendor',
-    CHtml::listData(User::model()->findAll('role = "Vendor"'),'id','nama')); ?>
+    CHtml::listData(User::model()->findAll('role = "Vendor"'),'id','alamat')); ?>
 		<?php echo $form->error($model,'id_vendor'); ?>
 	</div>
 	<br>
@@ -39,7 +39,7 @@
 
 	<div class="row buttons">
 		<?php 
-		echo CHtml::submitButton($model->isNewRecord ? 'Approve' : 'Save', array('class'=>'btn  btn-success left ')); 
+		echo CHtml::submitButton($model->isNewRecord ? 'Save' : 'Save', array('class'=>'btn  btn-success left ')); 
 		?>
 		
 	</div>

@@ -69,13 +69,13 @@ class PermintaanController extends Controller
 		$modal->status_tender=1;
 			$modal->status=4.5;
 			$modal->save();
-		$model->save();
+		
 		$model->tgl_create= date("Y-m-d",time());
 			$date = strtotime(date("Y-m-d H:i:s"));
 			$a = strtotime("+10 day", $date);
 			$model->pic = Yii::app()->user->id;
 			$model->deadline_tutup=date("Y-m-d H:i:s",$a);
-			
+			$model->save();
 				$log = new Log;
 				$log->id_user = Yii::app()->user->id;
 				$log->kegiatan = 'Upload dokumen permintaan penawaran vendor unuk pengadaan material  '.$modal->nama;

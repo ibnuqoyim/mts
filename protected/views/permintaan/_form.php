@@ -60,7 +60,7 @@
          
               <tr>
                 <td><?php echo $o++ ?></td>
-                <td><?php echo $res->usera->nama ?></td>
+                <td><?php echo $res->usera->alamat ?></td>
                 <td><?php echo '<a href="/mts/dokumen/permintaan/'.$res->file_dokpermintaan.'">'.$res->file_dokpermintaan.'</a>' ?></td>
               </tr>
               
@@ -75,7 +75,7 @@
           }?>
            </table>
            <?php echo '<br>'.CHtml::link('<button class="btn btn-success "><i class="glyphicon glyphicon-plus-sign"></i> Permintaan</button>', array('/dokpermintaan/create','idm'=>$modal->id)); ?>
-
+<br><br>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -99,13 +99,13 @@
 		<?php echo $form->error($model,'deskripsi'); ?>
 	</div>
 
-
+<!--
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Save' : 'Save',array('class'=>'btn btn-success left ')); ?>
 		<?php $this->endWidget(); ?>
 	
-	</div>
+	</div> -->
 
 </div>
 
