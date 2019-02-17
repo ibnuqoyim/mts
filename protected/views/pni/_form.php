@@ -34,7 +34,7 @@
               
               <tr>
                 <td>Vendor</td>
-               <td><?php echo $modal->usera->nama ?></td>
+               <td><?php echo $modal->usera->perusahaan ?></td>
               </tr>
               <tr>
                 <td>Dokumen kontrak</td>

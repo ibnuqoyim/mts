@@ -33,7 +33,7 @@
               
               <tr>
                 <td>Vendor</td>
-               <td><?php echo $modal->usera->nama ?></td>
+               <td><?php echo $modal->usera->perusahaan ?></td>
               </tr>
               <tr>
                 <td>IRN</td>
@@ -53,6 +53,7 @@
                     array(
                             'Warehouse Pusat' => 'Warehouse Pusat',
                             'Warehouse Surabaya' => 'Warehouse Surabaya',
+                            'Warehouse Site' => 'Warehouse Site',
                            
                         ), array('prompt'=>'Pilih Warehouse','class'=>'form-control'),array('size'=>60,'maxlength'=>100)); ?>	
 		<?php echo $form->error($model,'tujuan'); ?>

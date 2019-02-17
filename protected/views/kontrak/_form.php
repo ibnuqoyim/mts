@@ -36,7 +36,7 @@
               
               <tr>
                 <td>Pemenang</td>
-               <td><?php echo $res->materiala->usera->nama ?></td>
+               <td><?php echo $res->materiala->usera->perusahaan ?></td>
               </tr>
               <tr>
                 <td>Dokumen Teknis Tender</td>
@@ -45,7 +45,7 @@
             </table> 
           <?php  }?>
 	<div class="form-group">
-            <?php echo 'Silahkan Upload Dokumen Kontrak dengan '.$modal->usera->nama.' : ' ?>
+            <?php echo 'Silahkan Upload Dokumen Kontrak dengan '.$modal->usera->perusahaan.' : ' ?>
             <br>
 			<?php echo '<br>'.$form->fileField($model,'file_kontrak'); ?>
 			<?php echo $form->error($model,'file_kontrak'); ?>

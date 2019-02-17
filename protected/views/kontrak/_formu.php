@@ -36,7 +36,7 @@
               
               <tr>
                 <td>Pemenang</td>
-               <td><?php echo $res->materiala->usera->nama ?></td>
+               <td><?php echo $res->materiala->usera->perusahaan ?></td>
               </tr>
               <tr>
                 <td>Dokumen Teknis Tender</td>

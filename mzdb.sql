@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 14, 2019 at 12:40 AM
+-- Generation Time: Feb 17, 2019 at 03:57 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.1.26
 
@@ -177,7 +177,8 @@ INSERT INTO `hasilinspeksiwh` (`id_material`, `lokasi`, `file_hasil_inspeksi`, `
 (45, '', 'mzdb.sql', 'dfssfsdf', '51', '2018-12-13'),
 (48, 'sadasdasd', 'am.sql', 'sadsadas', '51', '2018-12-18'),
 (54, 'sdafsadfasfd', 'yiicmd.php', 'dsfsfasdf', '51', '2019-02-10'),
-(55, 'fghfhf', 'newfile.txt', ';k;lk;k', '51', '2019-02-10');
+(55, 'fghfhf', 'newfile.txt', ';k;lk;k', '51', '2019-02-10'),
+(56, 'sdasd', 'newfile.txt', 'dadasda', '51', '2019-02-17');
 
 -- --------------------------------------------------------
 
@@ -265,6 +266,7 @@ INSERT INTO `irn` (`id_material`, `irn`, `sertifikat`, `actual_release`, `plan_r
 (48, 'asdasd', '', '2018-12-18', NULL),
 (54, 'asadsadas', 'yiicmd.php', '2019-02-10', NULL),
 (55, '6997987', 'phpinfo.php', '2019-02-10', NULL),
+(56, '332423', 'yiicmd.php', '2019-02-17', NULL),
 (57, '90-9', 'yiicmd.php', '2019-02-10', NULL);
 
 -- --------------------------------------------------------
@@ -317,6 +319,7 @@ INSERT INTO `kom` (`id_material`, `tanggal`, `actual_kom`, `tempat`, `tgl_create
 (48, '2018-12-14', '2018-12-18', 'sadad', '2018-12-18', 51, 'sadasdasd'),
 (54, '2019-02-17', '2019-02-10', 'wito', '2019-02-10', 51, 'hlkjlkjlk'),
 (55, '2019-02-24', '2019-02-10', 'witok', '2019-02-10', 51, 'hkjhkhk'),
+(56, '2019-02-16', '2019-02-17', 'sdfsd', '2019-02-17', 8, 'sdfsdfsdf'),
 (57, '2019-02-24', '2019-02-10', 'e', '2019-02-10', 51, 'erw');
 
 -- --------------------------------------------------------
@@ -344,6 +347,7 @@ INSERT INTO `kontrak` (`id_material`, `file_kontrak`, `pic`, `deskripsi`, `tgl_s
 (48, 'am.sql', '51', '', '2018-12-18'),
 (54, 'newfile.txt', '51', '', '2019-02-10'),
 (55, 'list table.ods', '51', '', '2019-02-10'),
+(56, 'yiicmd.php', '51', '', '2019-02-17'),
 (57, 'error_log', '51', '', '2019-02-10');
 
 -- --------------------------------------------------------
@@ -582,7 +586,31 @@ INSERT INTO `log` (`id`, `id_user`, `kegiatan`, `tgl`) VALUES
 (216, 51, 'Pengajuan Material oleh user', '2019-02-10 00:00:00'),
 (217, 51, 'Menerima pengajuan untuk material sadasdda yang diajukan oleh Admin', '2019-02-10 00:00:00'),
 (218, 51, 'Berhasil login ke sistem', '2019-02-13 00:00:00'),
-(219, 4, 'Berhasil login ke sistem', '2019-02-13 00:00:00');
+(219, 4, 'Berhasil login ke sistem', '2019-02-13 00:00:00'),
+(220, 8, 'Berhasil login ke sistem', '2019-02-17 00:00:00'),
+(221, 51, 'Berhasil login ke sistem', '2019-02-17 00:00:00'),
+(222, 51, 'Memberikan memberikan review untuk penawaran  ', '2019-02-17 00:00:00'),
+(223, 51, 'Memberikan memberikan review untuk penawaran  ', '2019-02-17 00:00:00'),
+(224, 51, 'Menutup tender untuk material werwer', '2019-02-17 00:00:00'),
+(225, 51, 'Menentukan pemenang tender untuk  werwer', '2019-02-17 00:00:00'),
+(226, 51, 'Upload dokumen kontrak untuk pengadaan material  werwer', '2019-02-17 00:00:00'),
+(227, 51, 'Update dokumen kontrak untuk pengadaan material  werwer', '2019-02-17 00:00:00'),
+(228, 51, 'mensubmit dokumen kontrak material baru', '2019-02-17 00:00:00'),
+(229, 8, 'Membuat jadwal dan undangan untuk pelaksanaan Kick of Meeting pelaksanaan pengadaan material  werwer', '2019-02-17 00:00:00'),
+(230, 8, 'mensubmit jadwal Kick Of Meeting', '2019-02-17 00:00:00'),
+(231, 51, 'Mengkonfirmasi undangan Kick of Meeting untuk pengdaan material  werwer', '2019-02-17 00:00:00'),
+(232, 8, 'Upload dokumen Production and Inspection Plan untuk pengadaan material  werwer', '2019-02-17 00:00:00'),
+(233, 8, 'mensubmit dokumen Plan Produksi material baru', '2019-02-17 00:00:00'),
+(234, 51, 'Update progres 25% untuk pengadaan material  werwer', '2019-02-17 00:00:00'),
+(235, 51, 'Update progres 100% untuk pengadaan material  werwer', '2019-02-17 00:00:00'),
+(236, 51, 'Upload dokumen hasil Inspeksi dari QC untuk material  werwer untuk status LULUS', '2019-02-17 15:52:23'),
+(237, 51, 'Input IRN untuk material  werwer', '2019-02-17 00:00:00'),
+(238, 51, 'Input detail pengiriman untuk material  werwer', '2019-02-17 00:00:00'),
+(239, 51, 'mensubmit Detail Pengiriman', '2019-02-17 00:00:00'),
+(240, 51, 'Konfirmasi penerimaan material  werwer', '2019-02-17 00:00:00'),
+(241, 51, 'Menginput hasil inspeksi di warehouse untuk material  werwer', '2019-02-17 00:00:00'),
+(242, 51, 'mensubmit dokumen Plan Produksi material baru', '2019-02-17 00:00:00'),
+(243, 11, 'Berhasil login ke sistem', '2019-02-17 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -623,7 +651,7 @@ CREATE TABLE `material` (
 INSERT INTO `material` (`id`, `proyek`, `kategori`, `client`, `nama`, `status`, `progres`, `pemenang`, `stok`, `status_tender`, `plan_tender`, `plan_kontrak`, `plan_kom`, `plan_irn`, `plan_pengiriman`, `plan_penerimaan`, `plan_inspeksiwh`, `plan_finish`, `actual_finish`, `create_date`, `last_update`, `pic`, `kode`) VALUES
 (54, '0', 1, 0, 'sadasdda', 15, NULL, '6', 42, 2, '2019-02-08', '2019-02-15', NULL, '2019-02-13', '2019-02-17', '2019-02-17', '0000-00-00', '2019-02-12', '2019-02-10', '2019-02-06', '2019-02-06', 51, 'esadsd'),
 (55, '0', 1, 0, 'asdasd', 15, NULL, '4', 32, 2, '2019-02-12', '2019-02-15', NULL, '2019-02-13', '2019-02-17', '2019-03-31', '0000-00-00', '2019-02-12', '2019-02-10', '2019-02-06', '2019-02-06', 51, 'sadasd'),
-(56, '0', 2, 0, 'werwer', 5, NULL, NULL, NULL, 1, '2019-02-11', NULL, NULL, '0000-00-00', NULL, '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '2019-02-09', '2019-02-09', 51, 'essdf'),
+(56, '0', 2, 0, 'werwer', 15, NULL, '51', 12, 2, '2019-02-11', '2019-02-22', NULL, '2019-02-20', '2019-02-24', '2019-02-24', '0000-00-00', '2019-02-19', '2019-02-17', '2019-02-09', '2019-02-09', 51, 'essdf'),
 (57, '0', 2, 0, 'swer', 13, NULL, '6', NULL, 2, '2019-02-12', '2019-02-15', NULL, '2019-02-13', '2019-02-17', '2019-02-28', '0000-00-00', '2019-02-12', '0000-00-00', '2019-02-10', '2019-02-10', 51, 'sss');
 
 -- --------------------------------------------------------
@@ -665,7 +693,7 @@ INSERT INTO `penawaran` (`id`, `id_user`, `id_material`, `file_administrasi`, `f
 (14, 6, 54, 'FORMAT DRH.docx', 'FORMAT DRH.pdf', 'ffdfd', 'index.php', 'sdfsdfsdf', '2019-02-06'),
 (15, 4, 54, 'list table.ods', 'index.php', '', '', 'saasdasdasd', '2019-02-06'),
 (16, 4, 57, 'newfile.txt', 'newfile.txt', '', '', 'dsadfsad', '2019-02-10'),
-(17, 51, 56, 'yiicmd.php', 'newfile.txt', '', '', 'dsaasdasd', '2019-02-10'),
+(17, 51, 56, 'yiicmd.php', 'newfile.txt', 'dfsfsdfsd', 'yiicmd.php', 'dsaasdasd', '2019-02-10'),
 (18, 4, 55, 'yiicmd.php', 'error_log', 'lkjjljljl', 'phpinfo.php', 'hjhkhjkhjk', '2019-02-10');
 
 -- --------------------------------------------------------
@@ -723,6 +751,7 @@ INSERT INTO `pengiriman` (`id_material`, `actual_pengiriman`, `plan_penerimaan`,
 (48, '0000-00-00', '2018-12-29', 'Warehouse Pusat', '', 51, '2018-12-18', '2018-12-18'),
 (54, '0000-00-00', '2019-02-17', 'Warehouse Pusat', '', 51, '2019-02-10', '2019-02-10'),
 (55, '0000-00-00', '2019-03-31', 'Warehouse Surabaya', '', 51, '2019-02-10', '2019-02-10'),
+(56, '0000-00-00', '2019-02-24', 'Warehouse Site', '', 51, '2019-02-17', '2019-02-17'),
 (57, '0000-00-00', '2019-02-28', 'Warehouse Surabaya', '', 51, '2019-02-10', '2019-02-10');
 
 -- --------------------------------------------------------
@@ -764,7 +793,7 @@ CREATE TABLE `permintaan` (
 INSERT INTO `permintaan` (`id_material`, `file`, `status`, `deskripsi`, `deadline_tutup`, `actual_tutup`, `plan_pemenang`, `actual_pemenang`, `tgl_create`, `pic`) VALUES
 (54, '', '5', 'harus dikumpulkan 1 hari', '2019-02-16', '2019-02-10', '2019-02-27', '2019-02-10', '2019-02-06', 51),
 (55, '', NULL, NULL, NULL, '2019-02-10', '2019-02-27', '2019-02-10', '0000-00-00', 0),
-(56, '', NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00', 0),
+(56, '', NULL, NULL, NULL, '2019-02-17', '2019-03-06', '2019-02-17', '0000-00-00', 0),
 (57, '', NULL, NULL, NULL, '2019-02-10', '2019-02-27', '2019-02-10', '0000-00-00', 0);
 
 -- --------------------------------------------------------
@@ -804,6 +833,7 @@ INSERT INTO `pni` (`id_material`, `desk`, `pic`, `file`, `pic_qc`, `plan_produks
 (48, 'dssadasd', 51, 'am.sql', 51, '2018-12-22', '2018-12-18', '100', '2018-12-20', '2018-12-18', 'sdasdas', 'Lulus', 'am.sql', NULL, NULL, NULL, '2018-12-18'),
 (54, 'sdasdasdasd', 51, 'yiicmd.php', 51, '2019-02-24', '2019-02-10', '100', '2019-02-12', '2019-02-10', 'dasdasdasd', 'Repair', 'newfile.txt', '2019-02-15', '2019-02-10', '0000-00-00', '2019-02-10'),
 (55, 'kjkhjkh', 51, 'list table.ods', 51, '2019-03-10', '2019-02-10', '100', '2019-02-12', '2019-02-10', 'kjlkjkljkl', 'Lulus', 'yiicmd.php', NULL, NULL, NULL, '2019-02-10'),
+(56, 'ljlkkljlk', 8, 'KJP-Company-Profile.pdf', 51, '2019-02-28', '2019-02-17', '100', '2019-02-19', '2019-02-17', 'dsfsdf', 'Lulus', 'yiicmd.php', NULL, NULL, NULL, '2019-02-17'),
 (57, 'ljlj', 51, 'phpinfo.php', 51, '2019-02-24', '2019-02-10', '100', '2019-02-12', '2019-02-10', 'lkjjk', 'Repair', 'list table.ods', '2019-02-15', '2019-02-10', '0000-00-00', '2019-02-10');
 
 -- --------------------------------------------------------
@@ -917,17 +947,17 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nama`, `alamat`, `email`, `telp`, `username`, `password`, `enkrip`, `role`, `perusahaan`, `kodeAsrama`) VALUES
-(3, 'Agus S', '-', '-', '085711112228', 'Engineering', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Engineering', 'PT Wijaya Karya', ''),
-(4, 'Edi I', '-', '-', '085711112212', 'Vendor1', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Vendor', 'PT Wahana Safety', ''),
-(5, 'Shabirin', '-', '-', '085711112216', 'Pengadaan', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Pengadaan', 'PT Wijaya Karya', ''),
-(6, 'Fakhri', '-', '-', '085711112220', 'Vendor2', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Vendor', 'PT Berkat Niaga', ''),
-(7, 'Irfan', '-', '-', '085711112224', 'Client', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Client', 'PT Aneka Tambang', ''),
-(8, 'Toni', '-', '-', '085711112228', 'Expedeting', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Expedeting', 'PT Wijaya Karya', ''),
-(9, 'Emili', '-', '-', '085711112232', 'Traffic', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Traffic', 'PT Wijaya Karya', ''),
-(10, 'Sizuka', '-', '-', '085711112236', 'QC', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'QC', 'PT Wijaya Karya', ''),
-(11, 'Edo', '-', '-', '085711112240', 'Warehouse', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Warehouse', 'PT Wijaya Karya', ''),
-(51, 'Arif', 'Bandung', 'muhamadibnu9@gmail.com', '089673569437', 'Admin', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Admin', 'PT Wijaya Karya', ''),
-(52, 'Tomo', 'a', 'muhamadibnu9@gmail.com', '089673569437', 'Proyek', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Proyek', 'PT Wijaya Karya', '');
+(3, 'Agus S', 'PT Wijaya Karya', '-', '085711112228', 'Engineering', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Engineering', 'PT Wijaya Karya', ''),
+(4, 'Edi I', 'PT Wahana Safety', '-', '085711112212', 'Vendor1', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Vendor', 'PT Wahana Safety', ''),
+(5, 'Shabirin', 'PT Wijaya Karya', '-', '085711112216', 'Pengadaan', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Pengadaan', 'PT Wijaya Karya', ''),
+(6, 'Fakhri', 'PT Berkat Niaga', '-', '085711112220', 'Vendor2', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Vendor', 'PT Berkat Niaga', ''),
+(7, 'Irfan', 'PT Aneka Tambang', '-', '085711112224', 'Client', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Client', 'PT Aneka Tambang', ''),
+(8, 'Toni', 'PT Wijaya Karya', '-', '085711112228', 'Expedeting', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Expedeting', 'PT Wijaya Karya', ''),
+(9, 'Emili', 'PT Wijaya Karya', '-', '085711112232', 'Traffic', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Traffic', 'PT Wijaya Karya', ''),
+(10, 'Sizuka', 'PT Wijaya Karya', '-', '085711112236', 'QC', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'QC', 'PT Wijaya Karya', ''),
+(11, 'Edo', 'PT Wijaya Karya', '-', '085711112240', 'Warehouse', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Warehouse', 'PT Wijaya Karya', ''),
+(51, 'Arif', 'PT Wijaya Karya', 'muhamadibnu9@gmail.com', '089673569437', 'Admin', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Admin', 'PT Wijaya Karya', ''),
+(52, 'Tomo', 'PT Wijaya Karya', 'muhamadibnu9@gmail.com', '089673569437', 'Proyek', 'a5f40f0fe04a6fdc0e423e17cb44e984', '5be05f019290b0.38714493', 'Proyek', 'PT Wijaya Karya', '');
 
 --
 -- Indexes for dumped tables
@@ -1121,7 +1151,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
 
 --
 -- AUTO_INCREMENT for table `material`

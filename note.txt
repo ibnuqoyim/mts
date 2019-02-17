@@ -1,0 +1,10 @@
+v 1. edit dok input
+v 2. kolom submit
+3. belum ada tanggal yang tertuang dalam kick of meeting di domain expedeting blm bisa muncul
+4. konfirmasi schedule KOM baru muncul konfirmasi tp blm ada kolom perubahan di dashboard vendor
+v 5. v di semua dashboard, blm ada proses edit
+v 6. Expediting tidak bisa melihat progress produksi dari vendor
+v 7. Penanggalan masih di proses ketika manual blm muncul tanggal bulan dan tahun
+v 8. di dashboard traffic tujuan ; warehouse kurang 1 pilihan, yaitu warehouse site blm di masukan di pilihan
+9. di warehouse, untuk hasil inspeksi di format stock untuk material tipe bulk materil spt apa cara update stok
+v 10. update stock material di Domain WH tidak muncul stelah barang diambil oleh proyek

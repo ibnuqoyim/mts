@@ -929,6 +929,7 @@ CHtml::ajaxLink('View Popup', 'material/index',
                                          'value'=>'selisih($data->status, $data->id)',
 
                                          ),
+                                'stok',
                                 array(
                                         'class'=>'CButtonColumn',
                                         'header'=>'Action',

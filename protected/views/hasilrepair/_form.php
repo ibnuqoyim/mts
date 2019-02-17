@@ -30,7 +30,7 @@
               </tr>
               <tr>
                 <td>Vendor</td>
-               <td><?php echo $res->materiala->usera->nama ?></td>
+               <td><?php echo $res->materiala->usera->perusahaan ?></td>
               </tr>
               <tr>
                 <td>Berita Acara Inspeksi</td>
